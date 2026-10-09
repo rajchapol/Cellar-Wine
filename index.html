@@ -1185,6 +1185,79 @@
     body.car .navbtn{min-height:54px; padding:7px 3px;}
     body.car .navbtn .tx{font-size:11.5px;}
   }
+
+  /* ============ LUXE GRAPHICS (v4.9) ============ */
+  #app{z-index:1;}                       /* above the ambient canvas */
+  /* candlelight: two warm pools of light that breathe slowly (dark mode) */
+  body.dark::before{
+    content:''; position:fixed; inset:0; pointer-events:none; z-index:0;
+    background:
+      radial-gradient(700px 480px at 12% 8%, rgba(232,170,80,.16), transparent 70%),
+      radial-gradient(620px 520px at 92% 96%, rgba(162,58,76,.18), transparent 70%);
+    animation:candle 5.5s ease-in-out infinite alternate;
+  }
+  @keyframes candle{ 0%{opacity:.75;} 40%{opacity:1;} 55%{opacity:.86;} 100%{opacity:.97;} }
+
+  /* gold hairline under the top bar, glow on the active nav item */
+  .topbar{position:relative;}
+  .topbar::after{content:''; position:absolute; left:0; right:0; bottom:-1px; height:2px; pointer-events:none;
+    background:linear-gradient(90deg, transparent, rgba(200,151,63,.85) 30%, #F1D58F 50%, rgba(200,151,63,.85) 70%, transparent);}
+  .navbtn.active{box-shadow:0 4px 12px -3px rgba(89,28,42,.55), inset 0 1px 0 rgba(255,255,255,.18), 0 0 0 2px rgba(200,151,63,.35), 0 0 22px -4px rgba(232,182,76,.65);}
+
+  /* money counters flash when they change */
+  .stat .val.stat-up{animation:statUp .9s ease;}
+  .stat .val.stat-down{animation:statDown .9s ease;}
+  @keyframes statUp{ 0%{text-shadow:0 0 0 rgba(232,182,76,0);} 25%{text-shadow:0 0 14px rgba(232,182,76,.95); transform:scale(1.06);} 100%{text-shadow:none; transform:none;} }
+  @keyframes statDown{ 25%{text-shadow:0 0 12px rgba(178,74,62,.8);} 100%{text-shadow:none;} }
+
+  /* rare wines: gold foil frame + a light sweep; Unicorns also glow */
+  .wine-card.rare-4, .slot.rare-4{box-shadow:0 0 0 1.5px rgba(200,151,63,.55), 0 6px 18px -8px rgba(200,151,63,.45);}
+  .wine-card.rare-5, .slot.rare-5{box-shadow:0 0 0 2px rgba(214,165,70,.9), 0 0 26px -6px rgba(232,182,76,.75), 0 8px 22px -10px rgba(62,44,38,.4);
+    background:linear-gradient(160deg, #FFF8E6 0%, var(--parchment) 40%, #F6E7C4 100%);}
+  body.dark .wine-card.rare-5, body.dark .slot.rare-5{background:linear-gradient(160deg,#3A2C1E,#2A211F 45%,#352819);}
+  body.dark .slot.rare-5{box-shadow:0 0 0 2px rgba(214,165,70,.85), 0 0 24px -6px rgba(232,182,76,.6), 0 8px 18px -8px rgba(0,0,0,.6); border-color:transparent;}
+  body.dark .slot.rare-4{box-shadow:0 0 0 1.5px rgba(200,151,63,.5), 0 6px 16px -8px rgba(0,0,0,.5);}
+  .wine-card.rare-4, .wine-card.rare-5, .slot.rare-4, .slot.rare-5{overflow:hidden;}
+  .wine-card.rare-4::after, .wine-card.rare-5::after, .slot.rare-4::after, .slot.rare-5::after{
+    content:''; position:absolute; top:0; bottom:0; left:-60%; width:22%; pointer-events:none;
+    background:linear-gradient(105deg, transparent, rgba(255,243,210,.38), transparent);
+    transform:skewX(-18deg); animation:foil 7s ease-in-out infinite;}
+  .wine-card.rare-5::after, .slot.rare-5::after{animation-duration:4.2s; background:linear-gradient(105deg, transparent, rgba(255,236,180,.5), rgba(255,255,255,.22), transparent);}
+  body.dark .wine-card.rare-4::after, body.dark .wine-card.rare-5::after, body.dark .slot.rare-4::after, body.dark .slot.rare-5::after{opacity:.45;}
+  /* dark mode top-bar buttons were pale boxes with faint labels */
+  body.dark .tb-btn{background:rgba(255,255,255,.06); border-color:rgba(240,227,210,.18); box-shadow:0 2px 0 rgba(0,0,0,.35);}
+  body.dark .tb-btn span{color:#D9C6B2;}
+  body.dark .tb-btn.danger span{color:#F09080;}
+  @media(hover:hover){ body.dark .tb-btn:hover{background:rgba(255,255,255,.12);} }
+  @keyframes foil{ 0%,62%{left:-60%;} 100%{left:130%;} }
+  /* the next-week button catches the light now and then */
+  .weekbtn{overflow:hidden;}
+  .weekbtn::after{content:''; position:absolute; top:0; bottom:0; left:-60%; width:40%; pointer-events:none;
+    background:linear-gradient(105deg, transparent, rgba(255,250,230,.6), transparent); transform:skewX(-18deg); animation:foil 6s ease-in-out infinite;}
+
+  /* page and dialog entrances */
+  .content.page-enter > *{animation:pageIn .38s cubic-bezier(.2,.8,.25,1) both;}
+  .content.page-enter > *:nth-child(2){animation-delay:.04s;} .content.page-enter > *:nth-child(3){animation-delay:.08s;}
+  .content.page-enter > *:nth-child(4){animation-delay:.12s;} .content.page-enter > *:nth-child(n+5){animation-delay:.16s;}
+  @keyframes pageIn{ from{opacity:0; transform:translateY(14px);} to{opacity:1; transform:none;} }
+  .modal-bg.show .modal{animation:modalPop .34s cubic-bezier(.2,.9,.3,1.15) both;}
+  @keyframes modalPop{ from{opacity:0; transform:translateY(18px) scale(.94);} to{opacity:1; transform:none;} }
+
+  /* full-screen flashes */
+  .fx-flash{position:fixed; inset:0; pointer-events:none; z-index:10001;}
+  .fx-flash.sweep{background:linear-gradient(100deg, transparent 0%, rgba(255,226,150,0) 35%, rgba(255,226,150,.42) 50%, rgba(255,226,150,0) 65%, transparent 100%);
+    background-size:300% 100%; animation:sweep 1.1s ease-out forwards;}
+  @keyframes sweep{ from{background-position:100% 0;} to{background-position:0 0;} }
+  .fx-flash.bad{box-shadow:inset 0 0 120px 30px rgba(178,40,40,.45); animation:badPulse .9s ease-out forwards;}
+  @keyframes badPulse{ from{opacity:1;} to{opacity:0;} }
+
+  /* effects off / lite */
+  body.fx-off::before, body.fx-off .wine-card::after, body.fx-off .slot::after, body.fx-off .weekbtn::after{display:none;}
+  body.fx-off .content.page-enter > *, body.fx-off .modal-bg.show .modal{animation:none;}
+  body.fx-low .wine-card.rare-4::after, body.fx-low .slot.rare-4::after, body.fx-low .weekbtn::after{display:none;}
+  @media (prefers-reduced-motion:reduce){
+    body::before, .wine-card::after, .slot::after, .weekbtn::after{animation:none !important;}
+  }
 </style>
 </head>
 <body>
@@ -3344,6 +3417,10 @@ const EN = {
   "ภาษาไทย": "ภาษาไทย",
   "ภาษา / Language:": "Language / ภาษา:",
   "Language / ภาษา": "Language / ภาษา",
+  "เอฟเฟกต์กราฟิก:": "Graphics effects:",
+  "เต็มรูปแบบ": "Full",
+  "ประหยัดพลังงาน": "Lite (saves power)",
+  "ไม่มีเอฟเฟกต์": "Off",
   "ร้านไวน์ & เซลลาร์": "Wine Shop & Cellar"
 };
 function T(s){ if(LANG!=='en') return s; const v=EN[s]; return v===undefined ? s : v; }
@@ -5453,7 +5530,7 @@ const GUIDE = [
 ];
 
 /* ---------- GAME STATE ---------- */
-const VERSION = '4.8';
+const VERSION = '4.9';
 const SAVE_KEY = 'cellarAndVine_save_v3';
 const freshState = () => ({
   week:1,
@@ -5924,8 +6001,8 @@ function injectIcons(root){
 function renderTop(){
   const s=gameSeason();
   document.getElementById('stWeek').innerHTML = `${G.week} <span class="cal-chip">${s.ic} ${monthName()} ${gameYear()}</span>`;
-  document.getElementById('stCash').textContent = fmtK(G.cash);
-  document.getElementById('stPort').textContent = fmtK(portfolioValue());
+  tweenStat(document.getElementById('stCash'), Math.round(G.cash), fmtK);
+  tweenStat(document.getElementById('stPort'), Math.round(portfolioValue()), fmtK);
   document.getElementById('stRep').innerHTML = `<span class="rep-star">${lineIcon('star',15)} ${G.rep}</span>`;
   const L=document.getElementById('tbLoad'); if(L) L.style.opacity = hasSave()? '1':'.45';
   const D=document.getElementById('tbDark');
@@ -6688,7 +6765,7 @@ function pageMarket(){
     const chg = chgOf(w);
     const own = G.cellar[w.id]?.qty||0;
     const tip=G.tips.find(t=>t.id===w.id);
-    html+=`<div class="card wine-card" data-focus="wine" data-id="${w.id}" tabindex="0">
+    html+=`<div class="card wine-card ${w.tier>=5?'rare-5':w.tier>=4?'rare-4':''}" data-focus="wine" data-id="${w.id}" tabindex="0">
       <div class="bottle-wrap">${bottleSVGLite(w, 52)}</div>
       <div class="wine-info">
         <div class="wine-name">${w.name}${tip?T(' <span class="tag" style="background:rgba(200,151,63,.25);color:var(--gold)">🔑 ข่าววงใน</span>'):''}</div>
@@ -7425,7 +7502,7 @@ function pageCellar(){
     const dw=drinkWindow(id);
     const dwCls={young:'dw-young',peak:'dw-peak',late:'dw-late',old:'dw-old'}[dw.state];
     const justRipe = (G._justRipe||[]).includes(id);
-    html+=`<div class="slot ${dw.state==='peak'?'aging':''} ${justRipe?'ripening':''} ${c.suspect?'has-fake':''}" data-focus="cellar" data-id="${id}" tabindex="0">
+    html+=`<div class="slot ${w.tier>=5?'rare-5':w.tier>=4?'rare-4':''} ${dw.state==='peak'?'aging':''} ${justRipe?'ripening':''} ${c.suspect?'has-fake':''}" data-focus="cellar" data-id="${id}" tabindex="0">
       <span class="b-qty">${c.qty}</span>
       ${c.suspect?`<span class="b-fake" data-focus="dispose" data-id="${id}" tabindex="0" title="${TA("จัดการไวน์ต้องสงสัย")}">!</span>`:''}
       <div class="slot-bottle" data-bottle="${id}">${VIRT_BOTTLES?'<div class="bottle-ph"></div>':bottleSVGLite(w,40)}</div>
@@ -8166,7 +8243,8 @@ function pageLearn(){
 
 /* ---------- DISPLAY PREFERENCES (separate from save) ---------- */
 const DISP_KEY='cellarAndVine_display';
-let DISP={dark:(()=>{ try{ return window.matchMedia('(prefers-color-scheme: dark)').matches; }catch(e){ return false; } })(), fs:'normal', sfx:true, bgm:false, bgmVol:0.5, car:'auto'};
+let DISP={dark:(()=>{ try{ return window.matchMedia('(prefers-color-scheme: dark)').matches; }catch(e){ return false; } })(), fs:'normal', sfx:true, bgm:false, bgmVol:0.5, car:'auto',
+  fx:(()=>{ try{ return window.matchMedia('(prefers-reduced-motion: reduce)').matches?'low':'high'; }catch(e){ return 'high'; } })()};
 function loadDisplay(){
   try{ const d=JSON.parse(localStorage.getItem(DISP_KEY)||'{}'); DISP=Object.assign(DISP,d); }catch(e){}
   applyDisplay();
@@ -8179,6 +8257,9 @@ function applyDisplay(){
   const b=document.body;
   b.classList.toggle('dark', !!DISP.dark);
   b.classList.toggle('car', carMode());
+  b.classList.toggle('fx-off', DISP.fx==='off');
+  b.classList.toggle('fx-low', DISP.fx==='low');
+  try{ if(DISP.fx==='high') Ambient.start(); else Ambient.stop(); }catch(e){}
   b.classList.remove('fs-large','fs-xlarge');
   if(DISP.fs==='large') b.classList.add('fs-large');
   if(DISP.fs==='xlarge') b.classList.add('fs-xlarge');
@@ -8459,7 +8540,7 @@ function routePage(){
   else if(G.page==='settings') pageSettings();
   else pageShop();
   if(content) content.scrollTop = keepScroll;
-  if(!samePage) focusIndex=0;
+  if(!samePage){ focusIndex=0; if(content){ content.classList.remove('page-enter'); void content.offsetWidth; content.classList.add('page-enter'); } }
   updateFocus();
 }
 
@@ -9316,6 +9397,12 @@ function pageSettings(){
       <button class="tb-toggle ${LANG==='en'?'on':''}" data-focus="lang" data-v="en" tabindex="0">English</button>
     </div>
     <div class="row" style="gap:10px;flex-wrap:wrap;margin-top:12px">
+      <span class="wine-sub">${lineIcon('sparkle',16)} ${T('เอฟเฟกต์กราฟิก:')}</span>
+      <button class="tb-toggle ${DISP.fx==='high'?'on':''}" data-focus="fxlevel" data-v="high" tabindex="0">${T('เต็มรูปแบบ')}</button>
+      <button class="tb-toggle ${DISP.fx==='low'?'on':''}" data-focus="fxlevel" data-v="low" tabindex="0">${T('ประหยัดพลังงาน')}</button>
+      <button class="tb-toggle ${DISP.fx==='off'?'on':''}" data-focus="fxlevel" data-v="off" tabindex="0">${T('ไม่มีเอฟเฟกต์')}</button>
+    </div>
+    <div class="row" style="gap:10px;flex-wrap:wrap;margin-top:12px">
       <span class="wine-sub">${lineIcon('car',16)} ${T("โหมดจอรถยนต์ (ปุ่มใหญ่ กดง่าย):")}</span>
       <button class="tb-toggle ${DISP.car==='auto'?'on':''}" data-focus="carmode" data-v="auto" tabindex="0">${T("อัตโนมัติ")}${IS_TESLA?T(' · ตรวจพบ Tesla'):''}</button>
       <button class="tb-toggle ${DISP.car==='on'?'on':''}" data-focus="carmode" data-v="on" tabindex="0">${T("เปิด")}</button>
@@ -9592,6 +9679,7 @@ function activate(el){
   else if(type==='dark'){ DISP.dark=!DISP.dark; applyDisplay(); sfx('click'); pageSettings(); bindFocusables(); }
   else if(type==='fs'){ DISP.fs=el.dataset.v; applyDisplay(); sfx('click'); pageSettings(); bindFocusables(); }
   else if(type==='lang'){ sfx('click'); setLang(el.dataset.v); }
+  else if(type==='fxlevel'){ DISP.fx=el.dataset.v; applyDisplay(); sfx(DISP.fx==='off'?'click':'cheers'); pageSettings(); bindFocusables(); }
   else if(type==='carmode'){ DISP.car=el.dataset.v; applyDisplay(); sfx('click'); pageSettings(); bindFocusables(); }
   else if(type==='sfxtoggle'){ DISP.sfx=!DISP.sfx; applyDisplay(); if(DISP.sfx) sfx('good'); pageSettings(); bindFocusables(); }
   else if(type==='bgmtoggle'){ DISP.bgm=!DISP.bgm; applyDisplay(); pageSettings(); bindFocusables(); }
@@ -10005,7 +10093,216 @@ const SFX={
   bubble: ()=>{ [600,760,940].forEach((f,i)=>tone(f,0.06,'sine',0.05,i*0.05)); },
   fanfare:()=>{ [523,659,784].forEach((f,i)=>tone(f,0.26,'triangle',0.10,i*0.05)); tone(1046,0.42,'sine',0.11,0.16); noise(0.4,0.03,2600,1,0.15); },
 };
-function sfx(n){ try{ (SFX[n]||(()=>{}))(); }catch(e){} }
+function sfx(n){ try{ (SFX[n]||(()=>{}))(); }catch(e){} try{ fxFor(n); }catch(e){} }
+/* ============================================================
+   VISUAL FX — candlelit ambience + celebration particles
+   Two canvases: a slow ambient layer of warm bokeh behind the UI, and a
+   burst layer above everything for coins, sparkles and confetti. Every
+   particle is drawn from a sprite pre-rendered once, the ambient layer is
+   capped at ~30fps and the burst loop only runs while something is on
+   screen — gentle on the in-car computer. Effects hook into sfx(), so each
+   sound the game already plays (sale, perfect pairing, level up…) gets a
+   matching visual with no changes at the call sites.
+   Settings → Graphics effects: full / lite (no ambient, fewer particles) / off.
+   ============================================================ */
+const FX = { x: innerWidth/2, y: innerHeight/2 };
+window.addEventListener('pointerdown', e=>{ FX.x=e.clientX; FX.y=e.clientY; }, true);
+function fxLevel(){ return (typeof DISP!=='undefined' && DISP.fx) || 'high'; }
+const FX_DPR = Math.min(1.5, window.devicePixelRatio||1);
+
+function fxCanvas(id, z){
+  let cv=document.getElementById(id);
+  if(!cv){
+    cv=document.createElement('canvas'); cv.id=id;
+    cv.style.cssText=`position:fixed;inset:0;width:100vw;height:100vh;pointer-events:none;z-index:${z}`;
+    document.body.appendChild(cv);
+  }
+  const w=Math.round(innerWidth*FX_DPR), h=Math.round(innerHeight*FX_DPR);
+  if(cv.width!==w||cv.height!==h){ cv.width=w; cv.height=h; }
+  return cv;
+}
+// soft round glow, drawn once and reused for every particle of that colour
+const _sprites={};
+function fxSprite(rgb, core){
+  const key=rgb+core; if(_sprites[key]) return _sprites[key];
+  const s=document.createElement('canvas'); s.width=s.height=64;
+  const g=s.getContext('2d'), gr=g.createRadialGradient(32,32,0,32,32,32);
+  gr.addColorStop(0,`rgba(${rgb},1)`); gr.addColorStop(core,`rgba(${rgb},.55)`); gr.addColorStop(1,`rgba(${rgb},0)`);
+  g.fillStyle=gr; g.fillRect(0,0,64,64);
+  return _sprites[key]=s;
+}
+
+/* ---------- ambient: warm dust drifting up through candlelight ---------- */
+const Ambient = {
+  on:false, parts:[], last:0,
+  start(){
+    if(fxLevel()!=='high'){ this.stop(); return; }
+    const cv=fxCanvas('fxAmbient', 0); cv.style.display='';
+    if(!this.parts.length){
+      const n = innerWidth<600 ? 16 : 28;
+      for(let i=0;i<n;i++) this.parts.push(this.spawn(true));
+    }
+    if(!this.on){ this.on=true; this.last=performance.now(); requestAnimationFrame(t=>this.loop(t)); }
+  },
+  stop(){ this.on=false; const cv=document.getElementById('fxAmbient'); if(cv) cv.style.display='none'; },
+  spawn(anywhere){
+    return { x:Math.random()*innerWidth, y:anywhere?Math.random()*innerHeight:innerHeight+20,
+      r:2+Math.random()*7, vy:-(5+Math.random()*14), ph:Math.random()*6.28, sw:8+Math.random()*18,
+      a:.25+Math.random()*.55, tw:.6+Math.random()*1.4, gold:Math.random()<.78 };
+  },
+  loop(t){
+    if(!this.on) return;
+    requestAnimationFrame(tt=>this.loop(tt));
+    if(document.hidden || t-this.last<33) return;          // ~30fps, idle when hidden
+    const dt=Math.min(.1,(t-this.last)/1000); this.last=t;
+    const cv=fxCanvas('fxAmbient',0), g=cv.getContext('2d');
+    g.setTransform(FX_DPR,0,0,FX_DPR,0,0); g.clearRect(0,0,innerWidth,innerHeight);
+    const dark=document.body.classList.contains('dark');
+    g.globalCompositeOperation = dark ? 'lighter' : 'source-over';
+    const sGold=fxSprite('232,180,90',.25), sWine=fxSprite('190,70,90',.25);
+    for(let i=0;i<this.parts.length;i++){
+      const p=this.parts[i];
+      p.y+=p.vy*dt; p.ph+=dt*.7;
+      if(p.y<-20){ this.parts[i]=this.spawn(false); continue; }
+      const x=p.x+Math.sin(p.ph)*p.sw, tw=.55+.45*Math.sin(t/1000*p.tw+p.ph);
+      g.globalAlpha=p.a*tw*(dark?.85:.45);
+      const s=p.r*(dark?4:3.2);
+      g.drawImage(p.gold?sGold:sWine, x-s/2, p.y-s/2, s, s);
+    }
+    g.globalAlpha=1;
+  }
+};
+
+/* ---------- bursts: coins, sparkles, confetti, wine drops, rings ---------- */
+const Burst = {
+  ps:[], raf:0, last:0,
+  add(list){
+    if(fxLevel()==='off') return;
+    if(fxLevel()==='low') list=list.filter((_,i)=>i%2===0);
+    this.ps.push(...list);
+    if(this.ps.length>420) this.ps.splice(0,this.ps.length-420);
+    fxCanvas('fxBurst',10000).style.display='';
+    if(!this.raf){ this.last=performance.now(); this.raf=requestAnimationFrame(t=>this.loop(t)); }
+  },
+  loop(t){
+    const dt=Math.min(.05,(t-this.last)/1000); this.last=t;
+    const cv=fxCanvas('fxBurst',10000), g=cv.getContext('2d');
+    g.setTransform(FX_DPR,0,0,FX_DPR,0,0); g.clearRect(0,0,innerWidth,innerHeight);
+    const spark=fxSprite('255,214,120',.18), cream=fxSprite('255,246,225',.2);
+    for(let i=this.ps.length-1;i>=0;i--){
+      const p=this.ps[i]; p.age+=dt;
+      if(p.age>=p.life){ this.ps.splice(i,1); continue; }
+      const k=p.age/p.life;
+      if(p.home && p.age>p.homeAt){                 // coins fly to the cash counter
+        const dx=p.home.x-p.x, dy=p.home.y-p.y, d=Math.hypot(dx,dy)||1;
+        const sp=900*Math.min(1,(p.age-p.homeAt)*3);
+        p.vx+= (dx/d*sp - p.vx)*Math.min(1,dt*9); p.vy+= (dy/d*sp - p.vy)*Math.min(1,dt*9);
+        if(d<18){ this.ps.splice(i,1); this.ps.push(...fxSparks(p.home.x,p.home.y,3,120,.35)); continue; }
+      } else { p.vy+=(p.g||0)*dt; p.vx*=1-(p.drag||0)*dt; p.vy*=1-(p.drag||0)*dt; }
+      p.x+=p.vx*dt; p.y+=p.vy*dt; p.rot=(p.rot||0)+(p.vr||0)*dt;
+      const fade = k>.75 ? 1-(k-.75)/.25 : 1;
+      g.save(); g.globalAlpha=fade;
+      if(p.kind==='coin'){
+        g.translate(p.x,p.y); g.scale(Math.max(.15,Math.abs(Math.cos(p.rot))),1);
+        g.beginPath(); g.arc(0,0,p.r,0,6.283); g.fillStyle='#E8B64C'; g.fill();
+        g.lineWidth=p.r*.28; g.strokeStyle='#9C6F1E'; g.stroke();
+        g.beginPath(); g.arc(-p.r*.25,-p.r*.3,p.r*.35,0,6.283); g.fillStyle='rgba(255,247,215,.8)'; g.fill();
+      } else if(p.kind==='spark'){
+        g.globalCompositeOperation='lighter';
+        const s=p.r*(1-k*.5)*2; g.drawImage(p.cream?cream:spark,p.x-s/2,p.y-s/2,s,s);
+      } else if(p.kind==='confetti'){
+        g.translate(p.x,p.y); g.rotate(p.rot); g.scale(1,Math.cos(p.rot*1.7));
+        g.fillStyle=p.c; g.fillRect(-p.r,-p.r*.45,p.r*2,p.r*.9);
+      } else if(p.kind==='drop'){
+        g.translate(p.x,p.y); g.rotate(Math.atan2(p.vy,p.vx)+1.571);
+        g.beginPath(); g.ellipse(0,0,p.r*.7,p.r*1.25,0,0,6.283); g.fillStyle=p.c; g.fill();
+        g.beginPath(); g.arc(-p.r*.2,-p.r*.4,p.r*.25,0,6.283); g.fillStyle='rgba(255,220,225,.6)'; g.fill();
+      } else if(p.kind==='ring'){
+        g.beginPath(); g.arc(p.x,p.y,p.r+k*p.grow,0,6.283);
+        g.lineWidth=(1-k)*p.w; g.strokeStyle=p.c; g.globalAlpha=fade*(1-k); g.stroke();
+      }
+      g.restore();
+    }
+    if(this.ps.length){ this.raf=requestAnimationFrame(tt=>this.loop(tt)); }
+    else { this.raf=0; g.clearRect(0,0,innerWidth,innerHeight); cv.style.display='none'; }
+  }
+};
+const P = (o)=>Object.assign({age:0, rot:Math.random()*6.28}, o);
+function fxSparks(x,y,n,speed,life,cream){
+  const out=[]; for(let i=0;i<n;i++){ const a=Math.random()*6.283, v=speed*(.35+Math.random()*.9);
+    out.push(P({kind:'spark', x, y, vx:Math.cos(a)*v, vy:Math.sin(a)*v-speed*.25, g:speed*1.1, drag:1.6, r:10+Math.random()*16, life:life*(.6+Math.random()*.6), cream:cream&&Math.random()<.5})); }
+  return out;
+}
+function fxRing(x,y,c,grow,w){ return P({kind:'ring', x, y, vx:0, vy:0, r:6, grow:grow||90, w:w||5, c:c||'rgba(232,182,76,.9)', life:.55}); }
+function fxCoins(x,y,n){
+  const el=document.getElementById('stCash'); const r=el&&el.getBoundingClientRect();
+  const home=r?{x:r.left+r.width/2, y:r.top+r.height/2}:null;
+  const out=[fxRing(x,y,'rgba(232,182,76,.85)',70,4)];
+  for(let i=0;i<n;i++){ const a=-1.571+(Math.random()-.5)*2.4, v=260+Math.random()*320;
+    out.push(P({kind:'coin', x, y, vx:Math.cos(a)*v, vy:Math.sin(a)*v, g:900, drag:.8, r:6+Math.random()*4, vr:8+Math.random()*10, life:2.4, home, homeAt:.35+Math.random()*.3})); }
+  return out;
+}
+function fxWine(x,y,n){
+  const out=[fxRing(x,y,'rgba(162,58,76,.8)',110,6)];
+  const cols=['#7B2C3A','#9B2D3C','#A23A4C','#5B1826'];
+  for(let i=0;i<n;i++){ const a=-1.571+(Math.random()-.5)*2.8, v=220+Math.random()*380;
+    out.push(P({kind:'drop', x, y, vx:Math.cos(a)*v, vy:Math.sin(a)*v, g:1200, drag:.4, r:3+Math.random()*4, c:cols[i%4], life:1.1+Math.random()*.5})); }
+  return out;
+}
+function fxConfetti(n){
+  const cols=['#C8973F','#E4C77E','#7B2C3A','#A23A4C','#F6EDDD','#7C8B5E','#6E93A6'];
+  const out=[]; for(let i=0;i<n;i++){
+    out.push(P({kind:'confetti', x:Math.random()*innerWidth, y:-20-Math.random()*innerHeight*.4,
+      vx:(Math.random()-.5)*120, vy:120+Math.random()*160, g:60, drag:.6, r:4+Math.random()*4,
+      vr:(Math.random()-.5)*12, c:cols[i%cols.length], life:3.2+Math.random()*1.6})); }
+  return out;
+}
+// a DOM flash for full-screen moments (week change, a bad outcome)
+function fxFlash(cls){
+  if(fxLevel()==='off') return;
+  const d=document.createElement('div'); d.className='fx-flash '+cls;
+  document.body.appendChild(d); setTimeout(()=>d.remove(), 1300);
+}
+
+// the sound → visual map. Bursts start where the player last tapped.
+function fxFor(n){
+  if(fxLevel()==='off') return;
+  const x=FX.x, y=FX.y, cx=innerWidth/2, cy=innerHeight*.42;
+  switch(n){
+    case 'sell':    Burst.add(fxCoins(x,y,14)); break;
+    case 'cash':    Burst.add(fxCoins(x,y,8)); break;
+    case 'coin':    Burst.add(fxCoins(x,y,5)); break;
+    case 'buy':     Burst.add([fxRing(x,y,'rgba(232,182,76,.7)',60,3), ...fxSparks(x,y,8,180,.5)]); break;
+    case 'great':   Burst.add([...fxWine(x,y,22), ...fxSparks(x,y,26,320,.9)]); break;
+    case 'cheers':  Burst.add(fxSparks(x,y,14,240,.7,true)); break;
+    case 'good':    Burst.add(fxSparks(x,y,8,180,.6)); break;
+    case 'cork':    Burst.add([fxRing(x,y,'rgba(255,240,210,.8)',50,3), ...fxSparks(x,y,6,260,.45,true)]); break;
+    case 'unlock':  Burst.add([fxRing(cx,cy,'rgba(232,182,76,.9)',180,6), ...fxSparks(cx,cy,30,360,1)]); break;
+    case 'quest':   Burst.add([...fxConfetti(50), ...fxSparks(cx,cy,16,300,.9)]); break;
+    case 'levelup':
+    case 'fanfare': Burst.add([...fxConfetti(110), fxRing(cx,cy,'rgba(232,182,76,.9)',240,7), ...fxSparks(cx,cy,34,420,1.1)]); break;
+    case 'gavel':   Burst.add([fxRing(x,y,'rgba(255,240,210,.9)',140,6), fxRing(x,y,'rgba(232,182,76,.7)',90,4)]); break;
+    case 'week':    fxFlash('sweep'); break;
+    case 'bad':
+    case 'deny':    fxFlash('bad'); break;
+  }
+}
+
+// count-up for the top-bar money stats
+function tweenStat(el, value, fmt){
+  if(!el) return;
+  const from = typeof el._v==='number' ? el._v : null; el._v=value;
+  if(from===null || from===value || fxLevel()==='off'){ el.textContent=fmt(value); return; }
+  el.classList.remove('stat-up','stat-down'); void el.offsetWidth;
+  el.classList.add(value>from?'stat-up':'stat-down');
+  const t0=performance.now(), dur=700;
+  cancelAnimationFrame(el._raf);
+  const step=t=>{ const k=Math.min(1,(t-t0)/dur), e=1-Math.pow(1-k,3);
+    el.textContent=fmt(from+(value-from)*e); if(k<1) el._raf=requestAnimationFrame(step); };
+  el._raf=requestAnimationFrame(step);
+}
+window.addEventListener('resize', ()=>{ if(Ambient.on){ fxCanvas('fxAmbient',0); } });
+
 
 /* ============================================================
    BACKGROUND MUSIC — a slow, generative ambient bed built from
