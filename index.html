@@ -1104,6 +1104,61 @@
     .navbtn .ic{height:18px;}
     .navbtn .tx{font-size:10px;}
   }
+
+  /* ============ TESLA / IN-CAR TOUCH EDITION (v4.7) ============ */
+  /* The controller hint bar is noise on a touch screen; it appears only once a
+     keyboard or gamepad is actually being used to drive the focus ring. */
+  .hintbar{display:none;}
+  body.kbd .hintbar, body.pad .hintbar{display:flex;}
+
+  /* Collapsible filter panel (market + cellar): the chips used to fill a whole
+     car screen before the first wine appeared. */
+  .filter-panel{display:none; margin-bottom:6px;}
+  .filter-panel.open{display:block;}
+  .tb-toggle .f-count{display:inline-flex; align-items:center; justify-content:center;
+    min-width:20px; height:20px; padding:0 6px; border-radius:10px; font-size:11.5px; font-weight:800;
+    background:var(--gold); color:#3E2C15;}
+
+  /* Car mode: auto-on in the Tesla browser (or forced from Settings). Arm's-
+     length viewing on a glossy screen with a bumpy fingertip — so every tap
+     target grows to ≥52px and the small print gets a size up. */
+  body.car .topbar{padding:10px 18px; gap:12px;}
+  body.car .tb-btn{min-width:64px; min-height:56px; padding:7px 10px; border-radius:14px;}
+  body.car .tb-btn span{font-size:11px;}
+  body.car .stat .lbl{font-size:11px;}
+  body.car .stat .val{font-size:20px;}
+  body.car .nav{width:100px; gap:6px; padding:10px 8px;}
+  body.car .navbtn{padding:11px 4px; min-height:62px; justify-content:center;}
+  body.car .navbtn .tx{font-size:12.5px;}
+  body.car .btn{font-size:15px; padding:11px 18px; min-height:50px;}
+  body.car .btn.sm{font-size:14px; padding:9px 14px; min-height:48px;}
+  body.car .btn.big{font-size:17px; min-height:60px;}
+  body.car .tb-toggle{font-size:14.5px; padding:11px 16px; min-height:50px;}
+  body.car .chip{font-size:14.5px; padding:11px 18px; min-height:52px;}
+  body.car .tb-search{padding:11px 14px;}
+  body.car .tb-search input{font-size:16px;}
+  body.car .fr-label{font-size:13px; width:72px; padding-top:15px;}
+  body.car .wine-name{font-size:17px;}
+  body.car .wine-sub{font-size:13.5px;}
+  body.car .tag{font-size:12px;}
+  body.car .modal{max-width:680px; padding:28px;}
+  body.car .modal .body{font-size:16px;}
+  body.car .qty-ctrl button{width:64px; height:64px; font-size:30px;}
+  body.car .qty-quick .qq{min-height:52px; font-size:15px; padding:10px 18px;}
+  body.car .weekbtn{font-size:18px; padding:18px 32px; border-radius:20px;}
+  body.car .page-head h2{font-size:28px;}
+  body.car .page-head p{font-size:14.5px;}
+  body.car .content{padding-bottom:110px;}   /* clear the floating week button */
+  body.car .toast{font-size:16px; padding:13px 24px;}
+  /* Wide landscape screens (car displays, laptops): two wine cards per row so
+     a glance shows twice the market instead of three tall rows. */
+  @media (min-width:1180px){
+    #marketGrid{grid-template-columns:repeat(auto-fill,minmax(500px,1fr));}
+  }
+  @media (max-height:820px){
+    body.car .navbtn{min-height:54px; padding:7px 3px;}
+    body.car .navbtn .tx{font-size:11.5px;}
+  }
 </style>
 </head>
 <body>
@@ -1123,6 +1178,7 @@
     <div class="stat"><span class="lbl">ชื่อเสียง</span><span class="val rep" id="stRep">0</span></div>
     <div class="tb-actions">
       <button class="tb-btn" id="tbBank" data-focus="tbbank" tabindex="0" title="ธนาคาร / กู้เงิน"><span class="tb-ic" data-ic="bank"></span><span>ธนาคาร</span></button>
+      <button class="tb-btn" id="tbFull" tabindex="0" title="เต็มจอ" style="display:none"><span class="tb-ic" data-ic="expand"></span><span>เต็มจอ</span></button>
       <button class="tb-btn" id="tbDark" data-focus="tbdark" tabindex="0" title="สลับโหมดมืด/สว่าง"><span class="tb-ic" data-ic="moon"></span><span>ธีม</span></button>
       <button class="tb-btn" id="tbSave" data-focus="tbsave" tabindex="0" title="บันทึกเกม"><span class="tb-ic" data-ic="save"></span><span>บันทึก</span></button>
       <button class="tb-btn" id="tbLoad" data-focus="tbload" tabindex="0" title="โหลดเกม"><span class="tb-ic" data-ic="load"></span><span>โหลด</span></button>
@@ -3215,7 +3271,7 @@ const GUIDE = [
 ];
 
 /* ---------- GAME STATE ---------- */
-const VERSION = '4.6';
+const VERSION = '4.7';
 const SAVE_KEY = 'cellarAndVine_save_v3';
 const freshState = () => ({
   week:1,
@@ -3644,7 +3700,26 @@ function bindTopbar(){
   if(B) B.onclick=()=>openBank(false);
   const D=document.getElementById('tbDark');
   if(D) D.onclick=()=>{ DISP.dark=!DISP.dark; applyDisplay(); sfx('click'); renderTop(); routePage(); };
+  // Fullscreen hides the car browser's address bar. Only offered where the
+  // browser actually supports it, so the button never does nothing.
+  const F=document.getElementById('tbFull'), de=document.documentElement;
+  const canFs = !!(document.fullscreenEnabled || document.webkitFullscreenEnabled) && !!(de.requestFullscreen || de.webkitRequestFullscreen);
+  if(F && canFs){
+    F.style.display='';
+    F.onclick=()=>{
+      sfx('click');
+      try{
+        if(isFullscreen()) (document.exitFullscreen||document.webkitExitFullscreen).call(document);
+        else { const r=(de.requestFullscreen||de.webkitRequestFullscreen).call(de); if(r&&r.catch) r.catch(()=>toast('เบราว์เซอร์นี้ไม่อนุญาตโหมดเต็มจอ','bad')); }
+      }catch(e){ toast('เบราว์เซอร์นี้ไม่อนุญาตโหมดเต็มจอ','bad'); }
+    };
+    const sync=()=>{ const on=isFullscreen(); const ic=F.querySelector('.tb-ic'); if(ic){ ic.innerHTML=lineIcon(on?'shrink':'expand',20); ic._ic=on?'shrink':'expand'; }
+      const lb=F.querySelector('span:last-child'); if(lb) lb.textContent=on?'ออกเต็มจอ':'เต็มจอ'; };
+    document.addEventListener('fullscreenchange', sync);
+    document.addEventListener('webkitfullscreenchange', sync);
+  }
 }
+function isFullscreen(){ return !!(document.fullscreenElement || document.webkitFullscreenElement); }
 
 // Fill any <span data-ic="name"> with its SVG icon. Used for static chrome
 // (topbar, week button) that isn't built from a template literal.
@@ -3966,6 +4041,9 @@ function lineIcon(name, size=20, color='currentColor'){
     coin:'<circle cx="11" cy="11" r="7" fill="none"/><path d="M11 7v8M8.5 9h3.5a1.5 1.5 0 0 1 0 3H9m0 0h3.5" fill="none"/>',
     star:'<path d="M11 3l2.3 4.7 5.2.8-3.7 3.6.9 5.1-4.7-2.4-4.6 2.4.9-5.1L3.5 8.5l5.2-.8z" fill="none"/>',
     up:'<path d="M4 14l5-5 3 3 5-6" fill="none"/><path d="M14 6h3v3" fill="none"/>',
+    expand:'<path d="M4 8V4h4M14 4h4v4M18 14v4h-4M8 18H4v-4" fill="none"/>',
+    shrink:'<path d="M8 4v4H4M18 8h-4V4M14 18v-4h4M4 14h4v4" fill="none"/>',
+    car:'<path d="M4 14l1.5-5A2 2 0 0 1 7.4 7.5h7.2a2 2 0 0 1 1.9 1.5L18 14" fill="none"/><rect x="3" y="12" width="16" height="5" rx="2" fill="none"/><circle cx="7" cy="17.5" r="1.4" fill="none"/><circle cx="15" cy="17.5" r="1.4" fill="none"/>',
     // --- nav icons ---
     shop:'<path d="M3 9l1.6-4.2A2 2 0 0 1 6.5 3.5h9a2 2 0 0 1 1.9 1.3L19 9" fill="none"/><path d="M4 9h14v9a1.5 1.5 0 0 1-1.5 1.5h-11A1.5 1.5 0 0 1 4 18z" fill="none"/><path d="M8.5 19.5v-5h5v5" fill="none"/>',
     scroll:'<path d="M6 3.5h9a2 2 0 0 1 2 2v11a2 2 0 0 0 2 2H7a2 2 0 0 1-2-2v-11" fill="none"/><path d="M5 5.5a1.5 1.5 0 0 0-3 0v2h3" fill="none"/><line x1="8.5" y1="8" x2="14" y2="8"/><line x1="8.5" y1="11.5" x2="14" y2="11.5"/>',
@@ -4344,13 +4422,16 @@ function pageMarket(){
   html += `<div class="grid" id="marketGrid">`;
   // ---- filter / search / sort toolbar ----
   const regions=[...new Set(WINES.map(w=>w.region))].sort();
+  const mActive=(UI.marketTier?1:0)+(UI.marketColor!=='all'?1:0)+(UI.marketRegion!=='all'?1:0)+(UI.marketSort!=='name'?1:0);
   html = html.replace('<div class="grid" id="marketGrid">', `
   <div class="toolbar">
     <div class="tb-search">${lineIcon('search',16)}<input id="mSearch" type="text" placeholder="ค้นหาไวน์ / ภูมิภาค..." value="${UI.marketSearch}"></div>
     <button class="tb-toggle ${UI.marketOwnedOnly?'on':''}" id="mOwned">${lineIcon('cellar',15)} เฉพาะที่มี</button>
     <button class="tb-toggle ${UI.marketAfford?'on':''}" id="mAfford">${lineIcon('coin',15)} ซื้อไหว</button>
+    ${filterToggleHTML(mActive)}
     ${(UI.marketTier||UI.marketColor!=='all'||UI.marketRegion!=='all'||UI.marketOwnedOnly||UI.marketAfford)?`<button class="tb-toggle" id="mClear" style="border-color:var(--down);color:var(--down)">ล้างตัวกรอง ✕</button>`:''}
   </div>
+  <div class="filter-panel ${UI.filtersOpen?'open':''}" id="fPanel">
 
   <!-- big tap targets instead of dropdowns: faster and safer on a touch screen -->
   <div class="filter-row">
@@ -4384,6 +4465,7 @@ function pageMarket(){
       <button class="chip ${UI.marketRegion==='all'?'on':''}" data-mregion="all">ทั้งหมด</button>
       ${regions.map(r=>`<button class="chip ${UI.marketRegion===r?'on':''}" data-mregion="${r}">${r}</button>`).join('')}
     </div>
+  </div>
   </div>
   <div class="grid" id="marketGrid">`);
 
@@ -4455,6 +4537,7 @@ function pageMarket(){
   document.querySelectorAll('[data-mcolor]').forEach(b=>{ b.onclick=()=>{ UI.marketColor=b.dataset.mcolor; sfx('click'); pageMarket(); }; });
   document.querySelectorAll('[data-msort]').forEach(b=>{ b.onclick=()=>{ UI.marketSort=b.dataset.msort; sfx('click'); pageMarket(); }; });
   document.querySelectorAll('[data-mregion]').forEach(b=>{ b.onclick=()=>{ UI.marketRegion=b.dataset.mregion; sfx('click'); pageMarket(); }; });
+  bindFilterToggle(mActive);
   bindFocusables();
 }
 
@@ -5073,13 +5156,16 @@ function pageCellar(){
     </div>`;
   }
 
+  const cActive=(UI.cellarTier?1:0)+(UI.cellarRegion!=='all'?1:0)+(UI.cellarSort!=='name'?1:0);
   html+=`<div class="toolbar">
     <button class="tb-toggle" id="cDir" title="สลับลำดับ">${UI.cellarDir==='asc'?'▲ น้อย→มาก':'▼ มาก→น้อย'}</button>
     <button class="tb-toggle ${UI.cellarReadyOnly?'on':''}" id="cReady">${lineIcon('check',14)} พร้อมดื่ม</button>
     ${nFakes?`<button class="tb-toggle ${UI.cellarFakeOnly?'on':''}" id="cFake" style="border-color:var(--down)">${lineIcon('warn',13)} ของปลอม ${nFakes}</button>`:''}
+    ${filterToggleHTML(cActive)}
     ${(UI.cellarTier||UI.cellarRegion!=='all'||UI.cellarReadyOnly||UI.cellarFakeOnly)?`<button class="tb-toggle" id="cClear" style="border-color:var(--down);color:var(--down)">ล้างตัวกรอง ✕</button>`:''}
     <span class="tb-count">${ids.length} รายการ · ${cellarUsed()}/${cellarCapacity()} ขวด</span>
   </div>
+  <div class="filter-panel ${UI.filtersOpen?'open':''}" id="fPanel">
   <div class="filter-row">
     <span class="fr-label">เรียงตาม</span>
     <div class="filter-chips">
@@ -5115,6 +5201,7 @@ function pageCellar(){
       </div>
     </div>`;
   }
+  html+=`</div>`;   // /filter-panel
 
   const valOf=id=>G.prices[id]*agingMult(id)*(G.cellar[id].quality?(0.9+(G.cellar[id].quality-82)/18*0.25):1);
   let viewIds=ids.slice();
@@ -5179,6 +5266,7 @@ function pageCellar(){
   const ccl=document.getElementById('cClear');
   if(ccl) ccl.onclick=()=>{ UI.cellarTier=0; UI.cellarRegion='all'; UI.cellarReadyOnly=false;
     UI.cellarFakeOnly=false; sfx('click'); pageCellar(); };
+  bindFilterToggle(cActive);
   // counterfeit panel actions
   document.querySelectorAll('[data-fakeact]').forEach(b=>{
     b.onclick=()=>{
@@ -5889,14 +5977,19 @@ function pageLearn(){
 
 /* ---------- DISPLAY PREFERENCES (separate from save) ---------- */
 const DISP_KEY='cellarAndVine_display';
-let DISP={dark:(()=>{ try{ return window.matchMedia('(prefers-color-scheme: dark)').matches; }catch(e){ return false; } })(), fs:'normal', sfx:true, bgm:false, bgmVol:0.5};
+let DISP={dark:(()=>{ try{ return window.matchMedia('(prefers-color-scheme: dark)').matches; }catch(e){ return false; } })(), fs:'normal', sfx:true, bgm:false, bgmVol:0.5, car:'auto'};
 function loadDisplay(){
   try{ const d=JSON.parse(localStorage.getItem(DISP_KEY)||'{}'); DISP=Object.assign(DISP,d); }catch(e){}
   applyDisplay();
 }
+// The Tesla browser identifies itself with "Tesla/<firmware>" in its user
+// agent (older MCU1 cars: "QtCarBrowser").
+const IS_TESLA = /Tesla\/|QtCarBrowser/i.test(navigator.userAgent||'');
+function carMode(){ return DISP.car==='on' || (DISP.car!=='off' && IS_TESLA); }
 function applyDisplay(){
   const b=document.body;
   b.classList.toggle('dark', !!DISP.dark);
+  b.classList.toggle('car', carMode());
   b.classList.remove('fs-large','fs-xlarge');
   if(DISP.fs==='large') b.classList.add('fs-large');
   if(DISP.fs==='xlarge') b.classList.add('fs-xlarge');
@@ -5909,7 +6002,23 @@ function applyDisplay(){
 let UI = {
   marketSearch:'', marketRegion:'all', marketSort:'name', marketOwnedOnly:false, marketTier:0, marketColor:'all', marketAfford:false,
   cellarSort:'name', cellarDir:'desc', cellarReadyOnly:false, cellarFakeOnly:false, cellarTier:0, cellarRegion:'all',
+  filtersOpen:false,
 };
+// "ตัวกรอง" toggle shared by the market and cellar toolbars. It flips the
+// panel in place (no re-render) so the list doesn't jump under the finger.
+function filterToggleHTML(nActive){
+  return `<button class="tb-toggle ${UI.filtersOpen?'on':''}" id="fToggle" aria-expanded="${UI.filtersOpen}">${lineIcon('tools',15)} ตัวกรอง${nActive?` <span class="f-count">${nActive}</span>`:''} ${UI.filtersOpen?'▴':'▾'}</button>`;
+}
+function bindFilterToggle(nActive){
+  const b=document.getElementById('fToggle'), panel=document.getElementById('fPanel');
+  if(!b||!panel) return;
+  b.onclick=()=>{
+    UI.filtersOpen=!UI.filtersOpen; sfx('click');
+    panel.classList.toggle('open', UI.filtersOpen);
+    b.outerHTML=filterToggleHTML(nActive);
+    bindFilterToggle(nActive);
+  };
+}
 
 /* ---------- NAV RENDER ---------- */
 const NAV_ITEMS=[
@@ -6139,7 +6248,12 @@ function pageBiz(){
 }
 
 /* ---------- ROUTER ---------- */
+let _routedPage=null;
 function routePage(){
+  const content=document.getElementById('content');
+  const samePage = _routedPage===G.page;
+  const keepScroll = samePage && content ? content.scrollTop : 0;
+  _routedPage=G.page;
   renderNav();
   // leaving the cellar: tear down the lazy-bottle observer so it doesn't linger
   if(G.page!=='cellar' && _bottleObserver){ _bottleObserver.disconnect(); _bottleObserver=null; }
@@ -6155,7 +6269,9 @@ function routePage(){
   else if(G.page==='biz') pageBiz();
   else if(G.page==='settings') pageSettings();
   else pageShop();
-  focusIndex=0; updateFocus();
+  if(content) content.scrollTop = keepScroll;
+  if(!samePage) focusIndex=0;
+  updateFocus();
 }
 
 /* ---------- NEXT WEEK ---------- */
@@ -7004,6 +7120,12 @@ function pageSettings(){
       <input type="range" id="bgmVol" min="0" max="100" value="${Math.round((DISP.bgmVol||0.5)*100)}" aria-label="ระดับเสียงเพลง">
       <span class="wine-sub">ดัง</span>
     </div>`:''}
+    <div class="row" style="gap:10px;flex-wrap:wrap;margin-top:12px">
+      <span class="wine-sub">${lineIcon('car',16)} โหมดจอรถยนต์ (ปุ่มใหญ่ กดง่าย):</span>
+      <button class="tb-toggle ${DISP.car==='auto'?'on':''}" data-focus="carmode" data-v="auto" tabindex="0">อัตโนมัติ${IS_TESLA?' · ตรวจพบ Tesla':''}</button>
+      <button class="tb-toggle ${DISP.car==='on'?'on':''}" data-focus="carmode" data-v="on" tabindex="0">เปิด</button>
+      <button class="tb-toggle ${DISP.car==='off'?'on':''}" data-focus="carmode" data-v="off" tabindex="0">ปิด</button>
+    </div>
     <p style="font-size:11.5px;color:var(--ink-soft);margin-top:8px">โหมดมืดและตัวอักษรใหญ่ช่วยให้อ่านง่ายขึ้นบนจอในรถ · เพลงประกอบเป็นดนตรีบรรยากาศแบบสังเคราะห์ ปรับระดับเสียงได้</p>
     <div class="row" style="gap:8px;margin-top:12px;flex-wrap:wrap">
       <button class="tb-toggle" data-focus="replayintro" tabindex="0">ดูฉากเปิดอีกครั้ง</button>
@@ -7030,8 +7152,8 @@ function pageSettings(){
     </div>
   </div>
   <div class="card" style="margin-top:16px;max-width:760px">
-    <b style="font-family:Fraunces;color:var(--wine)">ℹ️ วิธีเล่นบน Tesla / Google Drive</b>
-    <p style="font-size:13px;color:var(--ink);margin-top:6px;line-height:1.6">อัพไฟล์นี้ขึ้น Google Drive แล้วเปิดด้วยเบราว์เซอร์ในรถ · เกมบันทึกในเบราว์เซอร์เครื่องนั้น หากเปลี่ยนเครื่องให้ใช้ "ส่งออก/นำเข้าโค้ดเซฟ" เพื่อย้ายความคืบหน้า</p>
+    <b style="font-family:Fraunces;color:var(--wine)">${lineIcon('car',16)} วิธีเล่นบน Tesla</b>
+    <p style="font-size:13px;color:var(--ink);margin-top:6px;line-height:1.6">เปิดเกมผ่านลิงก์เว็บ (เช่น GitHub Pages) ในเบราว์เซอร์ของรถ แล้วกดดาวเพื่อบุ๊กมาร์กไว้ · เบราว์เซอร์ใช้ได้เฉพาะตอนจอด (เกียร์ P) · เกมเซฟอัตโนมัติทุกนาทีและทุกครั้งที่ออกจากหน้าจอ · กด "เต็มจอ" ที่แถบด้านบนเพื่อซ่อนแถบเบราว์เซอร์ (ถ้ารถรองรับ) · เซฟอยู่ในเบราว์เซอร์ของรถคันนั้น หากจะย้ายไปเล่นเครื่องอื่นให้ใช้ "ส่งออก/นำเข้าโค้ดเซฟ"</p>
   </div>`;
   content.innerHTML=html; bindFocusables();
   const bv=document.getElementById('bgmVol');
@@ -7208,8 +7330,22 @@ function bindFocusables(){
   if(focusIndex>=focusList.length) focusIndex=Math.max(0,focusList.length-1);
   updateFocus();
 }
+// Input mode. On a touch screen (the Tesla display) the controller focus ring
+// is meaningless, and its scrollIntoView yanked the page around after every
+// tap that re-rendered it. The ring only shows — and only scrolls — once a
+// keyboard arrow or a gamepad has been used; the next tap hides it again.
+let navMode=false;
+function setNavMode(on){
+  if(navMode===on) return;
+  navMode=on;
+  document.body.classList.toggle('kbd', on);
+  updateFocus();
+}
+window.addEventListener('pointerdown', ()=>setNavMode(false), true);
+
 function updateFocus(){
   document.querySelectorAll('.focus').forEach(e=>e.classList.remove('focus'));
+  if(!navMode) return;
   // nav highlight when in nav mode handled separately
   if(modalFocusList.length){
     modalFocusList.forEach(e=>e.classList.remove('focus'));
@@ -7260,6 +7396,7 @@ function activate(el){
   else if(type==='prestige') confirmPrestige();
   else if(type==='dark'){ DISP.dark=!DISP.dark; applyDisplay(); sfx('click'); pageSettings(); bindFocusables(); }
   else if(type==='fs'){ DISP.fs=el.dataset.v; applyDisplay(); sfx('click'); pageSettings(); bindFocusables(); }
+  else if(type==='carmode'){ DISP.car=el.dataset.v; applyDisplay(); sfx('click'); pageSettings(); bindFocusables(); }
   else if(type==='sfxtoggle'){ DISP.sfx=!DISP.sfx; applyDisplay(); if(DISP.sfx) sfx('good'); pageSettings(); bindFocusables(); }
   else if(type==='bgmtoggle'){ DISP.bgm=!DISP.bgm; applyDisplay(); pageSettings(); bindFocusables(); }
   else if(type==='replayintro'){ sfx('click'); playCutscene(INTRO_CARDS, false, true); }
@@ -7504,6 +7641,17 @@ function modalFocusables(){
 
 /* keyboard */
 document.addEventListener('keydown',e=>{
+  // Typing in a text field (market search, save-code import) must never fire
+  // the game's hotkeys: "y" advanced the week, digits switched pages and
+  // Backspace closed the dialog mid-paste. Only Escape still closes a modal.
+  const t=e.target;
+  if(t && (/^(TEXTAREA|SELECT)$/.test(t.tagName) || (t.tagName==='INPUT' && !/^(range|checkbox|radio|button)$/i.test(t.type||'')))){
+    if(e.key==='Escape' && document.getElementById('modalBg').classList.contains('show')){ closeModal(); e.preventDefault(); }
+    return;
+  }
+  if(/^Arrow/.test(e.key)){
+    if(!navMode){ setNavMode(true); e.preventDefault(); return; }   // first press just shows the ring
+  }
   const inModal=document.getElementById('modalBg').classList.contains('show');
   if(inModal){
     if(e.key==='ArrowRight'||e.key==='ArrowDown'){modalFocusIndex=(modalFocusIndex+1)%modalFocusList.length;updateFocus();e.preventDefault();}
@@ -7514,7 +7662,7 @@ document.addEventListener('keydown',e=>{
   }
   if(e.key==='ArrowRight'||e.key==='ArrowDown'){focusIndex=(focusIndex+1)%focusList.length;updateFocus();e.preventDefault();}
   else if(e.key==='ArrowLeft'||e.key==='ArrowUp'){focusIndex=(focusIndex-1+focusList.length)%focusList.length;updateFocus();e.preventDefault();}
-  else if(e.key==='Enter'||e.key===' '){focusList[focusIndex]?.click();e.preventDefault();}
+  else if((e.key==='Enter'||e.key===' ') && navMode){focusList[focusIndex]?.click();e.preventDefault();}
   else if(e.key==='y'||e.key==='Y'){nextWeek();}
   else if(e.key>='1'&&e.key<='9'){const pages=['shop','story','market','cellar','portfolio','primeur','staff','stats','guide','learn','settings'];if(pages[+e.key-1]){G.page=pages[+e.key-1];routePage();}}
   else if(e.key==='s'&&(e.ctrlKey||e.metaKey)){ e.preventDefault(); saveGame(false); }
@@ -7532,14 +7680,15 @@ document.getElementById('modalBg').onclick=e=>{ if(e.target.id==='modalBg') clos
 /* ---------- GAMEPAD ---------- */
 let gpPrev={};
 let gpIndex=null;
-window.addEventListener('gamepadconnected',e=>{ gpIndex=e.gamepad.index; toast('🎮 เชื่อมต่อ Controller แล้ว','good'); document.getElementById('hintbar').style.display='flex'; });
-window.addEventListener('gamepaddisconnected',e=>{ gpIndex=null; });
+window.addEventListener('gamepadconnected',e=>{ gpIndex=e.gamepad.index; toast('🎮 เชื่อมต่อ Controller แล้ว','good'); document.body.classList.add('pad'); setNavMode(true); });
+window.addEventListener('gamepaddisconnected',e=>{ gpIndex=null; document.body.classList.remove('pad'); });
 
 function pollGamepad(){
   const pads=navigator.getGamepads?navigator.getGamepads():[];
   const gp=gpIndex!==null?pads[gpIndex]:(pads[0]||null);
   if(gp){
     const btn=i=>gp.buttons[i]&&gp.buttons[i].pressed;
+    if(!navMode && gp.buttons.some(b=>b&&b.pressed)) setNavMode(true);
     const edge=(i,name)=>{ const p=btn(i); const was=gpPrev[name]; gpPrev[name]=p; return p&&!was; };
     // dpad + left stick
     const ax0=gp.axes[0]||0, ax1=gp.axes[1]||0;
@@ -7796,7 +7945,11 @@ function toast(msg,type=''){
   // messages are internal strings only; emojify swaps emoji for inline SVG so
   // the car browser's font support doesn't matter
   t.innerHTML=emojify(msg, 16);
-  document.getElementById('toasts').appendChild(t);
+  const box=document.getElementById('toasts');
+  box.appendChild(t);
+  // a burst of events (buying several lots, a busy week) shouldn't wall off
+  // the middle of the screen — keep only the newest three
+  while(box.children.length>3) box.firstElementChild.remove();
   setTimeout(()=>t.remove(),2800);
 }
 
@@ -7956,6 +8109,13 @@ function bootGame(){
   injectIcons();   // fill static chrome icons (week button, hint bar, brand)
   setInterval(()=>saveGame(true), 60000);
   window.addEventListener('beforeunload', ()=>saveGame(true));
+  // The car browser rarely gets a clean unload: the screen goes to sleep, the
+  // driver shifts out of Park, or the tab is discarded in the background. Save
+  // whenever the page is hidden so at most a few seconds are ever lost.
+  window.addEventListener('pagehide', ()=>saveGame(true));
+  document.addEventListener('visibilitychange', ()=>{ if(document.visibilityState==='hidden') saveGame(true); });
+  // Ask the browser not to evict our save under storage pressure (best effort).
+  try{ if(navigator.storage && navigator.storage.persist) navigator.storage.persist().catch(()=>{}); }catch(e){}
 
   // Browsers block audio until the user interacts. Resume the context on the
   // very first tap/click/key so SFX work from then on, then remove the listener.
