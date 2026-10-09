@@ -1258,6 +1258,39 @@
   @media (prefers-reduced-motion:reduce){
     body::before, .wine-card::after, .slot::after, .weekbtn::after{animation:none !important;}
   }
+
+  /* ============ GRAPHIC ICONS & ART (v5.0) ============ */
+  /* notifications never block taps on what's underneath them */
+  #toasts, .toast{pointer-events:none;}
+  .gi{display:inline-block; width:1.2em; height:1.2em; vertical-align:-0.22em; line-height:0; flex-shrink:0;}
+  .gi svg{display:block; width:100%; height:100%; overflow:visible;}
+  .toast .gi{width:1.25em; height:1.25em;}
+  .mini-portrait{display:inline-block; width:44px; height:44px; border-radius:50%; overflow:hidden; flex-shrink:0;
+    background:radial-gradient(circle at 50% 35%, #F6E7C9, #D9C29A); box-shadow:0 0 0 2px var(--gold), 0 3px 8px -2px var(--shadow);}
+  .mini-portrait .mini-portrait{width:100%; height:100%; box-shadow:none; background:none;}
+  .mini-portrait svg{width:100%; height:100%; display:block;}
+  .mini-portrait.lg{width:64px; height:64px;}
+  .q-av{display:inline-block; width:30px; height:30px; margin:0 1px; opacity:.75; vertical-align:middle;}
+  .q-av svg{width:100%; height:100%;}
+  .srv-av{display:flex; justify-content:center; margin-bottom:4px;}
+  .flag{display:inline-block; vertical-align:-1px; margin-right:4px; border-radius:2px; box-shadow:0 0 0 .5px rgba(0,0,0,.15);}
+  .wx-item{position:relative;}
+  .wx-item .wx-art{position:absolute; top:8px; right:8px; filter:drop-shadow(0 2px 3px rgba(0,0,0,.18));}
+  /* illustrated page banners */
+  .page-head.has-banner{position:relative; overflow:hidden; border-radius:20px; padding:26px 26px 22px; min-height:118px;
+    align-items:flex-end; box-shadow:0 10px 26px -14px rgba(40,20,16,.7), 0 0 0 1.5px rgba(200,151,63,.45); isolation:isolate;}
+  .page-head.has-banner .banner-art{position:absolute; inset:0; z-index:-2;}
+  .page-head.has-banner .banner-art svg{position:absolute; inset:0; width:100%; height:100%;}
+  .page-head.has-banner::before{content:''; position:absolute; inset:0; z-index:-1;
+    background:linear-gradient(90deg, rgba(30,16,14,.86) 0%, rgba(30,16,14,.62) 45%, rgba(30,16,14,.18) 100%);}
+  .page-head.has-banner h2{color:#F8E6C2 !important; text-shadow:0 2px 10px rgba(0,0,0,.55);}
+  .page-head.has-banner > p, .page-head.has-banner p{color:rgba(248,230,194,.88) !important; text-shadow:0 1px 6px rgba(0,0,0,.6);}
+  .page-head.has-banner .save-warn{background:rgba(255,248,235,.92); color:var(--ink);}
+  .page-head.has-banner .save-warn *{color:inherit; text-shadow:none !important;}
+  body.car .page-head.has-banner{min-height:132px;}
+  @media (max-width:600px){ .page-head.has-banner{min-height:96px; padding:18px 16px 16px;} }
+  /* story character cards */
+  .card .mini-portrait{width:46px; height:46px;}
 </style>
 </head>
 <body>
@@ -3140,7 +3173,7 @@ const EN = {
   "⚠️ เงินสดใกล้ไม่พอจ่ายค่าใช้จ่าย": "⚠️ Cash is running low for your expenses",
   "เซลลาร์ว่าง — ไปซื้อไวน์ที่หน้าตลาดก่อน": "Cellar empty — buy wine on the Market page first",
   "📈 มีไวน์": "📈 You have",
-  "รายการกำไรเกิน 60% — พิจารณาขายทำกำไร": "wines up more than 60% — consider taking profits",
+  "รายการกำไรเกิน 60% — พิจารณาขายทำกำไร": "wine(s) up more than 60% — consider taking profits",
   "สรุปสัปดาห์ที่": "Week summary:",
   "รายได้จากร้าน": "Shop revenue",
   "เงินเดือนพนักงาน": "Staff salaries",
@@ -5408,6 +5441,72 @@ function cutsceneArt(kind){
   };
   return `<svg viewBox="0 0 600 340" preserveAspectRatio="xMidYMid slice" style="width:100%;height:100%;display:block">${A[kind]||A.title}</svg>`;
 }
+/* ---------- region flags (wine cards, cellar slots) ---------- */
+const REGION_COUNTRY = {
+  Burgundy:'fr', Bordeaux:'fr', Champagne:'fr', 'Rhône':'fr', Loire:'fr', Alsace:'fr', Provence:'fr', Jura:'fr',
+  Italy:'it', Abruzzo:'it', Etna:'it', Spain:'es', Priorat:'es', Sherry:'es',
+  Portugal:'pt', Douro:'pt', Madeira:'pt', 'Vinho Verde':'pt', Germany:'de', Mosel:'de', Austria:'at', Wachau:'at',
+  Hungary:'hu', Tokaj:'hu', Greece:'gr', Santorini:'gr', Naoussa:'gr', Napa:'us', Willamette:'us', 'Finger Lakes':'us',
+  Australia:'au', Barossa:'au', 'New Zealand':'nz', 'Central Otago':'nz', Chile:'cl', Colchagua:'cl',
+  Argentina:'ar', 'Uco Valley':'ar', 'South Africa':'za', Stellenbosch:'za', Swartland:'za',
+  Lebanon:'lb', England:'gb', Ningxia:'cn', Yamanashi:'jp',
+};
+function flagSVG(region, h=11){
+  const c=REGION_COUNTRY[region]; if(!c) return '';
+  const v3=(a,b,d)=>`<rect width="8" height="16" fill="${a}"/><rect x="8" width="8" height="16" fill="${b}"/><rect x="16" width="8" height="16" fill="${d}"/>`;
+  const h3=(a,b,d)=>`<rect width="24" height="5.34" fill="${a}"/><rect y="5.33" width="24" height="5.34" fill="${b}"/><rect y="10.66" width="24" height="5.34" fill="${d}"/>`;
+  const F={
+    fr:v3('#2B4A9A','#fff','#D5323A'), it:v3('#2E8B4E','#fff','#D5323A'),
+    es:`<rect width="24" height="16" fill="#C8202E"/><rect y="4" width="24" height="8" fill="#F5C400"/>`,
+    pt:`<rect width="24" height="16" fill="#D5232E"/><rect width="9.6" height="16" fill="#1E7A3A"/><circle cx="9.6" cy="8" r="3" fill="#F5C400"/>`,
+    de:h3('#1E1E1E','#D5232E','#F5C400'), at:h3('#D5232E','#fff','#D5232E'), hu:h3('#D5232E','#fff','#2E8B4E'),
+    gr:`${[0,1,2,3,4,5,6,7,8].map(i=>`<rect y="${i*16/9}" width="24" height="${16/9+.05}" fill="${i%2?'#fff':'#2E66B0'}"/>`).join('')}<rect width="9" height="8.9" fill="#2E66B0"/><path d="M4.5 0v8.9M0 4.45h9" stroke="#fff" stroke-width="1.8"/>`,
+    us:`${[0,1,2,3,4,5,6].map(i=>`<rect y="${i*16/7}" width="24" height="${16/7+.05}" fill="${i%2?'#fff':'#C8202E'}"/>`).join('')}<rect width="10.5" height="8.6" fill="#2B3A7A"/>${[[2,2],[5,2],[8,2],[3.5,4.3],[6.5,4.3],[2,6.6],[5,6.6],[8,6.6]].map(([x,y])=>`<circle cx="${x}" cy="${y}" r=".7" fill="#fff"/>`).join('')}`,
+    gb:`<rect width="24" height="16" fill="#fff"/><path d="M12 0v16M0 8h24" stroke="#D5232E" stroke-width="3.4"/>`,
+    au:`<rect width="24" height="16" fill="#1F3A8A"/><path d="M0 0l12 8M12 0L0 8" stroke="#fff" stroke-width="1.8"/><path d="M6 0v8M0 4h12" stroke="#fff" stroke-width="2.6"/><path d="M6 0v8M0 4h12" stroke="#D5232E" stroke-width="1.3"/><circle cx="6" cy="12.5" r="1.4" fill="#fff"/><circle cx="18" cy="4" r=".9" fill="#fff"/><circle cx="20.5" cy="8" r=".9" fill="#fff"/><circle cx="16.5" cy="10" r=".9" fill="#fff"/><circle cx="18.5" cy="13" r=".9" fill="#fff"/>`,
+    nz:`<rect width="24" height="16" fill="#1F3A8A"/><path d="M0 0l12 8M12 0L0 8" stroke="#fff" stroke-width="1.8"/><path d="M6 0v8M0 4h12" stroke="#fff" stroke-width="2.6"/><path d="M6 0v8M0 4h12" stroke="#D5232E" stroke-width="1.3"/>${[[18,4],[20.5,7.5],[16.5,9],[18.5,12.5]].map(([x,y])=>`<circle cx="${x}" cy="${y}" r="1" fill="#D5232E" stroke="#fff" stroke-width=".5"/>`).join('')}`,
+    cl:`<rect width="24" height="16" fill="#fff"/><rect y="8" width="24" height="8" fill="#D5232E"/><rect width="8" height="8" fill="#1F3A8A"/><circle cx="4" cy="4" r="1.6" fill="#fff"/>`,
+    ar:h3('#74ACDF','#fff','#74ACDF')+`<circle cx="12" cy="8" r="1.8" fill="#F5C400"/>`,
+    za:`<rect width="24" height="16" fill="#fff"/><rect width="24" height="5.5" fill="#D5232E"/><rect y="10.5" width="24" height="5.5" fill="#1F3A8A"/><path d="M0 0l10 8L0 16" fill="#1E7A3A" stroke="#fff" stroke-width="1.2"/><path d="M0 2.5L6.5 8 0 13.5z" fill="#1E1E1E" stroke="#F5C400" stroke-width="1"/><path d="M10 8h14" stroke="#1E7A3A" stroke-width="3.4"/>`,
+    lb:`<rect width="24" height="16" fill="#fff"/><rect width="24" height="4" fill="#D5232E"/><rect y="12" width="24" height="4" fill="#D5232E"/><path d="M12 4.6l3.4 5.6h-2.4l1.4 1.6H9.6l1.4-1.6H8.6z" fill="#1E7A3A"/>`,
+    cn:`<rect width="24" height="16" fill="#D5232E"/><path d="M5 2.5l.9 2.6h2.7l-2.2 1.6.8 2.6L5 7.7 2.8 9.3l.8-2.6L1.4 5.1h2.7z" fill="#F5C400"/>${[[10,2],[11.5,4.5],[11.5,7.5],[10,10]].map(([x,y])=>`<circle cx="${x}" cy="${y}" r=".8" fill="#F5C400"/>`).join('')}`,
+    jp:`<rect width="24" height="16" fill="#fff"/><circle cx="12" cy="8" r="4.6" fill="#C8202E"/>`,
+  };
+  return `<svg class="flag" viewBox="0 0 24 16" width="${h*1.5}" height="${h}" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">${F[c]}<rect width="24" height="16" fill="none" stroke="rgba(0,0,0,.18)" stroke-width="1"/></svg>`;
+}
+
+/* ---------- weather pictures for the vintage report ---------- */
+function weatherArt(k, s=34){
+  const sun=(cx,cy,r,c='#F7C548')=>`${[0,45,90,135,180,225,270,315].map(a=>`<path d="M${cx} ${cy-r-5}v3" stroke="#E8862E" stroke-width="2" stroke-linecap="round" transform="rotate(${a} ${cx} ${cy})"/>`).join('')}<circle cx="${cx}" cy="${cy}" r="${r}" fill="${c}" stroke="#E8862E" stroke-width="1.2"/>`;
+  const cloud=(x,y,c='#E8EEF2',d='#9AAAB6')=>`<path d="M${x} ${y}a5 5 0 0 1 4.6-5 7 7 0 0 1 13.4 1.5 4.6 4.6 0 0 1-.6 9.2H${x+4}a4.6 4.6 0 0 1-4-5.7z" fill="${c}" stroke="${d}" stroke-width="1.2"/>`;
+  const A={
+    perfect: `<circle cx="20" cy="20" r="17" fill="#F7D97E" opacity=".35"/>${sun(20,18,8)}<path d="M10 33c3-3 7-3 10 0s7 3 10 0" stroke="#7A4A9A" stroke-width="3" fill="none" stroke-linecap="round"/><circle cx="31" cy="8" r="1.6" fill="#fff"/>`,
+    warm: `${sun(16,15,7)}<path d="M8 30q4-3 8 0t8 0 8 0" stroke="#E8862E" stroke-width="2" fill="none" stroke-linecap="round"/><path d="M8 35q4-3 8 0t8 0 8 0" stroke="#F2B33D" stroke-width="2" fill="none" stroke-linecap="round"/>`,
+    normal: `${sun(25,13,6)}${cloud(6,26)}`,
+    rain: `${cloud(6,20,'#C9D3DA','#7D8C98')}${[[12,28],[18,31],[24,28],[30,31],[15,35],[27,35]].map(([x,y])=>`<path d="M${x} ${y}l-1.6 3.2" stroke="#4A88B8" stroke-width="2" stroke-linecap="round"/>`).join('')}`,
+    frost: `${[0,60,120].map(a=>`<g transform="rotate(${a} 20 18)"><path d="M20 5v26" stroke="#6FA8CC" stroke-width="2.2" stroke-linecap="round"/><path d="M16.5 8.5L20 11l3.5-2.5M16.5 27.5L20 25l3.5 2.5" stroke="#6FA8CC" stroke-width="1.8" fill="none" stroke-linecap="round"/></g>`).join('')}<circle cx="20" cy="18" r="2.6" fill="#D8ECF6"/>`,
+  };
+  return `<svg class="wx-art" viewBox="0 0 40 40" width="${s}" height="${s}" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">${A[k]||A.normal}</svg>`;
+}
+
+/* ---------- illustrated page banners ---------- */
+const PAGE_BANNER = { shop:'shop', story:'letter', market:'market', cellar:'cellarwide', portfolio:'auction', primeur:'vineyard',
+  biz:'street', staff:'shopnight', stats:'toast', guide:'door', learn:'cellar', settings:'title' };
+function bannerArt(kind){
+  const scene=['cellar','shop','market','auction','street','dream'];
+  try{ return scene.includes(kind) ? sceneBG(kind) : cutsceneArt(kind); }catch(e){ return ''; }
+}
+// wrap the page title block in an illustrated banner after each page render
+function decoratePageHead(page){
+  if(fxLevel()==='off') return;
+  const head=document.querySelector('#content > .page-head');
+  if(!head || head.classList.contains('has-banner')) return;
+  const kind=PAGE_BANNER[page]; if(!kind) return;
+  const art=bannerArt(kind); if(!art) return;
+  head.classList.add('has-banner');
+  const bg=document.createElement('div'); bg.className='banner-art'; bg.setAttribute('aria-hidden','true'); bg.innerHTML=art;
+  head.insertBefore(bg, head.firstChild);
+}
 
 let csCards=[], csStep=0, csIsEnding=false, csIsReplay=false;
 function playCutscene(cards, isEnding, isReplay){
@@ -5530,7 +5629,7 @@ const GUIDE = [
 ];
 
 /* ---------- GAME STATE ---------- */
-const VERSION = '4.9';
+const VERSION = '5.0';
 const SAVE_KEY = 'cellarAndVine_save_v3';
 const freshState = () => ({
   week:1,
@@ -6374,16 +6473,14 @@ const EMO_MAP={
   '\ud83d\udcc2':'box', '\u2b06':'up', '\ud83c\udfa8':'sparkle',
   '\ud83d\udcb8':'coin', '\u23f3':'clock', '\u231b':'clock',
 };
-function emo(ch, size=18, color='currentColor'){
-  const key=EMO_MAP[ch];
-  return key ? lineIcon(key, size, color) : ch;
+function emo(ch, size=18){
+  const h=giHTML(ch);
+  return h===ch ? ch : h.replace('class="gi"', `class="gi" style="width:${size}px;height:${size}px"`);
 }
 // Replace every known emoji in a string with its inline SVG.
-function emojify(str, size=17){
+function emojify(str){
   if(str==null) return str;
-  let out=String(str);
-  for(const ch in EMO_MAP){ if(out.indexOf(ch)>=0){ out=out.split(ch).join(lineIcon(EMO_MAP[ch], size)); } }
-  return out;
+  return emojifyGI(str);
 }
 
 /* Food illustration icons (filled, warm) for the shop pairing UI */
@@ -6430,6 +6527,180 @@ function foodIcon(name, size=34){
   }[name]||'';
   return `<svg viewBox="0 0 40 40" width="${size}" height="${size}" xmlns="http://www.w3.org/2000/svg" style="display:block">${A}</svg>`;
 }
+/* ============================================================
+   GRAPHIC ICONS — every emoji in the game is drawn as a full-colour SVG
+   Emoji depend on the device's font (the car browser's set is old and
+   patchy) and clash with the game's art. GI holds a small flat
+   illustration for each one; giHTML(ch) returns it, and an observer swaps
+   any emoji that reaches the page — toasts, story text, achievements,
+   news — so nothing has to be converted by hand at each call site.
+   ============================================================ */
+const GI = (()=>{
+  const G='#E0A93E', GD='#A8761E', GL='#F6D78A', W='#8E2C3E', WD='#5B1826', CR='#FBF3E2', INK='#3E2C26',
+        SG='#7C9B4E', SGD='#56703A', SK='#5E94B8', SKD='#3B6A8C', RD='#D2483A', RDD='#962E24', OR='#E8862E', PU='#7A4A9A';
+  const star=(c,d)=>`<path d="M12 2.2l2.9 6 6.6.9-4.8 4.6 1.2 6.5L12 17.1l-5.9 3.1 1.2-6.5L2.5 9.1l6.6-.9z" fill="${c}" stroke="${d}" stroke-width="1.1" stroke-linejoin="round"/><path d="M12 5.5l1.7 3.6 3.6.5" stroke="#FFF6D8" stroke-width="1.2" fill="none" stroke-linecap="round" opacity=".8"/>`;
+  const face=(mouth,brow='')=>`<circle cx="12" cy="12" r="9.5" fill="#F4C45A" stroke="#C8932E" stroke-width="1.1"/><circle cx="8.6" cy="10.3" r="1.2" fill="${INK}"/><circle cx="15.4" cy="10.3" r="1.2" fill="${INK}"/>${brow}${mouth}`;
+  const I = {
+    star: star(G,GD),
+    glowstar: `<circle cx="12" cy="12" r="11" fill="${GL}" opacity=".45"/>`+star(G,GD),
+    warn: `<path d="M12 2.8L22 20H2z" fill="#F2B33D" stroke="#B9791C" stroke-width="1.2" stroke-linejoin="round"/><rect x="11" y="8.5" width="2" height="6.5" rx="1" fill="${INK}"/><circle cx="12" cy="17.3" r="1.2" fill="${INK}"/>`,
+    check: `<rect x="2.5" y="2.5" width="19" height="19" rx="5" fill="${SG}" stroke="${SGD}" stroke-width="1.1"/><path d="M7 12.4l3.3 3.3L17.2 8.6" stroke="#fff" stroke-width="2.4" fill="none" stroke-linecap="round" stroke-linejoin="round"/>`,
+    tick: `<path d="M4.5 12.6l4.6 4.6L19.5 6.8" stroke="${SG}" stroke-width="3" fill="none" stroke-linecap="round" stroke-linejoin="round"/>`,
+    up: `<rect x="2.5" y="3" width="19" height="18" rx="3" fill="${CR}" stroke="#CDB894" stroke-width="1"/><path d="M5 17l4.5-4.8 3 2.8L19 8" stroke="${SG}" stroke-width="2.2" fill="none" stroke-linecap="round" stroke-linejoin="round"/><path d="M15 8h4v4" stroke="${SG}" stroke-width="2.2" fill="none" stroke-linecap="round" stroke-linejoin="round"/>`,
+    down: `<rect x="2.5" y="3" width="19" height="18" rx="3" fill="${CR}" stroke="#CDB894" stroke-width="1"/><path d="M5 7.5l4.5 4.8 3-2.8L19 16" stroke="${RD}" stroke-width="2.2" fill="none" stroke-linecap="round" stroke-linejoin="round"/><path d="M15 16h4v-4" stroke="${RD}" stroke-width="2.2" fill="none" stroke-linecap="round" stroke-linejoin="round"/>`,
+    bars: `<rect x="2.5" y="3" width="19" height="18" rx="3" fill="${CR}" stroke="#CDB894" stroke-width="1"/><rect x="6" y="12" width="3" height="6" rx="1" fill="${SK}"/><rect x="10.5" y="8" width="3" height="10" rx="1" fill="${G}"/><rect x="15" y="10" width="3" height="8" rx="1" fill="${W}"/>`,
+    bulb: `<path d="M12 2.5a6.5 6.5 0 0 0-3.8 11.8c.8.6 1.3 1.5 1.3 2.4h5c0-.9.5-1.8 1.3-2.4A6.5 6.5 0 0 0 12 2.5z" fill="#F7D04E" stroke="#C49A1E" stroke-width="1.1"/><path d="M9 7.5a3.5 3.5 0 0 1 3-2" stroke="#FFF6C8" stroke-width="1.4" fill="none" stroke-linecap="round"/><rect x="9.3" y="17.2" width="5.4" height="2.2" rx="1" fill="#9AA3AD"/><rect x="10" y="19.6" width="4" height="1.9" rx=".9" fill="#7D8690"/>`,
+    search: `<circle cx="10" cy="10" r="6.5" fill="#D8ECF6" stroke="${SKD}" stroke-width="2"/><path d="M7.2 8.3a3.2 3.2 0 0 1 2.6-1.6" stroke="#fff" stroke-width="1.5" fill="none" stroke-linecap="round"/><path d="M14.8 14.8l5.4 5.4" stroke="${INK}" stroke-width="3" stroke-linecap="round"/>`,
+    fire: `<path d="M12 2c1 3.5 5.5 5.8 5.5 11a5.5 5.5 0 0 1-11 0c0-2.6 1.4-4 2.4-5.2.2 1.6.9 2.6 1.8 3C10.4 7.6 11 4.6 12 2z" fill="${OR}" stroke="#B5561A" stroke-width="1"/><path d="M12 11.5c1 1.6 2.6 2.6 2.6 4.6a2.6 2.6 0 0 1-5.2 0c0-1.6 1.4-2.6 2.6-4.6z" fill="#F7D04E"/>`,
+    ice: `<path d="M12 3l8 4.5v9L12 21l-8-4.5v-9z" fill="#BFE3F2" stroke="${SKD}" stroke-width="1.1" stroke-linejoin="round"/><path d="M4 7.5L12 12l8-4.5M12 12v9" stroke="${SKD}" stroke-width="1" fill="none" opacity=".6"/><path d="M6.5 8.5l3.5 2" stroke="#fff" stroke-width="1.5" stroke-linecap="round"/>`,
+    siren: `<path d="M6 17V12a6 6 0 0 1 12 0v5z" fill="${RD}" stroke="${RDD}" stroke-width="1.1"/><path d="M9 11a3 3 0 0 1 3-3" stroke="#FFB4A8" stroke-width="1.6" fill="none" stroke-linecap="round"/><rect x="4" y="17" width="16" height="3.6" rx="1.2" fill="#6B7480"/><path d="M12 2v2.5M4.6 5.2l1.8 1.6M19.4 5.2l-1.8 1.6" stroke="${OR}" stroke-width="1.8" stroke-linecap="round"/>`,
+    unlock: `<path d="M8 11V7.5a4 4 0 0 1 7.6-1.7" stroke="#8C949E" stroke-width="2.4" fill="none" stroke-linecap="round"/><rect x="4.5" y="11" width="15" height="10.5" rx="2.5" fill="${G}" stroke="${GD}" stroke-width="1.1"/><circle cx="12" cy="15.6" r="1.6" fill="${INK}"/><rect x="11.3" y="16.2" width="1.4" height="3" fill="${INK}"/>`,
+    lock: `<path d="M8 11V7.5a4 4 0 0 1 8 0V11" stroke="#8C949E" stroke-width="2.4" fill="none"/><rect x="4.5" y="11" width="15" height="10.5" rx="2.5" fill="${G}" stroke="${GD}" stroke-width="1.1"/><circle cx="12" cy="15.6" r="1.6" fill="${INK}"/><rect x="11.3" y="16.2" width="1.4" height="3" fill="${INK}"/>`,
+    save: `<path d="M4 4h12.5L20 7.5V20H4z" fill="${SK}" stroke="${SKD}" stroke-width="1.1" stroke-linejoin="round"/><rect x="7" y="4" width="8.5" height="5.5" fill="#E9F0F5"/><rect x="12.3" y="5" width="2" height="3.5" fill="${SKD}"/><rect x="6.5" y="12.5" width="11" height="7.5" rx="1" fill="#F7F3EA"/>`,
+    folder: `<path d="M2.5 6.5a1.5 1.5 0 0 1 1.5-1.5h5l2 2.2h9a1.5 1.5 0 0 1 1.5 1.5V18a1.5 1.5 0 0 1-1.5 1.5H4A1.5 1.5 0 0 1 2.5 18z" fill="#E7A93C" stroke="#B37A1E" stroke-width="1.1"/><path d="M2.5 10h19" stroke="#F6CB6A" stroke-width="1.6"/>`,
+    sparkle: `<path d="M10 2.5l1.8 5.2 5.2 1.8-5.2 1.8L10 16.5l-1.8-5.2L3 9.5l5.2-1.8z" fill="${G}" stroke="${GD}" stroke-width=".9" stroke-linejoin="round"/><path d="M18 13l.9 2.6 2.6.9-2.6.9L18 20l-.9-2.6-2.6-.9 2.6-.9z" fill="${GL}" stroke="${GD}" stroke-width=".8"/><circle cx="18.5" cy="5" r="1.4" fill="${GL}"/>`,
+    burst: `<path d="M12 1.8l2.2 5 4.9-2.6-1.4 5.3 5.2 1.6-4.7 2.8 3 4.5-5.4-.6.2 5.4L12 19.5l-3.9 3.7.2-5.4-5.4.6 3-4.5L1.2 11.1l5.2-1.6L5 4.2l4.9 2.6z" fill="${OR}" stroke="#B5561A" stroke-width=".9" stroke-linejoin="round"/><circle cx="12" cy="12" r="4.2" fill="#F7D04E"/>`,
+    bolt: `<path d="M13.5 2L5 13.5h6L9.5 22 19 9.5h-6z" fill="#F7D04E" stroke="#C49A1E" stroke-width="1.1" stroke-linejoin="round"/>`,
+    noentry: `<circle cx="12" cy="12" r="9.5" fill="${RD}" stroke="${RDD}" stroke-width="1.1"/><rect x="6" y="10.4" width="12" height="3.2" rx="1" fill="#fff"/>`,
+    cross: `<circle cx="12" cy="12" r="9.5" fill="${RD}" stroke="${RDD}" stroke-width="1.1"/><path d="M8.3 8.3l7.4 7.4M15.7 8.3l-7.4 7.4" stroke="#fff" stroke-width="2.4" stroke-linecap="round"/>`,
+    refresh: `<circle cx="12" cy="12" r="10" fill="${SG}" stroke="${SGD}" stroke-width="1"/><path d="M16.8 9.5A5.2 5.2 0 0 0 7.5 9M7.2 14.5a5.2 5.2 0 0 0 9.3.5" stroke="#fff" stroke-width="1.9" fill="none" stroke-linecap="round"/><path d="M17.3 6.4v3.4h-3.4M6.7 17.6v-3.4h3.4" stroke="#fff" stroke-width="1.9" fill="none" stroke-linecap="round" stroke-linejoin="round"/>`,
+    book: `<path d="M12 6.5C9.5 4.8 6 4.5 2.5 5.2v13.6c3.5-.7 7-.4 9.5 1.3 2.5-1.7 6-2 9.5-1.3V5.2C18 4.5 14.5 4.8 12 6.5z" fill="${CR}" stroke="${W}" stroke-width="1.2" stroke-linejoin="round"/><path d="M12 6.5v13.6" stroke="${W}" stroke-width="1.2"/><path d="M5 9h4.5M5 12h4.5M14.5 9H19M14.5 12H19" stroke="#C9B48E" stroke-width="1" stroke-linecap="round"/>`,
+    scroll: `<path d="M6 4h11.5a2.5 2.5 0 0 1 0 5H17v9.5a2.5 2.5 0 0 1-2.5 2.5H5a2.5 2.5 0 0 1 0-5h1z" fill="#F2E0B8" stroke="#B8935A" stroke-width="1.1" stroke-linejoin="round"/><path d="M9 9h5M9 12h5M9 15h3.5" stroke="#B8935A" stroke-width="1" stroke-linecap="round"/><circle cx="17.5" cy="6.5" r="1" fill="#B8935A"/>`,
+    box: `<path d="M3 7.5L12 3l9 4.5v9.5L12 21.5 3 17z" fill="#D9A866" stroke="#9C6F35" stroke-width="1.1" stroke-linejoin="round"/><path d="M3 7.5l9 4.5 9-4.5M12 12v9.5" stroke="#9C6F35" stroke-width="1.1" fill="none"/><path d="M7.5 5.2l9 4.6" stroke="#EAC88E" stroke-width="2"/>`,
+    gift: `<rect x="3" y="9" width="18" height="12" rx="1.5" fill="${RD}" stroke="${RDD}" stroke-width="1.1"/><rect x="2" y="6.5" width="20" height="4.5" rx="1.2" fill="#E05A4C" stroke="${RDD}" stroke-width="1.1"/><rect x="10.5" y="6.5" width="3" height="14.5" fill="${G}"/><path d="M12 6.5C10 3 6.5 3.4 7.4 5.6 8 7 12 6.5 12 6.5zM12 6.5c2-3.5 5.5-3.1 4.6-.9C16 7 12 6.5 12 6.5z" fill="${G}" stroke="${GD}" stroke-width=".9"/>`,
+    target: `<circle cx="11" cy="13" r="9" fill="#fff" stroke="${RDD}" stroke-width="1"/><circle cx="11" cy="13" r="6.4" fill="${RD}"/><circle cx="11" cy="13" r="3.8" fill="#fff"/><circle cx="11" cy="13" r="1.6" fill="${RD}"/><path d="M11 13L20 4" stroke="${INK}" stroke-width="1.6" stroke-linecap="round"/><path d="M18 3.2l3 .3-.3 3z" fill="${SK}"/>`,
+    trophy: `<path d="M7 3h10v5.5a5 5 0 0 1-10 0z" fill="${G}" stroke="${GD}" stroke-width="1.1"/><path d="M7 5H3.8c0 3.3 1.5 5 3.6 5.3M17 5h3.2c0 3.3-1.5 5-3.6 5.3" stroke="${GD}" stroke-width="1.4" fill="none"/><path d="M9.5 5.5v3" stroke="#FFF2C4" stroke-width="1.4" stroke-linecap="round"/><rect x="10.8" y="13.4" width="2.4" height="3.6" fill="${GD}"/><rect x="7.5" y="17" width="9" height="4" rx="1" fill="${W}" stroke="${WD}" stroke-width="1"/>`,
+    medal: `<path d="M8 2h3l2.5 7h-3zM16 2h-3l-2.5 7h3z" fill="${SK}" stroke="${SKD}" stroke-width=".9"/><circle cx="12" cy="15" r="6.5" fill="${G}" stroke="${GD}" stroke-width="1.1"/><circle cx="12" cy="15" r="4" fill="none" stroke="${GL}" stroke-width="1.2"/><path d="M12 12.7l.8 1.6 1.7.2-1.3 1.2.3 1.7-1.5-.8-1.5.8.3-1.7-1.3-1.2 1.7-.2z" fill="${GD}"/>`,
+    crown: `<path d="M3 8l4.5 4L12 5l4.5 7L21 8l-2 11H5z" fill="${G}" stroke="${GD}" stroke-width="1.1" stroke-linejoin="round"/><rect x="5" y="17" width="14" height="2.6" fill="${GD}"/><circle cx="12" cy="13.5" r="1.6" fill="${W}"/><circle cx="7.8" cy="15" r="1.1" fill="${SK}"/><circle cx="16.2" cy="15" r="1.1" fill="${SK}"/>`,
+    gradcap: `<path d="M12 4L2 9l10 5 10-5z" fill="#3A3F4A" stroke="#22262E" stroke-width="1" stroke-linejoin="round"/><path d="M6 11v4.5c0 1.6 2.7 3 6 3s6-1.4 6-3V11l-6 3z" fill="#4A505C"/><path d="M20 9.5v6" stroke="${G}" stroke-width="1.4"/><circle cx="20" cy="16.5" r="1.4" fill="${G}"/>`,
+    key: `<circle cx="7.5" cy="12" r="5" fill="${G}" stroke="${GD}" stroke-width="1.1"/><circle cx="7.5" cy="12" r="2" fill="${CR}"/><path d="M12.3 12H21v3h-2v-1.8h-1.6V15h-2v-3" fill="${G}" stroke="${GD}" stroke-width="1.1" stroke-linejoin="round"/>`,
+    moneybag: `<path d="M9 5.5h6l-1.5-3h-3z" fill="#B8935A" stroke="#8A6A3A" stroke-width="1"/><path d="M8.5 6.5C4.5 9.5 3.5 13 3.5 15.5 3.5 19.5 7 21.5 12 21.5s8.5-2 8.5-6c0-2.5-1-6-5-9z" fill="#D9B46A" stroke="#9C7A3A" stroke-width="1.1"/><path d="M8.5 6.5h7" stroke="#9C7A3A" stroke-width="1.6"/><text x="12" y="18.2" font-size="8.5" font-weight="800" text-anchor="middle" fill="#6E4E1A" font-family="Arial,sans-serif">฿</text>`,
+    cashwings: `<path d="M2 9c2-1.8 4-1.8 5.5-.5M2 12c2-1.2 4-1 5.5 0M22 9c-2-1.8-4-1.8-5.5-.5M22 12c-2-1.2-4-1-5.5 0" stroke="#CDB894" stroke-width="1.6" fill="none" stroke-linecap="round"/><rect x="6" y="7" width="12" height="9" rx="1.3" fill="#8FBF6A" stroke="${SGD}" stroke-width="1.1"/><circle cx="12" cy="11.5" r="2.4" fill="#C9E3B0"/><text x="12" y="13.3" font-size="4.6" font-weight="800" text-anchor="middle" fill="${SGD}" font-family="Arial,sans-serif">฿</text>`,
+    gem: `<path d="M6 4h12l4 5-10 12L2 9z" fill="#7FC6E8" stroke="${SKD}" stroke-width="1.1" stroke-linejoin="round"/><path d="M2 9h20M8 4l-2 5 6 12M16 4l2 5-6 12M9 9l3-5 3 5" stroke="${SKD}" stroke-width=".9" fill="none" opacity=".7"/><path d="M6.5 6l1.4-.9" stroke="#fff" stroke-width="1.4" stroke-linecap="round"/>`,
+    bank: `<path d="M2.5 8.5L12 3l9.5 5.5z" fill="${W}" stroke="${WD}" stroke-width="1.1" stroke-linejoin="round"/><rect x="4" y="9.5" width="16" height="1.6" fill="#E8DCC4"/><path d="M5.5 11.5v6.5M9.5 11.5v6.5M14.5 11.5v6.5M18.5 11.5v6.5" stroke="#E8DCC4" stroke-width="2.2"/><rect x="3" y="18.5" width="18" height="2.5" rx=".6" fill="#C9B48E"/><circle cx="12" cy="6.6" r="1.2" fill="${G}"/>`,
+    exchange: `<circle cx="9" cy="9" r="6" fill="${G}" stroke="${GD}" stroke-width="1.1"/><text x="9" y="11.6" font-size="7" font-weight="800" text-anchor="middle" fill="#6E4E1A" font-family="Arial,sans-serif">฿</text><circle cx="15.5" cy="15.5" r="6" fill="#B9C4CF" stroke="#6E7A86" stroke-width="1.1"/><text x="15.5" y="18.1" font-size="7" font-weight="800" text-anchor="middle" fill="#45505B" font-family="Arial,sans-serif">$</text>`,
+    shield: `<path d="M12 2.5l8 3v6c0 5-3.4 8.6-8 10-4.6-1.4-8-5-8-10v-6z" fill="${W}" stroke="${WD}" stroke-width="1.1" stroke-linejoin="round"/><path d="M12 5l5.5 2v4.5c0 3.6-2.3 6.3-5.5 7.4z" fill="#A84556"/><path d="M8.4 11.8l2.5 2.5 4.8-5" stroke="${GL}" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"/>`,
+    flask: `<path d="M9 2.8h6M10 3v6L4.6 18.2A2 2 0 0 0 6.3 21h11.4a2 2 0 0 0 1.7-2.8L14 9V3" fill="#E9F1F4" stroke="#6E7A86" stroke-width="1.2" stroke-linejoin="round"/><path d="M7 14.5h10l2.4 4a1.5 1.5 0 0 1-1.3 2.3H5.9a1.5 1.5 0 0 1-1.3-2.3z" fill="#7BC26A"/><circle cx="10" cy="17" r="1" fill="#C9EBB8"/><circle cx="13.5" cy="18.4" r=".8" fill="#C9EBB8"/>`,
+    gavel: `<rect x="9" y="2.5" width="11" height="5" rx="1.5" fill="#9A6440" stroke="#6B4228" stroke-width="1" transform="rotate(40 14.5 5)"/><path d="M12 9L4 17" stroke="#7A4E30" stroke-width="2.6" stroke-linecap="round"/><rect x="11" y="18" width="10" height="3" rx="1" fill="#6B4228"/>`,
+    note: `<path d="M9 17.5V5l11-2v12" stroke="${W}" stroke-width="2" fill="none" stroke-linejoin="round"/><ellipse cx="6.5" cy="17.8" rx="3" ry="2.4" fill="${W}"/><ellipse cx="17.5" cy="15.3" rx="3" ry="2.4" fill="${W}"/><path d="M9 8.5l11-2" stroke="${W}" stroke-width="2"/>`,
+    gamepad: `<path d="M7 7h10a5 5 0 0 1 4.8 6.4l-1 3.4a2.6 2.6 0 0 1-4.5 1L14.5 16h-5l-1.8 1.8a2.6 2.6 0 0 1-4.5-1l-1-3.4A5 5 0 0 1 7 7z" fill="#4A505C" stroke="#2A2E36" stroke-width="1"/><path d="M7.5 10v4M5.5 12h4" stroke="#E8DCC4" stroke-width="1.6" stroke-linecap="round"/><circle cx="16" cy="10.6" r="1.1" fill="${RD}"/><circle cx="18" cy="12.6" r="1.1" fill="${SG}"/>`,
+    pointer: `<path d="M9 11V4.5a1.5 1.5 0 0 1 3 0V10l5.8 1.3a2 2 0 0 1 1.5 2.3l-1 5.4A2.5 2.5 0 0 1 15.8 21h-4.6a2.5 2.5 0 0 1-2-1L5.4 15a1.5 1.5 0 0 1 2.2-2z" fill="#F2CBA4" stroke="#B8875E" stroke-width="1.1" stroke-linejoin="round"/>`,
+    people: `<circle cx="8.5" cy="8" r="3.2" fill="#E8C0A0" stroke="#B8875E" stroke-width=".9"/><path d="M2.5 19a6 6 0 0 1 12 0z" fill="${SK}" stroke="${SKD}" stroke-width=".9"/><circle cx="16" cy="9" r="2.8" fill="#DDB08C" stroke="#A97A52" stroke-width=".9"/><path d="M12.5 19a5.2 5.2 0 0 1 9.5-2.6V19z" fill="${W}" stroke="${WD}" stroke-width=".9"/>`,
+    calendar: `<rect x="3" y="4.5" width="18" height="16.5" rx="2" fill="#fff" stroke="#9AA3AD" stroke-width="1.1"/><path d="M3 6.5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2V9.5H3z" fill="${RD}"/><path d="M8 2.8v3.4M16 2.8v3.4" stroke="${INK}" stroke-width="1.6" stroke-linecap="round"/><text x="12" y="18.6" font-size="7.5" font-weight="800" text-anchor="middle" fill="${INK}" font-family="Arial,sans-serif">7</text>`,
+    hourglass: `<path d="M6 3h12M6 21h12" stroke="#8A5A36" stroke-width="2" stroke-linecap="round"/><path d="M7.5 3.5c0 4 3 5.5 3 8.5s-3 4.5-3 8.5h9c0-4-3-5.5-3-8.5s3-4.5 3-8.5z" fill="#EAF2F6" stroke="#8A9AA6" stroke-width="1"/><path d="M9.3 7h5.4c-.6 1.6-2.7 2.6-2.7 4.6 0-2-2.1-3-2.7-4.6zM8.5 19.8c.5-2.2 2.2-3 3.5-3.6 1.3.6 3 1.4 3.5 3.6z" fill="${G}"/>`,
+    thermo: `<rect x="9.5" y="2.5" width="5" height="13" rx="2.5" fill="#fff" stroke="#8A9AA6" stroke-width="1.1"/><circle cx="12" cy="17.5" r="4" fill="${RD}" stroke="${RDD}" stroke-width="1"/><rect x="11" y="8" width="2" height="9" fill="${RD}"/>`,
+    megaphone: `<path d="M3 10h3l10-5v14L6 14H3z" fill="${RD}" stroke="${RDD}" stroke-width="1.1" stroke-linejoin="round"/><path d="M6 14l1.2 5.5h2.6L9.2 14" fill="#9AA3AD"/><path d="M19 9.5a3.5 3.5 0 0 1 0 5" stroke="${OR}" stroke-width="1.7" fill="none" stroke-linecap="round"/>`,
+    bell: `<path d="M3 17.5h18" stroke="${GD}" stroke-width="2" stroke-linecap="round"/><path d="M4.5 16.5a7.5 7.5 0 0 1 15 0z" fill="${G}" stroke="${GD}" stroke-width="1.1"/><circle cx="12" cy="7.8" r="1.4" fill="${GD}"/><path d="M8 13.5a4 4 0 0 1 3-3" stroke="${GL}" stroke-width="1.5" fill="none" stroke-linecap="round"/>`,
+    pen: `<path d="M15.5 3.5l5 5L9 20H4v-5z" fill="#3E5A7A" stroke="#22364E" stroke-width="1.1" stroke-linejoin="round"/><path d="M4 15l5 5H4z" fill="${G}"/><path d="M13.5 5.5l5 5" stroke="#22364E" stroke-width="1.1"/><path d="M2.5 22h9" stroke="${W}" stroke-width="1.6" stroke-linecap="round"/>`,
+    handshake: `<path d="M1.5 9l4-2.5 4 2-1.5 1.5 4.5 4.5a1.4 1.4 0 0 1-2 2l-1-1a1.4 1.4 0 0 1-2 2l-1-1a1.4 1.4 0 0 1-2-2L1.5 12z" fill="#E8C0A0" stroke="#B8875E" stroke-width="1"/><path d="M22.5 9l-4-2.5-5 1.5-3 3a1.4 1.4 0 0 0 2 2l2.5-2 4 4 3.5-3.5z" fill="#D7A780" stroke="#A97A52" stroke-width="1"/><path d="M1 8l3 7M23 8l-3 7" stroke="${SK}" stroke-width="2.4" stroke-linecap="round"/>`,
+    shop: `<rect x="4" y="10" width="16" height="11" fill="${CR}" stroke="#B8935A" stroke-width="1.1"/><path d="M3 5h18l1 5H2z" fill="${W}" stroke="${WD}" stroke-width="1"/><path d="M5.5 5l-1 5M9.5 5L9 10M14.5 5l.5 5M18.5 5l1 5" stroke="#F6E7C9" stroke-width="1.6"/><rect x="6.5" y="13" width="5" height="8" fill="#9A6440"/><rect x="13.5" y="13" width="4.5" height="4" fill="#BFE3F2" stroke="#8A9AA6" stroke-width=".8"/>`,
+    hall: `<path d="M2.5 8L12 3l9.5 5z" fill="#E8DCC4" stroke="#A89878" stroke-width="1.1" stroke-linejoin="round"/><rect x="3.5" y="8" width="17" height="1.8" fill="#D6C8A8"/><path d="M5.5 10v8M9.5 10v8M14.5 10v8M18.5 10v8" stroke="#F2EAD8" stroke-width="2.4"/><path d="M5.5 10v8M9.5 10v8M14.5 10v8M18.5 10v8" stroke="#BDAE8E" stroke-width=".6"/><rect x="2.5" y="18.3" width="19" height="2.7" fill="#BDAE8E"/>`,
+    castle: `<path d="M3 21V9h2.5V7H8v2h2V6h4v3h2V7h2.5v2H21v12z" fill="#B9A98C" stroke="#7E6E52" stroke-width="1" stroke-linejoin="round"/><path d="M12 6V2.5l4 1.5-4 1.5" fill="${RD}" stroke="${RDD}" stroke-width=".8"/><path d="M10 21v-4.5a2 2 0 0 1 4 0V21z" fill="#6B4E30"/><rect x="5.5" y="12" width="2" height="2.6" fill="#5A4A36"/><rect x="16.5" y="12" width="2" height="2.6" fill="#5A4A36"/>`,
+    city: `<rect x="2.5" y="10" width="5" height="11" fill="#5E6F84"/><rect x="8" y="4" width="6" height="17" fill="#3F4F66"/><rect x="14.5" y="8" width="7" height="13" fill="#6E8098"/><path d="M9.5 6.5h1.2M12 6.5h1M9.5 9.5h1.2M12 9.5h1M9.5 12.5h1.2M12 12.5h1M4 12.5h1.5M4 15.5h1.5M16 10.5h1.5M18.5 10.5h1.5M16 13.5h1.5M18.5 13.5h1.5" stroke="#F7D97E" stroke-width="1.2"/><rect x="1.5" y="20.5" width="21" height="1.5" fill="#2E3A4A"/>`,
+    masks: `<path d="M2.5 4.5c3-1 7-1 9.5 0v6c0 3.5-2 6-4.8 6S2.5 14 2.5 10.5z" fill="#F2EAD8" stroke="#8A7A5A" stroke-width="1"/><circle cx="5.3" cy="8.4" r="1" fill="${INK}"/><circle cx="9.2" cy="8.4" r="1" fill="${INK}"/><path d="M5 12.5q2.2 1.8 4.5 0" stroke="${INK}" stroke-width="1" fill="none"/><path d="M12 8c3-1 7-1 9.5 0v6c0 3.5-2 6-4.8 6S12 17.5 12 14z" fill="${W}" stroke="${WD}" stroke-width="1"/><circle cx="14.8" cy="11.8" r="1" fill="#F6E7C9"/><circle cx="18.7" cy="11.8" r="1" fill="#F6E7C9"/><path d="M14.5 17q2.2-1.8 4.5 0" stroke="#F6E7C9" stroke-width="1" fill="none"/>`,
+    shades: `<path d="M1.5 9h21" stroke="${INK}" stroke-width="1.6" stroke-linecap="round"/><path d="M2.5 9h8l-.6 4.2a3 3 0 0 1-3 2.6H6a3 3 0 0 1-3-2.6zM13.5 9h8l-.5 4.2a3 3 0 0 1-3 2.6H17a3 3 0 0 1-3-2.6z" fill="#2A2E36"/><path d="M4.5 10.5l2.5 0M15.5 10.5l2.5 0" stroke="#8A9AB0" stroke-width="1.2" stroke-linecap="round"/>`,
+    tophat: `<rect x="6.5" y="4" width="11" height="12" rx="1" fill="#2A2E36"/><rect x="6.5" y="12" width="11" height="2.4" fill="${W}"/><ellipse cx="12" cy="17.5" rx="9.5" ry="2.6" fill="#2A2E36"/><path d="M8.5 6v5" stroke="#5A6070" stroke-width="1.3" stroke-linecap="round"/>`,
+    chair: `<path d="M7 3h10v8.5H7z" fill="#B87A48" stroke="#7A4E2A" stroke-width="1.1"/><rect x="5.5" y="11.5" width="13" height="3" rx="1" fill="${W}" stroke="${WD}" stroke-width="1"/><path d="M7 14.5V21M17 14.5V21" stroke="#7A4E2A" stroke-width="2" stroke-linecap="round"/><path d="M9.5 5v4.5M14.5 5v4.5" stroke="#D9A070" stroke-width="1.2"/>`,
+    candle: `<ellipse cx="12" cy="6.5" rx="3.6" ry="4.4" fill="#F7D04E" opacity=".35"/><path d="M12 2.5c1.6 2 1.8 3.4 1.2 4.5a1.4 1.4 0 0 1-2.4 0c-.6-1.1-.4-2.5 1.2-4.5z" fill="${OR}"/><path d="M12 4.6c.7 1 .7 1.7.3 2.2h-.6c-.4-.5-.4-1.2.3-2.2z" fill="#FFF2B0"/><rect x="8.5" y="9" width="7" height="12" rx="1" fill="${CR}" stroke="#C9B48E" stroke-width="1"/><path d="M8.5 11.5c1.4 1.2 2.4-.6 3.5.6" stroke="#E8DCC4" stroke-width="1.2" fill="none"/>`,
+    bouquet: `<path d="M9.5 13l2.5 9 2.5-9z" fill="${SG}" stroke="${SGD}" stroke-width="1"/><circle cx="8" cy="8" r="3.2" fill="#E37A92"/><circle cx="16" cy="8" r="3.2" fill="#F2B33D"/><circle cx="12" cy="5" r="3.2" fill="#C45A78"/><circle cx="12" cy="10.5" r="3" fill="#F2A3B3"/><circle cx="8" cy="8" r="1.1" fill="#F7D04E"/><circle cx="16" cy="8" r="1.1" fill="#fff"/><path d="M8.5 14.5h7" stroke="${W}" stroke-width="2"/>`,
+    blossom: `${[0,72,144,216,288].map(a=>`<ellipse cx="12" cy="6.6" rx="3.6" ry="4.6" fill="#F4A8BC" stroke="#D97A94" stroke-width=".8" transform="rotate(${a} 12 12)"/>`).join('')}<circle cx="12" cy="12" r="2.6" fill="#F7D04E"/>`,
+    sprout: `<path d="M12 21v-9" stroke="${SGD}" stroke-width="2" stroke-linecap="round"/><path d="M12 13C12 8 8 5.5 3.5 6c0 4.5 3.5 7.5 8.5 7z" fill="#8FB85A" stroke="${SGD}" stroke-width="1"/><path d="M12 11c0-4 3.4-6.8 8-6.5 0 4-3.6 6.8-8 6.5z" fill="#A7CC6E" stroke="${SGD}" stroke-width="1"/><path d="M6 20.5h12" stroke="#8A5A36" stroke-width="2" stroke-linecap="round"/>`,
+    globe: `<circle cx="12" cy="12" r="9.5" fill="#6FB2DA" stroke="${SKD}" stroke-width="1.1"/><path d="M6 6.5c2 .5 3 2 2.5 3.5S5.5 12 6 14.5 8.5 17 8 19.5M14 3c-1 1.5-.5 3 1 3.5s3 0 3.5 2-1.5 3-1 5 2.5 2.5 2 4" fill="none" stroke="#7FB85A" stroke-width="2.6" stroke-linecap="round"/><path d="M7.5 6a6.5 6.5 0 0 1 4-1.6" stroke="#fff" stroke-width="1.3" fill="none" stroke-linecap="round" opacity=".7"/>`,
+    sun: `${[0,45,90,135,180,225,270,315].map(a=>`<path d="M12 1.8v3" stroke="${OR}" stroke-width="2" stroke-linecap="round" transform="rotate(${a} 12 12)"/>`).join('')}<circle cx="12" cy="12" r="5.2" fill="#F7C548" stroke="${OR}" stroke-width="1.1"/>`,
+    moon: `<path d="M15.5 3.5a8.5 8.5 0 1 0 5 13.4A7 7 0 0 1 15.5 3.5z" fill="#F2D27A" stroke="#C49A3E" stroke-width="1.1"/><circle cx="10" cy="14" r="1.3" fill="#D9B45A"/><circle cx="13" cy="18" r=".9" fill="#D9B45A"/>`,
+    snow: `${[0,60,120].map(a=>`<g transform="rotate(${a} 12 12)"><path d="M12 2v20" stroke="${SK}" stroke-width="1.8" stroke-linecap="round"/><path d="M9.5 4.5L12 6.5l2.5-2M9.5 19.5L12 17.5l2.5 2" stroke="${SK}" stroke-width="1.4" fill="none" stroke-linecap="round"/></g>`).join('')}`,
+    grapes: `<path d="M12 4.5c0-1.5 1-2.5 3-2.5" stroke="${SGD}" stroke-width="1.5" fill="none" stroke-linecap="round"/><path d="M13 4c2-1 4 0 4.5 1.5-2 .8-3.6.4-4.5-1.5z" fill="#8FB85A"/>${[[8,8],[12,7.5],[16,8],[10,11.5],[14,11.5],[6.5,11.5],[17.5,11.5],[8.5,15],[12,15],[15.5,15],[10.3,18.5],[13.7,18.5],[12,21.4]].map(([x,y])=>`<circle cx="${x}" cy="${y}" r="2.3" fill="${PU}" stroke="#4E2A66" stroke-width=".7"/><circle cx="${x-.7}" cy="${y-.7}" r=".6" fill="#C9A6E2"/>`).join('')}`,
+    wine: `<path d="M7 2.5h10l-.6 6.5a4.4 4.4 0 0 1-8.8 0z" fill="#F4F7F8" stroke="#9AA3AD" stroke-width="1"/><path d="M7.4 6.5h9.2l-.2 2.5a4.2 4.2 0 0 1-8.8 0z" fill="${W}"/><path d="M12 13.5v6M8 21h8" stroke="#9AA3AD" stroke-width="1.6" stroke-linecap="round"/><path d="M9 7.5l.3 2" stroke="#E07A8E" stroke-width="1" stroke-linecap="round"/>`,
+    champagne: `<path d="M9.5 9.5L13 2.5l2.5 1.2-1.4 3.6z" fill="#D9C27A" stroke="#9C8440" stroke-width=".9"/><path d="M8.5 10h6l1 2.5V21a1 1 0 0 1-1 1h-6a1 1 0 0 1-1-1v-8.5z" fill="#3E6A3A" stroke="#22421F" stroke-width="1"/><rect x="8.5" y="14" width="7" height="4" fill="${CR}"/><circle cx="17" cy="4" r="1" fill="${GL}"/><circle cx="19.5" cy="7" r=".8" fill="${GL}"/><circle cx="18.5" cy="1.8" r=".6" fill="${GL}"/>`,
+    cheers: `<g transform="rotate(-14 8 12)"><path d="M5.5 3h5l-.4 7a2.1 2.1 0 0 1-4.2 0z" fill="#F7E6A8" stroke="#B8A46A" stroke-width=".9"/><path d="M8 12.5v6.5M6 21h4" stroke="#B8A46A" stroke-width="1.3" stroke-linecap="round"/></g><g transform="rotate(14 16 12)"><path d="M13.5 3h5l-.4 7a2.1 2.1 0 0 1-4.2 0z" fill="#F7E6A8" stroke="#B8A46A" stroke-width=".9"/><path d="M16 12.5v6.5M14 21h4" stroke="#B8A46A" stroke-width="1.3" stroke-linecap="round"/></g><path d="M11 2l1 -1.5M12.5 2.5l1.5-1" stroke="${G}" stroke-width="1.2" stroke-linecap="round"/>`,
+    plate: `<circle cx="12" cy="13" r="8" fill="#fff" stroke="#B9B2A4" stroke-width="1.1"/><circle cx="12" cy="13" r="5.2" fill="none" stroke="#E2DCCF" stroke-width="1.2"/><path d="M2 4v6M2 7h1.6M3 10v11" stroke="#8A949E" stroke-width="1.2" stroke-linecap="round"/><path d="M22 4c-1.6 1.5-1.6 5 0 6.5V21" stroke="#8A949E" stroke-width="1.4" fill="none" stroke-linecap="round"/>`,
+    party: `<path d="M3 21L8 7l9 9z" fill="${G}" stroke="${GD}" stroke-width="1.1" stroke-linejoin="round"/><path d="M5.5 14l4.5 4.5M7 10l7 7" stroke="${W}" stroke-width="1.6"/><path d="M13 7c0-2 1-3 3-3M17 11c2 0 3-1 4-2.5" stroke="${SK}" stroke-width="1.5" fill="none" stroke-linecap="round"/><circle cx="18" cy="4" r="1.2" fill="${RD}"/><circle cx="20.5" cy="13" r="1.1" fill="${SG}"/><rect x="14.5" y="1.5" width="2" height="2" fill="${W}" transform="rotate(30 15.5 2.5)"/>`,
+    unicorn: `<path d="M10 3.5l3 6-4 .5z" fill="${G}" stroke="${GD}" stroke-width=".9" stroke-linejoin="round"/><path d="M6 20c-.5-4 0-7 2.5-9.5 2-2 5-2.5 7.5-1 2.4 1.4 4.5 3.6 5 6.5.3 1.6-1 2.6-2.4 2l-3-1.4-1.5 3.4z" fill="#F7F4FA" stroke="#9A8AB0" stroke-width="1.1" stroke-linejoin="round"/><path d="M8.5 10.5C6 9 4.5 11 4 14c-.6 3 1 5 2 6" stroke="#E37A92" stroke-width="2.2" fill="none" stroke-linecap="round"/><path d="M9.5 12c-2 .8-2.6 3-2.4 5.4" stroke="#7FC6E8" stroke-width="1.8" fill="none" stroke-linecap="round"/><path d="M10.5 13.5c-1.4 1-1.6 2.6-1.4 4.4" stroke="#F2B33D" stroke-width="1.6" fill="none" stroke-linecap="round"/><circle cx="15.5" cy="12.5" r="1" fill="${INK}"/>`,
+    smirk: face(`<path d="M8.5 15.2q4 1.4 7-1.4" stroke="${INK}" stroke-width="1.5" fill="none" stroke-linecap="round"/>`,`<path d="M7 8.2l3-.6M14 7.6l3 .6" stroke="${INK}" stroke-width="1.2" stroke-linecap="round"/>`),
+    neutral: face(`<path d="M8.5 15.5h7" stroke="${INK}" stroke-width="1.5" stroke-linecap="round"/>`),
+    smile: face(`<path d="M8 14.2q4 3.6 8 0" stroke="${INK}" stroke-width="1.5" fill="none" stroke-linecap="round"/>`),
+    aroma: `<path d="M7 9.5h10l-.6 4.5a4.4 4.4 0 0 1-8.8 0z" fill="#F4F7F8" stroke="#9AA3AD" stroke-width="1"/><path d="M7.5 11.8h9l-.3 2.2a4.2 4.2 0 0 1-8.4 0z" fill="${W}"/><path d="M12 18.4v3M9 22h6" stroke="#9AA3AD" stroke-width="1.4" stroke-linecap="round"/><path d="M9 7c-1-1.5 1-2.5 0-4.5M12 7c-1-1.5 1-2.5 0-4.5M15 7c-1-1.5 1-2.5 0-4.5" stroke="#B48ACB" stroke-width="1.3" fill="none" stroke-linecap="round"/>`,
+    fakeup: `<path d="M3 21v-5l4-3 4 2 4-5 6 3v8z" fill="#BFE3F2"/><path d="M3 16l4-3 4 2 4-5 6 3" stroke="${SKD}" stroke-width="1.6" fill="none" stroke-linejoin="round"/>`,
+  };
+  // emoji → icon key
+  const M = {
+    '⭐':'star','★':'star','🌟':'glowstar','⚠️':'warn','⚠':'warn','✅':'check','✔':'tick','✓':'tick','✔️':'tick',
+    '📈':'up','📉':'down','📊':'bars','💡':'bulb','🔍':'search','🔥':'fire','🧊':'ice','🚨':'siren',
+    '🔓':'unlock','🔒':'lock','💾':'save','📂':'folder','✨':'sparkle','💥':'burst','⚡':'bolt','⛔':'noentry','❌':'cross',
+    '🔄':'refresh','📖':'book','📜':'scroll','📦':'box','🎁':'gift','🎯':'target','🏆':'trophy','🏅':'medal','👑':'crown',
+    '🎓':'gradcap','🔑':'key','💰':'moneybag','💸':'cashwings','💎':'gem','🏦':'bank','💱':'exchange','🛡️':'shield','🛡':'shield',
+    '🧪':'flask','🔨':'gavel','🎵':'note','🎮':'gamepad','👆':'pointer','👥':'people','📅':'calendar','⏳':'hourglass','⌛':'hourglass',
+    '🌡️':'thermo','🌡':'thermo','📣':'megaphone','🛎️':'bell','🛎':'bell','✍️':'pen','✍':'pen','🤝':'handshake','🏪':'shop',
+    '🏛️':'hall','🏛':'hall','🏰':'castle','🏙️':'city','🏙':'city','🎭':'masks','🕶️':'shades','🕶':'shades','🎩':'tophat',
+    '🪑':'chair','🕯️':'candle','🕯':'candle','💐':'bouquet','🌸':'blossom','🌱':'sprout','🌍':'globe','🌏':'globe','🌎':'globe',
+    '☀️':'sun','☀':'sun','🌙':'moon','❄️':'snow','❄':'snow','🍇':'grapes','🍷':'wine','🍾':'champagne','🥂':'cheers',
+    '🍽️':'plate','🍽':'plate','🎉':'party','🦄':'unicorn','😏':'smirk','😐':'neutral','🙂':'smile','👃':'aroma',
+  };
+  return { icons:I, map:M };
+})();
+// food emoji use the game's existing food illustrations
+const GI_FOOD = {};
+try{ FOODS.forEach(f=>{ GI_FOOD[f.em]=f.ic; }); }catch(e){}
+Object.assign(GI_FOOD, {'🍖':'lamb','🧆':'dimsum','🍮':'creme','🌰':'chestnut','🫑':'ratatouille','🥓':'charcuterie','🍓':'dessert'});
+// the three story characters' emoji become their real portraits
+const GI_CHAR = {'👨‍🦳':'mentor','🧑‍💻':'broker','👵':'regular','🕶️':'rival','🎩':'critic'};
+
+function giSVG(ch){
+  const f=GI_FOOD[ch];
+  if(f) return foodIcon(f, 24).replace('width="24" height="24"','width="100%" height="100%"');
+  const k=GI.map[ch] || GI.map[ch.replace(/️/g,'')];
+  if(!k) return null;
+  return `<svg viewBox="0 0 24 24" width="100%" height="100%" xmlns="http://www.w3.org/2000/svg">${GI.icons[k]}</svg>`;
+}
+function giHTML(ch, cls){
+  const s=giSVG(ch);
+  return s ? `<span class="gi${cls?' '+cls:''}" role="img" aria-label="${ch}">${s}</span>` : ch;
+}
+// a story character's face, cropped from the full portrait
+function miniPortrait(who){
+  try{ return `<span class="mini-portrait">${charPortrait(who).replace('viewBox="0 0 300 340"','viewBox="70 30 160 160"').replace('xMidYMax meet','xMidYMid slice')}</span>`; }catch(e){ return ''; }
+}
+const GI_RE = /(?:\u{1F468}‍\u{1F9B3}|\u{1F9D1}‍\u{1F4BB}|[\u{1F000}-\u{1FAFF}]|[☀-➿]|[⭐⬆⬇]|[⌀-⏿])️?/gu;
+function emojifyGI(str){ return String(str).replace(GI_RE, m=>giHTML(m)); }
+
+// swap emoji in any text that reaches the page
+(function(){
+  const SKIP = /^(SCRIPT|STYLE|TEXTAREA|INPUT|TITLE|OPTION)$/;
+  function convertText(node){
+    const p=node.parentNode; if(!p || p.nodeType!==1 || SKIP.test(p.nodeName) || p.namespaceURI==='http://www.w3.org/2000/svg') return;
+    const t=node.nodeValue; GI_RE.lastIndex=0; if(!GI_RE.test(t)) return;
+    GI_RE.lastIndex=0;
+    const frag=document.createDocumentFragment(); let last=0, m, changed=false;
+    while((m=GI_RE.exec(t))){
+      const ch=m[0], key=GI_CHAR[ch], html = key && p.closest && p.closest('.char-av') ? miniPortrait(key) : giHTML(ch);
+      if(html===ch) continue;
+      if(m.index>last) frag.appendChild(document.createTextNode(t.slice(last,m.index)));
+      const tmp=document.createElement('span'); tmp.innerHTML=html; frag.appendChild(tmp.firstChild);
+      last=m.index+ch.length; changed=true;
+    }
+    if(!changed) return;
+    if(last<t.length) frag.appendChild(document.createTextNode(t.slice(last)));
+    p.replaceChild(frag, node);
+  }
+  function walk(root){
+    if(root.nodeType===3){ convertText(root); return; }
+    if(root.nodeType!==1 || SKIP.test(root.nodeName) || root.namespaceURI==='http://www.w3.org/2000/svg') return;
+    const w=document.createTreeWalker(root, NodeFilter.SHOW_TEXT), list=[];
+    while(w.nextNode()) list.push(w.currentNode);
+    list.forEach(convertText);
+  }
+  window.deEmoji = walk;
+  const start=()=>{
+    walk(document.body);
+    new MutationObserver(muts=>{
+      for(const m of muts){
+        if(m.type==='characterData') convertText(m.target);
+        else m.addedNodes.forEach(walk);
+      }
+    }).observe(document.body, {childList:true, subtree:true, characterData:true});
+  };
+  if(document.body) start(); else document.addEventListener('DOMContentLoaded', start);
+})();
 
 /* Staff role avatar (simple stylized bust) */
 function staffAvatar(skill, size=42){
@@ -6681,7 +6952,7 @@ function pageMarket(){
     <div class="wx-grid">`;
   shownRegions.forEach(r=>{
     const wx=regionWeather(r,yr);
-    html+=`<div class="wx-item"><div class="wx-rg">${r}</div><div class="wx-t" style="color:${wx.c}">${wx.t}</div><div class="wx-d">${wx.d}</div></div>`;
+    html+=`<div class="wx-item">${weatherArt(wx.k,34)}<div class="wx-rg">${r}</div><div class="wx-t" style="color:${wx.c}">${wx.t}</div><div class="wx-d">${wx.d}</div></div>`;
   });
   html+=`</div></div>`;
 
@@ -6771,7 +7042,7 @@ function pageMarket(){
         <div class="wine-name">${w.name}${tip?T(' <span class="tag" style="background:rgba(200,151,63,.25);color:var(--gold)">🔑 ข่าววงใน</span>'):''}</div>
         <div class="wine-sub">${w.cuvee} · ${w.region}</div>
         <div class="wine-tags">
-          <span class="tag region">${w.region}</span>
+          <span class="tag region">${flagSVG(w.region)}${w.region}</span>
           <span class="tag score">${w.score} pts</span>
           ${w.tier>=5?'<span class="tag rare">Unicorn</span>':w.tier>=4?T('<span class="tag rare">หายาก</span>'):''}
           ${own?`<span class="tag">${T("มี")} ${own} ${T("ขวด")}</span>`:''}
@@ -7508,7 +7779,7 @@ function pageCellar(){
       <div class="slot-bottle" data-bottle="${id}">${VIRT_BOTTLES?'<div class="bottle-ph"></div>':bottleSVGLite(w,40)}</div>
       <span class="b-tier t${w.tier}" title="${TIER_NAMES[w.tier]||('Tier '+w.tier)}">${TIER_SHORT[w.tier]||w.tier}</span>
       <span class="b-name">${w.name.split(' ').slice(0,2).join(' ')}</span>
-      <span class="b-region">${w.region}</span>
+      <span class="b-region">${flagSVG(w.region,9)}${w.region}</span>
       ${c.vintage?`<span class="b-age" style="color:${vl.c}">${c.vintage} · ${vl.t}</span>`:''}
       <span class="dw-tag ${dwCls}">${dw.label}${dw.state==='young'&&dw.until?` ${T("· อีก")} ${dw.until} ${T("สัปดาห์")}`:''}${dw.state==='peak'&&dw.until?` ${T("· เหลือ")} ${dw.until}`:''}</span>
       <div class="dw-bar"><i class="${dwCls}" style="width:${Math.min(100,dw.pct*100).toFixed(0)}%"></i></div>
@@ -7791,7 +8062,7 @@ function pageShop(){
   }
   const cust=G.shopQueue[0];
   // queue avatars preview
-  const queuePreview=G.shopQueue.slice(1,6).map(c=>`<span title="${c.name}" style="font-size:22px;opacity:.6">${c.av}</span>`).join('');
+  const queuePreview=G.shopQueue.slice(1,6).map(c=>`<span class="q-av" title="${c.name}">${custAvatar(c.av,30)}</span>`).join('');
 
   html+=`<div class="customer-stage">
     <div class="card cust-card">
@@ -8185,7 +8456,7 @@ function showServeResult(cust, w, reaction, total, tip, repGain, mood, cost){
   const m=document.getElementById('modal');
   m.innerHTML=`
     <div style="text-align:center">
-      <div style="font-size:52px">${cust.av}</div>
+      <div class="srv-av">${custAvatar(cust.av,72)}</div>
       <div style="font-family:Fraunces;font-weight:600;font-size:18px">${cust.name}</div>
     </div>
     <div class="knowledge" style="border-color:${col};background:rgba(200,151,63,.08);text-align:center;font-size:14px;margin:14px 0">${reaction}</div>
@@ -8539,6 +8810,7 @@ function routePage(){
   else if(G.page==='biz') pageBiz();
   else if(G.page==='settings') pageSettings();
   else pageShop();
+  try{ decoratePageHead(G.page); }catch(e){}
   if(content) content.scrollTop = keepScroll;
   if(!samePage){ focusIndex=0; if(content){ content.classList.remove('page-enter'); void content.offsetWidth; content.classList.add('page-enter'); } }
   updateFocus();
@@ -9102,7 +9374,7 @@ function pageStory(){
     const fmtVal=v=> ch.goal.type==='portfolio'? fmtK(v) : Math.floor(v);
     html+=`<div class="card" style="border-color:var(--gold);margin-bottom:18px">
       <div class="row" style="gap:14px">
-        <span style="font-size:44px">${c.av}</span>
+        <span class="mini-portrait lg">${miniPortrait(c.id)}</span>
         <div style="flex:1">
           <div class="wine-sub">${T("บทที่")} ${ch.id+1} · ${c.name}</div>
           <div style="font-family:Fraunces;font-weight:600;font-size:19px;color:var(--wine)">${ch.title}</div>
@@ -9145,7 +9417,7 @@ function pageStory(){
     html+=`<div class="page-head" style="margin-top:20px"><h2 style="font-size:20px">${T("บันทึกเรื่องราว")}</h2></div><div class="grid">`;
     G.storyLog.forEach(id=>{
       const cc=CHAPTERS[id]; const c=CHARACTERS[cc.who];
-      html+=`<div class="card" style="display:flex;gap:12px;align-items:center"><span style="font-size:28px">${c.av}</span><div><b style="font-family:Fraunces">${T("✅ บทที่")} ${id+1}: ${cc.title}</b><div class="wine-sub">${cc.goal.text}</div></div></div>`;
+      html+=`<div class="card" style="display:flex;gap:12px;align-items:center">${miniPortrait(c.id)}<div><b style="font-family:Fraunces">${T("✅ บทที่")} ${id+1}: ${cc.title}</b><div class="wine-sub">${cc.goal.text}</div></div></div>`;
     });
     html+=`</div>`;
   }
