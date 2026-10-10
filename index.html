@@ -459,6 +459,8 @@
   .cust-avatar{font-size:56px; margin-bottom:6px;}
   .cust-name{font-family:'Fraunces','Noto Serif Thai','Georgia',serif; font-weight:600; font-size:18px;}
   .cust-mood{font-size:13px; color:var(--ink-soft); font-weight:600; margin-top:2px;}
+  .bud-reach{display:inline-block; margin-left:6px; padding:2px 8px; border-radius:999px; font-size:11px; font-weight:800; color:#fff; background:#8A7A5A; vertical-align:1px;}
+  .bud-reach.t5{background:#6E2233;} .bud-reach.t4{background:#8A3B2E;} .bud-reach.t3{background:#7B5B2C;} .bud-reach.t2{background:#5E7A4A;} .bud-reach.t1{background:#6A7480;}
   .cust-request{
     margin-top:12px; padding:12px 14px; border-radius:14px;
     background:rgba(200,151,63,.12); border:1.5px dashed var(--gold);
@@ -1121,6 +1123,23 @@
      car screen before the first wine appeared. */
   .filter-panel{display:none; margin-bottom:6px;}
   .filter-panel.open{display:block;}
+
+  /* filter sets: tabs inside the panel, origin drill-down rows, active summary */
+  .fp-tabs{display:flex; gap:6px; margin:2px 0 10px; padding:4px; border-radius:14px; background:var(--paper-2,rgba(0,0,0,.04)); border:1.5px solid var(--line); overflow-x:auto;}
+  .fp-tab{flex:1; min-width:max-content; padding:9px 14px; border:0; border-radius:10px; background:transparent; font:inherit; font-size:13px; font-weight:800; color:var(--ink-soft); cursor:pointer; white-space:nowrap;}
+  .fp-tab.on{background:var(--wine); color:#fff; box-shadow:0 2px 6px rgba(0,0,0,.18);}
+  .fp-tab .f-count{display:inline-flex; align-items:center; justify-content:center; min-width:18px; height:18px; padding:0 5px; border-radius:9px; font-size:11px; background:var(--gold); color:#3E2C15;}
+  .filter-row.sub{padding-left:12px; border-left:3px solid var(--gold-soft);}
+  .filter-row.sub2{padding-left:24px; border-left:3px solid var(--line);}
+  .chip .cnt{font-size:10.5px; font-weight:800; opacity:.6; margin-left:2px;}
+  .chip .flag{vertical-align:-1px; margin-right:5px; border-radius:2px;}
+  .active-filters{display:flex; flex-wrap:wrap; gap:6px; margin:-2px 0 10px;}
+  .active-filters.hide{display:none;}
+  .af-chip{display:inline-flex; align-items:center; gap:6px; padding:5px 10px; border-radius:999px; border:1.5px solid var(--gold-soft); background:rgba(200,151,63,.12); font:inherit; font-size:12px; font-weight:700; color:var(--ink); cursor:pointer;}
+  .af-chip b{color:var(--down); font-size:11px;}
+  .af-chip .flag{border-radius:2px;}
+  body.car .fp-tab{font-size:15px; padding:13px 18px; min-height:52px;}
+  body.car .af-chip{font-size:14px; padding:9px 14px; min-height:44px;}
   .tb-toggle .f-count{display:inline-flex; align-items:center; justify-content:center;
     min-width:20px; height:20px; padding:0 6px; border-radius:10px; font-size:11.5px; font-weight:800;
     background:var(--gold); color:#3E2C15;}
@@ -3454,6 +3473,128 @@ const EN = {
   "เต็มรูปแบบ": "Full",
   "ประหยัดพลังงาน": "Lite (saves power)",
   "ไม่มีเอฟเฟกต์": "Off",
+  "อาร์รอสติชินีแกะเสียบไม้": "Arrosticini lamb skewers",
+  "แกะเสียบไม้ย่างถ่านของอาบรุซโซ เข้ากับแดงเบาหรือเชราซูโอโลสีชมพูเข้ม": "Abruzzo's charcoal-grilled lamb skewers go with a light red or a deep-pink Cerasuolo",
+  "สตรูเดิลแอปริคอต": "Apricot strudel",
+  "แอปริคอตอบกับไวน์หวานโทกาจิ — ผลไม้ชนิดเดียวกับกลิ่นในแก้ว": "Baked apricot with sweet Tokaji — the same fruit you smell in the glass",
+  "ปลาหมึกยักษ์ย่างน้ำมันมะกอก": "Grilled octopus with olive oil",
+  "อัสซีร์ติโกจากดินภูเขาไฟเค็มแร่ธาตุ เข้ากับทะเลย่างถ่าน": "Salty, mineral Assyrtiko from volcanic soil suits char-grilled seafood",
+  "มูซาก้ามะเขือม่วง": "Aubergine moussaka",
+  "ซีนอมาฟโรแทนนินสูงกรดจัด ตัดซอสครีมและเนื้อสับ": "Xinomavro's high tannin and sharp acidity cut through the béchamel and minced meat",
+  "เอมปานาด้าเนื้อย่างถ่าน": "Char-grilled beef empanadas",
+  "อาซาโด้แบบอเมริกาใต้คู่มัลเบ็กและคาร์เมแนร์จากเชิงเขาแอนดีส": "South American asado with Malbec and Carmenère from the Andes foothills",
+  "ชนิตเซลเวียนนา": "Wiener schnitzel",
+  "หมูชุบเกล็ดขนมปังทอดกับกรูเนอร์ เวลท์ลีเนอร์ — คู่ประจำชาติออสเตรีย": "Breaded fried cutlet with Grüner Veltliner — Austria's national pairing",
+  "โชริโซ่ย่างพริกปาปริก้า": "Grilled paprika chorizo",
+  "ไส้กรอกรมควันมันเข้ม ต้องการแดงเข้มแทนนินแน่นแบบปริโอราต/โดรู": "Rich smoky sausage wants a dark, firmly tannic red like Priorat or Douro",
+  "โบโบตี้แอฟริกาใต้": "South African bobotie",
+  "เนื้อสับเครื่องเทศหวานอบไข่ เข้ากับปิโนทาจหรือเชอแน็งบล็อง": "Sweet-spiced mince baked under egg custard, with Pinotage or Chenin Blanc",
+  "บริสเก็ตรมควัน 12 ชั่วโมง": "12-hour smoked brisket",
+  "ควันและไขมันเข้มข้นต้องการชีราซบอดี้หนักแบบบารอสซา": "Deep smoke and fat want a full-bodied Barossa Shiraz",
+  "แซลมอนย่างแผ่นซีดาร์": "Cedar-plank salmon",
+  "ปลามันกับปิโนต์นัวร์ — หนึ่งในไม่กี่ครั้งที่ปลาเข้ากับไวน์แดง": "Oily fish with Pinot Noir — one of the few times fish goes with red",
+  "ผัดไทยกุ้งสด": "Pad Thai with prawns",
+  "เปรี้ยวหวานเค็มถั่ว เข้ากับรีสลิงกึ่งหวานกรดสูง": "Sour, sweet, salty and nutty — great with off-dry, high-acid Riesling",
+  "เป็ดปักกิ่ง": "Peking duck",
+  "หนังกรอบซอสฮอยซิน เข้ากับคาเบอร์เนต์เชิงเขาเฮอหลานซาน": "Crisp skin and hoisin sauce suit Cabernet from the Helan Mountain foothills",
+  "ปลาซาบะย่างเกลือ": "Salt-grilled saba mackerel",
+  "ปลามันรสเค็มอ่อน เข้ากับโคชูเบาสดของยามานาชิ": "Lightly salted oily fish suits Yamanashi's light, fresh Koshu",
+  "ซาร์ดีนย่างถ่าน": "Char-grilled sardines",
+  "ปลาตัวเล็กมันเค็มทะเล ต้องการไวน์ขาวเบาซ่านิดๆ แบบวินโญ แวร์ดี": "Small, oily, sea-salty fish want a light, slightly spritzy white like Vinho Verde",
+  "ไก่ตุ๋นแว็งโจน": "Chicken in vin jaune",
+  "ไก่ครีมเห็ดมอเรล ปรุงด้วยไวน์ขาวจูราที่บ่มใต้ฟิล์มยีสต์": "Creamy chicken with morels, cooked in Jura white aged under a film of yeast",
+  "คาเวียร์บนบลินี": "Caviar on blinis",
+  "ความเค็มนุ่มของไข่ปลาต้องการฟองละเอียดและกรดคม": "The soft saltiness of roe wants fine bubbles and sharp acidity",
+  "ฟิชแอนด์ชิปส์": "Fish & chips",
+  "ของทอดเค็มมันกับฟองซ่า — ฟองช่วยล้างน้ำมันออกจากปาก": "Salty fried food with bubbles — the fizz scrubs the oil off your palate",
+  "สลัดนิซัวส์": "Salade niçoise",
+  "ทูน่า ไข่ มะกอก — จานริเวียร่าที่โรเซ่โพรวองซ์ทำได้ดีที่สุด": "Tuna, egg, olives — the Riviera dish Provence rosé does best",
+  "บุยยาแบสซุปปลา": "Bouillabaisse",
+  "ซุปปลาหญ้าฝรั่นแห่งมาร์แซย์ คู่กับโรเซ่แห้งบอดี้กลาง": "Marseille's saffron fish soup, with a medium-bodied dry rosé",
+  "สติลตันกับวอลนัท": "Stilton with walnuts",
+  "บลูชีสอังกฤษกับพอร์ต — คู่ปิดท้ายมื้อแบบคลาสสิก": "English blue cheese with Port — the classic end to a meal",
+  "ฆามอนอิเบริโก": "Jamón ibérico",
+  "แฮมเค็มมันหอมถั่ว เข้ากับเชอร์รีแห้งฟีโนหรืออามอนตียาโด": "Salty, nutty ham suits a dry Fino or Amontillado sherry",
+  "ส้มตำปูปลาร้า": "Som tam with salted crab",
+  "เผ็ดเปรี้ยวจัด ต้องการรีสลิงหวานนิดกรดสูงมาดับเผ็ด": "Fiercely hot and sour — wants an off-dry, high-acid Riesling to tame the heat",
+  "แกงมัสมั่นไก่": "Chicken massaman curry",
+  "แกงหอมเครื่องเทศหวานมัน เข้ากับเกวือร์ซหรือเชอแน็งที่มีความหวานเล็กน้อย": "A fragrant, sweet, rich curry for Gewürztraminer or a touch-sweet Chenin",
+  "พาสเตล เด นาตา": "Pastéis de nata",
+  "ทาร์ตไข่โปรตุเกสคาราเมลไหม้ คู่กับมาเดราหวานกรดสูง": "Portuguese custard tarts with burnt caramel, with sweet, high-acid Madeira",
+  "ระดับ & ประเภท": "Tier & Type",
+  "แหล่งผลิต": "Origin",
+  "เรียงลำดับ": "Sort",
+  "ถึง": "up to",
+  "ซอสปลาไหลหวานเค็ม ต้องการไวน์ขาวที่หวานนิดๆ กรดสด": "Sweet-salty eel sauce wants a fresh white with a hint of sweetness",
+  "กลิ่นดินของทรัฟเฟิลต้องการแดงที่มีแทนนินและกลิ่นซับซ้อน": "Earthy truffle wants a complex red with some tannin",
+  "มะนาวเปรี้ยวจัด ไวน์ต้องกรดสูงพอกันและไม่มีแทนนิน": "Sharp lime needs a wine just as acidic, with no tannin",
+  "ซอสหวานรมควันต้องการไวน์ผลไม้สุกบอดี้หนัก": "Sweet smoky sauce wants a full-bodied, ripe-fruited wine",
+  "ซุปหอมหวานกับชีสต้องการแดงกลางกรดดี": "Sweet onion soup with cheese wants a medium red with good acidity",
+  "อาหารนึ่งละมุน ไวน์ต้องเบาและสด ไม่กลบรสอาหาร": "Delicate steamed food needs a light, fresh wine that won't drown it",
+  "เนื้อตุ๋นนานเข้มข้น ต้องการแดงบอดี้หนักแทนนินแน่น": "Long-braised beef wants a full-bodied, firmly tannic red",
+  "ตับห่านมันเนียน คู่กับไวน์หวานกรดสูงตัดความมัน": "Silky, rich foie gras with a sweet, high-acid wine to cut the fat",
+  "เผ็ดจัดจ้าน ต้องการแดงผลไม้เด่นแทนนินไม่แรงเกิน": "Spicy and bold — wants a fruit-forward red without heavy tannin",
+  "ของทอดกรอบ ต้องการกรดสูงหรือฟองมาตัดน้ำมัน": "Crisp fried food needs high acidity or bubbles to cut the oil",
+  "น้ำผึ้งหวานจัด ไวน์ต้องหวานกว่าจึงจะไม่เปรี้ยว": "Very sweet honey — the wine must be sweeter or it tastes sour",
+  "ข้าวหญ้าฝรั่นกับทะเล ต้องการไวน์ขาวบอดี้กลาง": "Saffron rice with seafood wants a medium-bodied white",
+  "ทอดเค็มมัน ต้องการกรดคมหรือฟองซ่ามาล้างปาก": "Salty, fatty and fried — wants sharp acidity or bubbles to cleanse",
+  "ชีสละลายหนักมัน ต้องการไวน์ขาวกรดสูงมาก": "Heavy melted cheese needs a very high-acid white",
+  "ซอสทาเระหวานเค็ม เข้ากับแดงเบาแทนนินต่ำ": "Sweet-salty tare sauce suits a light, low-tannin red",
+  "ทะเลย่างรสสด ต้องการไวน์ขาวกรดสดชื่น": "Fresh grilled seafood wants a crisp, refreshing white",
+  "เนื้อหมักเค็มมัน เข้ากับแดงกลางที่มีกรด": "Salty cured meats suit a medium red with acidity",
+  "คาราเมลและคัสตาร์ด ต้องการไวน์หวานกว่าของหวาน": "Caramel and custard need a wine sweeter than the dessert",
+  "ครีมมันถั่ว เข้ากับไวน์ขาวบอดี้เต็มที่ผ่านโอ๊ก": "Creamy and nutty — suits a full-bodied, oaked white",
+  "ผักอบมะเขือเทศ เข้ากับโรเซ่หรือแดงเบาที่มีกรด": "Baked vegetables and tomato suit rosé or a light red with acidity",
+  "เนื้อปูหวานกับเนย ต้องการไวน์ขาวบอดี้กลางกรดดี": "Sweet crab with butter wants a medium-bodied white with good acidity",
+  "แกะย่างชิ้นเล็กไม่หนัก เข้ากับแดงเบาหรือโรเซ่สีเข้ม": "Small pieces of grilled lamb aren't heavy — a light red or dark rosé works",
+  "ผลไม้อบหวานเปรี้ยว ต้องการไวน์หวานที่กรดสูงพอกัน": "Sweet-tart baked fruit wants a sweet wine with matching acidity",
+  "ทะเลย่างถ่านกับมะนาว ต้องการไวน์ขาวแร่ธาตุกรดจัด": "Char-grilled seafood with lemon wants a mineral, high-acid white",
+  "ซอสมะเขือเทศและครีม ต้องการแดงกรดสูงแทนนินแน่น": "Tomato sauce and cream want a high-acid, firmly tannic red",
+  "เนื้อย่างถ่านไขมันปานกลาง ต้องการแดงเข้มกำลังดี": "Moderately fatty grilled beef wants a nicely dark red",
+  "ของทอดเนื้อขาวกับมะนาว ต้องการไวน์ขาวกรดสูงเผ็ดพริกไทยนิดๆ": "Fried white meat with lemon wants a high-acid white with a peppery edge",
+  "ไส้กรอกพริกรมควันมันจัด ต้องการแดงบอดี้หนักแทนนินสูง": "Fatty, smoky paprika sausage wants a full-bodied, high-tannin red",
+  "เครื่องเทศหวานกับเนื้อ ต้องการไวน์ผลไม้สุกแทนนินไม่แรง": "Sweet spice with meat wants ripe fruit and gentle tannin",
+  "ควันและไขมันหนักมาก ต้องการแดงบอดี้เต็มที่": "Heavy smoke and fat want a fully bodied red",
+  "ปลามันเนื้อแน่น ทนแทนนินเบาๆ ของปิโนต์นัวร์ได้": "Firm, oily fish can handle Pinot Noir's light tannin",
+  "เปรี้ยวหวานเค็มพร้อมกัน ต้องการไวน์หวานนิดกรดสูง": "Sour, sweet and salty at once — wants an off-dry, high-acid wine",
+  "หนังมันซอสหวาน ต้องการแดงกลางค่อนหนักที่มีกรด": "Fatty skin and sweet sauce want a medium-plus red with acidity",
+  "ปลามันเค็มอ่อน ไวน์ต้องเบา ไม่มีแทนนินที่ทำให้คาว": "Lightly salted oily fish needs a light wine — tannin makes it taste fishy",
+  "ปลามันกลิ่นแรง ต้องการไวน์ขาวเบากรดจัดล้างปาก": "Strong-flavoured oily fish wants a light, sharp white to cleanse",
+  "ซอสครีมเข้มข้น ต้องการไวน์ขาวบอดี้หนักกรดสูง": "Rich cream sauce wants a full-bodied, high-acid white",
+  "เค็มนุ่มเนียน ต้องการฟองละเอียดและกรดคม": "Soft and salty — wants fine bubbles and sharp acidity",
+  "ทอดเค็มมัน ฟองซ่าและกรดช่วยล้างปากทุกคำ": "Fried, salty and fatty — bubbles and acid cleanse every bite",
+  "สลัดเบาเค็มมะกอก ต้องการไวน์เบาแห้งกรดดี": "A light salad with salty olives wants a light, dry wine with good acidity",
+  "ซุปปลาหญ้าฝรั่นกระเทียม ต้องการไวน์บอดี้กลางแทนนินน้อย": "Saffron-garlic fish soup wants a medium body and little tannin",
+  "บลูชีสเค็มเข้ม คู่กับไวน์ฟอร์ติไฟด์หวานหนัก": "Strong salty blue cheese pairs with a rich, sweet fortified wine",
+  "แฮมเค็มหอมถั่ว เข้ากับไวน์แห้งกลิ่นถั่วอ่อนๆ": "Salty, nutty ham suits a dry wine with a gentle nutty note",
+  "เผ็ดเปรี้ยวจัด ความหวานเล็กน้อยช่วยดับเผ็ด แทนนินยิ่งแสบ": "Fiercely hot and sour — a little sweetness tames the heat; tannin makes it burn",
+  "แกงเครื่องเทศหวานมัน ต้องการไวน์ขาวหอมหวานนิด": "Sweet, rich spiced curry wants an aromatic, slightly sweet white",
+  "คัสตาร์ดคาราเมลไหม้ ต้องการไวน์หวานบ่มกลิ่นคาราเมล": "Burnt-caramel custard wants an aged sweet wine with caramel notes",
+  "ยุโรป": "Europe",
+  "โลกใหม่": "New World",
+  "เอเชีย & ตะวันออกกลาง": "Asia & Middle East",
+  "ฝรั่งเศส": "France",
+  "อิตาลี": "Italy",
+  "สเปน": "Spain",
+  "โปรตุเกส": "Portugal",
+  "เยอรมนี": "Germany",
+  "ออสเตรีย": "Austria",
+  "ฮังการี": "Hungary",
+  "กรีซ": "Greece",
+  "อังกฤษ": "England",
+  "สหรัฐฯ": "USA",
+  "ออสเตรเลีย": "Australia",
+  "นิวซีแลนด์": "New Zealand",
+  "ชิลี": "Chile",
+  "อาร์เจนตินา": "Argentina",
+  "แอฟริกาใต้": "South Africa",
+  "เลบานอน": "Lebanon",
+  "จีน": "China",
+  "ญี่ปุ่น": "Japan",
+  "โซน": "Zone",
+  "ประเทศ": "Country",
+  "ทุกประเทศ": "All countries",
+  "ทุกภูมิภาค": "All regions",
   "ร้านไวน์ & เซลลาร์": "Wine Shop & Cellar"
 };
 function T(s){ if(LANG!=='en') return s; const v=EN[s]; return v===undefined ? s : v; }
@@ -3817,7 +3958,32 @@ const FOODS = [
   {em:'🍮', ic:'creme', name:T('เครมบรูเล่'), pairRegions:['Hungary','South Africa','Madeira','Loire'], pairColor:'sweet', note:T('ของหวานคาราเมลเข้ากับไวน์หวานโทกาจิ/โซแตร์น')},
   {em:'🌰', ic:'chestnut', name:T('ริซอตโต้เกาลัด'), pairRegions:['Piedmont','Burgundy','Alsace','Italy'], pairColor:'white', note:T('จานฤดูใบไม้ร่วงเข้ากับชาร์ดอนเนย์หรือปิโนต์แก่')},
   {em:'🫑', ic:'ratatouille', name:T('ราตาตุยผัก'), pairRegions:['Provence','Rhône','Languedoc','Spain'], pairColor:'red', note:T('ผักเมดิเตอร์เรเนียนเข้ากับโรเซ่หรือแดงเบาของโพรวองซ์')},
-  {em:'🦀', ic:'crab', name:T('ปูนึ่งซอสเนย'), pairRegions:['Burgundy','Champagne','Germany','Loire','England'], pairColor:'white', note:T('เนื้อปูหวานเข้ากับชาร์ดอนเนย์เนื้อแน่นหรือสปาร์กลิง')},
+  {em:'🦀', ic:'crab', name:T('ปูนึ่งซอสเนย'), pairRegions:['Burgundy','Champagne','Germany','Loire','England','Napa'], pairColor:'white', note:T('เนื้อปูหวานเข้ากับชาร์ดอนเนย์เนื้อแน่นหรือสปาร์กลิง')},
+  // v5.1 — a classic dish for every wine region, plus dishes that want sparkling, rosé and fortified wine
+  {em:'🍡', ic:'arrosticini', name:T('อาร์รอสติชินีแกะเสียบไม้'), pairRegions:['Abruzzo','Italy','Etna','Greece'], pairColor:'red', note:T('แกะเสียบไม้ย่างถ่านของอาบรุซโซ เข้ากับแดงเบาหรือเชราซูโอโลสีชมพูเข้ม')},
+  {em:'🍑', ic:'strudel', name:T('สตรูเดิลแอปริคอต'), pairRegions:['Tokaj','Hungary','Austria','Germany'], pairColor:'sweet', note:T('แอปริคอตอบกับไวน์หวานโทกาจิ — ผลไม้ชนิดเดียวกับกลิ่นในแก้ว')},
+  {em:'🐙', ic:'octopus', name:T('ปลาหมึกยักษ์ย่างน้ำมันมะกอก'), pairRegions:['Santorini','Greece','Vinho Verde','Spain'], pairColor:'white', note:T('อัสซีร์ติโกจากดินภูเขาไฟเค็มแร่ธาตุ เข้ากับทะเลย่างถ่าน')},
+  {em:'🍆', ic:'moussaka', name:T('มูซาก้ามะเขือม่วง'), pairRegions:['Naoussa','Greece','Lebanon','Etna'], pairColor:'red', note:T('ซีนอมาฟโรแทนนินสูงกรดจัด ตัดซอสครีมและเนื้อสับ')},
+  {em:'🥙', ic:'empanada', name:T('เอมปานาด้าเนื้อย่างถ่าน'), pairRegions:['Uco Valley','Argentina','Colchagua','Chile'], pairColor:'red', note:T('อาซาโด้แบบอเมริกาใต้คู่มัลเบ็กและคาร์เมแนร์จากเชิงเขาแอนดีส')},
+  {em:'🥨', ic:'schnitzel', name:T('ชนิตเซลเวียนนา'), pairRegions:['Wachau','Austria','Tokaj','Swartland'], pairColor:'white', note:T('หมูชุบเกล็ดขนมปังทอดกับกรูเนอร์ เวลท์ลีเนอร์ — คู่ประจำชาติออสเตรีย')},
+  {em:'🌭', ic:'chorizo', name:T('โชริโซ่ย่างพริกปาปริก้า'), pairRegions:['Priorat','Spain','Douro','Portugal'], pairColor:'red', note:T('ไส้กรอกรมควันมันเข้ม ต้องการแดงเข้มแทนนินแน่นแบบปริโอราต/โดรู')},
+  {em:'🫓', ic:'bobotie', name:T('โบโบตี้แอฟริกาใต้'), pairRegions:['Stellenbosch','Swartland','South Africa'], pairColor:'any', note:T('เนื้อสับเครื่องเทศหวานอบไข่ เข้ากับปิโนทาจหรือเชอแน็งบล็อง')},
+  {em:'🌯', ic:'brisket', name:T('บริสเก็ตรมควัน 12 ชั่วโมง'), pairRegions:['Barossa','Australia','Napa','Douro'], pairColor:'red', note:T('ควันและไขมันเข้มข้นต้องการชีราซบอดี้หนักแบบบารอสซา')},
+  {em:'🐠', ic:'salmon', name:T('แซลมอนย่างแผ่นซีดาร์'), pairRegions:['Central Otago','Willamette','New Zealand','Burgundy'], pairColor:'red', note:T('ปลามันกับปิโนต์นัวร์ — หนึ่งในไม่กี่ครั้งที่ปลาเข้ากับไวน์แดง')},
+  {em:'🍝', ic:'padthai', name:T('ผัดไทยกุ้งสด'), pairRegions:['Finger Lakes','Mosel','Alsace','Germany'], pairColor:'white', note:T('เปรี้ยวหวานเค็มถั่ว เข้ากับรีสลิงกึ่งหวานกรดสูง')},
+  {em:'🥡', ic:'pekingduck', name:T('เป็ดปักกิ่ง'), pairRegions:['Ningxia','Bordeaux','Napa','Burgundy'], pairColor:'red', note:T('หนังกรอบซอสฮอยซิน เข้ากับคาเบอร์เนต์เชิงเขาเฮอหลานซาน')},
+  {em:'🐡', ic:'saba', name:T('ปลาซาบะย่างเกลือ'), pairRegions:['Yamanashi','Japan','Loire','Vinho Verde'], pairColor:'white', note:T('ปลามันรสเค็มอ่อน เข้ากับโคชูเบาสดของยามานาชิ')},
+  {em:'🎣', ic:'sardines', name:T('ซาร์ดีนย่างถ่าน'), pairRegions:['Vinho Verde','Portugal','Santorini','Spain'], pairColor:'white', note:T('ปลาตัวเล็กมันเค็มทะเล ต้องการไวน์ขาวเบาซ่านิดๆ แบบวินโญ แวร์ดี')},
+  {em:'🐓', ic:'vinjaune', name:T('ไก่ตุ๋นแว็งโจน'), pairRegions:['Jura','Burgundy','Alsace','Sherry'], pairColor:'white', note:T('ไก่ครีมเห็ดมอเรล ปรุงด้วยไวน์ขาวจูราที่บ่มใต้ฟิล์มยีสต์')},
+  {em:'🫙', ic:'caviar', name:T('คาเวียร์บนบลินี'), pairRegions:['Champagne','England','Loire'], pairColor:'sparkling', note:T('ความเค็มนุ่มของไข่ปลาต้องการฟองละเอียดและกรดคม')},
+  {em:'🍟', ic:'fishchips', name:T('ฟิชแอนด์ชิปส์'), pairRegions:['England','Champagne','Australia','Italy'], pairColor:'sparkling', note:T('ของทอดเค็มมันกับฟองซ่า — ฟองช่วยล้างน้ำมันออกจากปาก')},
+  {em:'🥚', ic:'nicoise', name:T('สลัดนิซัวส์'), pairRegions:['Provence','Rhône','Spain','Abruzzo'], pairColor:'rose', note:T('ทูน่า ไข่ มะกอก — จานริเวียร่าที่โรเซ่โพรวองซ์ทำได้ดีที่สุด')},
+  {em:'🥣', ic:'bouillabaisse', name:T('บุยยาแบสซุปปลา'), pairRegions:['Provence','Rhône','Loire','Italy'], pairColor:'rose', note:T('ซุปปลาหญ้าฝรั่นแห่งมาร์แซย์ คู่กับโรเซ่แห้งบอดี้กลาง')},
+  {em:'🥜', ic:'stilton', name:T('สติลตันกับวอลนัท'), pairRegions:['Douro','Portugal','Madeira','England'], pairColor:'fortified', note:T('บลูชีสอังกฤษกับพอร์ต — คู่ปิดท้ายมื้อแบบคลาสสิก')},
+  {em:'🐷', ic:'jamon', name:T('ฆามอนอิเบริโก'), pairRegions:['Sherry','Spain','Madeira'], pairColor:'fortified', note:T('แฮมเค็มมันหอมถั่ว เข้ากับเชอร์รีแห้งฟีโนหรืออามอนตียาโด')},
+  {em:'🥒', ic:'somtam', name:T('ส้มตำปูปลาร้า'), pairRegions:['Mosel','Germany','Finger Lakes','New Zealand'], pairColor:'white', note:T('เผ็ดเปรี้ยวจัด ต้องการรีสลิงหวานนิดกรดสูงมาดับเผ็ด')},
+  {em:'🥔', ic:'massaman', name:T('แกงมัสมั่นไก่'), pairRegions:['Alsace','Germany','Tokaj','Swartland'], pairColor:'white', note:T('แกงหอมเครื่องเทศหวานมัน เข้ากับเกวือร์ซหรือเชอแน็งที่มีความหวานเล็กน้อย')},
+  {em:'🥐', ic:'nata', name:T('พาสเตล เด นาตา'), pairRegions:['Madeira','Portugal','Douro'], pairColor:'fortified', note:T('ทาร์ตไข่โปรตุเกสคาราเมลไหม้ คู่กับมาเดราหวานกรดสูง')},
 ];
 
 /* Customers — av = SVG avatar key, trait shapes their behaviour */
@@ -5629,7 +5795,7 @@ const GUIDE = [
 ];
 
 /* ---------- GAME STATE ---------- */
-const VERSION = '5.0';
+const VERSION = '5.1';
 const SAVE_KEY = 'cellarAndVine_save_v3';
 const freshState = () => ({
   week:1,
@@ -6524,6 +6690,30 @@ function foodIcon(name, size=34){
     chestnut:`<ellipse cx="20" cy="24" rx="13" ry="6" fill="#EDE0C8"/><ellipse cx="20" cy="23" rx="11" ry="4.5" fill="#F2E8D4"/><ellipse cx="16" cy="22" rx="3" ry="3.4" fill="#7A4A28"/><path d="M16 19 v-2" stroke="#5A3418" stroke-width="1.4"/><ellipse cx="23" cy="24" rx="3" ry="3.4" fill="#8A5230"/><path d="M23 21 v-2" stroke="#5A3418" stroke-width="1.4"/><circle cx="20" cy="25" r="1.2" fill="#C8A24E"/>`,
     ratatouille:`<ellipse cx="20" cy="24" rx="13" ry="6" fill="#C4605A"/><ellipse cx="20" cy="23" rx="11" ry="4.5" fill="#D97A5A"/><circle cx="14" cy="22" r="2.2" fill="#7C4A9E"/><circle cx="19" cy="23" r="2.2" fill="#C0392B"/><circle cx="24" cy="22" r="2.2" fill="#7C9B4E"/><circle cx="17" cy="24" r="1.6" fill="#E8C471"/><circle cx="22" cy="24" r="1.6" fill="#9A4A38"/>`,
     crab:`<ellipse cx="20" cy="22" rx="9" ry="6" fill="#D9736B"/><ellipse cx="20" cy="21" rx="7" ry="4.5" fill="#E88B6E"/><path d="M11 20 q-4 -2 -6 -6 M11 24 q-4 2 -6 5 M29 20 q4 -2 6 -6 M29 24 q4 2 6 5" stroke="#C4605A" stroke-width="2" fill="none" stroke-linecap="round"/><circle cx="14" cy="14" r="2" fill="#C4605A"/><circle cx="26" cy="14" r="2" fill="#C4605A"/><circle cx="17" cy="21" r="1" fill="#7A3B2E"/><circle cx="23" cy="21" r="1" fill="#7A3B2E"/>`,
+    arrosticini:`<path d="M6 34L34 6" stroke="#B0844A" stroke-width="1.6" stroke-linecap="round"/><path d="M9 33L33 9" stroke="#B0844A" stroke-width="1.2" opacity=".5"/>${[[12,28],[17,23],[22,18],[27,13]].map(([x,y])=>`<rect x="${x-3.4}" y="${y-3.4}" width="6.8" height="6.8" rx="1.8" fill="#8E4A36" transform="rotate(45 ${x} ${y})"/><circle cx="${x-1}" cy="${y-1}" r="1.3" fill="#B86A4C"/>`).join('')}`,
+    strudel:`<ellipse cx="20" cy="29" rx="15" ry="4" fill="#EDE0CE"/><path d="M7 27c0-6 5-10 13-10s13 4 13 10z" fill="#E0A96A"/><path d="M10 25c3-4 7-5 10-5M15 26c3-3 6-4 9-4M21 26c3-2 6-3 9-2" stroke="#C88A4A" stroke-width="1.2" fill="none"/><circle cx="27" cy="13" r="4.4" fill="#F2A447"/><path d="M27 8.8c1-2 3-2 4-1" stroke="#6F8A3A" stroke-width="1.4" fill="none"/><path d="M13 16l1 1M18 15l1 1M23 16l1 1" stroke="#fff" stroke-width="1.2" stroke-linecap="round" opacity=".9"/>`,
+    octopus:`<ellipse cx="20" cy="31" rx="15" ry="4" fill="#E8E2D4"/><path d="M20 10c5 0 8 3 8 8 0 2-1 3-2 4 3 1 5 4 8 4M20 10c-5 0-8 3-8 8 0 2 1 3 2 4-3 1-5 4-8 4M17 22c-1 3-3 6-6 8M23 22c1 3 3 6 6 8M20 22v8" stroke="#A8504A" stroke-width="3.2" fill="none" stroke-linecap="round"/><ellipse cx="20" cy="16" rx="6" ry="6.5" fill="#C0605A"/><circle cx="18" cy="15" r="1.2" fill="#3A2016"/><circle cx="22" cy="15" r="1.2" fill="#3A2016"/><path d="M26 7l2 3M30 9l-1 3" stroke="#7C9B4E" stroke-width="1.6" stroke-linecap="round"/>`,
+    moussaka:`<rect x="6" y="14" width="28" height="18" rx="3" fill="#B0603A"/><rect x="7.5" y="15.5" width="25" height="5" rx="1.5" fill="#F2D98A"/><rect x="7.5" y="21" width="25" height="4.5" fill="#7A4A9E"/><rect x="7.5" y="25.5" width="25" height="5" fill="#9A4A36"/><circle cx="12" cy="17.5" r="1.3" fill="#D9A85A"/><circle cx="20" cy="18" r="1.1" fill="#D9A85A"/><circle cx="27" cy="17.2" r="1.3" fill="#D9A85A"/><path d="M23 9c3-2 6-1 7 1-3 1-5 1-7-1z" fill="#5E8A3A"/>`,
+    empanada:`<path d="M5 26c0-8 7-14 15-14s15 6 15 14z" fill="#E0A055"/><path d="M5 26h30" stroke="#B0703A" stroke-width="2"/>${[7,11,15,19,23,27,31].map(x=>`<path d="M${x} 26.5q2 2.5 4 0" stroke="#C88A4A" stroke-width="1.6" fill="none"/>`).join('')}<path d="M11 19q9-5 18 0" stroke="#F2C77E" stroke-width="1.6" fill="none" opacity=".8"/><circle cx="31" cy="33" r="3" fill="#5E8A3A"/><circle cx="34" cy="31" r="2" fill="#7CA84E"/>`,
+    schnitzel:`<ellipse cx="20" cy="27" rx="16" ry="6" fill="#EDE6D6"/><path d="M6 23c2-7 9-10 16-9 7 1 12 5 12 10-2 4-9 6-15 5-7 0-12-2-13-6z" fill="#D99A48"/><path d="M10 22c3-3 8-4 13-3M12 26c4 1 9 1 14-1" stroke="#B0742E" stroke-width="1" fill="none"/>${[[14,20],[20,23],[26,20],[18,26]].map(([x,y])=>`<circle cx="${x}" cy="${y}" r=".9" fill="#F2C77E"/>`).join('')}<path d="M27 10a5 5 0 0 1 8 4z" fill="#F5D63D"/><path d="M28.5 11.5l4 2" stroke="#E8B820" stroke-width=".8"/>`,
+    chorizo:`<path d="M8 28c-3-8 2-17 12-18 4 0 7 2 7 5-6 0-12 4-13 11z" fill="#B0402E"/><path d="M14 26c1-7 7-11 13-11 4 0 7 3 6 7-1 6-8 10-14 10-3 0-5-2-5-6z" fill="#C4503A"/><circle cx="21" cy="22" r="5" fill="#D9705A"/>${[[19,21],[22,23],[23,20],[20,24]].map(([x,y])=>`<circle cx="${x}" cy="${y}" r=".9" fill="#F2C7A8"/>`).join('')}<path d="M6 30c-1 2-1 4 1 5" stroke="#E8D9C0" stroke-width="1.4" fill="none"/>`,
+    bobotie:`<ellipse cx="20" cy="28" rx="15" ry="5" fill="#8E5A3A"/><path d="M5 26c0-6 7-10 15-10s15 4 15 10c0 3-7 5-15 5S5 29 5 26z" fill="#B0703A"/><path d="M7 24c2-4 7-6 13-6s11 2 13 6c-3 2-8 3-13 3s-10-1-13-3z" fill="#F2D06A"/><path d="M15 21c1-2 3-2 4 0M24 22c1-2 3-2 4 0" stroke="#E8A83A" stroke-width="1.2" fill="none"/><path d="M19 12c2-3 5-3 6-1-2 2-4 2-6 1z" fill="#5E8A3A"/><path d="M22 11c-1 2-2 4-2 6" stroke="#5E8A3A" stroke-width="1"/>`,
+    brisket:`<rect x="5" y="24" width="30" height="8" rx="2" fill="#8A5A3A"/><path d="M6 22c3-5 25-5 28 0v4H6z" fill="#5A2E22"/><path d="M8 22c3-3 21-3 24 0" stroke="#3A1A12" stroke-width="2" fill="none"/>${[10,16,22,28].map(x=>`<path d="M${x} 21v6" stroke="#E87A5A" stroke-width="1.6" opacity=".7"/>`).join('')}<path d="M12 15c-2-3 1-5 0-8M20 14c-2-3 1-5 0-8M28 15c-2-3 1-5 0-8" stroke="#B8B0A8" stroke-width="1.4" fill="none" stroke-linecap="round" opacity=".8"/>`,
+    salmon:`<rect x="4" y="22" width="32" height="9" rx="1.5" fill="#B07A48"/><path d="M4 25h32M4 28h32" stroke="#8E5A30" stroke-width=".7" opacity=".6"/><path d="M8 22c2-6 22-7 25-1-2 2-22 3-25 1z" fill="#F08A5A"/><path d="M11 18l3 3M16 17l3 3.5M21 16.5l3 3.5M26 17l3 3" stroke="#F8B890" stroke-width="1.4" stroke-linecap="round"/><path d="M30 13l2-2M32 15l2-1" stroke="#7CA84E" stroke-width="1.4" stroke-linecap="round"/><circle cx="10" cy="15" r="2.4" fill="#F5D63D"/>`,
+    padthai:`<ellipse cx="20" cy="27" rx="16" ry="6.5" fill="#E8E2D4"/><path d="M7 25c3-6 23-6 26 0-3 4-23 4-26 0z" fill="#E0B060"/>${[10,14,18,22,26,30].map((x,i)=>`<path d="M${x-2} ${24+(i%2)}q2-3 4 0" stroke="#C8903A" stroke-width="1.4" fill="none"/>`).join('')}<path d="M14 21c-2-1-3-3-2-5 2 0 4 2 4 4z" fill="#F0806A"/><path d="M24 21c2-1 3-3 2-5-2 0-4 2-4 4z" fill="#F0806A"/><path d="M31 15a4 4 0 0 1 4 6z" fill="#9CC85A"/><path d="M18 18l1 1M21 17l1 1.2" stroke="#7A4A28" stroke-width="1.4" stroke-linecap="round"/>`,
+    pekingduck:`<path d="M8 30c-2-8 4-16 12-16 9 0 15 6 13 13-1 4-6 6-12 6-6 0-11-1-13-3z" fill="#9A3A22"/><path d="M11 26c0-5 4-9 9-9" stroke="#C8603A" stroke-width="2.4" fill="none" stroke-linecap="round"/><ellipse cx="22" cy="23" rx="8" ry="4.5" fill="#B84A2A" opacity=".7"/><path d="M27 12c2-3 5-3 6-1-1 2-4 3-6 1z" fill="#5E8A3A"/><path d="M4 33h32" stroke="#C8A46A" stroke-width="2" stroke-linecap="round"/><path d="M24 17l2-1" stroke="#F2C77E" stroke-width="1.4" stroke-linecap="round"/>`,
+    saba:`<rect x="4" y="26" width="32" height="5" rx="2.5" fill="#E8E2D4"/><path d="M5 24c5-6 17-8 25-4 2 1 4 2 5 4-2 1-4 2-6 2-8 1-18 1-24-2z" fill="#7A8A9A"/><path d="M8 22c6-3 15-4 22-1" stroke="#4A5868" stroke-width="2" fill="none"/>${[11,16,21,26].map(x=>`<path d="M${x} 20l2 5" stroke="#3A3028" stroke-width="1.2" opacity=".6"/>`).join('')}<circle cx="30" cy="22" r="1.2" fill="#fff"/><path d="M6 12h6M6 15h6" stroke="#fff" stroke-width="1" opacity=".0"/><path d="M33 16a3 3 0 0 1 3 4h-5z" fill="#F5D63D"/><rect x="6" y="14" width="7" height="5" rx="1" fill="#F2F2EC"/>`,
+    sardines:`<rect x="5" y="27" width="30" height="4" rx="2" fill="#C8A46A"/>${[0,1,2].map(i=>`<g transform="translate(0 ${i*5})"><path d="M7 15c4-3 14-4 20-1l5-2v6l-5-2c-6 3-16 2-20-1z" fill="${i%2?'#8A9AAA':'#7A8C9C'}"/><path d="M9 15c5-1 12-1 17 0" stroke="#C8D4DE" stroke-width="1"/><circle cx="10" cy="14.6" r=".9" fill="#2A2018"/><path d="M14 13l1 3M19 13l1 3" stroke="#3A3028" stroke-width=".9" opacity=".7"/></g>`).join('')}`,
+    vinjaune:`<ellipse cx="20" cy="28" rx="16" ry="6" fill="#E8D9B8"/><ellipse cx="20" cy="27" rx="14" ry="4.6" fill="#F2DE9A"/><path d="M11 25c0-5 4-8 9-8 6 0 9 3 9 7-1 3-4 4-9 4s-9-1-9-3z" fill="#E0A85A"/><path d="M14 22c2-2 5-3 8-2" stroke="#F2C77E" stroke-width="1.6" fill="none"/><ellipse cx="30" cy="22" rx="2.6" ry="3.4" fill="#7A5A3A"/><path d="M28 21h4M28 23h4" stroke="#5A3E26" stroke-width=".7"/><ellipse cx="9" cy="23" rx="2.4" ry="3" fill="#7A5A3A"/><path d="M28 11c2-3 5-3 6-1" stroke="#C8973F" stroke-width="2" fill="none" stroke-linecap="round"/>`,
+    caviar:`<path d="M8 22h24l-2 10H10z" fill="#3A4A5A"/><ellipse cx="20" cy="22" rx="12" ry="3.6" fill="#5A6A7A"/><ellipse cx="20" cy="21.4" rx="10" ry="2.6" fill="#1E1E24"/>${[[14,21],[17,20.5],[20,21.5],[23,20.6],[26,21.2],[18.5,22],[22,22.2]].map(([x,y])=>`<circle cx="${x}" cy="${y}" r="1" fill="#2E2E38"/><circle cx="${x-.3}" cy="${y-.3}" r=".3" fill="#9AA0B0"/>`).join('')}<path d="M26 10l4 9" stroke="#E8D9B8" stroke-width="2.4" stroke-linecap="round"/><ellipse cx="12" cy="34" rx="5" ry="1.6" fill="#E0B870"/>`,
+    fishchips:`<path d="M24 12l10 2-3 20H23z" fill="#E8E2D4"/><path d="M24 12l10 2" stroke="#3A6EA8" stroke-width="2.4"/>${[25,27.5,30,32].map((x,i)=>`<rect x="${x-1}" y="${8+i%2*2}" width="2.4" height="12" rx="1" fill="#F2C24A"/>`).join('')}<path d="M5 26c3-7 13-9 19-6l-1 9c-7 3-15 2-18-3z" fill="#D99A48"/><path d="M8 25c4-3 10-4 14-2" stroke="#B0742E" stroke-width="1.2" fill="none"/><path d="M6 32a4 4 0 0 1 6 2H6z" fill="#F5D63D"/>`,
+    nicoise:`<ellipse cx="20" cy="26" rx="16" ry="7.5" fill="#E8F0EC"/><ellipse cx="20" cy="25" rx="13" ry="5.6" fill="#8AB85A"/><ellipse cx="13" cy="23" rx="3.4" ry="2.4" fill="#fff"/><ellipse cx="13" cy="23" rx="1.6" ry="1.3" fill="#F5C842"/><ellipse cx="25" cy="27" rx="3.4" ry="2.4" fill="#fff"/><ellipse cx="25" cy="27" rx="1.6" ry="1.3" fill="#F5C842"/><circle cx="20" cy="22" r="1.6" fill="#2E2A30"/><circle cx="17" cy="28" r="1.4" fill="#2E2A30"/><path d="M21 25.5c2 0 4-1 5-2" stroke="#C0605A" stroke-width="2.6" stroke-linecap="round"/><path d="M27 21l3-1" stroke="#5E8A3A" stroke-width="2" stroke-linecap="round"/><rect x="15" y="24.5" width="4" height="3" rx="1" fill="#C88070"/>`,
+    bouillabaisse:`<path d="M5 20h30c0 8-6 13-15 13S5 28 5 20z" fill="#C8603A"/><ellipse cx="20" cy="20" rx="15" ry="4" fill="#E0803A"/><ellipse cx="20" cy="20" rx="13" ry="3" fill="#F09A4A"/><path d="M13 19c1-2 4-2 5 0" stroke="#F8E0C0" stroke-width="2" fill="none"/><path d="M22 18l3 2 3-2-1 3z" fill="#2E2A40"/><circle cx="16" cy="21" r="1.2" fill="#E85A3A"/><path d="M28 11c-3 2-6 2-8 4" stroke="#F2E8D4" stroke-width="3" stroke-linecap="round"/><rect x="25" y="7" width="7" height="5" rx="1.5" fill="#E8C47A" transform="rotate(-20 28 9)"/>`,
+    stilton:`<path d="M5 28l12-14 18 6v10z" fill="#EDE4C8"/><path d="M5 28l12-14 18 6-30 8z" fill="#F5EDD6"/><path d="M5 28h30v3H5z" fill="#C8A86A"/>${[[14,22],[20,24],[26,23],[11,26],[23,27],[29,26]].map(([x,y])=>`<path d="M${x} ${y}l1.5 1-1 1.5z" fill="#5A6A8A"/>`).join('')}<ellipse cx="31" cy="11" rx="4" ry="3.4" fill="#A86A3A"/><path d="M31 8v6M28 11h6" stroke="#7A4A28" stroke-width=".9"/><ellipse cx="25" cy="8" rx="2.8" ry="2.4" fill="#A86A3A"/>`,
+    jamon:`<ellipse cx="20" cy="29" rx="16" ry="5" fill="#E8DCC8"/>${[[12,25,-12],[19,23,4],[26,25,16],[16,28,-4],[24,28.5,8]].map(([x,y,r])=>`<g transform="rotate(${r} ${x} ${y})"><ellipse cx="${x}" cy="${y}" rx="6" ry="3" fill="#B8404A"/><path d="M${x-5} ${y-1}q5-2 10 0" stroke="#F2E2DA" stroke-width="1.2" fill="none"/></g>`).join('')}<path d="M30 7c3 1 4 4 3 7l-4 2" stroke="#7A4A28" stroke-width="3" fill="none" stroke-linecap="round"/>`,
+    somtam:`<path d="M6 22h28c-1 7-7 11-14 11S7 29 6 22z" fill="#C8A86A"/><path d="M6 22h28" stroke="#8E6A3A" stroke-width="1.6"/><ellipse cx="20" cy="22" rx="13" ry="3" fill="#C8E07A"/>${[10,14,18,22,26,30].map((x,i)=>`<path d="M${x-2} ${21.5+(i%2)}l4-1.6" stroke="#E8F2B8" stroke-width="1.4" stroke-linecap="round"/>`).join('')}<circle cx="15" cy="21" r="1.6" fill="#E84A3A"/><circle cx="24" cy="22" r="1.6" fill="#E84A3A"/><path d="M27 10l5 9" stroke="#D02A2A" stroke-width="2.4" stroke-linecap="round"/><path d="M27 10l-1-2" stroke="#5E8A3A" stroke-width="1.6"/><path d="M12 14l2 4" stroke="#7A9A3A" stroke-width="2.2" stroke-linecap="round"/>`,
+    massaman:`<path d="M5 20a15 11 0 0 0 30 0z" fill="#8E4A2E"/><ellipse cx="20" cy="20" rx="15" ry="4.6" fill="#C8702E"/><ellipse cx="20" cy="20" rx="13" ry="3.4" fill="#D9883A"/><ellipse cx="15" cy="19.5" rx="3" ry="2.2" fill="#F2D08A"/><ellipse cx="24" cy="20.5" rx="2.6" ry="2" fill="#F2D08A"/><path d="M19 18.5l1.6 1M21 19.5l1-1" stroke="#7A4A28" stroke-width="1.2" stroke-linecap="round"/><path d="M10 11c2-2 2-4 0-6M15 11c2-2 2-4 0-6" stroke="#E8B88A" stroke-width="1.2" fill="none" opacity=".8"/><path d="M27 10l5-2-1 4z" fill="#7A4A28"/>`,
+    nata:`<ellipse cx="20" cy="28" rx="15" ry="5" fill="#E8DCC8"/>${[[13,22],[27,22],[20,27]].map(([x,y])=>`<path d="M${x-7} ${y}l1.5 5h11l1.5-5z" fill="#E0A055"/><ellipse cx="${x}" cy="${y}" rx="7" ry="2.6" fill="#F2D06A"/><ellipse cx="${x-1}" cy="${y-.3}" rx="2.6" ry="1.2" fill="#8A4A1E" opacity=".75"/><ellipse cx="${x+2.4}" cy="${y+.6}" rx="1.4" ry=".8" fill="#8A4A1E" opacity=".6"/>`).join('')}<path d="M30 9l1 2 2 .3-1.5 1.5.4 2-1.9-1-1.9 1 .4-2-1.5-1.5 2-.3z" fill="#E8B048"/>`,
   }[name]||'';
   return `<svg viewBox="0 0 40 40" width="${size}" height="${size}" xmlns="http://www.w3.org/2000/svg" style="display:block">${A}</svg>`;
 }
@@ -6958,19 +7148,29 @@ function pageMarket(){
 
   html += `<div class="grid" id="marketGrid">`;
   // ---- filter / search / sort toolbar ----
-  const regions=[...new Set(WINES.map(w=>w.region))].sort();
-  const mActive=(UI.marketTier?1:0)+(UI.marketColor!=='all'?1:0)+(UI.marketRegion!=='all'?1:0)+(UI.marketSort!=='name'?1:0);
+  const mO={zone:UI.marketZone, country:UI.marketCountry, region:UI.marketRegion};
+  const mOrigin = mO.zone!=='all'||mO.country!=='all'||mO.region!=='all';
+  const mType=(UI.marketTier?1:0)+(UI.marketColor!=='all'?1:0);
+  const mActive=mType+(mOrigin?1:0)+(UI.marketSort!=='name'?1:0);
+  const mCounts={}; WINES.forEach(w=>{ if(!isRareLocked(w.id)) mCounts[w.region]=(mCounts[w.region]||0)+1; });
+  const sortNames={name:T("ชื่อ"), priceUp:T("ราคาต่ำ→สูง"), priceDown:T("ราคาสูง→ต่ำ"), change:T("เปลี่ยนแปลงมาก"), score:T("คะแนนสูง"), rare:T("หายาก")};
+  const mChips=[];
+  if(UI.marketTier) mChips.push({k:'tier', t:TIER_NAMES[UI.marketTier]});
+  if(UI.marketColor!=='all') mChips.push({k:'color', t:STYLE_LABELS[UI.marketColor]});
+  if(mOrigin) mChips.push({k:'origin', t:originLabel(mO)});
+  if(UI.marketSort!=='name') mChips.push({k:'sort', t:sortNames[UI.marketSort]});
   html = html.replace('<div class="grid" id="marketGrid">', `
   <div class="toolbar">
     <div class="tb-search">${lineIcon('search',16)}<input id="mSearch" type="text" placeholder="${TA("ค้นหาไวน์ / ภูมิภาค...")}" value="${UI.marketSearch}"></div>
     <button class="tb-toggle ${UI.marketOwnedOnly?'on':''}" id="mOwned">${lineIcon('cellar',15)} ${T("เฉพาะที่มี")}</button>
     <button class="tb-toggle ${UI.marketAfford?'on':''}" id="mAfford">${lineIcon('coin',15)} ${T("ซื้อไหว")}</button>
     ${filterToggleHTML(mActive)}
-    ${(UI.marketTier||UI.marketColor!=='all'||UI.marketRegion!=='all'||UI.marketOwnedOnly||UI.marketAfford)?`<button class="tb-toggle" id="mClear" style="border-color:var(--down);color:var(--down)">${T("ล้างตัวกรอง ✕")}</button>`:''}
+    ${(mActive||UI.marketOwnedOnly||UI.marketAfford)?`<button class="tb-toggle" id="mClear" style="border-color:var(--down);color:var(--down)">${T("ล้างตัวกรอง ✕")}</button>`:''}
   </div>
+  ${activeFiltersHTML(mChips,'mclear')}
   <div class="filter-panel ${UI.filtersOpen?'open':''}" id="fPanel">
-
-  <!-- big tap targets instead of dropdowns: faster and safer on a touch screen -->
+  ${filterTabsHTML([{k:'type',t:T('ระดับ & ประเภท'),n:mType},{k:'origin',t:T('แหล่งผลิต'),n:mOrigin?1:0},{k:'sort',t:T('เรียงลำดับ'),n:UI.marketSort!=='name'?1:0}])}
+  <div data-tabbody="type">
   <div class="filter-row">
     <span class="fr-label">${T("ระดับชั้น")}</span>
     <div class="filter-chips">
@@ -6985,23 +7185,15 @@ function pageMarket(){
       ${WINE_STYLES.map(st=>`<button class="chip col-${st} ${UI.marketColor===st?'on':''}" data-mcolor="${st}">${STYLE_LABELS[st]}</button>`).join('')}
     </div>
   </div>
+  </div>
+  <div data-tabbody="origin">${originHTML('morigin', mO, mCounts)}</div>
+  <div data-tabbody="sort">
   <div class="filter-row">
     <span class="fr-label">${T("เรียงตาม")}</span>
     <div class="filter-chips">
-      <button class="chip ${UI.marketSort==='name'?'on':''}" data-msort="name">${T("ชื่อ")}</button>
-      <button class="chip ${UI.marketSort==='priceUp'?'on':''}" data-msort="priceUp">${T("ราคาต่ำ→สูง")}</button>
-      <button class="chip ${UI.marketSort==='priceDown'?'on':''}" data-msort="priceDown">${T("ราคาสูง→ต่ำ")}</button>
-      <button class="chip ${UI.marketSort==='change'?'on':''}" data-msort="change">${T("เปลี่ยนแปลงมาก")}</button>
-      <button class="chip ${UI.marketSort==='score'?'on':''}" data-msort="score">${T("คะแนนสูง")}</button>
-      <button class="chip ${UI.marketSort==='rare'?'on':''}" data-msort="rare">${T("หายาก")}</button>
+      ${Object.entries(sortNames).map(([k,t])=>`<button class="chip ${UI.marketSort===k?'on':''}" data-msort="${k}">${t}</button>`).join('')}
     </div>
   </div>
-  <div class="filter-row">
-    <span class="fr-label">${T("ภูมิภาค")}</span>
-    <div class="filter-chips">
-      <button class="chip ${UI.marketRegion==='all'?'on':''}" data-mregion="all">${T("ทั้งหมด")}</button>
-      ${regions.map(r=>`<button class="chip ${UI.marketRegion===r?'on':''}" data-mregion="${r}">${r}</button>`).join('')}
-    </div>
   </div>
   </div>
   <div class="grid" id="marketGrid">`);
@@ -7010,7 +7202,7 @@ function pageMarket(){
   const q=UI.marketSearch.toLowerCase().trim();
   let list=WINES.filter(w=>{
     if(isRareLocked(w.id)) return false;   // not yet unlocked — invisible on the market
-    if(UI.marketRegion!=='all' && w.region!==UI.marketRegion) return false;
+    if(!originMatch(w.region, mO)) return false;
     if(UI.marketOwnedOnly && !(G.cellar[w.id]?.qty)) return false;
     if(UI.marketTier && w.tier!==UI.marketTier) return false;
     if(UI.marketColor!=='all' && wineStyle(w)!==UI.marketColor) return false;
@@ -7068,12 +7260,17 @@ function pageMarket(){
   const af=document.getElementById('mAfford');
   if(af) af.onclick=()=>{ UI.marketAfford=!UI.marketAfford; sfx('click'); pageMarket(); };
   const cl=document.getElementById('mClear');
-  if(cl) cl.onclick=()=>{ UI.marketTier=0; UI.marketColor='all'; UI.marketRegion='all';
-    UI.marketOwnedOnly=false; UI.marketAfford=false; sfx('click'); pageMarket(); };
+  if(cl) cl.onclick=()=>{ UI.marketTier=0; UI.marketColor='all'; UI.marketRegion='all'; UI.marketZone='all'; UI.marketCountry='all';
+    UI.marketSort='name'; UI.marketOwnedOnly=false; UI.marketAfford=false; sfx('click'); pageMarket(); };
+  document.querySelectorAll('[data-morigin]').forEach(b=>{ b.onclick=()=>{ const o={zone:UI.marketZone,country:UI.marketCountry,region:UI.marketRegion};
+    setOrigin(o,b.dataset.morigin); UI.marketZone=o.zone; UI.marketCountry=o.country; UI.marketRegion=o.region; sfx('click'); pageMarket(); }; });
+  document.querySelectorAll('[data-mclear]').forEach(b=>{ b.onclick=()=>{ const k=b.dataset.mclear;
+    if(k==='tier') UI.marketTier=0; if(k==='color') UI.marketColor='all'; if(k==='sort') UI.marketSort='name';
+    if(k==='origin'){ UI.marketZone='all'; UI.marketCountry='all'; UI.marketRegion='all'; } sfx('click'); pageMarket(); }; });
+  bindFilterTabs();
   document.querySelectorAll('[data-mtier]').forEach(b=>{ b.onclick=()=>{ UI.marketTier=+b.dataset.mtier; sfx('click'); pageMarket(); }; });
   document.querySelectorAll('[data-mcolor]').forEach(b=>{ b.onclick=()=>{ UI.marketColor=b.dataset.mcolor; sfx('click'); pageMarket(); }; });
   document.querySelectorAll('[data-msort]').forEach(b=>{ b.onclick=()=>{ UI.marketSort=b.dataset.msort; sfx('click'); pageMarket(); }; });
-  document.querySelectorAll('[data-mregion]').forEach(b=>{ b.onclick=()=>{ UI.marketRegion=b.dataset.mregion; sfx('click'); pageMarket(); }; });
   bindFilterToggle(mActive);
   bindFocusables();
 }
@@ -7693,59 +7890,55 @@ function pageCellar(){
     </div>`;
   }
 
-  const cActive=(UI.cellarTier?1:0)+(UI.cellarRegion!=='all'?1:0)+(UI.cellarSort!=='name'?1:0);
+  const cO={zone:UI.cellarZone, country:UI.cellarCountry, region:UI.cellarRegion};
+  const cOrigin = cO.zone!=='all'||cO.country!=='all'||cO.region!=='all';
+  const cActive=(UI.cellarTier?1:0)+(cOrigin?1:0)+(UI.cellarSort!=='name'?1:0);
+  const cSortNames={name:T("ชื่อ"), value:T("มูลค่ารวม"), unit:T("ราคา/ขวด"), profit:T("กำไร %"), age:T("อายุบ่ม"),
+    ready:T("พร้อมดื่ม"), vintage:'vintage', qty:T("จำนวน"), region:T("ภูมิภาค")};
+  const cCounts={}; ids.forEach(id=>{ const r=wineById(id)?.region; if(r) cCounts[r]=(cCounts[r]||0)+1; });
+  const tiersPresent=[...new Set(ids.map(id=>wineById(id)?.tier).filter(Boolean))].sort((a,b)=>b-a);
+  const cChips=[];
+  if(UI.cellarTier) cChips.push({k:'tier', t:TIER_NAMES[UI.cellarTier]||('Tier '+UI.cellarTier)});
+  if(cOrigin) cChips.push({k:'origin', t:originLabel(cO)});
+  if(UI.cellarSort!=='name') cChips.push({k:'sort', t:cSortNames[UI.cellarSort]});
   html+=`<div class="toolbar">
     <button class="tb-toggle" id="cDir" title="${TA("สลับลำดับ")}">${UI.cellarDir==='asc'?T('▲ น้อย→มาก'):T('▼ มาก→น้อย')}</button>
     <button class="tb-toggle ${UI.cellarReadyOnly?'on':''}" id="cReady">${lineIcon('check',14)} ${T("พร้อมดื่ม")}</button>
     ${nFakes?`<button class="tb-toggle ${UI.cellarFakeOnly?'on':''}" id="cFake" style="border-color:var(--down)">${lineIcon('warn',13)} ${T("ของปลอม")} ${nFakes}</button>`:''}
     ${filterToggleHTML(cActive)}
-    ${(UI.cellarTier||UI.cellarRegion!=='all'||UI.cellarReadyOnly||UI.cellarFakeOnly)?`<button class="tb-toggle" id="cClear" style="border-color:var(--down);color:var(--down)">${T("ล้างตัวกรอง ✕")}</button>`:''}
+    ${(UI.cellarTier||cOrigin||UI.cellarReadyOnly||UI.cellarFakeOnly)?`<button class="tb-toggle" id="cClear" style="border-color:var(--down);color:var(--down)">${T("ล้างตัวกรอง ✕")}</button>`:''}
     <span class="tb-count">${ids.length} ${T("รายการ ·")} ${cellarUsed()}/${cellarCapacity()} ${T("ขวด")}</span>
   </div>
+  ${activeFiltersHTML(cChips,'cclear')}
   <div class="filter-panel ${UI.filtersOpen?'open':''}" id="fPanel">
+  ${filterTabsHTML([{k:'type',t:T('ระดับชั้น'),n:UI.cellarTier?1:0},{k:'origin',t:T('แหล่งผลิต'),n:cOrigin?1:0},{k:'sort',t:T('เรียงลำดับ'),n:UI.cellarSort!=='name'?1:0}])}
+  <div data-tabbody="type">
   <div class="filter-row">
-    <span class="fr-label">${T("เรียงตาม")}</span>
-    <div class="filter-chips">
-      <button class="chip ${UI.cellarSort==='name'?'on':''}" data-csort="name">${T("ชื่อ")}</button>
-      <button class="chip ${UI.cellarSort==='value'?'on':''}" data-csort="value">${T("มูลค่ารวม")}</button>
-      <button class="chip ${UI.cellarSort==='unit'?'on':''}" data-csort="unit">${T("ราคา/ขวด")}</button>
-      <button class="chip ${UI.cellarSort==='profit'?'on':''}" data-csort="profit">${T("กำไร %")}</button>
-      <button class="chip ${UI.cellarSort==='age'?'on':''}" data-csort="age">${T("อายุบ่ม")}</button>
-      <button class="chip ${UI.cellarSort==='ready'?'on':''}" data-csort="ready">${T("พร้อมดื่ม")}</button>
-      <button class="chip ${UI.cellarSort==='vintage'?'on':''}" data-csort="vintage">vintage</button>
-      <button class="chip ${UI.cellarSort==='qty'?'on':''}" data-csort="qty">${T("จำนวน")}</button>
-      <button class="chip ${UI.cellarSort==='region'?'on':''}" data-csort="region">${T("ภูมิภาค")}</button>
-    </div>
-  </div>`;
-
-  // ---- smart tier filter chips (ระดับชั้น) ----
-  const tiersPresent=[...new Set(ids.map(id=>wineById(id)?.tier).filter(Boolean))].sort((a,b)=>b-a);
-  const regionsPresent=[...new Set(ids.map(id=>wineById(id)?.region).filter(Boolean))].sort();
-  html+=`<div class="filter-row">
     <span class="fr-label">${T("ระดับชั้น")}</span>
     <div class="filter-chips">
       <button class="chip ${UI.cellarTier===0?'on':''}" data-tier="0">${T("ทั้งหมด")}</button>
       ${tiersPresent.map(t=>`<button class="chip tier-chip t${t} ${UI.cellarTier===t?'on':''}" data-tier="${t}">${TIER_NAMES[t]||('Tier '+t)}</button>`).join('')}
       ${tiersPresent.length?`<span class="gloss-hint">${term(TIER_GLOSS[tiersPresent[0]]||'grandcru',T('ระดับชั้นคืออะไร?'))}</span>`:''}
     </div>
-  </div>`;
-  if(regionsPresent.length>1){
-    html+=`<div class="filter-row">
-      <span class="fr-label">${T("ภูมิภาค")}</span>
-      <div class="filter-chips">
-        <button class="chip ${UI.cellarRegion==='all'?'on':''}" data-cregion="all">${T("ทั้งหมด")}</button>
-        ${regionsPresent.map(r=>`<button class="chip ${UI.cellarRegion===r?'on':''}" data-cregion="${r}">${r}</button>`).join('')}
-      </div>
-    </div>`;
-  }
-  html+=`</div>`;   // /filter-panel
+  </div>
+  </div>
+  <div data-tabbody="origin">${originHTML('corigin', cO, cCounts)}</div>
+  <div data-tabbody="sort">
+  <div class="filter-row">
+    <span class="fr-label">${T("เรียงตาม")}</span>
+    <div class="filter-chips">
+      ${Object.entries(cSortNames).map(([k,t])=>`<button class="chip ${UI.cellarSort===k?'on':''}" data-csort="${k}">${t}</button>`).join('')}
+    </div>
+  </div>
+  </div>
+  </div>`;   // /filter-panel
 
   const valOf=id=>G.prices[id]*agingMult(id)*(G.cellar[id].quality?(0.9+(G.cellar[id].quality-82)/18*0.25):1);
   let viewIds=ids.slice();
   if(UI.cellarReadyOnly) viewIds=viewIds.filter(id=>drinkWindow(id).state==='peak');
   if(UI.cellarFakeOnly) viewIds=viewIds.filter(id=>G.cellar[id].suspect);
   if(UI.cellarTier) viewIds=viewIds.filter(id=>wineById(id)?.tier===UI.cellarTier);
-  if(UI.cellarRegion!=='all') viewIds=viewIds.filter(id=>wineById(id)?.region===UI.cellarRegion);
+  if(cOrigin) viewIds=viewIds.filter(id=>originMatch(wineById(id)?.region, cO));
   const dir = UI.cellarDir==='asc' ? 1 : -1;
   const sortedIds=viewIds.sort((a,b)=>{
     const ca=G.cellar[a], cb=G.cellar[b];
@@ -7798,12 +7991,17 @@ function pageCellar(){
   document.querySelectorAll('.chip[data-tier]').forEach(ch=>{
     ch.onclick=()=>{ UI.cellarTier=+ch.dataset.tier; sfx('click'); pageCellar(); };
   });
-  document.querySelectorAll('[data-cregion]').forEach(b=>{ b.onclick=()=>{ UI.cellarRegion=b.dataset.cregion; sfx('click'); pageCellar(); }; });
+  document.querySelectorAll('[data-corigin]').forEach(b=>{ b.onclick=()=>{ const o={zone:UI.cellarZone,country:UI.cellarCountry,region:UI.cellarRegion};
+    setOrigin(o,b.dataset.corigin); UI.cellarZone=o.zone; UI.cellarCountry=o.country; UI.cellarRegion=o.region; sfx('click'); pageCellar(); }; });
+  document.querySelectorAll('[data-cclear]').forEach(b=>{ b.onclick=()=>{ const k=b.dataset.cclear;
+    if(k==='tier') UI.cellarTier=0; if(k==='sort') UI.cellarSort='name';
+    if(k==='origin'){ UI.cellarZone='all'; UI.cellarCountry='all'; UI.cellarRegion='all'; } sfx('click'); pageCellar(); }; });
   document.querySelectorAll('[data-csort]').forEach(b=>{ b.onclick=()=>{ UI.cellarSort=b.dataset.csort; sfx('click'); pageCellar(); }; });
   const ccl=document.getElementById('cClear');
-  if(ccl) ccl.onclick=()=>{ UI.cellarTier=0; UI.cellarRegion='all'; UI.cellarReadyOnly=false;
+  if(ccl) ccl.onclick=()=>{ UI.cellarTier=0; UI.cellarRegion='all'; UI.cellarZone='all'; UI.cellarCountry='all'; UI.cellarReadyOnly=false;
     UI.cellarFakeOnly=false; sfx('click'); pageCellar(); };
   bindFilterToggle(cActive);
+  bindFilterTabs();
   // counterfeit panel actions
   document.querySelectorAll('[data-fakeact]').forEach(b=>{
     b.onclick=()=>{
@@ -8068,7 +8266,7 @@ function pageShop(){
     <div class="card cust-card">
       <div class="cust-avatar">${custAvatar(cust.av,66)}</div>
       <div class="cust-name">${cust.name}${cust.isRegular?` <span class="reg-badge">${T("ลูกค้าประจำ · ครั้งที่")} ${cust.visits+1}</span>`:''}</div>
-      <div class="cust-mood">${cust.type} ${T("· งบ")} ${fmtK(cust.budget)}</div>
+      <div class="cust-mood">${cust.type} ${T("· งบ")} ${fmtK(cust.budget)}${(()=>{ const r=budgetReach(cust.budget); return r?` <span class="tier-chip t${r} bud-reach">${T("ถึง")} ${TIER_NAMES[r]}</span>`:''; })()}</div>
       ${cust.isRegular&&cust.lastWine?`<div class="wine-sub" style="margin-top:3px">${T("คราวก่อนดื่ม:")} ${cust.lastWine}</div>`:''}
       <div class="food-badge">${foodIcon(cust.food.ic||'steak',40)}<span>${cust.food.name}</span></div>
       <div class="speech">${cust.opener}</div>
@@ -8253,7 +8451,12 @@ function generateShopQueue(){
     }[base.trait] || {bud:1, fus:0};
     const repTier=1+Math.min(G.rep,400)/400*7.5;   // ★0 -> 1.0x, ★400+ -> 8.5x
     const prestigeMul=1+(G.prestige||0)*0.35;
-    const budget=Math.round((40000+Math.random()*190000)*(1+mktBonus*0.25)*diff*(1+loyalty*0.06)*TRAIT.bud*repTier*prestigeMul*seasonDemand()*festivalBudgetMult());
+    const mult=(1+mktBonus*0.25)*diff*(1+loyalty*0.06)*prestigeMul*seasonDemand()*festivalBudgetMult();
+    const general=(40000+Math.random()*190000)*TRAIT.bud*repTier*mult;
+    // Each guest also shops in one price tier and brings enough for a real
+    // bottle from it, so every tier — Grand Cru included — has buyers.
+    const bt=pickBudgetTier(base.trait);
+    const budget=Math.round(Math.max(general, tierBudget(bt)*mult));
     const fussy = Math.max(0, Math.min(1, 0.3 + Math.random()*0.3 + G.rep*0.004 + TRAIT.fus));
     let opener;
     if(reg && reg.visits>=1){
@@ -8277,6 +8480,37 @@ function generateShopQueue(){
   G.shopDone=false;
 }
 
+/* Which price tier a guest is shopping in. Reputation shifts the odds
+   upward; the guest's trait nudges it (collectors aim high, bargain hunters low). */
+const BUDGET_TIER_W = [[0,[.40,.32,.18,.08,.02]], [100,[.15,.25,.30,.20,.10]], [300,[.08,.15,.27,.28,.22]]];
+const BUDGET_TRAIT_SHIFT = {collector:2, bigspender:1, rare:1, rep:1, budget:-1, value:-1};
+function budgetTierWeights(rep){
+  const pts=BUDGET_TIER_W; if(rep<=pts[0][0]) return pts[0][1];
+  for(let i=1;i<pts.length;i++){ if(rep<=pts[i][0]){ const [r0,a]=pts[i-1], [r1,b]=pts[i], k=(rep-r0)/(r1-r0); return a.map((v,j)=>v+(b[j]-v)*k); } }
+  return pts[pts.length-1][1];
+}
+function pickBudgetTier(trait){
+  const wts=budgetTierWeights(G.rep||0); let r=Math.random()*wts.reduce((a,b)=>a+b,0), t=1;
+  for(let i=0;i<wts.length;i++){ r-=wts[i]; if(r<=0){ t=i+1; break; } }
+  return Math.max(1, Math.min(5, t+(BUDGET_TRAIT_SHIFT[trait]||0)));
+}
+// enough for a bottle picked at random from that tier at today's price, plus room for the markup
+function tierBudget(t){
+  const ids=WINES.filter(w=>w.tier===t && !isRareLocked(w.id)).map(w=>w.id);
+  if(!ids.length) return 0;
+  const id=ids[Math.floor(Math.random()*ids.length)];
+  return (G.prices[id]||wineById(id).base)*(1.25+Math.random()*0.65);
+}
+// the highest tier whose typical bottle this budget covers (shown on the guest card)
+function budgetReach(budget){
+  let best=0;
+  for(let t=1;t<=5;t++){
+    const ps=WINES.filter(w=>w.tier===t && !isRareLocked(w.id)).map(w=>G.prices[w.id]||w.base).sort((a,b)=>a-b);
+    if(ps.length && budget>=ps[Math.floor(ps.length/2)]*1.05) best=t;
+  }
+  return best;
+}
+
 // evaluate a wine pairing quality (0..1) for a customer
 /* Food profiles: what each dish wants in a wine (0-5 scales) */
 const FOOD_PROFILE={
@@ -8296,6 +8530,51 @@ const FOOD_PROFILE={
   lamb:      {body:5, tannin:4, acid:3, sweet:0, why:T('แกะกลิ่นแรงไขมันสูง ต้องการไวน์เข้มแทนนินสูง')},
   dessert:   {body:3, tannin:0, acid:4, sweet:5, why:T('ของหวานต้องคู่ไวน์ที่หวานกว่า ไม่งั้นไวน์จะเปรี้ยวเฝื่อน')},
   bluecheese:{body:4, tannin:1, acid:4, sweet:5, why:T('บลูชีสเค็มจัด คู่กับไวน์หวานคือการจับคู่ตัดกันที่สมบูรณ์แบบ')},
+  sushi:     {body:2, tannin:0, acid:4, sweet:2, why:T('ซอสปลาไหลหวานเค็ม ต้องการไวน์ขาวที่หวานนิดๆ กรดสด')},
+  truffle:   {body:4, tannin:4, acid:4, sweet:0, why:T('กลิ่นดินของทรัฟเฟิลต้องการแดงที่มีแทนนินและกลิ่นซับซ้อน')},
+  shrimp:    {body:2, tannin:0, acid:5, sweet:0, why:T('มะนาวเปรี้ยวจัด ไวน์ต้องกรดสูงพอกันและไม่มีแทนนิน')},
+  bbq:       {body:5, tannin:4, acid:3, sweet:1, why:T('ซอสหวานรมควันต้องการไวน์ผลไม้สุกบอดี้หนัก')},
+  onionsoup: {body:3, tannin:3, acid:4, sweet:0, why:T('ซุปหอมหวานกับชีสต้องการแดงกลางกรดดี')},
+  dimsum:    {body:2, tannin:0, acid:4, sweet:1, why:T('อาหารนึ่งละมุน ไวน์ต้องเบาและสด ไม่กลบรสอาหาร')},
+  stew:      {body:5, tannin:4, acid:4, sweet:0, why:T('เนื้อตุ๋นนานเข้มข้น ต้องการแดงบอดี้หนักแทนนินแน่น')},
+  foiegras:  {body:4, tannin:0, acid:4, sweet:5, why:T('ตับห่านมันเนียน คู่กับไวน์หวานกรดสูงตัดความมัน')},
+  taco:      {body:4, tannin:3, acid:4, sweet:0, why:T('เผ็ดจัดจ้าน ต้องการแดงผลไม้เด่นแทนนินไม่แรงเกิน')},
+  tempura:   {body:2, tannin:0, acid:5, sweet:1, why:T('ของทอดกรอบ ต้องการกรดสูงหรือฟองมาตัดน้ำมัน')},
+  waffle:    {body:3, tannin:0, acid:4, sweet:5, why:T('น้ำผึ้งหวานจัด ไวน์ต้องหวานกว่าจึงจะไม่เปรี้ยว')},
+  paella:    {body:3, tannin:0, acid:4, sweet:0, why:T('ข้าวหญ้าฝรั่นกับทะเล ต้องการไวน์ขาวบอดี้กลาง')},
+  friedchicken:{body:3, tannin:0, acid:5, sweet:1, why:T('ทอดเค็มมัน ต้องการกรดคมหรือฟองซ่ามาล้างปาก')},
+  fondue:    {body:3, tannin:0, acid:5, sweet:0, why:T('ชีสละลายหนักมัน ต้องการไวน์ขาวกรดสูงมาก')},
+  yakitori:  {body:3, tannin:2, acid:4, sweet:0, why:T('ซอสทาเระหวานเค็ม เข้ากับแดงเบาแทนนินต่ำ')},
+  squid:     {body:2, tannin:0, acid:5, sweet:0, why:T('ทะเลย่างรสสด ต้องการไวน์ขาวกรดสดชื่น')},
+  charcuterie:{body:3, tannin:3, acid:4, sweet:0, why:T('เนื้อหมักเค็มมัน เข้ากับแดงกลางที่มีกรด')},
+  creme:     {body:4, tannin:0, acid:4, sweet:5, why:T('คาราเมลและคัสตาร์ด ต้องการไวน์หวานกว่าของหวาน')},
+  chestnut:  {body:4, tannin:0, acid:4, sweet:0, why:T('ครีมมันถั่ว เข้ากับไวน์ขาวบอดี้เต็มที่ผ่านโอ๊ก')},
+  ratatouille:{body:3, tannin:2, acid:4, sweet:0, why:T('ผักอบมะเขือเทศ เข้ากับโรเซ่หรือแดงเบาที่มีกรด')},
+  crab:      {body:3, tannin:0, acid:4, sweet:0, why:T('เนื้อปูหวานกับเนย ต้องการไวน์ขาวบอดี้กลางกรดดี')},
+  arrosticini:{body:3, tannin:2, acid:4, sweet:0, why:T('แกะย่างชิ้นเล็กไม่หนัก เข้ากับแดงเบาหรือโรเซ่สีเข้ม')},
+  strudel:   {body:4, tannin:0, acid:5, sweet:5, why:T('ผลไม้อบหวานเปรี้ยว ต้องการไวน์หวานที่กรดสูงพอกัน')},
+  octopus:   {body:3, tannin:0, acid:5, sweet:0, why:T('ทะเลย่างถ่านกับมะนาว ต้องการไวน์ขาวแร่ธาตุกรดจัด')},
+  moussaka:  {body:4, tannin:4, acid:5, sweet:0, why:T('ซอสมะเขือเทศและครีม ต้องการแดงกรดสูงแทนนินแน่น')},
+  empanada:  {body:4, tannin:4, acid:4, sweet:0, why:T('เนื้อย่างถ่านไขมันปานกลาง ต้องการแดงเข้มกำลังดี')},
+  schnitzel: {body:3, tannin:0, acid:5, sweet:0, why:T('ของทอดเนื้อขาวกับมะนาว ต้องการไวน์ขาวกรดสูงเผ็ดพริกไทยนิดๆ')},
+  chorizo:   {body:5, tannin:4, acid:4, sweet:0, why:T('ไส้กรอกพริกรมควันมันจัด ต้องการแดงบอดี้หนักแทนนินสูง')},
+  bobotie:   {body:4, tannin:3, acid:4, sweet:1, why:T('เครื่องเทศหวานกับเนื้อ ต้องการไวน์ผลไม้สุกแทนนินไม่แรง')},
+  brisket:   {body:5, tannin:4, acid:3, sweet:0, why:T('ควันและไขมันหนักมาก ต้องการแดงบอดี้เต็มที่')},
+  salmon:    {body:3, tannin:2, acid:4, sweet:0, why:T('ปลามันเนื้อแน่น ทนแทนนินเบาๆ ของปิโนต์นัวร์ได้')},
+  padthai:   {body:2, tannin:0, acid:5, sweet:2, why:T('เปรี้ยวหวานเค็มพร้อมกัน ต้องการไวน์หวานนิดกรดสูง')},
+  pekingduck:{body:4, tannin:3, acid:4, sweet:1, why:T('หนังมันซอสหวาน ต้องการแดงกลางค่อนหนักที่มีกรด')},
+  saba:      {body:2, tannin:0, acid:4, sweet:0, why:T('ปลามันเค็มอ่อน ไวน์ต้องเบา ไม่มีแทนนินที่ทำให้คาว')},
+  sardines:  {body:2, tannin:0, acid:5, sweet:0, why:T('ปลามันกลิ่นแรง ต้องการไวน์ขาวเบากรดจัดล้างปาก')},
+  vinjaune:  {body:4, tannin:0, acid:5, sweet:0, why:T('ซอสครีมเข้มข้น ต้องการไวน์ขาวบอดี้หนักกรดสูง')},
+  caviar:    {body:3, tannin:0, acid:5, sweet:1, why:T('เค็มนุ่มเนียน ต้องการฟองละเอียดและกรดคม')},
+  fishchips: {body:3, tannin:0, acid:5, sweet:1, why:T('ทอดเค็มมัน ฟองซ่าและกรดช่วยล้างปากทุกคำ')},
+  nicoise:   {body:2, tannin:0, acid:4, sweet:0, why:T('สลัดเบาเค็มมะกอก ต้องการไวน์เบาแห้งกรดดี')},
+  bouillabaisse:{body:3, tannin:1, acid:4, sweet:0, why:T('ซุปปลาหญ้าฝรั่นกระเทียม ต้องการไวน์บอดี้กลางแทนนินน้อย')},
+  stilton:   {body:5, tannin:2, acid:3, sweet:4, why:T('บลูชีสเค็มเข้ม คู่กับไวน์ฟอร์ติไฟด์หวานหนัก')},
+  jamon:     {body:3, tannin:0, acid:4, sweet:0, why:T('แฮมเค็มหอมถั่ว เข้ากับไวน์แห้งกลิ่นถั่วอ่อนๆ')},
+  somtam:    {body:2, tannin:0, acid:5, sweet:2, why:T('เผ็ดเปรี้ยวจัด ความหวานเล็กน้อยช่วยดับเผ็ด แทนนินยิ่งแสบ')},
+  massaman:  {body:4, tannin:0, acid:4, sweet:2, why:T('แกงเครื่องเทศหวานมัน ต้องการไวน์ขาวหอมหวานนิด')},
+  nata:      {body:4, tannin:0, acid:4, sweet:4, why:T('คัสตาร์ดคาราเมลไหม้ ต้องการไวน์หวานบ่มกลิ่นคาราเมล')},
 };
 function foodProfile(food){ return FOOD_PROFILE[food.ic] || {body:3,tannin:3,acid:4,sweet:0,why:''}; }
 
@@ -8330,23 +8609,28 @@ function pairingReasons(w, food){
   return {good, bad, why:fp.why};
 }
 
+// how well the wine's style fits the kind of wine the dish calls for
+function styleBonus(pc, w){
+  const st = wineStyle(w);
+  const sweet = (w.sweet??0)>=4;
+  if(pc==='any') return 0.05;
+  if(pc==='rose') return st==='rose' ? 0.12 : (st==='white' || (st==='red' && (w.body??3)<=3)) ? 0.04 : 0;
+  // Rosé is the great all-rounder: never the top score for a specific
+  // pairing, but it rarely clashes either.
+  if(st==='rose') return (pc==='sweet'||pc==='fortified') ? 0.02 : 0.06;
+  if(pc==='red') return st==='red' ? 0.07 : 0;
+  if(pc==='white') return st==='white' ? 0.08 : st==='sparkling' ? 0.06 : 0;
+  if(pc==='sparkling') return st==='sparkling' ? 0.12 : st==='white' ? 0.05 : 0;
+  if(pc==='sweet') return (st==='sweet'||sweet) ? 0.12 : 0;
+  if(pc==='fortified') return st==='fortified' ? 0.12 : st==='sweet' ? 0.06 : 0;
+  return 0;
+}
 function evalPairing(cust, w, c){
   const sm = structureMatch(w, cust.food);      // 0..1 how well the wine's build fits the dish
   const regionOK = cust.food.pairRegions.includes(w.region);
   // structure is the backbone of the score; region is a classic-pairing bonus on top
   let q = 0.12 + sm*0.52 + (regionOK?0.22:0);
-  const white = isWhiteWine(w);
-  const rose  = isRoseWine(w);
-  const sweet = (w.sweet??0)>=4;
-  if(rose){
-    // Rosé is the great all-rounder: never the top score for a specific
-    // pairing, but it rarely clashes either.
-    q += cust.food.pairColor==='sweet' ? 0.02 : 0.06;
-  }
-  else if(cust.food.pairColor==='white'&&white) q+=0.08;
-  else if(cust.food.pairColor==='sweet'&&sweet) q+=0.12;
-  else if(cust.food.pairColor==='red'&&!white&&!sweet) q+=0.07;
-  else if(cust.food.pairColor==='any') q+=0.05;
+  q += styleBonus(cust.food.pairColor, w);
   // quality/vintage of the specific bottle helps
   if(c&&c.quality) q += (c.quality-82)/18*0.10;
   // staff + upgrade
@@ -8543,7 +8827,8 @@ function applyDisplay(){
 let UI = {
   marketSearch:'', marketRegion:'all', marketSort:'name', marketOwnedOnly:false, marketTier:0, marketColor:'all', marketAfford:false,
   cellarSort:'name', cellarDir:'desc', cellarReadyOnly:false, cellarFakeOnly:false, cellarTier:0, cellarRegion:'all',
-  filtersOpen:false,
+  filtersOpen:false, filterTab:'type',
+  marketZone:'all', marketCountry:'all', cellarZone:'all', cellarCountry:'all',
 };
 // "ตัวกรอง" toggle shared by the market and cellar toolbars. It flips the
 // panel in place (no re-render) so the list doesn't jump under the finger.
@@ -8556,9 +8841,82 @@ function bindFilterToggle(nActive){
   b.onclick=()=>{
     UI.filtersOpen=!UI.filtersOpen; sfx('click');
     panel.classList.toggle('open', UI.filtersOpen);
+    document.querySelectorAll('.active-filters').forEach(a=>a.classList.toggle('hide', UI.filtersOpen));
     b.outerHTML=filterToggleHTML(nActive);
     bindFilterToggle(nActive);
   };
+}
+
+/* ---------- filter sets: tabs + origin drill-down (zone › country › region) ---------- */
+const ZONES=[
+  {k:'eu', t:T('ยุโรป'), c:['fr','it','es','pt','de','at','hu','gr','gb']},
+  {k:'nw', t:T('โลกใหม่'), c:['us','au','nz','cl','ar','za']},
+  {k:'as', t:T('เอเชีย & ตะวันออกกลาง'), c:['lb','cn','jp']},
+];
+const COUNTRY_NAMES={fr:T('ฝรั่งเศส'), it:T('อิตาลี'), es:T('สเปน'), pt:T('โปรตุเกส'), de:T('เยอรมนี'), at:T('ออสเตรีย'),
+  hu:T('ฮังการี'), gr:T('กรีซ'), gb:T('อังกฤษ'), us:T('สหรัฐฯ'), au:T('ออสเตรเลีย'), nz:T('นิวซีแลนด์'), cl:T('ชิลี'),
+  ar:T('อาร์เจนตินา'), za:T('แอฟริกาใต้'), lb:T('เลบานอน'), cn:T('จีน'), jp:T('ญี่ปุ่น')};
+function countryOf(region){ return REGION_COUNTRY[region]||''; }
+function zoneOf(region){ const c=countryOf(region); const z=ZONES.find(z=>z.c.includes(c)); return z?z.k:''; }
+function countryFlag(code, h){ const r=Object.keys(REGION_COUNTRY).find(x=>REGION_COUNTRY[x]===code); return r?flagSVG(r,h||11):''; }
+function originMatch(region, o){
+  if(o.region!=='all') return region===o.region;
+  if(o.country!=='all') return countryOf(region)===o.country;
+  if(o.zone!=='all') return zoneOf(region)===o.zone;
+  return true;
+}
+function originLabel(o){
+  if(o.region!=='all') return `${countryFlag(countryOf(o.region))}${COUNTRY_NAMES[countryOf(o.region)]||''} › ${o.region}`;
+  if(o.country!=='all') return `${countryFlag(o.country)}${COUNTRY_NAMES[o.country]||o.country}`;
+  if(o.zone!=='all') return (ZONES.find(z=>z.k===o.zone)||{}).t||'';
+  return '';
+}
+// counts: {region: number of wines}. Each level only appears once the one above is chosen.
+function originHTML(attr, o, counts){
+  const regs=Object.keys(counts); const sum=f=>regs.filter(f).reduce((a,r)=>a+counts[r],0);
+  const zones=ZONES.filter(z=>regs.some(r=>zoneOf(r)===z.k));
+  let h=`<div class="filter-row"><span class="fr-label">${T('โซน')}</span><div class="filter-chips">
+    <button class="chip ${o.zone==='all'?'on':''}" data-${attr}="zone:all">${T('ทั้งหมด')} <span class="cnt">${sum(()=>true)}</span></button>
+    ${zones.map(z=>`<button class="chip ${o.zone===z.k?'on':''}" data-${attr}="zone:${z.k}">${z.t} <span class="cnt">${sum(r=>zoneOf(r)===z.k)}</span></button>`).join('')}</div></div>`;
+  if(o.zone!=='all'){
+    const z=ZONES.find(z=>z.k===o.zone);
+    const cs=z.c.filter(c=>regs.some(r=>countryOf(r)===c));
+    h+=`<div class="filter-row sub"><span class="fr-label">${T('ประเทศ')}</span><div class="filter-chips">
+      <button class="chip ${o.country==='all'?'on':''}" data-${attr}="country:all">${T('ทุกประเทศ')}</button>
+      ${cs.map(c=>`<button class="chip ${o.country===c?'on':''}" data-${attr}="country:${c}">${countryFlag(c,12)}${COUNTRY_NAMES[c]} <span class="cnt">${sum(r=>countryOf(r)===c)}</span></button>`).join('')}</div></div>`;
+  }
+  if(o.country!=='all'){
+    const rs=regs.filter(r=>countryOf(r)===o.country).sort();
+    if(rs.length>1) h+=`<div class="filter-row sub2"><span class="fr-label">${T('ภูมิภาค')}</span><div class="filter-chips">
+      <button class="chip ${o.region==='all'?'on':''}" data-${attr}="region:all">${T('ทุกภูมิภาค')}</button>
+      ${rs.map(r=>`<button class="chip ${o.region===r?'on':''}" data-${attr}="region:${r}">${r} <span class="cnt">${counts[r]}</span></button>`).join('')}</div></div>`;
+  }
+  return h;
+}
+// apply a tap on an origin chip: picking a level resets the levels below it
+function setOrigin(o, val){
+  const [lvl,v]=val.split(':');
+  if(lvl==='zone'){ o.zone=v; o.country='all'; o.region='all'; }
+  else if(lvl==='country'){ o.country=v; o.region='all'; }
+  else o.region=v;
+}
+// tab strip inside the filter panel; switching tabs never re-renders the list
+function filterTabsHTML(tabs){
+  const cur = tabs.some(t=>t.k===UI.filterTab) ? UI.filterTab : tabs[0].k;
+  return `<div class="fp-tabs" role="tablist">${tabs.map(t=>`<button class="fp-tab ${cur===t.k?'on':''}" data-ftab="${t.k}" role="tab">${t.t}${t.n?` <span class="f-count">${t.n}</span>`:''}</button>`).join('')}</div>`;
+}
+function bindFilterTabs(){
+  const panel=document.getElementById('fPanel'); if(!panel) return;
+  const tabs=[...panel.querySelectorAll('[data-ftab]')];
+  const show=k=>{ UI.filterTab=k; tabs.forEach(b=>b.classList.toggle('on', b.dataset.ftab===k));
+    panel.querySelectorAll('[data-tabbody]').forEach(d=>d.style.display = d.dataset.tabbody===k ? '' : 'none'); };
+  tabs.forEach(b=>b.onclick=()=>{ sfx('click'); show(b.dataset.ftab); });
+  show(tabs.some(b=>b.dataset.ftab===UI.filterTab) ? UI.filterTab : (tabs[0]&&tabs[0].dataset.ftab));
+}
+// removable summary of active filters, shown under the toolbar
+function activeFiltersHTML(items, attr){
+  if(!items.length) return '';
+  return `<div class="active-filters ${UI.filtersOpen?'hide':''}">${items.map(i=>`<button class="af-chip" data-${attr}="${i.k}">${i.t} <b>✕</b></button>`).join('')}</div>`;
 }
 
 /* ---------- NAV RENDER ---------- */
@@ -10447,29 +10805,45 @@ const Ambient = {
 
 /* ---------- bursts: coins, sparkles, confetti, wine drops, rings ---------- */
 const Burst = {
-  ps:[], raf:0, last:0,
+  ps:[], raf:0, last:0, frameAt:0,
   add(list){
     if(fxLevel()==='off') return;
     if(fxLevel()==='low') list=list.filter((_,i)=>i%2===0);
+    if(!list.length) return;
     this.ps.push(...list);
     if(this.ps.length>420) this.ps.splice(0,this.ps.length-420);
     fxCanvas('fxBurst',10000).style.display='';
-    if(!this.raf){ this.last=performance.now(); this.raf=requestAnimationFrame(t=>this.loop(t)); }
+    // restart the loop if it isn't running — or if it silently stopped
+    if(!this.raf || performance.now()-this.frameAt>500){ this.last=0; this.frameAt=performance.now(); this.raf=requestAnimationFrame(t=>this.loop(t)); }
+  },
+  // wipe everything: used when the page is hidden, after an error, or by
+  // the watchdog if a browser ever stops delivering animation frames
+  reset(){
+    this.ps.length=0; if(this.raf) cancelAnimationFrame(this.raf); this.raf=0;
+    const cv=document.getElementById('fxBurst');
+    if(cv){ try{ cv.getContext('2d').setTransform(1,0,0,1,0,0); cv.getContext('2d').clearRect(0,0,cv.width,cv.height); }catch(e){} cv.style.display='none'; }
   },
   loop(t){
-    const dt=Math.min(.05,(t-this.last)/1000); this.last=t;
+    try{ this.frame(t); }catch(e){ this.reset(); }
+  },
+  frame(t){
+    this.frameAt=performance.now();
+    // the first frame (and any odd timestamp) still advances time, so
+    // every particle is guaranteed to reach the end of its life
+    let dt = this.last ? (t-this.last)/1000 : 1/60; this.last=t;
+    if(!(dt>0)) dt=1/60; dt=Math.min(.05, Math.max(1/240, dt));
     const cv=fxCanvas('fxBurst',10000), g=cv.getContext('2d');
     g.setTransform(FX_DPR,0,0,FX_DPR,0,0); g.clearRect(0,0,innerWidth,innerHeight);
     const spark=fxSprite('255,214,120',.18), cream=fxSprite('255,246,225',.2);
     for(let i=this.ps.length-1;i>=0;i--){
       const p=this.ps[i]; p.age+=dt;
-      if(p.age>=p.life){ this.ps.splice(i,1); continue; }
+      if(p.age>=p.life || p.age>4){ this.ps.splice(i,1); continue; }
       const k=p.age/p.life;
       if(p.home && p.age>p.homeAt){                 // coins fly to the cash counter
         const dx=p.home.x-p.x, dy=p.home.y-p.y, d=Math.hypot(dx,dy)||1;
         const sp=900*Math.min(1,(p.age-p.homeAt)*3);
         p.vx+= (dx/d*sp - p.vx)*Math.min(1,dt*9); p.vy+= (dy/d*sp - p.vy)*Math.min(1,dt*9);
-        if(d<18){ this.ps.splice(i,1); this.ps.push(...fxSparks(p.home.x,p.home.y,3,120,.35)); continue; }
+        if(d<22 || p.age>1.8){ this.ps.splice(i,1); if(d<22) this.ps.push(...fxSparks(p.home.x,p.home.y,3,120,.35)); continue; }
       } else { p.vy+=(p.g||0)*dt; p.vx*=1-(p.drag||0)*dt; p.vy*=1-(p.drag||0)*dt; }
       p.x+=p.vx*dt; p.y+=p.vy*dt; p.rot=(p.rot||0)+(p.vr||0)*dt;
       const fade = k>.75 ? 1-(k-.75)/.25 : 1;
@@ -10496,9 +10870,19 @@ const Burst = {
       g.restore();
     }
     if(this.ps.length){ this.raf=requestAnimationFrame(tt=>this.loop(tt)); }
-    else { this.raf=0; g.clearRect(0,0,innerWidth,innerHeight); cv.style.display='none'; }
+    else this.reset();
   }
 };
+// safety nets: no burst can outlive 4s on screen, and hiding the page
+// (switching apps, locking the phone, the car going to sleep) clears it
+setInterval(()=>{
+  const cv=document.getElementById('fxBurst');
+  if(!cv || cv.style.display==='none') return;
+  if(!Burst.ps.length || performance.now()-Burst.frameAt>1000 || Burst.ps.every(p=>p.age>4)) Burst.reset();
+}, 1000);
+document.addEventListener('visibilitychange', ()=>{ if(document.hidden) Burst.reset(); });
+window.addEventListener('pagehide', ()=>Burst.reset());
+window.addEventListener('pageshow', ()=>Burst.reset());
 const P = (o)=>Object.assign({age:0, rot:Math.random()*6.28}, o);
 function fxSparks(x,y,n,speed,life,cream){
   const out=[]; for(let i=0;i<n;i++){ const a=Math.random()*6.283, v=speed*(.35+Math.random()*.9);
