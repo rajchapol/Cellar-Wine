@@ -6311,6 +6311,7 @@ function injectIcons(root){
 }
 
 function renderTop(){
+  updateNavBadges();
   const s=gameSeason();
   document.getElementById('stWeek').innerHTML = `${G.week} <span class="cal-chip">${s.ic} ${monthName()} ${gameYear()}</span>`;
   tweenStat(document.getElementById('stCash'), Math.round(G.cash), fmtK);
@@ -9009,11 +9010,39 @@ function renderNav(){
     // items past the fold; a fixed gap keeps every entry reachable.
     if(n.p==='__spacer') return '<div style="height:10px;border-top:2px solid var(--line);margin:6px 4px 0"></div>';
     if(n.gated && !allocUnlocked() && !contractsUnlocked() && !partyUnlocked() && G.chapter<3) return '';
-    let badge = n.p==='shop' && !G.shopDone && G.shopQueue.length ? `<span class="nav-badge">${G.shopQueue.length}</span>` : '';
-    if(n.p==='cellar'){ const sc=suspectCount(); if(sc>0) badge=`<span class="nav-badge alert">${sc}</span>`; }
-    return `<button class="navbtn ${G.page===n.p?'active':''}" data-page="${n.p}"><span class="ic">${lineIcon(n.ic,22)}</span><span class="tx">${n.t}</span>${badge}</button>`;
+    return `<button class="navbtn ${G.page===n.p?'active':''}" data-page="${n.p}"><span class="ic">${lineIcon(n.ic,22)}</span><span class="tx">${n.t}</span>${navBadgeHTML(n.p)}</button>`;
   }).join('');
+  _navBadgeSig=navBadgeSig();
 }
+
+/* Nav badges count things that are waiting for you right now, so they go
+   down by themselves the moment you deal with them — nothing to "mark read". */
+function navBadge(p){
+  if(p==='shop') return (!G.shopDone && G.shopQueue.length) ? {n:G.shopQueue.length} : null;
+  if(p==='cellar'){ const sc=suspectCount(); return sc>0 ? {n:sc, alert:true} : null; }
+  if(p==='biz'){
+    // a contract whose next delivery you can't cover yet is urgent
+    const short=(G.contracts||[]).filter(k=>{ const c=G.cellar[k.wineId]; return !c || c.qty-(c.suspect||0) < k.perWeek; }).length;
+    const n=(allocUnlocked()?(G.allocOffers||[]).length:0) + (contractsUnlocked()?(G.contractOffers||[]).length:0)
+      + (partyUnlocked()&&G.party?1:0) + short;
+    return n ? {n, alert:short>0} : null;
+  }
+  return null;
+}
+function navBadgeHTML(p){ const b=navBadge(p); return b ? `<span class="nav-badge ${b.alert?'alert':''}">${b.n}</span>` : ''; }
+function navBadgeSig(){ return NAV_ITEMS.map(n=>{ const b=n.p&&navBadge(n.p); return b?b.n+(b.alert?'!':''):''; }).join('|'); }
+var _navBadgeSig='';
+// refresh only the badges whenever the counts change (serving, accepting an offer, delivering…)
+function updateNavBadges(){
+  try{
+    const sig=navBadgeSig(); if(sig===_navBadgeSig) return; _navBadgeSig=sig;
+    document.querySelectorAll('#nav .navbtn[data-page]').forEach(btn=>{
+      const old=btn.querySelector('.nav-badge'); if(old) old.remove();
+      const h=navBadgeHTML(btn.dataset.page); if(h) btn.insertAdjacentHTML('beforeend', h);
+    });
+  }catch(e){}
+}
+setInterval(updateNavBadges, 700);
 
 function pageBiz(){
   const showAlloc = allocUnlocked(), showCon = contractsUnlocked();
