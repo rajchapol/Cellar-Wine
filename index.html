@@ -747,6 +747,10 @@
   .fb-icon{ flex-shrink:0; color:var(--wine); display:flex; }
   .fb-title{ font-family:'Fraunces','Noto Serif Thai',serif; font-size:15.5px; font-weight:600; color:var(--wine); }
   .fb-note{ font-size:12px; color:var(--ink-soft); line-height:1.55; margin-top:2px; }
+  .goal-extras{margin-top:10px; padding-top:8px; border-top:1.5px dashed var(--line);}
+  .goal-extra{display:flex; justify-content:space-between; gap:8px; font-size:13px; padding:3px 0;}
+  .goal-extra.done{color:var(--up);}
+  .duel-banner .fb-tags b{color:var(--ink);}
   .fb-tags{ font-size:11.5px; font-weight:700; color:var(--gold-deep); margin-top:5px;
     display:flex; gap:10px; flex-wrap:wrap; align-items:center; }
   .fb-tags svg{ vertical-align:middle; margin-right:1px; }
@@ -867,6 +871,13 @@
   .wx-d{font-size:11px; color:var(--ink-soft); font-weight:600; line-height:1.3;}
 
   /* Auction */
+  .auc-grid{display:grid; grid-template-columns:repeat(3,1fr); gap:6px; margin:10px 0 2px; text-align:center; font-size:13px;}
+  .auc-grid > div{background:var(--paper-2); border-radius:10px; padding:6px 4px;}
+  .auc-rival{display:flex; gap:10px; align-items:center; justify-content:center; margin:8px 0; text-align:left;}
+  .auc-bids{display:flex; gap:8px; justify-content:center; flex-wrap:wrap;}
+  .auc-bid{display:flex; flex-direction:column; align-items:center; line-height:1.2; min-width:96px;}
+  .auc-bid span{font-size:11.5px; opacity:.85;}
+  .auc-tip{text-align:center; font-size:11.5px; color:var(--ink-soft); margin-top:8px; line-height:1.6;}
   .auc-price{
     text-align:center; margin:14px auto; padding:14px 20px; max-width:300px;
     background:linear-gradient(180deg,var(--paper-2),var(--parchment));
@@ -3632,6 +3643,118 @@ const EN = {
   "ระดับ": "tier",
   "หาซื้อไวน์ที่เข้างานได้ในตลาด": "Find wine for the party in the Market",
   "ราว 1-2 เดือนครั้ง ลูกค้ารายใหญ่จะสั่ง<b>ไวน์ราคาไม่แพงทีละหลายสิบขวด</b> ตามประเภทและระดับที่กำหนด<br><br>💰 ส่งไวน์จากคลังได้เงินทันทีขวดละราคาตลาด +15-40% ส่งครบได้โบนัส ส่งไม่ครบไม่โดนปรับ<br><br>ดูงานที่หน้า <b>ธุรกิจ</b> หรือกดแถบงานปาร์ตี้ที่หน้าร้าน": "Every month or two, a big client orders <b>dozens of inexpensive bottles at once</b>, of a set type and tier<br><br>💰 Each bottle you send from your cellar pays straight away at market price +15-40%; deliver the full order for a bonus, and falling short has no penalty<br><br>Find parties on the <b>Business</b> page, or tap the party bar on the Shop page",
+  "เกมมีเนื้อเรื่อง <b>22 บท</b> พร้อมตัวละครที่จะคอยตั้งเป้าหมายให้คุณ<br><br>ดูเควสต์ปัจจุบันได้ที่หน้า <b>เรื่อง</b> เสมอ ทำสำเร็จแล้วจะได้รางวัลและปลดบทใหม่<br><br>💡 ถ้าไม่รู้จะทำอะไรต่อ — เปิดหน้าเรื่องดูเป้าหมายปัจจุบัน หรือหน้า <b>คู่มือ</b> เพื่ออ่านคำแนะนำ": "The game has an <b>22-chapter</b> story with characters who set goals for you<br><br>You can always check the current quest on the <b>Story</b> page. Complete it to earn rewards and unlock the next chapter<br><br>💡 If you're not sure what to do next — open the Story page to see your current goal, or the <b>Guide</b> page for tips",
+  "ตั้งแต่บทที่ 8 ไวน์ที่เก็บไว้อาจเจอภัย: <b>ไฟดับ</b> (อุณหภูมิพุ่ง), <b>ท่อแตก</b> (น้ำท่วม), <b>จุกเสีย</b> (ออกซิไดซ์), <b>แมลงกัดฉลาก</b><br><br>เมื่อเกิดเหตุ เลือกได้ว่า<b>จ่ายจัดการทันที</b> (ปลอดภัย) หรือ<b>ปล่อยไว้</b> (เสี่ยงเสียหาย)<br><br>ป้องกันได้ 2 ทางในหน้าร้าน: <b>บำรุงระบบควบคุมอุณหภูมิ</b> (ยิ่งดูแลดี ยิ่งเกิดเหตุน้อย) และ<b>ทำประกัน</b> (ลดโอกาส + จ่ายคืน 70%) — ยิ่งเก็บไวน์แพงเยอะ ยิ่งควรป้องกัน": "From chapter 8, stored wine may face hazards: <b>power cuts</b> (temperature spikes), <b>burst pipes</b> (flooding), <b>bad corks</b> (oxidation), <b>label-eating insects</b><br><br>When one happens, you can <b>pay to fix it now</b> (safe) or <b>leave it</b> (risk damage)<br><br>Two ways to prevent it on the Shop page: <b>climate-control maintenance</b> (better upkeep, fewer incidents) and <b>insurance</b> (lower odds + 70% payout) — the more expensive wine you store, the more you should protect it",
+  "ขวดที่หายากที่สุด 8 ตัวในเกมไม่มีขายในตลาดตั้งแต่แรก คุณต้องพิสูจน์ตัวเองก่อนถึงจะซื้อได้ แต่ละขวดปลดล็อกด้วยความสำเร็จคนละแบบ:<br><br>🍷 จับคู่สมบูรณ์แบบ 25 ครั้ง · ชื่อเสียง ★150 · ส่งครบสัญญาร้านอาหาร 3 ฉบับ · ตรวจแล็บ 8 ครั้ง · รับโควตาพ่วง 5 ครั้ง · มูลค่าเซลลาร์ ฿20M · เดินเรื่องถึงบทที่ 20 · มีลูกค้าประจำ 8 คน<br><br>ดูความคืบหน้าทั้งหมดได้ที่หน้า \"ธุรกิจ\" — พอปลดล็อกแล้ว ขวดจะโผล่ในตลาดเหมือนไวน์ทั่วไป (แต่ยังหายากและสต๊อกน้อยมาก) ออกแบบให้เป็นเป้าหมายระยะยาวที่ผลักดันให้คุณลองเล่นทุกระบบในเกม": "The 8 rarest bottles in the game aren't on the market at first. You must prove yourself before you can buy them, and each one unlocks with a different achievement:<br><br>🍷 25 perfect pairings · ★150 reputation · 3 completed restaurant contracts · 8 lab tests · 5 bundled allocations · ฿20M cellar value · reach chapter 20 · 8 regular customers<br><br>See all progress on the \"Business\" page — once unlocked, the bottle appears on the market like any other wine (but still rare with very little stock). Designed as long-term goals that push you to try every system in the game",
+  "เดินเรื่องถึงบทที่ 20": "Reach chapter 20 of the story",
+  "คุณทำได้ แม้วิกเตอร์จะเข้าเส้นชัยก่อน — เขาหัวเราะ \"ช้าไปนิดนะ\" (+★2, +฿75k)": "You made it, though Victor crossed the line first — he laughs: \"A little slow, aren't we?\" (+★2, +฿75k)",
+  "สงครามราคา": "The Price War",
+  "ได้ข่าวว่าเธอรอดจากเรื่องของปลอมมาได้... โชคดีนะ": "I hear you survived that business with the fakes... lucky you.",
+  "แต่โชคไม่ได้จ่ายค่าเช่าร้านให้เธอหรอก": "But luck doesn't pay your rent.",
+  "ตั้งแต่สัปดาห์นี้ Cruz Cellars ลดราคาทั้งร้าน 30%": "From this week, everything at Cruz Cellars is 30% off.",
+  "ฉันขาดทุนได้เป็นปี แล้วเธอล่ะ ทนได้กี่สัปดาห์?": "I can afford to lose money for a year. How many weeks can you last?",
+  "เขาไม่ได้บ้าหรอก นี่คือ \"เผาเงินไล่คู่แข่ง\" — ร้านทุนหนาใช้กันบ่อย": "He's not mad. It's called \"burning cash to drive out a rival\" — big shops do it all the time.",
+  "ห้ามลดราคาตามเด็ดขาด เกมเงินหนาเธอไม่มีทางชนะเขา": "Whatever you do, don't cut your prices too. You'll never win a game of deep pockets against him.",
+  "ลูกค้าเก่าของป้าหลายคนเดินข้ามถนนไปแล้วจ้ะ... ป้าใจหาย": "A lot of Auntie's old friends have already crossed the street, dear... it breaks my heart.",
+  "แต่ป้าบอกพวกเขาว่า ที่นั่นขาย \"ขวด\" ที่นี่ขาย \"ค่ำคืน\"": "But I told them: over there they sell \"bottles\". Here, we sell \"evenings\".",
+  "สู้ด้วยสิ่งที่เขาไม่มี — การจับคู่ที่ใช่ ลูกค้าที่กลับมาซ้ำ และงานเลี้ยงที่จ่ายดี": "Fight with what he doesn't have — the right pairing, customers who come back, and parties that pay well.",
+  "ทุกคืนวันศุกร์ฉันจะติดยอดขายประจำสัปดาห์ไว้หน้าร้าน ให้ทั้งถนนเห็น": "Every Friday night I'll post my weekly takings in my window for the whole street to see.",
+  "ถ้าร้านเล็กๆ ของเธอขายได้มากกว่าฉันครบ 3 สัปดาห์... ฉันจะเลิกลดราคา": "If your little shop outsells me for 3 weeks... I'll end the sale.",
+  "แต่ไม่มีทางหรอก": "Not that it'll ever happen.",
+  "ทำยอดขายรายสัปดาห์ชนะวิกเตอร์ 3 สัปดาห์": "Beat Victor's weekly sales 3 times",
+  "ตีสองคืนนั้น วิกเตอร์ปลดป้ายลดราคาลงเงียบๆ ลูกค้าเก่ากลับมาพร้อมเพื่อน (+★4, +฿150k)": "At 2 a.m. that night, Victor quietly takes down his sale signs. Your old customers come back, bringing friends (+★4, +฿150k)",
+  "จับคู่สมบูรณ์แบบ 4 ครั้งต่อหน้านักวิจารณ์": "Make 4 perfect pairings while the critic is watching",
+  "ชนะการประมูล 1 ครั้ง": "Win 1 auction",
+  "แค้นใต้ค้อนประมูล": "A Grudge Under the Gavel",
+  "คืนนั้นที่ฮ่องกง... เธอเห็นฉันยกป้ายใช่ไหม": "That night in Hong Kong... you saw me raise my paddle, didn't you?",
+  "ขวดที่เธอได้ไป ฉันสัญญากับลูกค้าคนสำคัญไว้แล้วว่าจะหามาให้": "The bottle you took — I'd promised it to an important client.",
+  "เขาเลิกซื้อกับฉันตั้งแต่วันรุ่งขึ้น": "He stopped buying from me the very next day.",
+  "ต่อจากนี้ ทุกล็อตที่เธอยกป้าย ฉันจะยกสูงกว่าเสมอ": "From now on, every lot you bid on, I'll bid higher.",
+  "วิกเตอร์ประมูลด้วยอารมณ์ นั่นคือทั้งจุดแข็งและจุดอ่อนของเขา": "Victor bids with his emotions. It's both his strength and his weakness.",
+  "สังเกตมือเขาให้ดี ตอนใกล้เพดาน เขาจะลูบนาฬิกาก่อนยกป้ายเสมอ": "Watch his hands. When he's close to his limit, he always touches his watch before raising.",
+  "...ยกเว้นตอนที่เขาตั้งใจให้เธอเห็น": "...except when he wants you to see it.",
+  "จำไว้ ราคาประเมินคือเส้นที่ไม่ควรข้ามไปไกล ชนะแพงเกินก็คือแพ้": "Remember: the estimate is a line you shouldn't stray far past. Winning at too high a price is losing.",
+  "บางทีการกระโดดราคาทีเดียวก้าวใหญ่ ทำให้คนที่ใกล้เพดานถอยเองได้": "Sometimes one big jump bid makes someone near their limit back off on their own.",
+  "ช่วงนี้จะมีงานประมูลถี่ขึ้น... และฉันจะไปทุกงาน": "There'll be more auctions coming up... and I'll be at every one.",
+  "ชนะฉันให้ได้สองครั้ง แล้วค่อยมาคุยกันเรื่องศักดิ์ศรี": "Beat me twice, then we can talk about pride.",
+  "ชนะการประมูลแข่งกับวิกเตอร์ 2 ครั้ง": "Win 2 auctions against Victor",
+  "ทั้งห้องประมูลปรบมือ วิกเตอร์เดินออกไปโดยไม่หันกลับมา (+★5, +฿200k)": "The whole room applauds. Victor walks out without looking back (+★5, +฿200k)",
+  "เสิร์ฟลูกค้า 10 คน": "Serve 10 customers",
+  "...อย่าเพิ่งดีใจไป ตำนานล้มได้ในคืนเดียว ฉันรู้ดีกว่าใคร": "...Don't celebrate yet. Legends can fall in a single night. I'd know.",
+  "จับคู่สมบูรณ์แบบ 6 ครั้ง": "Make 6 perfect pairings",
+  "รับโควตาพ่วงสินค้า 1 ครั้ง": "Accept 1 bundled allocation",
+  "ข่าวลือ": "The Rumor",
+  "เปิดโซเชียลดูหรือยัง... มีคนโพสต์ว่าร้านเธอขายไวน์ปลอม": "Have you checked social media... someone's posted that your shop sells fake wine.",
+  "รูปขวดในโพสต์มาจากร้านเธอจริง แต่ฉลากถูกตัดต่อ": "The bottle in the photo really is from your shop, but the label's been doctored.",
+  "ลูกค้าโทรมายกเลิกโต๊ะวันศุกร์ไปสามโต๊ะแล้วจ้ะ": "Three Friday tables have already called to cancel, dear.",
+  "เมื่อคืนมีคนถามฉันเรื่องนี้ในงานเลี้ยง ฉันตอบว่า \"ไปชิมเองแล้วค่อยตัดสิน\"": "Someone asked me about it at a dinner last night. I said, \"Go and taste for yourself, then judge.\"",
+  "แต่ไม่ใช่ทุกคนจะยอมเสียเวลาแบบนั้น ชื่อเสียงร้านเธอร่วงไปแล้ว ★6 ในคืนเดียว": "But not everyone will bother. Your shop's reputation has already dropped ★6 overnight.",
+  "ฉันตามรอยบัญชีที่โพสต์... มันถูกสร้างจากเครื่องในออฟฟิศของ Cruz Cellars": "I traced the account that posted it... it was created from a computer in the Cruz Cellars office.",
+  "วิกเตอร์คงจนตรอกจริงๆ ถึงได้เล่นสกปรกขนาดนี้": "Victor must be truly desperate to play this dirty.",
+  "อย่าโต้ตอบด้วยการด่ากลับ ข่าวลือตายได้ด้วยการพิสูจน์เท่านั้น": "Don't fight back with insults. A rumor only dies when it's disproved.",
+  "ช่วงนี้ลูกค้าจะจับผิดเธอทุกแก้ว เสิร์ฟให้สมบูรณ์แบบ แล้วให้พวกเขากลับไปเล่าเอง": "For a while, customers will scrutinize every glass. Serve them perfectly and let them spread the word themselves.",
+  "และห้ามมีขวดน่าสงสัยค้างในเซลลาร์แม้แต่ขวดเดียว — ถ้ามีใครหาเจอตอนนี้ จบเลย": "And not a single suspect bottle stays in your cellar — if anyone finds one now, it's over.",
+  "ข่าวลือว่าร้านคุณขายของปลอมแพร่ไปทั่ว — ชื่อเสียง −★6 และลูกค้าจะจับผิดมากขึ้น": "A rumor that your shop sells fakes is spreading — reputation −★6, and customers will be fussier",
+  "จับคู่สมบูรณ์แบบ 8 ครั้งเพื่อลบข่าวลือ": "Make 8 perfect pairings to kill the rumor",
+  "ไม่มีขวดต้องสงสัยเหลือในเซลลาร์": "No suspect bottles left in the cellar",
+  "ลูกค้ารีวิวกันเองจนโพสต์ข่าวลือถูกลบ และคนที่เคยยกเลิกโต๊ะกลับมาจองใหม่ (+★8, +฿250k)": "Customers' own reviews bury the rumor until the post is deleted, and the cancelled tables book again (+★8, +฿250k)",
+  "ชิมปิดฉลาก": "The Blind Tasting",
+  "สมาคมไวน์จะจัดงานชิมแบบปิดฉลากประจำปี และปีนี้ฉันเป็นประธานกรรมการ": "The wine society is holding its annual blind tasting, and this year I chair the jury.",
+  "วิกเตอร์ท้าเธอต่อหน้าทุกคน — ใครจับคู่ไวน์ชั้นสูงได้ดีกว่า คนนั้นคือร้านอันดับหนึ่งของเมือง": "Victor has challenged you in front of everyone — whoever pairs fine wine better is the city's number-one shop.",
+  "งานนี้ไม่มีขวดถูกๆ ให้ซ่อนตัว ทุกแก้วต้องเป็น Premier Cru ขึ้นไป": "No cheap bottles to hide behind this time. Every glass must be Premier Cru or better.",
+  "ฉันเอาทุกอย่างที่เหลืออยู่มาลงกับงานนี้... อย่าคิดว่าฉันจะยอมง่ายๆ": "I've staked everything I have left on this... don't think I'll give in easily.",
+  "ข่าววงในบอกว่าผู้สนับสนุนของเขาให้โอกาสครั้งสุดท้าย ถ้าแพ้คืนนี้ เขาเสียทุกอย่าง": "Word is his backers have given him one last chance. If he loses this, he loses everything.",
+  "ไวน์ยิ่งแพงยิ่งพลาดง่าย เพราะคนมักเลือกจากราคาแทนที่จะเลือกจากจาน": "The pricier the wine, the easier it is to get wrong — people choose by price instead of by the dish.",
+  "ฟังจานก่อน แล้วค่อยฟังขวด": "Listen to the dish first, then to the bottle.",
+  "กรรมการจะแอบมานั่งในร้านเธอเหมือนลูกค้าธรรมดา เราจะไม่บอกว่าใครเป็นใคร": "The judges will sit in your shop like ordinary customers. We won't tell you who's who.",
+  "จับคู่สมบูรณ์แบบด้วยไวน์ระดับ Premier Cru ขึ้นไปให้ได้ 5 ครั้ง": "Make 5 perfect pairings with Premier Cru wine or better.",
+  "จับคู่สมบูรณ์แบบด้วยไวน์ Premier Cru ขึ้นไป 5 ครั้ง": "Make 5 perfect pairings with Premier Cru wine or better",
+  "กรรมการเอกฉันท์ — คุณชนะ วิกเตอร์ยืนนิ่งอยู่นาน ก่อนเดินมาจับมือโดยไม่พูดอะไร (+★10, +฿500k)": "A unanimous verdict — you win. Victor stands frozen for a long time, then walks over and shakes your hand without a word (+★10, +฿500k)",
+  "...หลังคืนชิมปิดฉลาก ผู้สนับสนุนของฉันถอนตัวหมดทุกราย": "...After the blind tasting, every one of my backers pulled out.",
+  "และเรื่องข่าวลือนั่น... ฉันเอง ฉันขอโทษ ไม่มีข้อแก้ตัว": "And that rumor... it was me. I'm sorry. There's no excuse.",
+  "...ฉันมีเรื่องจะสารภาพอีกอย่าง": "...There's something else I have to confess.",
+  "ส่งไวน์ครบงานปาร์ตี้ 1 งาน": "Complete 1 party order",
+  "จับคู่สมบูรณ์แบบ 8 ครั้ง": "Make 8 perfect pairings",
+  "งานปาร์ตี้คืออะไร? (ปลดล็อกบทที่ 12)": "What are parties? (unlocks in chapter 12)",
+  "โควตาพ่วงสินค้าคืออะไร? (ปลดล็อกบทที่ 13)": "What are bundled allocations? (unlocks in chapter 13)",
+  "สัญญาส่งร้านอาหารคืออะไร? (ปลดล็อกบทที่ 17)": "What are restaurant contracts? (unlocks in chapter 17)",
+  "กระโดด +20%": "Jump +20%",
+  "ลูบนาฬิกานานมาก ก่อนยกป้ายช้าๆ": "touches his watch for a long time, then raises slowly",
+  "ลังเลนานมาก ก่อนยกป้ายช้าๆ": "hesitates a long time, then raises slowly",
+  "ลูบนาฬิกาแวบหนึ่ง แล้วยกป้าย": "touches his watch briefly, then raises",
+  "ลังเลครู่หนึ่ง แล้วยกป้าย": "hesitates a moment, then raises",
+  "ยิ้มมุมปาก ยกป้ายทันที": "smirks and raises at once",
+  "ยกป้ายทันทีไม่ลังเล": "raises at once without hesitation",
+  "ส่ายหน้า วางป้ายลง": "shakes their head and lowers the paddle",
+  "ขายต่อทันทีได้กำไร": "resell now for a profit of",
+  "ขายต่อทันทีขาดทุน": "resell now at a loss of",
+  "ขายต่อทันทีได้": "Resell now for",
+  "คุณนำอยู่": "You're leading",
+  "นำอยู่": "is leading",
+  "กำลังคิด...": "thinking...",
+  "ท่าที:": "Reaction:",
+  "รอดูว่าคุณจะเสนอเท่าไร": "waiting to see what you bid",
+  "ดูท่าทีคู่แข่ง: ยกป้ายทันที = ยังสู้ได้อีกไกล · ลังเล = ใกล้เพดานแล้ว (แต่บางคนแกล้งทำ) · การกระโดดราคาใกล้เพดานอาจทำให้เขาถอยเอง": "Read your rival: raising at once = plenty left in them · hesitating = near their limit (but some fake it) · a jump bid near their limit may make them back off",
+  "ยอดวิกเตอร์สัปดาห์นี้": "Victor's sales this week",
+  "ของคุณ": "yours",
+  "ชนะ": "Won",
+  "แพ้": "Lost",
+  "วิกเตอร์มีแล้ว": "Victor has",
+  "— เขาเข้าเส้นชัยก่อน (รางวัลลดลง)": "— he finished first (smaller reward)",
+  "วิกเตอร์ได้ Unicorn ครบ 3 ขวดก่อนคุณ — เขาติดป้ายเยาะเย้ยหน้าร้าน (ชื่อเสียง −★2) แต่คุณยังทำเควสต์ต่อได้": "Victor got his 3 Unicorns before you — he hangs a mocking sign in his window (reputation −★2), but you can still finish the quest",
+  "วิกเตอร์ได้ไวน์ Unicorn ขวดที่": "Victor has bagged Unicorn wine no.",
+  "แล้ว — การแข่งขันยังไม่จบ": "— the race isn't over",
+  "ยอดขายสัปดาห์นี้": "This week's sales of",
+  "ชนะวิกเตอร์": "beat Victor's",
+  "ชนะแล้ว": "wins so far",
+  "วิกเตอร์ขายได้": "Victor sold",
+  "มากกว่าคุณ": "— more than your",
+  "เขาติดป้ายโชว์หน้าร้านทั้งคืน": "he shows it off in his window all night",
+  "ต้องทำให้ครบทุกข้อ:": "Complete every item:",
+  "ตัวนับในบทนี้เริ่มนับตั้งแต่บทเริ่ม": "Counters in this chapter start from when the chapter began",
+  "สงครามราคากับวิกเตอร์": "Price war with Victor",
+  "คุณนำอยู่ — รักษาไว้จนจบสัปดาห์": "You're ahead — hold it until the week ends",
+  "ยังตามอยู่ — จับคู่ให้ดี ลูกค้าจ่ายมากขึ้นและให้ทิป": "Still behind — pair well: customers pay more and tip",
   "ร้านไวน์ & เซลลาร์": "Wine Shop & Cellar"
 };
 function T(s){ if(LANG!=='en') return s; const v=EN[s]; return v===undefined ? s : v; }
@@ -4399,7 +4522,7 @@ function buildEvents(){
    longer you cellar, the more you expose to fate. Insurance and a
    maintained climate system soften the blow.
    ============================================================ */
-const HAZARD_CHAPTER = 6;
+const HAZARD_CHAPTER = 7;
 function hazardsUnlocked(){ return G.chapter >= HAZARD_CHAPTER; }
 
 const HAZARDS = [
@@ -4586,7 +4709,7 @@ function showOpportunityEvent(){
    premium instead of serving them one customer at a time.
    Unlocked once the shop has a reputation (chapter 9+).
    ============================================================ */
-const PARTY_CHAPTER = 9;
+const PARTY_CHAPTER = 11;
 function partyUnlocked(){ return G.chapter >= PARTY_CHAPTER; }
 
 const PARTY_HOSTS = [
@@ -4740,8 +4863,8 @@ const RARE_UNLOCKS = [
   {id:'w205', cond:g=>portfolioValue()>=20000000,
    how:T('มูลค่าเซลลาร์รวมถึง ฿20M'),
    flavor:T('เซลลาร์ของเธอกลายเป็นตำนาน เจ้าของขวดในตำนานจึงติดต่อมาเอง')},
-  {id:'w206', cond:g=>g.chapter>=15,
-   how:T('เดินเรื่องถึงบทที่ 16'),
+  {id:'w206', cond:g=>g.chapter>=19,
+   how:T('เดินเรื่องถึงบทที่ 20'),
    flavor:T('อาจารย์ทิ้งขวดสุดท้ายไว้ให้ — ขวดที่ซื้อวันที่ลูกสาวเกิด')},
   {id:'w207', cond:g=>Object.keys(g.regulars||{}).length>=8,
    how:T('มีลูกค้าประจำ 8 คน'),
@@ -4776,7 +4899,7 @@ function checkRareUnlocks(){
    forces you to take slow-moving stock alongside it. Unlocked by
    the story (chapter 10, "นักสะสมระดับโลก").
    ============================================================ */
-const ALLOC_CHAPTER = 10;
+const ALLOC_CHAPTER = 12;
 function allocUnlocked(){ return G.chapter >= ALLOC_CHAPTER; }
 
 const NEGOCIANTS = [
@@ -4878,7 +5001,7 @@ function passAlloc(offerId){
    delivery. Guaranteed money, but you must never come up short.
    Unlocked by the story (chapter 12, "ค่ำคืนของป้าโรซ่า").
    ============================================================ */
-const CONTRACT_CHAPTER = 12;
+const CONTRACT_CHAPTER = 16;
 function contractsUnlocked(){ return G.chapter >= CONTRACT_CHAPTER; }
 
 const CHEFS = [
@@ -5244,7 +5367,8 @@ const CHAPTERS = [
      ['rival',T('ของพวกนั้นหายากที่สุดในตลาด ผลิตปีละไม่กี่ร้อยขวด'),'neutral'],
      ['rival',T('แพ้แล้วก็ปิดร้านไปซะ อย่ามาเสียเวลาฉัน... แล้วเจอกัน'),'smug'],
    ],
-   goal:{type:'unicorn', target:3, text:T('สะสมไวน์ Unicorn 🦄 ให้ได้ 3 ขวด')},
+   goal:{type:'unicorn', target:3, text:T('สะสมไวน์ Unicorn 🦄 ให้ได้ 3 ขวด')}, race:true,
+   rewardLost:{rep:2, cash:75000, text:T('คุณทำได้ แม้วิกเตอร์จะเข้าเส้นชัยก่อน — เขาหัวเราะ "ช้าไปนิดนะ" (+★2, +฿75k)')},
    reward:{rep:5, cash:150000, text:T('วิกเตอร์นิ่งไปครู่หนึ่ง ก่อนพยักหน้ายอมรับ "...ไม่เลว" (+★5, +฿150k)')}},
 
   // ===== NEW: counterfeit arc =====
@@ -5268,6 +5392,24 @@ const CHAPTERS = [
    goal:{type:'rep', target:12, text:T('ทำชื่อเสียงร้านให้ถึง ★12 (บทเรียนเรื่องของปลอม)')},
    reward:{cash:80000, rep:2, text:T('มีอาแนะนำนักชิมฝีมือดีให้รู้จัก (+฿80k, +★2)')}},
 
+  {key:'pricewar', who:'rival', title:T('สงครามราคา'), bg:'street',
+   lines:[
+     ['rival',T('ได้ข่าวว่าเธอรอดจากเรื่องของปลอมมาได้... โชคดีนะ'),'smug'],
+     ['rival',T('แต่โชคไม่ได้จ่ายค่าเช่าร้านให้เธอหรอก'),'smug'],
+     ['rival',T('ตั้งแต่สัปดาห์นี้ Cruz Cellars ลดราคาทั้งร้าน 30%'),'smug'],
+     ['rival',T('ฉันขาดทุนได้เป็นปี แล้วเธอล่ะ ทนได้กี่สัปดาห์?'),'smug'],
+     ['broker',T('เขาไม่ได้บ้าหรอก นี่คือ "เผาเงินไล่คู่แข่ง" — ร้านทุนหนาใช้กันบ่อย'),'serious'],
+     ['broker',T('ห้ามลดราคาตามเด็ดขาด เกมเงินหนาเธอไม่มีทางชนะเขา'),'serious'],
+     ['regular',T('ลูกค้าเก่าของป้าหลายคนเดินข้ามถนนไปแล้วจ้ะ... ป้าใจหาย'),'sad'],
+     ['regular',T('แต่ป้าบอกพวกเขาว่า ที่นั่นขาย "ขวด" ที่นี่ขาย "ค่ำคืน"'),'happy'],
+     ['broker',T('สู้ด้วยสิ่งที่เขาไม่มี — การจับคู่ที่ใช่ ลูกค้าที่กลับมาซ้ำ และงานเลี้ยงที่จ่ายดี'),'neutral'],
+     ['rival',T('ทุกคืนวันศุกร์ฉันจะติดยอดขายประจำสัปดาห์ไว้หน้าร้าน ให้ทั้งถนนเห็น'),'smug'],
+     ['rival',T('ถ้าร้านเล็กๆ ของเธอขายได้มากกว่าฉันครบ 3 สัปดาห์... ฉันจะเลิกลดราคา'),'serious'],
+     ['rival',T('แต่ไม่มีทางหรอก'),'smug'],
+   ],
+   goal:{type:'duel', target:3, text:T('ทำยอดขายรายสัปดาห์ชนะวิกเตอร์ 3 สัปดาห์')},
+   reward:{rep:4, cash:150000, text:T('ตีสองคืนนั้น วิกเตอร์ปลดป้ายลดราคาลงเงียบๆ ลูกค้าเก่ากลับมาพร้อมเพื่อน (+★4, +฿150k)')}},
+
   {id:5, who:'critic', title:T('ปากกาที่ขยับตลาด'), bg:'shop',
    lines:[
      ['critic',T('ขออนุญาตนะครับ... ผมลอเรนซ์ เพียร์ส'),'neutral'],
@@ -5284,6 +5426,7 @@ const CHAPTERS = [
      ['critic',T('แล้วผมจะเขียนถึงคุณในคอลัมน์ — ซึ่งจะเปลี่ยนชะตาร้านนี้ไปตลอดกาล'),'smug'],
    ],
    goal:{type:'rep', target:20, text:T('ทำชื่อเสียงร้านให้ถึง ★20')},
+   also:[{type:'perfectSince', target:4, text:T('จับคู่สมบูรณ์แบบ 4 ครั้งต่อหน้านักวิจารณ์')}],
    reward:{cash:300000, text:T('บทวิจารณ์ห้าดาวของเพียร์สตีพิมพ์! ลูกค้าหลั่งไหลเข้าร้าน (+฿300k)')}},
 
   {id:6, who:'critic', title:T('ค่ำคืนแห่งการประมูล'), bg:'auction',
@@ -5303,9 +5446,27 @@ const CHAPTERS = [
      ['critic',T('พิสูจน์ให้เห็นว่าเธอเล่นในลีกใหญ่ได้ — ทำมูลค่าพอร์ตให้ถึง ฿5,000,000'),'neutral'],
    ],
    goal:{type:'portfolio', target:5000000, text:T('ทำมูลค่าพอร์ตถึง ฿5M')},
+   also:[{type:'auctionSince', target:1, text:T('ชนะการประมูล 1 ครั้ง')}],
    reward:{cash:250000, rep:5, text:T('คุณคว้าขวดสำคัญมาได้ในค่ำคืนประวัติศาสตร์ (+฿250k, +★5)')}},
 
   // ===== NEW: terroir lesson =====
+  {key:'grudge', who:'rival', title:T('แค้นใต้ค้อนประมูล'), bg:'auction',
+   lines:[
+     ['rival',T('คืนนั้นที่ฮ่องกง... เธอเห็นฉันยกป้ายใช่ไหม'),'serious'],
+     ['rival',T('ขวดที่เธอได้ไป ฉันสัญญากับลูกค้าคนสำคัญไว้แล้วว่าจะหามาให้'),'serious'],
+     ['rival',T('เขาเลิกซื้อกับฉันตั้งแต่วันรุ่งขึ้น'),'sad'],
+     ['rival',T('ต่อจากนี้ ทุกล็อตที่เธอยกป้าย ฉันจะยกสูงกว่าเสมอ'),'smug'],
+     ['critic',T('วิกเตอร์ประมูลด้วยอารมณ์ นั่นคือทั้งจุดแข็งและจุดอ่อนของเขา'),'serious'],
+     ['critic',T('สังเกตมือเขาให้ดี ตอนใกล้เพดาน เขาจะลูบนาฬิกาก่อนยกป้ายเสมอ'),'neutral'],
+     ['critic',T('...ยกเว้นตอนที่เขาตั้งใจให้เธอเห็น'),'smug'],
+     ['broker',T('จำไว้ ราคาประเมินคือเส้นที่ไม่ควรข้ามไปไกล ชนะแพงเกินก็คือแพ้'),'serious'],
+     ['broker',T('บางทีการกระโดดราคาทีเดียวก้าวใหญ่ ทำให้คนที่ใกล้เพดานถอยเองได้'),'neutral'],
+     ['rival',T('ช่วงนี้จะมีงานประมูลถี่ขึ้น... และฉันจะไปทุกงาน'),'smug'],
+     ['rival',T('ชนะฉันให้ได้สองครั้ง แล้วค่อยมาคุยกันเรื่องศักดิ์ศรี'),'serious'],
+   ],
+   goal:{type:'victorWins', target:2, text:T('ชนะการประมูลแข่งกับวิกเตอร์ 2 ครั้ง')},
+   reward:{rep:5, cash:200000, text:T('ทั้งห้องประมูลปรบมือ วิกเตอร์เดินออกไปโดยไม่หันกลับมา (+★5, +฿200k)')}},
+
   {id:7, who:'mentor', title:T('ดินที่พูดได้'), bg:'cellar',
    lines:[
      ['mentor',T('นั่งลงสิ ฉันจะเล่าเรื่องที่ไม่มีในหนังสือให้ฟัง'),'neutral'],
@@ -5323,6 +5484,7 @@ const CHAPTERS = [
      ['mentor',T('แล้วมานั่งเล่าให้ฉันฟังว่าแต่ละที่มันต่างกันตรงไหน'),'happy'],
    ],
    goal:{type:'regions', target:8, text:T('สะสมไวน์จาก 8 ภูมิภาคที่ต่างกัน')},
+   also:[{type:'servedSince', target:10, text:T('เสิร์ฟลูกค้า 10 คน')}],
    reward:{cash:200000, rep:4, text:T('🌍 อาจารย์พยักหน้าช้าๆ "ตอนนี้เธอเริ่มชิมด้วยหัวแล้ว" (+฿200k, +★4)')}},
 
   {id:8, who:'mentor', title:T('ตำนานบทใหม่'), bg:'dream',
@@ -5332,7 +5494,7 @@ const CHAPTERS = [
      ['mentor',T('เธอเข้าใจแล้วว่าไวน์คือเรื่องราว ไม่ใช่แค่สินทรัพย์'),'happy'],
      ['regular',T('ป้าก็ดีใจด้วยนะหนู! ตอนนี้ชมรมไวน์ทั้งเมืองพูดถึงร้านเราหมดเลย'),'happy'],
      ['broker',T('เทรดเดอร์ทุกคนอยากได้เธอเป็นพันธมิตร ยินดีด้วยจริงๆ'),'happy'],
-     ['rival',T('...ฉันยอมรับ เธอเก่งกว่าที่ฉันคิดไว้เยอะ เราน่าจะจับมือกันได้แล้ว'),'neutral'],
+     ['rival',T('...อย่าเพิ่งดีใจไป ตำนานล้มได้ในคืนเดียว ฉันรู้ดีกว่าใคร'),'smug'],
      ['mentor',T('แต่ฉันต้องเตือนอย่างหนึ่ง ตอนนี้แหละคือช่วงที่อันตรายที่สุด'),'serious'],
      ['mentor',T('คนที่พังไม่ใช่คนที่ล้มเหลว แต่คือคนที่สำเร็จแล้วเริ่มเชื่อว่าตัวเองไม่มีวันพลาด'),'serious'],
      ['mentor',T('บททดสอบสุดท้ายของฉัน เพื่อจารึกชื่อเธอลงในตำนาน'),'serious'],
@@ -5340,6 +5502,7 @@ const CHAPTERS = [
      ['mentor',T('แล้วเธอจะไม่ใช่แค่เจ้าของร้าน... แต่เป็นตำนานบทใหม่ของวงการไวน์'),'happy'],
    ],
    goal:{type:'portfolio', target:10000000, text:T('ทำมูลค่าพอร์ตถึง ฿10M')},
+   also:[{type:'perfectSince', target:6, text:T('จับคู่สมบูรณ์แบบ 6 ครั้ง')}],
    reward:{rep:10, cash:200000, text:T('🏆 ชื่อของคุณเริ่มถูกพูดถึงในระดับนานาชาติ (+★10, +฿200k)')}},
 
   // ===== ORGANIZATION ARC (endgame) =====
@@ -5380,11 +5543,47 @@ const CHAPTERS = [
      ['broker',T('เปิดหน้า \'ธุรกิจ\' ไว้ ฉันจะส่งข้อเสนอไปให้เรื่อยๆ'),'happy'],
    ],
    goal:{type:'regions', target:12, text:T('สะสมไวน์จาก 12 ภูมิภาคที่ต่างกัน')},
+   also:[{type:'allocSince', target:1, text:T('รับโควตาพ่วงสินค้า 1 ครั้ง')}],
    reward:{cash:500000, rep:8, text:T('🌍 คุณได้รับเชิญเข้าสมาคมนักสะสมระดับโลก (+฿500k, +★8)')}},
+
+  {key:'sabotage', who:'broker', title:T('ข่าวลือ'), bg:'market',
+   lines:[
+     ['broker',T('เปิดโซเชียลดูหรือยัง... มีคนโพสต์ว่าร้านเธอขายไวน์ปลอม'),'serious'],
+     ['broker',T('รูปขวดในโพสต์มาจากร้านเธอจริง แต่ฉลากถูกตัดต่อ'),'serious'],
+     ['regular',T('ลูกค้าโทรมายกเลิกโต๊ะวันศุกร์ไปสามโต๊ะแล้วจ้ะ'),'sad'],
+     ['critic',T('เมื่อคืนมีคนถามฉันเรื่องนี้ในงานเลี้ยง ฉันตอบว่า "ไปชิมเองแล้วค่อยตัดสิน"'),'serious'],
+     ['critic',T('แต่ไม่ใช่ทุกคนจะยอมเสียเวลาแบบนั้น ชื่อเสียงร้านเธอร่วงไปแล้ว ★6 ในคืนเดียว'),'sad'],
+     ['broker',T('ฉันตามรอยบัญชีที่โพสต์... มันถูกสร้างจากเครื่องในออฟฟิศของ Cruz Cellars'),'serious'],
+     ['broker',T('วิกเตอร์คงจนตรอกจริงๆ ถึงได้เล่นสกปรกขนาดนี้'),'sad'],
+     ['broker',T('อย่าโต้ตอบด้วยการด่ากลับ ข่าวลือตายได้ด้วยการพิสูจน์เท่านั้น'),'neutral'],
+     ['critic',T('ช่วงนี้ลูกค้าจะจับผิดเธอทุกแก้ว เสิร์ฟให้สมบูรณ์แบบ แล้วให้พวกเขากลับไปเล่าเอง'),'serious'],
+     ['broker',T('และห้ามมีขวดน่าสงสัยค้างในเซลลาร์แม้แต่ขวดเดียว — ถ้ามีใครหาเจอตอนนี้ จบเลย'),'serious'],
+   ],
+   onStart:()=>{ G.rep=Math.max(0,G.rep-6); G.news.push({mult:1, msg:T('ข่าวลือว่าร้านคุณขายของปลอมแพร่ไปทั่ว — ชื่อเสียง −★6 และลูกค้าจะจับผิดมากขึ้น')}); },
+   goal:{type:'perfectSince', target:8, text:T('จับคู่สมบูรณ์แบบ 8 ครั้งเพื่อลบข่าวลือ')},
+   also:[{type:'noSuspect', target:1, text:T('ไม่มีขวดต้องสงสัยเหลือในเซลลาร์')}],
+   reward:{rep:8, cash:250000, text:T('ลูกค้ารีวิวกันเองจนโพสต์ข่าวลือถูกลบ และคนที่เคยยกเลิกโต๊ะกลับมาจองใหม่ (+★8, +฿250k)')}},
+
+  {key:'tasting', who:'critic', title:T('ชิมปิดฉลาก'), bg:'auction',
+   lines:[
+     ['critic',T('สมาคมไวน์จะจัดงานชิมแบบปิดฉลากประจำปี และปีนี้ฉันเป็นประธานกรรมการ'),'neutral'],
+     ['critic',T('วิกเตอร์ท้าเธอต่อหน้าทุกคน — ใครจับคู่ไวน์ชั้นสูงได้ดีกว่า คนนั้นคือร้านอันดับหนึ่งของเมือง'),'serious'],
+     ['rival',T('งานนี้ไม่มีขวดถูกๆ ให้ซ่อนตัว ทุกแก้วต้องเป็น Premier Cru ขึ้นไป'),'smug'],
+     ['rival',T('ฉันเอาทุกอย่างที่เหลืออยู่มาลงกับงานนี้... อย่าคิดว่าฉันจะยอมง่ายๆ'),'serious'],
+     ['broker',T('ข่าววงในบอกว่าผู้สนับสนุนของเขาให้โอกาสครั้งสุดท้าย ถ้าแพ้คืนนี้ เขาเสียทุกอย่าง'),'serious'],
+     ['mentor',T('ไวน์ยิ่งแพงยิ่งพลาดง่าย เพราะคนมักเลือกจากราคาแทนที่จะเลือกจากจาน'),'serious'],
+     ['mentor',T('ฟังจานก่อน แล้วค่อยฟังขวด'),'neutral'],
+     ['critic',T('กรรมการจะแอบมานั่งในร้านเธอเหมือนลูกค้าธรรมดา เราจะไม่บอกว่าใครเป็นใคร'),'neutral'],
+     ['critic',T('จับคู่สมบูรณ์แบบด้วยไวน์ระดับ Premier Cru ขึ้นไปให้ได้ 5 ครั้ง'),'serious'],
+   ],
+   goal:{type:'perfectHighSince', target:5, text:T('จับคู่สมบูรณ์แบบด้วยไวน์ Premier Cru ขึ้นไป 5 ครั้ง')},
+   reward:{rep:10, cash:500000, text:T('กรรมการเอกฉันท์ — คุณชนะ วิกเตอร์ยืนนิ่งอยู่นาน ก่อนเดินมาจับมือโดยไม่พูดอะไร (+★10, +฿500k)')}},
 
   {id:11, who:'rival', title:T('พันธมิตรที่ไม่คาดฝัน'), bg:'street',
    lines:[
-     ['rival',T('...ฉันมีเรื่องจะสารภาพ'),'sad'],
+     ['rival',T('...หลังคืนชิมปิดฉลาก ผู้สนับสนุนของฉันถอนตัวหมดทุกราย'),'sad'],
+     ['rival',T('และเรื่องข่าวลือนั่น... ฉันเอง ฉันขอโทษ ไม่มีข้อแก้ตัว'),'sad'],
+     ['rival',T('...ฉันมีเรื่องจะสารภาพอีกอย่าง'),'sad'],
      ['rival',T('Cruz Cellars กำลังจะปิดตัว ฉันขยายเร็วเกินไปจนหนี้ท่วม'),'sad'],
      ['rival',T('สามสาขาในสองปี ทุกที่ตกแต่งหรูกว่าที่จำเป็น'),'sad'],
      ['rival',T('ฉันซื้อขวดละหลายแสนมาโชว์ในตู้ ทั้งที่ไม่มีลูกค้าคนไหนซื้อไหว'),'sad'],
@@ -5442,6 +5641,7 @@ const CHAPTERS = [
      ['mentor',T('มูลค่าพอร์ต ฿18,000,000 ฉันเคยไปได้สูงสุดแค่สิบสอง'),'happy'],
    ],
    goal:{type:'portfolio', target:18000000, text:T('ทำมูลค่าพอร์ตถึง ฿18M — ข้ามสถิติของอาจารย์')},
+   also:[{type:'partySince', target:1, text:T('ส่งไวน์ครบงานปาร์ตี้ 1 งาน')}],
    reward:{rep:12, cash:600000, text:T('📜 คุณข้ามสถิติที่อาจารย์ทำไว้ทั้งชีวิต (+★12, +฿600k)')}},
 
   // ===== NEW: the fake scandal =====
@@ -5464,6 +5664,7 @@ const CHAPTERS = [
      ['critic',T('คนที่รอดจากวิกฤตแบบนี้ คือคนที่จะครองตลาดหลังจากนั้น'),'neutral'],
    ],
    goal:{type:'rep', target:60, text:T('ทำชื่อเสียงถึง ★60 ท่ามกลางวิกฤตความเชื่อมั่น')},
+   also:[{type:'perfectSince', target:8, text:T('จับคู่สมบูรณ์แบบ 8 ครั้ง')}, {type:'noSuspect', target:1, text:T('ไม่มีขวดต้องสงสัยเหลือในเซลลาร์')}],
    reward:{cash:900000, rep:5, text:T('🛡️ ร้านของคุณกลายเป็นชื่อที่วงการไว้ใจที่สุด (+฿900k, +★5)')}},
 
   {id:15, who:'mentor', title:T('เซลลาร์แห่งศตวรรษ'), bg:'dream',
@@ -5527,6 +5728,7 @@ const CHAPTERS = [
    goal:{type:'regions', target:18, text:T('สะสมไวน์จาก 18 ภูมิภาค — ส่งต่อความรู้ทั้งหมด')},
    reward:{rep:40, cash:2000000, text:T('🕯️ วงจรครบรอบ — คุณกลายเป็นอาจารย์ของใครสักคนแล้ว (+★40, +฿2M)')}},
 ];
+CHAPTERS.forEach((c,i)=>{ c.id=i; });
 
 /* ============================================================
    CINEMATIC CUTSCENES — the opening title sequence and the
@@ -5808,14 +6010,14 @@ const TUTORIAL = [
   {id:'week', icon:'🌙', title:T('ขั้นสาม: จบสัปดาห์'),
    body:T('เมื่อบริการลูกค้าครบ กดปุ่ม <b>สัปดาห์ถัดไป</b> (หรือปุ่ม Y บน controller)<br><br>ทุกสัปดาห์จะเกิดสิ่งเหล่านี้:<br>• ราคาตลาดเปลี่ยน + มีข่าวใหม่<br>• หัก <b>ค่าเช่าและเงินเดือน</b> — ระวังอย่าให้เงินติดลบ!<br>• ไวน์ในเซลลาร์บ่มนานขึ้น = มีมูลค่ามากขึ้น<br>• ได้เควสต์ใหม่และลูกค้าชุดใหม่')},
   {id:'story', icon:'📜', title:T('เนื้อเรื่องและเป้าหมาย'), page:'story',
-   body:T('เกมมีเนื้อเรื่อง <b>18 บท</b> พร้อมตัวละครที่จะคอยตั้งเป้าหมายให้คุณ<br><br>ดูเควสต์ปัจจุบันได้ที่หน้า <b>เรื่อง</b> เสมอ ทำสำเร็จแล้วจะได้รางวัลและปลดบทใหม่<br><br>💡 ถ้าไม่รู้จะทำอะไรต่อ — เปิดหน้าเรื่องดูเป้าหมายปัจจุบัน หรือหน้า <b>คู่มือ</b> เพื่ออ่านคำแนะนำ')},
+   body:T('เกมมีเนื้อเรื่อง <b>22 บท</b> พร้อมตัวละครที่จะคอยตั้งเป้าหมายให้คุณ<br><br>ดูเควสต์ปัจจุบันได้ที่หน้า <b>เรื่อง</b> เสมอ ทำสำเร็จแล้วจะได้รางวัลและปลดบทใหม่<br><br>💡 ถ้าไม่รู้จะทำอะไรต่อ — เปิดหน้าเรื่องดูเป้าหมายปัจจุบัน หรือหน้า <b>คู่มือ</b> เพื่ออ่านคำแนะนำ')},
 ];
 
 /* ---------- GUIDE / HANDBOOK ---------- */
 const GUIDE = [
   {icon:'shield', t:T('จัดการไวน์ปลอมง่ายขึ้น'), d:T('เมื่อมีไวน์ต้องสงสัยในคลัง จะเห็น<b>ตัวเลขสีแดงกะพริบ</b>ที่เมนูเซลลาร์ และมี<b>แผงจัดการอยู่บนสุดของหน้าเซลลาร์</b> — ไม่ต้องไล่หาป้ายทีละใบอีกต่อไป<br><br>แต่ละวิธีบอกชัดว่าได้/เสียอะไร: <b>แจ้งสมาคม</b> ได้เงิน + ชื่อเสียง (ต้องมีนักชิมหรือส่งแล็บก่อน) · <b>ทำลายทิ้ง</b> จ่ายค่ากำจัดแต่ปลอดภัยสุด · <b>ปล่อยตลาดมืด</b> ได้เงินเร็วแต่เสี่ยงเสียชื่อเสียง<br><br>มี<b>ป้าย "แนะนำ"</b> ชี้วิธีที่ดีที่สุด และปุ่ม <b>จัดการทั้งหมด</b> เคลียร์ทุกขวดในคลิกเดียว<br><br>จ้าง<b>นักชิม (พนักงานสาย quality)</b> ไว้ จะตรวจของปลอมเจอเองและแจ้งสมาคมรับเงินได้ทันที')},
   {icon:'trophy', t:T('เทศกาลประจำปี — จังหวะทำเงินก้อนใหญ่'), d:T('ปีหนึ่ง (12 สัปดาห์) มี <b>6 เทศกาล</b> ที่ลูกค้าเยอะขึ้นและงบหนาขึ้น แต่ละงานมีไวน์ที่ขายดีเป็นพิเศษ:<br><br>🎉 ปีใหม่ (สปาร์กลิง) · ตรุษจีน (แดง) · ฤดูใบไม้ผลิ (โรเซ่) · กลางฤดูร้อน (ขาว) · <b>งานกาลาเก็บเกี่ยว</b> (แดง งานใหญ่สุด) · สิ้นปี (หวาน)<br><br>หน้าร้านจะเตือนล่วงหน้า 4 สัปดาห์ — <b>เตรียมสต๊อกไวน์ให้ตรงธีมไว้รับงาน</b> จะได้กำไรสูงสุด')},
-  {icon:'shield', t:T('ภัยในเซลลาร์ — เก็บไวน์ก็มีความเสี่ยง'), d:T('ตั้งแต่บทที่ 7 ไวน์ที่เก็บไว้อาจเจอภัย: <b>ไฟดับ</b> (อุณหภูมิพุ่ง), <b>ท่อแตก</b> (น้ำท่วม), <b>จุกเสีย</b> (ออกซิไดซ์), <b>แมลงกัดฉลาก</b><br><br>เมื่อเกิดเหตุ เลือกได้ว่า<b>จ่ายจัดการทันที</b> (ปลอดภัย) หรือ<b>ปล่อยไว้</b> (เสี่ยงเสียหาย)<br><br>ป้องกันได้ 2 ทางในหน้าร้าน: <b>บำรุงระบบควบคุมอุณหภูมิ</b> (ยิ่งดูแลดี ยิ่งเกิดเหตุน้อย) และ<b>ทำประกัน</b> (ลดโอกาส + จ่ายคืน 70%) — ยิ่งเก็บไวน์แพงเยอะ ยิ่งควรป้องกัน')},
+  {icon:'shield', t:T('ภัยในเซลลาร์ — เก็บไวน์ก็มีความเสี่ยง'), d:T('ตั้งแต่บทที่ 8 ไวน์ที่เก็บไว้อาจเจอภัย: <b>ไฟดับ</b> (อุณหภูมิพุ่ง), <b>ท่อแตก</b> (น้ำท่วม), <b>จุกเสีย</b> (ออกซิไดซ์), <b>แมลงกัดฉลาก</b><br><br>เมื่อเกิดเหตุ เลือกได้ว่า<b>จ่ายจัดการทันที</b> (ปลอดภัย) หรือ<b>ปล่อยไว้</b> (เสี่ยงเสียหาย)<br><br>ป้องกันได้ 2 ทางในหน้าร้าน: <b>บำรุงระบบควบคุมอุณหภูมิ</b> (ยิ่งดูแลดี ยิ่งเกิดเหตุน้อย) และ<b>ทำประกัน</b> (ลดโอกาส + จ่ายคืน 70%) — ยิ่งเก็บไวน์แพงเยอะ ยิ่งควรป้องกัน')},
   {icon:'search', t:T('วิกเตอร์ ครูซ — คู่แข่งตัวจริง'), d:T('หลังเจอกันในเนื้อเรื่อง (บท 3) วิกเตอร์จะ<b>กว้านไวน์ชั้นดี (tier 4+) ในตลาดตัดหน้าคุณ</b>ทุกสัปดาห์ — ของดีจะหมดชั้นเร็ว รีบซื้อก่อน<br><br>ยิ่งคุณแย่งไวน์ดีๆ มาได้ <b>ความเป็นคู่แข่งยิ่งร้อนแรง</b> เขาจะสู้หนักขึ้นทั้งในตลาดและ<b>ในการประมูล</b> — แต่การเอาชนะเขาในงานประมูลก็ยิ่งสะใจ<br><br>ดูระดับความดุเดือดได้ที่แถบบนหน้าตลาด')},
   {icon:'grape', t:T('โรเซ่ และเขตไวน์ทั่วโลก'), d:T('ตอนนี้เกมมีไวน์ <b>207 ขวดจาก 46 เขต</b> ครอบคลุมทั้งคลาสสิกและแหล่งใหม่ที่กำลังมาแรง — โพรวองซ์ · โตกาจ · ซานโตรีนี · ปริโอราต · โมเซล · เอตนา · วาเคา · บารอสซา · เซ็นทรัลโอทาโก · หนิงเซี่ย · ยามานาชิ และอีกมาก<br><br>🌸 <b>โรเซ่เป็นประเภทที่สาม</b> แยกจากแดงและขาว มีตัวกรองของตัวเองในหน้าตลาด<br><br>จุดเด่นของโรเซ่คือ<b>เข้ากับอาหารได้แทบทุกจาน</b> — ไม่เคยได้คะแนนจับคู่สูงสุด แต่ก็แทบไม่เคยพลาดเลย เหมาะเมื่อไม่แน่ใจว่าลูกค้าสั่งอะไร หรือคลังเหลือไม่ตรงธีม')},
   {icon:'question', t:T('ไม่รู้จักศัพท์ไวน์? แตะดูได้เลย'), d:T('คำเฉพาะทางในเกมจะมี<b>ไอคอน ? เล็กๆ</b> ต่อท้าย แตะแล้วมีคำอธิบายสั้นๆ เด้งขึ้นมาทันที ไม่ต้องออกจากหน้าที่เล่นอยู่<br><br>ครอบคลุมคำอย่าง Grand Cru · Premier Cru · Cru Bourgeois · En Primeur · Vintage · Terroir · Tannin · Négociant และอีกหลายคำ<br><br>💡 ถ้าเงินสดใกล้หมด <b>มีอา แทน</b> โบรกเกอร์จะโผล่มาเตือนพร้อมบอกทางออก (ขายขวดไหนดี · กู้ได้เท่าไร · ลดค่าใช้จ่ายยังไง) ก่อนที่จะสายเกินแก้')},
@@ -5824,10 +6026,10 @@ const GUIDE = [
   {icon:'chart', t:T('ลงทุนบ่มไวน์ให้ได้กำไร (พอร์ตระยะยาว)'), d:T('ไม่จำเป็นต้องขายไวน์ทุกขวดในร้าน — <b>ไวน์ชั้นดี (tier 4-5) ยิ่งเก็บนานยิ่งมีมูลค่า</b> ขวดกร็องด์ครูที่บ่ม 2 ปีอาจมีมูลค่าเพิ่ม +30% ถึง +150% ขึ้นกับจังหวะตลาด<br><br>📈 <b>ตลาดรองเป็นสองทาง</b> (มีขึ้นมีลง วิ่งกลับเข้าหาราคายุติธรรมเสมอ) — กลยุทธ์คือ <b>ซื้อตอนราคาตก เก็บบ่ม ขายตอนพีค</b> ดูกราฟราคาย้อนหลังและข่าวเพื่อจับจังหวะ<br><br>ไวน์ tier ต่ำ (1-2) บ่มแล้วไม่ค่อยขึ้น (เหมาะดื่ม/ขายเร็ว) แต่ไวน์แพงคือสินทรัพย์ลงทุนจริง — แบ่งเซลลาร์ส่วนหนึ่งเก็บของดีไว้ยาวๆ ดูกำไร/ขาดทุนแต่ละขวดได้ที่หน้า <b>พอร์ต</b><br><br>💡 กระจายความเสี่ยง: อย่าทุ่มเงินสดทั้งหมดกับการเก็บของ ต้องมีสภาพคล่องจ่ายค่าเช่า/เงินเดือนด้วย')},
   {icon:'bulb', t:T('เหตุการณ์พิเศษคืออะไร? (ปลดล็อกบทที่ 5)'), d:T('เป็นครั้งคราวจะมี<b>เหตุการณ์ให้เลือกตัดสินใจ</b>โผล่มาหลังจบสัปดาห์ เช่น มรดกตกทอด (ซื้อเหมาไวน์เสี่ยงของปลอม) · นักวิจารณ์แวะเยี่ยม (เปิดขวดดีเลี้ยงเพื่อรีวิว) · ผู้ขายร้อนเงิน (ไวน์ลด 35%) · งานการกุศล · เด็กฝึกงาน<br><br>แต่ละเหตุการณ์มีทางเลือกที่ให้ผลต่างกัน — บางอันได้กำไร บางอันเสี่ยง ทำให้ทุกรอบการเล่นไม่เหมือนกัน คิดให้ดีก่อนเลือก เพราะบางโอกาสมาแล้วไม่มาอีก')},
   {icon:'compass', t:T('จัดการเซลลาร์ใหญ่ๆ ยังไงให้เร็ว?'), d:T('เมื่อคลังเริ่มใหญ่ ใช้ <b>ตัวกรองอัจฉริยะ</b> ในหน้าเซลลาร์: แตะชิประดับชั้น (Grand Cru / Premier Cru / Village / Cru Bourgeois / Table) เพื่อดูเฉพาะกลุ่ม หรือเลือกภูมิภาคจากเมนู<br><br>ด้านบนมี<b>สรุปเซลลาร์</b>: มูลค่ารวม กำไร/ขาดทุน และจำนวนขวดพร้อมดื่ม เห็นภาพรวมได้ทันที<br><br>เวลาซื้อ/ขาย ใช้<b>แถบเลื่อน (slider)</b> หรือปุ่มลัด (1/5/10/ซื้อสูงสุด/ขายทั้งหมด) เพื่อปรับจำนวนทีเดียว ไม่ต้องกดทีละครั้ง — เหมาะกับจอสัมผัสในรถ')},
-  {icon:'🎉', t:T('งานปาร์ตี้คืออะไร? (ปลดล็อกบทที่ 10)'), d:T('ราว 1-2 เดือนครั้ง ลูกค้ารายใหญ่ (โรงแรม บริษัท งานแต่ง) จะสั่ง<b>ไวน์ราคาไม่แพงทีละหลายสิบขวด</b> ไม่สนการจับคู่อาหาร ขอแค่ตรงเงื่อนไข 2 ข้อ:<br>• <b>ประเภท</b> — แดงเท่านั้น / ขาวหรือสปาร์กลิง / อะไรก็ได้<br>• <b>ระดับ</b> — Table Wine ถึง Cru Bourgeois หรือถึง Village<br><br>💰 <b>วิธีเล่น:</b> ไปที่หน้า <b>ธุรกิจ</b> แล้วกดส่งไวน์จากคลัง ได้เงินทันทีขวดละ <b>ราคาตลาด +15-40%</b> · ส่งครบภายใน 3 สัปดาห์ได้โบนัสเงิน + ชื่อเสียง · ส่งไม่ครบไม่โดนปรับ<br><br>ระหว่างมีงาน หน้าร้านจะมีแถบเตือนให้กดไปส่งไวน์ได้ทันที · ยิ่งชื่อเสียงสูง งานยิ่งใหญ่ · ส่งไวน์ต้องสงสัยเข้างานไม่ได้')},
-  {icon:'🦄', t:T('ไวน์หายากในตำนานปลดล็อกยังไง?'), d:T('ขวดที่หายากที่สุด 8 ตัวในเกมไม่มีขายในตลาดตั้งแต่แรก คุณต้องพิสูจน์ตัวเองก่อนถึงจะซื้อได้ แต่ละขวดปลดล็อกด้วยความสำเร็จคนละแบบ:<br><br>🍷 จับคู่สมบูรณ์แบบ 25 ครั้ง · ชื่อเสียง ★150 · ส่งครบสัญญาร้านอาหาร 3 ฉบับ · ตรวจแล็บ 8 ครั้ง · รับโควตาพ่วง 5 ครั้ง · มูลค่าเซลลาร์ ฿20M · เดินเรื่องถึงบทที่ 16 · มีลูกค้าประจำ 8 คน<br><br>ดูความคืบหน้าทั้งหมดได้ที่หน้า "ธุรกิจ" — พอปลดล็อกแล้ว ขวดจะโผล่ในตลาดเหมือนไวน์ทั่วไป (แต่ยังหายากและสต๊อกน้อยมาก) ออกแบบให้เป็นเป้าหมายระยะยาวที่ผลักดันให้คุณลองเล่นทุกระบบในเกม')},
-  {icon:'📦', t:T('โควตาพ่วงสินค้าคืออะไร? (ปลดล็อกบทที่ 11)'), d:T('ไวน์หายากระดับกร็องด์ครูไม่ได้ขายให้ใครก็ได้ พ่อค้าคนกลาง (négociant) จะบังคับ "ขายพ่วง" — อยากได้ของดี 1-2 ขวด ต้องรับไวน์ระดับรองไปด้วยหลายขวด<br><br>ราคารวมมักถูกกว่าซื้อแยก แต่คุณต้องคิดให้ดี 3 อย่าง: <b>เงินสด</b>จมไปเท่าไหร่ · <b>พื้นที่เซลลาร์</b>พอไหม · แล้วจะ<b>ระบายของพ่วง</b>ออกหน้าร้านยังไงโดยไม่ขาดทุน<br><br>ของพ่วงมักเป็นไวน์ tier 1-2 ที่ขายออกช้า ถ้ารับทุกโควตาโดยไม่คิด เซลลาร์จะเต็มไปด้วยของขายไม่ออกและเงินสดหมด — ปฏิเสธเป็นก็สำคัญพอๆ กับรับเป็น')},
-  {icon:'🍽️', t:T('สัญญาส่งร้านอาหารคืออะไร? (ปลดล็อกบทที่ 13)'), d:T('เชฟระดับมิชลินจะเสนอสัญญาส่งไวน์ต่อเนื่อง 8 สัปดาห์ ในราคาคงที่ที่สูงกว่าตลาด ณ วันเซ็น<br><br><b>ข้อดี:</b> รายได้แน่นอนทุกสัปดาห์ ไม่ต้องลุ้นลูกค้าหน้าร้าน ส่งครบทั้งสัญญาได้โบนัสก้อนใหญ่ + ชื่อเสียง ★8<br><br><b>ข้อเสีย:</b> ราคาล็อกไว้แล้ว ถ้าราคาตลาดพุ่งขึ้นคุณก็ต้องกัดฟันซื้อของแพงมาส่ง และถ้าส่งไม่ครบ ครั้งแรกเชฟให้อภัย แต่ครั้งต่อไปโดนค่าปรับ 35% และเสียชื่อเสียง −★3<br><br><b>เคล็ดลับ:</b> กันไวน์ในสัญญาไว้อย่าเอาไปขายหน้าร้าน และตุนไว้อย่างน้อย 2 เท่าของยอดส่งต่อสัปดาห์เสมอ')},
+  {icon:'🎉', t:T('งานปาร์ตี้คืออะไร? (ปลดล็อกบทที่ 12)'), d:T('ราว 1-2 เดือนครั้ง ลูกค้ารายใหญ่ (โรงแรม บริษัท งานแต่ง) จะสั่ง<b>ไวน์ราคาไม่แพงทีละหลายสิบขวด</b> ไม่สนการจับคู่อาหาร ขอแค่ตรงเงื่อนไข 2 ข้อ:<br>• <b>ประเภท</b> — แดงเท่านั้น / ขาวหรือสปาร์กลิง / อะไรก็ได้<br>• <b>ระดับ</b> — Table Wine ถึง Cru Bourgeois หรือถึง Village<br><br>💰 <b>วิธีเล่น:</b> ไปที่หน้า <b>ธุรกิจ</b> แล้วกดส่งไวน์จากคลัง ได้เงินทันทีขวดละ <b>ราคาตลาด +15-40%</b> · ส่งครบภายใน 3 สัปดาห์ได้โบนัสเงิน + ชื่อเสียง · ส่งไม่ครบไม่โดนปรับ<br><br>ระหว่างมีงาน หน้าร้านจะมีแถบเตือนให้กดไปส่งไวน์ได้ทันที · ยิ่งชื่อเสียงสูง งานยิ่งใหญ่ · ส่งไวน์ต้องสงสัยเข้างานไม่ได้')},
+  {icon:'🦄', t:T('ไวน์หายากในตำนานปลดล็อกยังไง?'), d:T('ขวดที่หายากที่สุด 8 ตัวในเกมไม่มีขายในตลาดตั้งแต่แรก คุณต้องพิสูจน์ตัวเองก่อนถึงจะซื้อได้ แต่ละขวดปลดล็อกด้วยความสำเร็จคนละแบบ:<br><br>🍷 จับคู่สมบูรณ์แบบ 25 ครั้ง · ชื่อเสียง ★150 · ส่งครบสัญญาร้านอาหาร 3 ฉบับ · ตรวจแล็บ 8 ครั้ง · รับโควตาพ่วง 5 ครั้ง · มูลค่าเซลลาร์ ฿20M · เดินเรื่องถึงบทที่ 20 · มีลูกค้าประจำ 8 คน<br><br>ดูความคืบหน้าทั้งหมดได้ที่หน้า "ธุรกิจ" — พอปลดล็อกแล้ว ขวดจะโผล่ในตลาดเหมือนไวน์ทั่วไป (แต่ยังหายากและสต๊อกน้อยมาก) ออกแบบให้เป็นเป้าหมายระยะยาวที่ผลักดันให้คุณลองเล่นทุกระบบในเกม')},
+  {icon:'📦', t:T('โควตาพ่วงสินค้าคืออะไร? (ปลดล็อกบทที่ 13)'), d:T('ไวน์หายากระดับกร็องด์ครูไม่ได้ขายให้ใครก็ได้ พ่อค้าคนกลาง (négociant) จะบังคับ "ขายพ่วง" — อยากได้ของดี 1-2 ขวด ต้องรับไวน์ระดับรองไปด้วยหลายขวด<br><br>ราคารวมมักถูกกว่าซื้อแยก แต่คุณต้องคิดให้ดี 3 อย่าง: <b>เงินสด</b>จมไปเท่าไหร่ · <b>พื้นที่เซลลาร์</b>พอไหม · แล้วจะ<b>ระบายของพ่วง</b>ออกหน้าร้านยังไงโดยไม่ขาดทุน<br><br>ของพ่วงมักเป็นไวน์ tier 1-2 ที่ขายออกช้า ถ้ารับทุกโควตาโดยไม่คิด เซลลาร์จะเต็มไปด้วยของขายไม่ออกและเงินสดหมด — ปฏิเสธเป็นก็สำคัญพอๆ กับรับเป็น')},
+  {icon:'🍽️', t:T('สัญญาส่งร้านอาหารคืออะไร? (ปลดล็อกบทที่ 17)'), d:T('เชฟระดับมิชลินจะเสนอสัญญาส่งไวน์ต่อเนื่อง 8 สัปดาห์ ในราคาคงที่ที่สูงกว่าตลาด ณ วันเซ็น<br><br><b>ข้อดี:</b> รายได้แน่นอนทุกสัปดาห์ ไม่ต้องลุ้นลูกค้าหน้าร้าน ส่งครบทั้งสัญญาได้โบนัสก้อนใหญ่ + ชื่อเสียง ★8<br><br><b>ข้อเสีย:</b> ราคาล็อกไว้แล้ว ถ้าราคาตลาดพุ่งขึ้นคุณก็ต้องกัดฟันซื้อของแพงมาส่ง และถ้าส่งไม่ครบ ครั้งแรกเชฟให้อภัย แต่ครั้งต่อไปโดนค่าปรับ 35% และเสียชื่อเสียง −★3<br><br><b>เคล็ดลับ:</b> กันไวน์ในสัญญาไว้อย่าเอาไปขายหน้าร้าน และตุนไว้อย่างน้อย 2 เท่าของยอดส่งต่อสัปดาห์เสมอ')},
   {icon:'🏪', t:T('ทำกำไรจากร้านอย่างไร?'), d:T('ราคาขายในร้าน = ราคาตลาด × markup โดย markup สูงขึ้นตามคุณภาพการจับคู่ ยิ่งจับคู่ตรงใจยิ่งได้ราคาดี + ทิป + ชื่อเสียง<br><br>💎 <b>ไวน์ยิ่งแพงยิ่งคุ้มถ้าจับคู่เก่ง:</b> ขวด tier 4-5 ที่เสิร์ฟได้สมบูรณ์แบบจะได้ทิปพิเศษ (+20-35%) และชื่อเสียงมากกว่าปกติ เพราะ "ความหรู" ของขวดหายาก กำไรสุทธิต่อขวด tier 5 อาจสูงถึงหลักล้าน เทียบกับ tier 1 ที่ได้หลักหมื่น — แต่ต้องมีลูกค้ากระเป๋าหนัก (ชื่อเสียงสูง) มารองรับ<br><br>ถ้าไวน์แพงเกินงบลูกค้ามาก เขาจะจ่ายแค่เท่างบ ทำให้เสียโอกาส — ช่วงแรกเน้นไวน์ถูกก่อน พอชื่อเสียงขึ้นค่อยขยับไปขวดแพง')},
   {icon:'📈', t:T('เทรดให้ได้กำไรอย่างไร?'), d:T('ราคามี momentum (แรงเฉื่อย) ถ้าขึ้นแล้วมักขึ้นต่ออีกระยะ ดูกราฟและลูกศร 📈/📉 ในหน้าต่างซื้อขาย ข่าวดี (คะแนนนักวิจารณ์ ประมูลทำสถิติ) ดันราคาขึ้น ข่าวร้าย (ทิ้งสต๊อก ข่าวลือของปลอม) กดราคาลง ซื้อตอนตกแล้วรอเด้ง คือกลยุทธ์พื้นฐาน')},
   {icon:'💸', t:T('ทำไมเงินหายทุกสัปดาห์?'), d:T('ทุกสัปดาห์หักค่าเช่าร้าน + เงินเดือนพนักงาน ยิ่งอัพเกรดและจ้างคนเยอะ ค่าใช้จ่ายยิ่งสูง ต้องแน่ใจว่ารายได้จากร้าน + กำไรเทรด มากกว่าค่าใช้จ่าย ดูสรุปได้ในหน้าต่างจบสัปดาห์ ถ้าขาดทุนติดกัน ให้ขายไวน์บางส่วนหรือลดพนักงาน')},
@@ -5842,7 +6044,7 @@ const GUIDE = [
 ];
 
 /* ---------- GAME STATE ---------- */
-const VERSION = '5.2';
+const VERSION = '5.3';
 const SAVE_KEY = 'cellarAndVine_save_v3';
 const freshState = () => ({
   week:1,
@@ -5862,6 +6064,7 @@ const freshState = () => ({
   chapter:0,
   chapterSeen:-1,
   storyLog:[],
+  storyVer:2,       // 2 = the 22-chapter story (v5.3)
   // ----- NEW: economy -----
   staff:[],         // hired staff {id,role,salary,skill,name}
   weeklyLog:[],     // P&L history {week,revenue,costs,net}
@@ -7494,91 +7697,107 @@ function tasterVerdict(id){
 /* ============================================================
    AUCTION SYSTEM — periodic bidding events against NPC rivals
    ============================================================ */
+/* Each rival has a hidden walk-away price drawn around the lot's estimate
+   (lo..hi × estimate), so a careful bidder can often win near or below
+   estimate. Rivals give away how close they are to their limit by how they
+   raise ("tells"); some bluff. A big jump bid can scare a rival off early. */
 const AUCTION_BIDDERS=[
-  {name:T('วิกเตอร์ ครูซ'), av:'🕶️', aggression:1.25},
-  {name:T('นักสะสมนิรนาม'), av:'🎭', aggression:1.05},
-  {name:T('ตัวแทนจากฮ่องกง'), av:'🏙️', aggression:1.15},
-  {name:T('พิพิธภัณฑ์ไวน์'), av:'🏛️', aggression:0.95},
+  {key:'victor', name:T('วิกเตอร์ ครูซ'), av:'🕶️', lo:0.95, hi:1.45, bluff:0.35, jumpFear:0.25},
+  {key:'anon',   name:T('นักสะสมนิรนาม'), av:'🎭', lo:0.80, hi:1.25, bluff:0.12, jumpFear:0.50},
+  {key:'hk',     name:T('ตัวแทนจากฮ่องกง'), av:'🏙️', lo:0.85, hi:1.35, bluff:0.15, jumpFear:0.65},
+  {key:'museum', name:T('พิพิธภัณฑ์ไวน์'), av:'🏛️', lo:0.70, hi:1.10, bluff:0.05, jumpFear:0.40},
 ];
+// story chapters that are about auctions bring them round more often
+function auctionChapterHot(){
+  const ch=currentChapter(); if(!ch) return false;
+  return chapterGoals(ch).some(g=>g.type==='auctionSince'||g.type==='victorWins');
+}
 function maybeStartAuction(){
-  // roughly every 6-9 weeks once the player is established
   if(G.week<6 || G.auction) return false;
-  if(G.week - (G.lastAuctionWeek||0) < 6) return false;
-  if(Math.random()>0.35) return false;
-  // pick a desirable lot: prefer rare wines
+  const hot=auctionChapterHot();
+  if(G.week - (G.lastAuctionWeek||0) < (hot?2:6)) return false;
+  if(Math.random() > (hot?0.6:0.35)) return false;
   const pool=WINES.filter(w=>w.tier>=3 && !isRareLocked(w.id));
   const w=pool[Math.floor(Math.random()*pool.length)];
   const est=G.prices[w.id];
   const qty=1+Math.floor(Math.random()*2);
-  // Once the rivalry is hot, Victor shows up to auctions far more often and
-  // pushes his walk-away price higher — winning against him is the payoff.
-  let bidder;
+  // Once the rivalry is hot Victor turns up far more often; in his grudge
+  // chapter he is at every sale.
   const heat=G.rivalHeat||0;
-  if(rivalUnlocked() && Math.random() < 0.25+heat*0.05){
-    bidder=AUCTION_BIDDERS[0];   // Victor
-  } else {
-    bidder=AUCTION_BIDDERS[Math.floor(Math.random()*AUCTION_BIDDERS.length)];
-  }
-  const heatPush = bidder===AUCTION_BIDDERS[0] ? 1 + heat*0.03 : 1;
-  // rival's walk-away price — genuinely competitive, sometimes above estimate
-  const rivalMax=Math.round(est*qty*(1.05+Math.random()*0.75)*bidder.aggression*heatPush);
+  const ch=currentChapter();
+  let bidder;
+  if((ch && ch.key==='grudge') || (rivalUnlocked() && Math.random() < 0.25+heat*0.05)) bidder=AUCTION_BIDDERS[0];
+  else bidder=AUCTION_BIDDERS[1+Math.floor(Math.random()*(AUCTION_BIDDERS.length-1))];
+  const heatPush = bidder.key==='victor' ? 1 + heat*0.02 : 1;
+  const rivalMax=Math.round(est*qty*(bidder.lo+Math.random()*(bidder.hi-bidder.lo))*heatPush);
   G.auction={
     id:w.id, qty, est,
     current: Math.round(est*qty*0.5),
-    rivalMax, bidder,
-    yourTurn:true, over:false, won:false, rounds:0,
+    rivalMax, bidder:{...bidder},
+    yourTurn:true, over:false, won:false, rounds:0, log:[],
   };
   G.lastAuctionWeek=G.week;
   return true;
 }
-function auctionIncrement(a){ return Math.max(1000, Math.round(a.current*0.08)); }
-function placeBid(){
+function auctionStep(a, f){ return Math.max(1000, Math.round(a.current*f)); }
+function auctionIncrement(a){ return auctionStep(a, 0.05); }
+const AUC_STEPS=[{f:0.05, t:T('+5%')}, {f:0.10, t:T('+10%')}, {f:0.20, t:T('กระโดด +20%')}];
+// how a rival looks when raising: quick, a moment's thought, or long hesitation
+function auctionTell(a){
+  const b=a.bidder, h=(a.rivalMax-a.current)/Math.max(1,a.rivalMax);
+  let near = h<0.12;
+  if(Math.random() < (b.bluff||0)) near=!near;   // a bluff hides (or fakes) the strain
+  const v=b.key==='victor';
+  if(a.current>=a.rivalMax && Math.random()>(b.bluff||0)) return {k:'last', t: v?T('ลูบนาฬิกานานมาก ก่อนยกป้ายช้าๆ'):T('ลังเลนานมาก ก่อนยกป้ายช้าๆ')};
+  if(near) return {k:'near', t: v?T('ลูบนาฬิกาแวบหนึ่ง แล้วยกป้าย'):T('ลังเลครู่หนึ่ง แล้วยกป้าย')};
+  return {k:'easy', t: v?T('ยิ้มมุมปาก ยกป้ายทันที'):T('ยกป้ายทันทีไม่ลังเล')};
+}
+function auctionWin(a){
+  a.over=true; a.won=true;
+  const owed=Math.min(a.current, G.cash);
+  G.cash-=owed; G.cash=Math.round(G.cash);
+  const yr=gameYear();
+  if(cellarUsed()+a.qty<=cellarCapacity()){
+    const c=G.cellar[a.id];
+    if(c){ c.buyPrice=(c.buyPrice*c.qty+a.current)/(c.qty+a.qty); c.qty+=a.qty; }
+    else { G.cellar[a.id]={qty:a.qty, buyWeek:G.week, buyPrice:Math.round(a.current/a.qty), vintage:yr, quality:vintageRating(a.id,yr), fake:0, suspect:0}; sealLot(G.cellar[a.id]); }
+  } else {
+    G.cash+=a.current*0.9;
+    toast(T('เซลลาร์เต็ม — ขายต่อทันทีที่ 90%'),'bad');
+  }
+  G.stats.auctionsWon=(G.stats.auctionsWon||0)+1;
+  if(a.bidder.key==='victor'){ G.stats.victorAuctionWins=(G.stats.victorAuctionWins||0)+1; G.rivalHeat=Math.min(10,(G.rivalHeat||0)+1); }
+  sfx('gavel'); setTimeout(()=>sfx('great'),300);
+  checkAchievements();
+}
+function placeBid(f){
   const a=G.auction; if(!a||a.over) return;
   // block re-entry while the rival is "thinking" — otherwise rapid taps on a
   // touch screen stack multiple bids and blow past the ceiling
   if(a.awaitingRival) return;
-  const inc=auctionIncrement(a);
-  const myBid=a.current+inc;
+  f=f||0.05;
+  const myBid=a.current+auctionStep(a,f);
   if(myBid>G.cash){ toast(T('เงินสดไม่พอสำหรับราคานี้'),'bad'); sfx('bad'); return; }
-  // The rival may raise once more before dropping out, and we would then owe
-  // that higher figure. Only bid if we could settle at that price too.
-  const exposure=myBid+auctionIncrement({...a, current:myBid});
-  if(exposure>G.cash && myBid+inc<=a.rivalMax){
-    toast(T('เงินสดอาจไม่พอถ้าคู่แข่งสู้ต่อ'),'bad'); sfx('bad'); return;
-  }
   a.current=myBid; a.rounds++;
+  a.log.unshift({who:'you', v:myBid});
   sfx('click');
-  // rival responds
-  if(a.current + auctionIncrement(a) <= a.rivalMax){
-    a.awaitingRival=true;
-    renderAuction();   // repaint immediately so the bid button shows as disabled
-    setTimeout(()=>{
-      if(!G.auction||G.auction!==a||a.over){ return; }
-      a.current=a.current+auctionIncrement(a);
-      a.awaitingRival=false;
-      sfx('nav');
-      renderAuction();
-    }, 700);
-  } else {
-    // rival drops out — you win. Charge only what the player can actually pay:
-    // the rival raised after our affordability check, so re-verify here.
-    a.over=true; a.won=true;
-    const owed=Math.min(a.current, G.cash);
-    G.cash-=owed; G.cash=Math.round(G.cash);
-    const yr=gameYear();
-    if(cellarUsed()+a.qty<=cellarCapacity()){
-      const c=G.cellar[a.id];
-      if(c){ c.buyPrice=(c.buyPrice*c.qty+a.current)/(c.qty+a.qty); c.qty+=a.qty; }
-      else { G.cellar[a.id]={qty:a.qty, buyWeek:G.week, buyPrice:Math.round(a.current/a.qty), vintage:yr, quality:vintageRating(a.id,yr), fake:0, suspect:0}; sealLot(G.cellar[a.id]); }
-    } else {
-      G.cash+=a.current*0.9;
-      toast(T('เซลลาร์เต็ม — ขายต่อทันทีที่ 90%'),'bad');
-    }
-    G.stats.auctionsWon=(G.stats.auctionsWon||0)+1;
-    sfx('gavel'); setTimeout(()=>sfx('great'),300);
-    checkAchievements();
+  // rival walks away: past their limit, or rattled by a big jump close to it
+  const rattled = f>=0.2 && myBid>=a.rivalMax*0.85 && Math.random()<(a.bidder.jumpFear||0);
+  if(myBid>=a.rivalMax || rattled){
+    if(rattled) a.log.unshift({who:'rival', t:T('ส่ายหน้า วางป้ายลง')});
+    auctionWin(a); renderAuction(); renderTop(); return;
   }
-  renderAuction(); renderTop();
+  // otherwise they raise — never past their own limit
+  const counter=Math.min(a.rivalMax, myBid+auctionStep({current:myBid},0.06));
+  a.awaitingRival=true;
+  renderAuction();   // repaint immediately so the bid buttons show as disabled
+  const tell=auctionTell({...a, current:counter});
+  setTimeout(()=>{
+    if(!G.auction||G.auction!==a||a.over) return;
+    a.current=counter; a.awaitingRival=false;
+    a.log.unshift({who:'rival', v:counter, t:tell.t, k:tell.k});
+    sfx('nav'); renderAuction();
+  }, tell.k==='easy'?450:tell.k==='near'?1000:1500);
 }
 function withdrawAuction(){
   const a=G.auction; if(!a) return;
@@ -7588,13 +7807,15 @@ function withdrawAuction(){
 }
 function renderAuction(){
   const a=G.auction; if(!a) return;
+  a.log=a.log||[];
   const w=wineById(a.id);
   const m=document.getElementById('modal');
-  const inc=auctionIncrement(a);
-  const next=a.current+inc;
-  const vsEst=((a.current/(a.est*a.qty))-1)*100;
+  const estTotal=a.est*a.qty;
+  const resale=bidPrice(a.id)*a.qty;
+  const vsEst=((a.current/estTotal)-1)*100;
   m.className='modal';
   if(a.over){
+    const gain=resale-a.current;
     m.innerHTML=`
       <div class="vn-stage" style="height:180px;border-radius:18px;overflow:hidden;position:relative">
         ${sceneBG('auction')}
@@ -7606,45 +7827,55 @@ function renderAuction(){
       </div>
       <div class="body" style="text-align:center;font-size:14px">
         ${a.won
-          ? `${T("ได้")} <b>${w.name}</b> ×${a.qty} ${T("ที่ราคา")} <b>${fmt(a.current)}</b><br><span class="wine-sub">${vsEst>=0?T('สูงกว่า'):T('ต่ำกว่า')}${T("ราคาประเมิน")} ${Math.abs(vsEst).toFixed(0)}%</span>`
+          ? `${T("ได้")} <b>${w.name}</b> ×${a.qty} ${T("ที่ราคา")} <b>${fmt(a.current)}</b><br><span class="wine-sub">${vsEst>=0?T('สูงกว่า'):T('ต่ำกว่า')}${T("ราคาประเมิน")} ${Math.abs(vsEst).toFixed(0)}% · <span style="color:${gain>=0?'var(--up)':'var(--down)'}">${gain>=0?T('ขายต่อทันทีได้กำไร'):T('ขายต่อทันทีขาดทุน')} ${fmtK(Math.abs(gain))}</span></span>`
           : `<b>${a.bidder.name}</b> ${T("คว้า")} <b>${w.name}</b> ${T("ไปที่")} ${fmt(a.current)}<br><span class="wine-sub">${T("บางครั้งการถอนตัวคือการตัดสินใจที่ถูกต้อง")}</span>`}
       </div>
       <div class="row" style="justify-content:center">
         <button class="btn gold" id="aucClose" data-focus="modal">${T("ปิด")}</button>
       </div>`;
     document.getElementById('modalBg').classList.add('show');
-    document.getElementById('aucClose').onclick=()=>{ G.auction=null; closeModal(); saveGame(true); routePage(); };
+    document.getElementById('aucClose').onclick=()=>{ G.auction=null; closeModal(); saveGame(true); checkStory(); routePage(); };
     modalFocusables();
     return;
   }
+  const last=a.log.find(l=>l.who==='rival' && l.t);
+  const yourTop=a.log.length && a.log[0].who==='you';
   m.innerHTML=`
-    <div class="vn-stage" style="height:170px;border-radius:18px;overflow:hidden;position:relative">
+    <div class="vn-stage" style="height:150px;border-radius:18px;overflow:hidden;position:relative">
       ${sceneBG('auction')}
       <div class="vn-vignette"></div>
       <div class="vn-title">${lineIcon('trophy',16)} ${T("การประมูล · สัปดาห์")} ${G.week}</div>
-      <div style="position:absolute;bottom:10px;left:50%;transform:translateX(-50%);z-index:3;filter:drop-shadow(0 4px 8px rgba(0,0,0,.5))">${bottleSVG(w,54)}</div>
+      <div style="position:absolute;bottom:10px;left:50%;transform:translateX(-50%);z-index:3;filter:drop-shadow(0 4px 8px rgba(0,0,0,.5))">${bottleSVG(w,50)}</div>
     </div>
-    <div style="text-align:center;margin-top:10px">
+    <div style="text-align:center;margin-top:8px">
       <h3 style="justify-content:center;margin:0">${w.name} ×${a.qty}</h3>
       <div class="wine-sub">${w.cuvee} · ${w.region} · ${w.score} pts</div>
-      <div class="wine-sub">${T("ราคาประเมิน")} ${fmt(a.est*a.qty)}</div>
+    </div>
+    <div class="auc-grid">
+      <div><div class="wine-sub">${T("ราคาประเมิน")}</div><b>${fmtK(estTotal)}</b></div>
+      <div><div class="wine-sub">${T("ขายต่อทันทีได้")}</div><b>${fmtK(resale)}</b></div>
+      <div><div class="wine-sub">${T("เงินสดของคุณ")}</div><b>${fmtK(G.cash)}</b></div>
     </div>
     <div class="auc-price">
-      <div class="wine-sub">${T("ราคาปัจจุบัน")}</div>
+      <div class="wine-sub">${T("ราคาปัจจุบัน")} · ${yourTop?`<b style="color:var(--up)">${T("คุณนำอยู่")}</b>`:`<b style="color:var(--down)">${a.bidder.name} ${T("นำอยู่")}</b>`}</div>
       <div class="auc-now">${fmt(a.current)}</div>
       <div class="wine-sub" style="color:${vsEst>0?'var(--down)':'var(--up)'}">${vsEst>=0?'+':''}${vsEst.toFixed(0)}${T("% เทียบราคาประเมิน")}</div>
     </div>
-    <div class="row" style="justify-content:center;gap:8px;margin:10px 0">
-      <span style="font-size:26px">${a.bidder.av}</span>
-      <span class="wine-sub">${T("คู่แข่ง:")} <b>${a.bidder.name}</b> ${T("· รอบที่")} ${a.rounds+1}</span>
+    <div class="auc-rival">
+      <span style="font-size:24px">${a.bidder.av}</span>
+      <div><b>${a.bidder.name}</b>
+        <div class="wine-sub">${a.awaitingRival?T('กำลังคิด...'):last?`${T("ท่าที:")} <i>${last.t}</i>`:T('รอดูว่าคุณจะเสนอเท่าไร')}</div></div>
     </div>
-    <div class="row" style="justify-content:center;gap:10px">
-      <button class="btn sage" id="aucBid" data-focus="modal" ${(next>G.cash||a.awaitingRival)?'disabled':''}>${a.awaitingRival?T('คู่แข่งกำลังคิด...'):T('เสนอ ')+fmt(next)}</button>
+    <div class="auc-bids">
+      ${AUC_STEPS.map(st=>{ const v=a.current+auctionStep(a,st.f); const dis=v>G.cash||a.awaitingRival||yourTop;
+        return `<button class="btn ${st.f>=0.2?'gold':'sage'} auc-bid" data-f="${st.f}" data-focus="modal" ${dis?'disabled':''}><span>${st.t}</span><b>${fmtK(v)}</b></button>`; }).join('')}
+    </div>
+    <div class="row" style="justify-content:center;margin-top:8px">
       <button class="btn ghost" id="aucOut" data-focus="modal" ${a.awaitingRival?'disabled':''}>${T("ถอนตัว")}</button>
     </div>
-    <p style="text-align:center;font-size:11.5px;color:var(--ink-soft);margin-top:8px">${T("เงินสดของคุณ")} ${fmt(G.cash)} ${T("· ยิ่งเสนอสูงยิ่งเสี่ยงจ่ายแพงเกินมูลค่า")}</p>`;
+    <p class="auc-tip">${T("ดูท่าทีคู่แข่ง: ยกป้ายทันที = ยังสู้ได้อีกไกล · ลังเล = ใกล้เพดานแล้ว (แต่บางคนแกล้งทำ) · การกระโดดราคาใกล้เพดานอาจทำให้เขาถอยเอง")}</p>`;
   document.getElementById('modalBg').classList.add('show');
-  document.getElementById('aucBid').onclick=()=>{ if(!a.awaitingRival) placeBid(); };
+  m.querySelectorAll('.auc-bid').forEach(b=>b.onclick=()=>{ if(!a.awaitingRival) placeBid(+b.dataset.f); });
   document.getElementById('aucOut').onclick=()=>{ if(!a.awaitingRival) withdrawAuction(); };
   modalFocusables();
 }
@@ -8279,6 +8510,18 @@ function pageShop(){
       </div>
     </div>`;
   }
+  const dch=currentChapter();
+  if(dch && dch.goal.type==='duel'){
+    const d=duelState(), mine=G._weekRevenue||0, ahead=mine>d.target;
+    html+=`<div class="fest-banner ${ahead?'active':'soon'} duel-banner">
+      <div class="fb-icon">${miniPortrait('rival')}</div>
+      <div class="fb-body">
+        <div class="fb-title">${T("สงครามราคากับวิกเตอร์")} · ${T("ชนะ")} ${d.wins}/${dch.goal.target}</div>
+        <div class="fb-tags">${T("ยอดวิกเตอร์สัปดาห์นี้")} <b>${fmtK(d.target)}</b> · ${T("ของคุณ")} <b style="color:${ahead?'var(--up)':'var(--down)'}">${fmtK(mine)}</b></div>
+        <div class="fb-note">${ahead?T('คุณนำอยู่ — รักษาไว้จนจบสัปดาห์'):T('ยังตามอยู่ — จับคู่ให้ดี ลูกค้าจ่ายมากขึ้นและให้ทิป')}</div>
+      </div>
+    </div>`;
+  }
   if(partyUnlocked() && G.party){
     const P=G.party;
     html+=`<div class="fest-banner soon party-banner" data-focus="partyGo" tabindex="0" role="button">
@@ -8525,7 +8768,8 @@ function generateShopQueue(){
     // never more than 2.5x the dearest bottle on the market today
     const ceiling=2.5*Math.max(...WINES.filter(w=>!isRareLocked(w.id)).map(w=>G.prices[w.id]||w.base));
     const budget=Math.round(Math.min(ceiling, Math.max(everyday, tierBudget(bt)*mult)));
-    const fussy = Math.max(0, Math.min(1, 0.3 + Math.random()*0.3 + G.rep*0.004 + TRAIT.fus));
+    const rumour = (currentChapter()&&currentChapter().key==='sabotage') ? 0.12 : 0;
+    const fussy = Math.max(0, Math.min(1, 0.3 + Math.random()*0.3 + G.rep*0.004 + TRAIT.fus + rumour));
     let opener;
     if(reg && reg.visits>=1){
       const back=[
@@ -8745,6 +8989,7 @@ function serveCustomer(id){
     if(quality>0.78){ repGain=3+repPrem+Math.floor(staffBonus('pairing')/2); tip=sellPrice*(0.15+tierPrem+staffBonus('pairing')*0.02); 
       reaction=`${T("✨ \"สมบูรณ์แบบ!")} ${w.cuvee} ${T("เข้ากับ")}${cust.food.name}${T("อย่างเหลือเชื่อ\" —")} ${cust.name}${T("ประทับใจสุดๆ")}`; mood='great';
       G.stats.perfectPairs++; questProgress('perfect',1);
+      if(w.tier>=4) G.stats.perfectHigh=(G.stats.perfectHigh||0)+1;
       if(w.tier>=4){ reaction=`${T("✨ \"ขวดระดับนี้หายากมาก!")} ${w.cuvee} ${T("กับ")}${cust.food.name} ${T("คือประสบการณ์ที่ผมจะไม่มีวันลืม\" —")} ${cust.name}${T("ตื้นตัน")}`; } }
     else if(quality>0.55){ repGain=2; tip=sellPrice*(0.06+tierPrem*0.4);
       reaction=`🙂 "${cust.name} ${T("พยักหน้าพอใจ รสชาติเข้ากันดีทีเดียว\"")}`; mood='good'; }
@@ -9363,6 +9608,8 @@ function nextWeek(){
   if(G.weeklyLog.length>52) G.weeklyLog.shift();
   if(revenueThisWeek>G.stats.bestWeek) G.stats.bestWeek=revenueThisWeek;
 
+  storyWeekTick(revenueThisWeek);
+
   // reset weekly accumulators
   G._weekRevenue=0; G._weekServed=0;
 
@@ -9547,6 +9794,20 @@ function loadGame(){
     pruneMissingWines();
     normalizeCellarLots();
     pruneEmptyLots();     // a corrupt save can clamp to qty 0; don't show ghosts
+    // v5.3 added four chapters; move an older save to the same point in the new story
+    if(!data.storyVer || data.storyVer<2){
+      // where each old chapter sits now; a save waiting on old chapter i resumes
+      // right after old chapter i-1, which may be one of the new chapters
+      const N=[0,1,2,3,4,6,7,9,10,11,12,15,16,17,18,19,20,21];
+      const oldCur=G.chapter||0, oldSeen=(G.chapterSeen==null?-1:G.chapterSeen);
+      const cur = oldCur<=0 ? 0 : oldCur>=N.length ? CHAPTERS.length : N[oldCur-1]+1;
+      const same = cur===N[oldCur];
+      G.chapter=cur;
+      G.chapterSeen = (same && oldSeen>=oldCur) ? cur : cur-1;   // a new chapter's scene still plays
+      G.storyLog=(G.storyLog||[]).map(i=>N[i]!==undefined?N[i]:i);
+      G.storyVer=2; G.chBase=null;
+      if(!same && CHAPTERS[cur] && CHAPTERS[cur].onStart){ try{ CHAPTERS[cur].onStart(); }catch(e){} }
+    }
     checkRareUnlocks();   // re-evaluate in case an old save already met a condition
     migrateSaveLang();    // names saved in the other language → this language
     return true;
@@ -9634,7 +9895,7 @@ function pageGuide(){
   html+=`<div class="card" style="border-color:var(--gold);margin-bottom:18px">
     <div class="row" style="gap:10px"><span style="display:inline-flex">${lineIcon('compass',26)}</span><b style="font-family:Fraunces;font-size:17px;color:var(--wine)">${T("ตอนนี้ควรทำอะไร?")}</b></div>
     <ul style="margin:10px 0 0 20px;font-size:13.5px;line-height:1.8">
-      ${ch?`<li><b>${T("เป้าหมายหลัก:")}</b> ${ch.goal.text} ${goalSubtext(ch.goal)?`<span style="color:var(--ink-soft)">(${goalSubtext(ch.goal)})</span>`:''}</li>`:T('<li>เนื้อเรื่องจบแล้ว — เล่นอิสระสร้างอาณาจักรต่อได้เลย</li>')}
+      ${ch?`<li><b>${T("เป้าหมายหลัก:")}</b> ${ch.goal.text}${(ch.also||[]).map(g=>' + '+g.text).join('')} ${goalSubtext(ch.goal)?`<span style="color:var(--ink-soft)">(${goalSubtext(ch.goal)})</span>`:''}</li>`:T('<li>เนื้อเรื่องจบแล้ว — เล่นอิสระสร้างอาณาจักรต่อได้เลย</li>')}
       ${G.quests&&G.quests.filter(q=>!q.done).length?`<li><b>${T("เควสต์สัปดาห์นี้:")}</b> ${G.quests.filter(q=>!q.done).map(q=>questLabel(q)).join(' · ')}</li>`:''}
       ${cellarUsed()===0?T('<li>⚠️ เซลลาร์ว่าง — ไปหน้า <b>ตลาด</b> ซื้อไวน์ก่อน ไม่งั้นเปิดร้านไม่ได้</li>'):''}
       ${G.shopQueue.length&&!G.shopDone?`<li>${T("มีลูกค้ารออยู่")} ${G.shopQueue.length} ${T("คนที่หน้า")} <b>${T("ร้าน")}</b></li>`:''}
@@ -9694,8 +9955,41 @@ function questProgress(type, amount){
    ============================================================ */
 function currentChapter(){ return CHAPTERS[G.chapter] || null; }
 
+// Counters a chapter goal measures from the moment the chapter opened, so a
+// goal can't be finished before it is even read.
+function statSnap(){
+  const st=G.stats||{};
+  return {perfect:st.perfectPairs||0, served:st.served||0, auctions:st.auctionsWon||0,
+    victor:st.victorAuctionWins||0, perfectHigh:st.perfectHigh||0, parties:G.partiesDone||0, alloc:G.allocTaken||0};
+}
+function chBase(){
+  if(!G.chBase || G.chBase.ch!==G.chapter) G.chBase={ch:G.chapter, ...statSnap()};
+  return G.chBase;
+}
+function chapterGoals(ch){ return ch ? [ch.goal, ...(ch.also||[])] : []; }
+function chapterMet(ch){ return chapterGoals(ch).every(goalMet); }
+// sales duel with Victor: his weekly takings are set from your own recent weeks
+function duelState(){
+  if(!G.duel || G.duel.ch!==G.chapter) G.duel={ch:G.chapter, wins:0, losses:0, target:rollDuelTarget()};
+  return G.duel;
+}
+function rollDuelTarget(){
+  const recent=(G.weeklyLog||[]).slice(-4).map(x=>x.revenue||0).filter(v=>v>0);
+  const avg=recent.length ? recent.reduce((a,b)=>a+b,0)/recent.length : 0;
+  return Math.round(Math.max(150000, avg*(1.05+Math.random()*0.25))/1000)*1000;
+}
 function goalProgress(goal){
+  const b=chBase(), st=G.stats||{};
   switch(goal.type){
+    case 'perfectSince': return (st.perfectPairs||0)-b.perfect;
+    case 'servedSince': return (st.served||0)-b.served;
+    case 'auctionSince': return (st.auctionsWon||0)-b.auctions;
+    case 'victorWins': return (st.victorAuctionWins||0)-b.victor;
+    case 'perfectHighSince': return (st.perfectHigh||0)-b.perfectHigh;
+    case 'partySince': return (G.partiesDone||0)-b.parties;
+    case 'allocSince': return (G.allocTaken||0)-b.alloc;
+    case 'noSuspect': return suspectCount()===0 ? 1 : 0;
+    case 'duel': return duelState().wins;
     case 'rep': return G.rep;
     case 'cellar': return cellarUsed();
     case 'portfolio': return portfolioValue();
@@ -9708,6 +10002,8 @@ function goalProgress(goal){
 }
 // human-readable sub-status for goals with compound conditions
 function goalSubtext(goal){
+  if(goal.type==='duel'){ const d=duelState(); return `${T("ยอดวิกเตอร์สัปดาห์นี้")} ${fmtK(d.target)} · ${T("ของคุณ")} ${fmtK(G._weekRevenue||0)} · ${T("ชนะ")} ${d.wins} ${T("แพ้")} ${d.losses}`; }
+  if(goal.type==='unicorn' && currentChapter() && currentChapter().race){ const r=G.vRace||{n:0}; return `${T("วิกเตอร์มีแล้ว")} ${Math.min(3,r.n||0)}/3 ${r.lost?T('— เขาเข้าเส้นชัยก่อน (รางวัลลดลง)'):''}`; }
   if(goal.type==='staffRep') return `${T("พนักงาน")} ${G.staff.length}${T("/4 คน · ชื่อเสียง ★")}${G.rep}/${goal.target}`;
   if(goal.type==='regions'){
     const rs=[...new Set(Object.keys(G.cellar).map(id=>wineById(id)?.region).filter(Boolean))];
@@ -9720,9 +10016,9 @@ function goalMet(goal){ return goalProgress(goal) >= goal.target; }
 function checkStory(){
   const ch=currentChapter();
   if(!ch) return;
-  if(goalMet(ch.goal)){
-    // grant reward
-    const r=ch.reward||{};
+  if(chapterMet(ch)){
+    // grant reward (a lost race still pays, just less)
+    const r=(ch.race && G.vRace && G.vRace.lost && ch.rewardLost) ? ch.rewardLost : (ch.reward||{});
     if(r.cash) G.cash+=r.cash;
     if(r.rep) G.rep+=r.rep;
     G.storyLog.push(ch.id);
@@ -9732,7 +10028,31 @@ function checkStory(){
     else if(G.chapter===ALLOC_CHAPTER) G._unlockExplain='alloc';
     else if(G.chapter===CONTRACT_CHAPTER) G._unlockExplain='contract';
     const nextCh=currentChapter();
+    G.chBase={ch:G.chapter, ...statSnap()};
+    if(nextCh && nextCh.onStart){ try{ nextCh.onStart(); }catch(e){} }
     showChapterComplete(ch, r, nextCh);
+  }
+}
+
+function storyWeekTick(revenue){
+  const ch=currentChapter(); if(!ch) return;
+  if(ch.race){
+    G.vRace=G.vRace||{n:0};
+    if(!G.vRace.lost && (G.vRace.n||0)<3 && Math.random()<0.15){
+      G.vRace.n=(G.vRace.n||0)+1;
+      if(G.vRace.n>=3 && !goalMet(ch.goal)){
+        G.vRace.lost=true; G.rep=Math.max(0,G.rep-2);
+        G.news.push({mult:1, msg:T('วิกเตอร์ได้ Unicorn ครบ 3 ขวดก่อนคุณ — เขาติดป้ายเยาะเย้ยหน้าร้าน (ชื่อเสียง −★2) แต่คุณยังทำเควสต์ต่อได้')});
+      } else {
+        G.news.push({mult:1, msg:`${T("วิกเตอร์ได้ไวน์ Unicorn ขวดที่")} ${G.vRace.n} ${T("แล้ว — การแข่งขันยังไม่จบ")}`});
+      }
+    }
+  }
+  if(ch.goal.type==='duel'){
+    const d=duelState();
+    if(revenue>d.target){ d.wins++; G.news.push({mult:1, msg:`${T("ยอดขายสัปดาห์นี้")} ${fmtK(revenue)} ${T("ชนะวิกเตอร์")} (${fmtK(d.target)}) — ${T("ชนะแล้ว")} ${d.wins}/${ch.goal.target}`}); }
+    else { d.losses++; G.news.push({mult:1, msg:`${T("วิกเตอร์ขายได้")} ${fmtK(d.target)} ${T("มากกว่าคุณ")} (${fmtK(revenue)}) — ${T("เขาติดป้ายโชว์หน้าร้านทั้งคืน")}`}); }
+    d.target=rollDuelTarget();
   }
 }
 
@@ -9841,6 +10161,9 @@ function pageStory(){
   if(ch){
     const prog=goalProgress(ch.goal), tgt=ch.goal.target;
     const pct=Math.min(100, prog/tgt*100);
+    const extras=(ch.also||[]).map(g=>{ const v=Math.max(0,goalProgress(g)), done=v>=g.target;
+      return `<div class="goal-extra ${done?'done':''}"><span>${done?'✅':'⬜'} ${g.text}</span>${g.type==='noSuspect'?'':`<b>${Math.min(v,g.target)}/${g.target}</b>`}</div>`; }).join('');
+    const since=chapterGoals(ch).some(g=>/Since$|^victorWins$|^duel$/.test(g.type));
     const c=CHARACTERS[ch.who];
     const fmtVal=v=> ch.goal.type==='portfolio'? fmtK(v) : Math.floor(v);
     html+=`<div class="card" style="border-color:var(--gold);margin-bottom:18px">
@@ -9858,7 +10181,9 @@ function pageStory(){
         <div style="height:100%;width:${pct}%;background:linear-gradient(90deg,var(--sage),var(--gold));transition:width .4s;display:flex;align-items:center;justify-content:flex-end;padding-right:8px">
         </div>
       </div>
-      <div style="text-align:right;font-size:12px;font-weight:700;color:var(--ink-soft);margin-top:4px">${fmtVal(prog)} / ${fmtVal(tgt)} (${pct.toFixed(0)}%)</div>
+      <div style="text-align:right;font-size:12px;font-weight:700;color:var(--ink-soft);margin-top:4px">${fmtVal(Math.max(0,prog))} / ${fmtVal(tgt)} (${Math.max(0,pct).toFixed(0)}%)</div>
+      ${extras?`<div class="goal-extras"><div class="wine-sub" style="margin-bottom:4px">${T("ต้องทำให้ครบทุกข้อ:")}</div>${extras}</div>`:''}
+      ${since?`<div class="wine-sub" style="margin-top:6px">${T("ตัวนับในบทนี้เริ่มนับตั้งแต่บทเริ่ม")}</div>`:''}
     </div>`;
   } else {
     html+=`<div class="card" style="border-color:var(--gold);margin-bottom:18px;text-align:center">
