@@ -849,6 +849,7 @@
   .chip.col-red.on{ background:#7B2C3A; border-color:#5E1E28; }
   .chip.col-white.on{ background:#C8A24E; border-color:#8A6B34; color:#2A1E08; }
   .chip.col-rose.on{ background:#D97D8E; border-color:#A6485C; color:#2A1015; }
+  .chip.col-orange.on{ background:#D98A3D; border-color:#9A5418; color:#2A1405; }
   .chip.col-sparkling.on{ background:#C9B26E; border-color:#8A7433; color:#2A2408; }
   .chip.col-sweet.on{ background:#C87A2E; border-color:#8A4E15; color:#2A1608; }
   .chip.col-fortified.on{ background:#7A4A2E; border-color:#4E2C16; color:#F2E2CE; }
@@ -3755,6 +3756,85 @@ const EN = {
   "สงครามราคากับวิกเตอร์": "Price war with Victor",
   "คุณนำอยู่ — รักษาไว้จนจบสัปดาห์": "You're ahead — hold it until the week ends",
   "ยังตามอยู่ — จับคู่ให้ดี ลูกค้าจ่ายมากขึ้นและให้ทิป": "Still behind — pair well: customers pay more and tip",
+  "รกัตซิเตลีหมักทั้งเปลือกในโอ่งดินเผาเกวฟรีฝังดิน วิธีทำไวน์ที่เก่าแก่ที่สุดในโลก 8,000 ปี": "Rkatsiteli fermented on its skins in clay qvevri buried underground — the world's oldest way of making wine, 8,000 years old",
+  "คีซีพันธุ์พื้นเมืองจอร์เจีย แช่เปลือกหกเดือน สีอำพันเข้ม เนื้อแน่นมีแทนนินบางๆ": "Kisi, a native Georgian grape, macerated on its skins for six months: deep amber, firm, with a light grip of tannin",
+  "ริโบลลาจียาลาหมักในแอมโฟราดินเผาจากจอร์เจีย ผู้บุกเบิกออเรนจ์ไวน์ยุคใหม่ บ่มได้นานหลายสิบปี": "Ribolla Gialla fermented in Georgian clay amphorae by a pioneer of modern orange wine; it ages for decades",
+  "ปิโนต์กรีโจแบบดั้งเดิมของฟริอูลี แช่เปลือกชมพูอมทองแดงไม่กี่วัน จึงได้สีทองแดง \"รามาโต\"": "Friuli's traditional Pinot Grigio, left a few days on its pinkish skins to take on a copper \"ramato\" color",
+  "เรบูลาจากเนินเขาบรดา สโลวีเนีย ติดชายแดนอิตาลี แช่เปลือกนาน กรดสดและแทนนินละเอียด": "Rebula from the Brda hills of Slovenia, right on the Italian border; long skin contact, fresh acidity and fine tannin",
+  "ซาเปราวี องุ่นแดงเนื้อแดงของจอร์เจีย สีเข้มจนแทบดำ แทนนินแน่นและกรดสูง": "Saperavi, Georgia's red-fleshed grape — almost black in the glass, with firm tannin and high acidity",
+  "ไอซ์ไวน์จากองุ่นที่แข็งตัวบนเถาที่ −8°C เก็บกลางดึกฤดูหนาวแคนาดา หวานเข้มแต่กรดสด": "Icewine from grapes frozen on the vine at −8°C and picked in the middle of a Canadian winter night: intensely sweet yet fresh",
+  "ไอซ์ไวน์รีสลิง ผลผลิตเพียงไม่กี่หยดต่อเถา กรดคมตัดความหวานจนสมดุลอย่างน่าทึ่ง": "Riesling icewine — just a few drops per vine, its sharp acidity balancing the sweetness remarkably",
+  "ทานนาต์ องุ่นประจำชาติอุรุกวัย แทนนินสูงที่สุดพันธุ์หนึ่งของโลก เกิดมาเพื่อเนื้อย่าง": "Tannat, Uruguay's national grape and one of the most tannic in the world — born for grilled beef",
+  "ชาร์ดอนเนย์จากไร่ริมหน้าผาแปซิฟิก หมอกทะเลทำให้กรดสดกว่าไวน์แคลิฟอร์เนียทั่วไป": "Chardonnay from clifftop vineyards over the Pacific; sea fog keeps it fresher than most California wine",
+  "ปิโนต์นัวร์หุบเขารัสเซียนริเวอร์ ผลไม้สุกฉ่ำแบบแคลิฟอร์เนีย แต่ยังสดด้วยหมอกยามเช้า": "Russian River Valley Pinot Noir: ripe, juicy California fruit kept fresh by the morning fog",
+  "รีโอคาแกรนด์รีเซร์วา บ่มถังอเมริกันโอ๊กหลายปีก่อนออกขาย พร้อมดื่มทันทีแต่ยังเก็บได้อีกนาน": "Rioja Gran Reserva, aged for years in American oak before release — ready now but will keep for a long time",
+  "รีโอคาคริอันซาจากริโอคาอาลาเวซา เทมปรานิโยผลไม้สดกับโอ๊กบางๆ ไวน์ประจำโต๊ะของสเปน": "Rioja Crianza from Rioja Alavesa: fresh Tempranillo fruit with a touch of oak, Spain's everyday table wine",
+  "ไวน์ขาวบ่มนานแบบเก่าของรีโอคา ตั้งใจให้สัมผัสอากาศจนได้กลิ่นถั่วอบ หาได้ยากมาก": "Old-style long-aged white Rioja, deliberately exposed to air for its toasted-nut character — very hard to find",
+  "กาเมจากหินแกรนิตผุของโกตดูปี ครูโบโฌเลส์ที่บ่มได้นานจนคล้ายเบอร์กันดี": "Gamay from the weathered granite of the Côte du Py, a Beaujolais cru that ages until it resembles Burgundy",
+  "เฟลอรีหอมดอกไม้ \"ราชินีแห่งโบโฌเลส์\" ดื่มเย็นนิดๆ ได้สดชื่น": "Floral Fleurie, \"the queen of Beaujolais\" — refreshing served slightly chilled",
+  "เนบบิโอโลจากแปลงอาซิลีในบาร์บาเรสโก สีอ่อนแต่แทนนินแรง ต้องบ่มนานจึงเผยความงาม": "Nebbiolo from the Asili vineyard in Barbaresco: pale but powerfully tannic, it needs long aging to show its beauty",
+  "บาร์เบราไวน์แดงประจำวันของชาวพีดมอนต์ กรดสดสูง แทนนินนุ่ม เข้ากับอาหารแทบทุกอย่าง": "Barbera, the Piedmontese everyday red: bright high acidity and soft tannin, good with almost any food",
+  "มอสกาโตซ่าเบาๆ แอลกอฮอล์ต่ำเพียง 5% หวานหอมเหมือนกัดองุ่นสด": "Gently fizzy Moscato at just 5% alcohol, sweet and fragrant like biting into a fresh grape",
+  "องุ่น": "Grape",
+  "ชีราซและกรอนาชจากเชิงเขาปิกแซ็งลู กลิ่นสมุนไพรป่าการิกของทางใต้ฝรั่งเศส คุ้มราคามาก": "Syrah and Grenache from the foothills of Pic Saint-Loup, scented with the wild garrigue herbs of southern France — great value",
+  "ลีมูทำสปาร์กลิงมาก่อนแชมเปญเสียอีก วิธีเดียวกันในราคาเศษเสี้ยว": "Limoux was making sparkling wine before Champagne was — the same method at a fraction of the price",
+  "มาร์ซาลาบ่มแบบโซเลราที่ชายฝั่งตะวันตกของซิซิลี ไม่ได้มีไว้แค่ทำอาหาร ของแท้ซับซ้อนมาก": "Marsala aged in a solera on Sicily's west coast — not just for cooking; the real thing is very complex",
+  "มัสกัตเสริมแอลกอฮอล์จากรัทเทอร์เกลน ออสเตรเลีย บ่มในโรงเก็บร้อนหลายสิบปีจนเข้มข้นเหมือนน้ำเชื่อม": "Fortified Muscat from Rutherglen, Australia, aged for decades in hot sheds until it's as dense as syrup",
+  "วินซานโตจากซานโตรีนี ตากองุ่นอัสซีร์ติโกบนดินภูเขาไฟแล้วบ่มถังนานสิบสองปี": "Vinsanto from Santorini: Assyrtiko grapes sun-dried on volcanic soil, then aged in barrel for twelve years",
+  "คาชาปูรีชีสไข่แดง": "Khachapuri with cheese and egg yolk",
+  "ขนมปังเรือชีสของจอร์เจีย คู่กับไวน์อำพันจากโอ่งเกวฟรี — คู่ที่ชาวจอร์เจียกินกันมาหลายพันปี": "Georgia's cheese-filled bread boat with amber wine from the qvevri — a pairing Georgians have enjoyed for thousands of years",
+  "ฟริโกชีสมันฝรั่งทอด": "Frico — fried cheese and potato",
+  "ชีสมอนตาซิโอทอดกรอบกับมันฝรั่ง จานประจำฟริอูลี ต้องการไวน์ที่มีทั้งกรดและแทนนินตัดความมัน": "Crisp-fried Montasio cheese with potato, Friuli's signature dish; it wants a wine with both acidity and tannin",
+  "เมซเซ่ฮัมมุสและบาบากานุช": "Mezze of hummus and baba ganoush",
+  "จานผักเครื่องเทศหลายอย่าง ไวน์ขาวธรรมดาสู้กลิ่นไม่ไหว ออเรนจ์ไวน์เอาอยู่": "A spread of spiced vegetable dishes too much for an ordinary white — orange wine handles it",
+  "หมูสามชั้นย่างกิมจิ": "Grilled pork belly with kimchi",
+  "ของหมักเปรี้ยวเผ็ดกับหมูมัน — ออเรนจ์ไวน์ที่หมักนานเข้ากับอาหารหมักได้อย่างน่าประหลาดใจ": "Sour, spicy fermented food with fatty pork — long-macerated orange wine is surprisingly good with fermented food",
+  "ชีสเค้กเบอร์รี่": "Berry cheesecake",
+  "ชีสเค้กเปรี้ยวหวานต้องการไวน์ที่หวานกว่าและกรดสูง — ไอซ์ไวน์คือคำตอบ": "Tangy-sweet cheesecake wants a sweeter wine with high acidity — icewine is the answer",
+  "ชีวิโตสเต๊กอุรุกวัย": "Uruguayan chivito steak sandwich",
+  "แซนด์วิชสเต๊กประจำชาติอุรุกวัย มันจัดจนต้องใช้แทนนินระดับทานนาต์": "Uruguay's national steak sandwich, so rich it takes Tannat-level tannin",
+  "เลชาโซแกะนมอบเตาฟืน": "Lechazo — wood-fired milk-fed lamb",
+  "ลูกแกะอบเตาฟืนแบบกัสติยา คู่กับรีโอคาบ่มนานที่แทนนินนุ่มแล้ว": "Castilian wood-oven roast lamb, with a long-aged Rioja whose tannins have softened",
+  "ไส้กรอกลียงกับมันฝรั่งอุ่น": "Lyon sausage with warm potatoes",
+  "อาหารบูชองของลียง เนื้อหมูมันกับกาเมผลไม้สดที่ดื่มเย็นๆ": "A Lyon bouchon classic: fatty pork with fresh, fruity Gamay served cool",
+  "วิเทลโลตอนนาโต": "Vitello tonnato",
+  "เนื้อลูกวัวเย็นราดซอสทูน่า จานเปิดของพีดมอนต์ เหมาะกับบาร์เบราที่กรดสด": "Cold veal in tuna sauce, a Piedmont starter — perfect with fresh, high-acid Barbera",
+  "พานาค็อตต้าพีช": "Peach panna cotta",
+  "ครีมเย็นหวานอ่อนกับพีช — มอสกาโตดาสตีซ่าเบาๆ เข้ากันพอดี": "Cool, gently sweet cream with peach — lightly fizzy Moscato d'Asti fits just right",
+  "ปูดันเจเนสอบเนยกระเทียม": "Dungeness crab baked with garlic butter",
+  "ปูหวานแห่งชายฝั่งแปซิฟิก คู่กับชาร์ดอนเนย์ซอนอมาที่เนื้อมันแต่กรดยังสด": "The Pacific coast's sweet crab, with a Sonoma Chardonnay that's rich yet still fresh",
+  "คาสซูเลต์เป็ดกับถั่วขาว": "Cassoulet with duck and white beans",
+  "สตูถั่วขาวกับเป็ดคอนฟีและไส้กรอกจากทางใต้ฝรั่งเศส ต้องการไวน์แดงล็องก์ด็อกเข้มๆ": "A white-bean stew with duck confit and sausage from southern France; it wants a dark Languedoc red",
+  "ทีรามิสุ": "Tiramisu",
+  "กาแฟ ครีม และโกโก้ — ไวน์เสริมแอลกอฮอล์กลิ่นคาราเมลอย่างมาร์ซาลาเข้ากันพอดี": "Coffee, cream and cocoa — a caramel-scented fortified wine like Marsala fits perfectly",
+  "บักลาวาพิสตาชิโอ": "Pistachio baklava",
+  "แป้งบางกรอบชุ่มน้ำเชื่อมกับถั่ว ต้องการไวน์หวานเข้มแบบวินซานโต": "Crisp, thin pastry soaked in syrup with nuts — it wants an intensely sweet wine like Vinsanto",
+  "ออเรนจ์ไวน์และเขตไวน์ใหม่": "Orange wine and new regions",
+  "ตอนนี้เกมมีไวน์ <b>231 ขวดจาก 58 เขต</b> เพิ่มจอร์เจีย · ฟริอูลี · สโลวีเนีย · แคนาดา · อุรุกวัย · ซอนอมา · รีโอคา · โบโฌเลส์ · พีดมอนต์ · ล็องก์ด็อก · ซิซิลี · รัทเทอร์เกลน<br><br>🍷 <b>ออเรนจ์ไวน์</b> คือไวน์ขาวที่หมักทั้งเปลือกแบบไวน์แดง จึงได้สีอำพันและแทนนินบางๆ — สดแบบไวน์ขาวแต่มีโครงสร้างแบบไวน์แดง<br><br>เข้ากับอาหารที่ไวน์ขาวสู้ไม่ไหวแต่ไวน์แดงหนักเกิน เช่น ชีสทอด อาหารหมัก กิมจิ และจานเครื่องเทศหลายอย่าง มีอาหารคู่ของมันเองในร้าน": "The game now has <b>231 wines from 58 regions</b>, adding Georgia · Friuli · Slovenia · Canada · Uruguay · Sonoma · Rioja · Beaujolais · Piedmont · Languedoc · Sicily · Rutherglen<br><br>🍷 <b>Orange wine</b> is white wine fermented on its skins like a red, which gives it an amber color and a light tannin — the freshness of a white with the structure of a red<br><br>It suits food a white can't stand up to but a red would overwhelm, such as fried cheese, fermented food, kimchi and spiced mezze — and it has its own dishes in the shop",
+  "บ่มไวน์ให้ถึงจุดพร้อมดื่ม": "Age wine to its drinking peak",
+  "ไวน์ทุกขวดในเซลลาร์ผ่าน 4 ช่วง: <b>ยังอ่อน → พร้อมดื่ม → เลยจุดพีค → เสื่อมสภาพ</b> (ดูแถบอายุบนการ์ดในเซลลาร์)<br><br>🍷 <b>เสิร์ฟตอนพร้อมดื่มคุ้มที่สุด:</b><br>• ลูกค้าจ่ายแพงขึ้น +15% (Table Wine) ถึง +35% (Grand Cru)<br>• คะแนนจับคู่ดีขึ้น จึงได้ markup และทิปมากขึ้น<br>• จับคู่สมบูรณ์แบบด้วยขวดที่พร้อมดื่ม ได้ชื่อเสียงเพิ่มอีก<br><br>⚠️ ไวน์แดงชั้นดีที่ยังอ่อนแทนนินจะฝาด คะแนนจับคู่ลดลง · ขวดที่เลยพีคหรือเสื่อมจะขายได้น้อยลง<br><br>รายการไวน์ตอนเสิร์ฟมีป้ายบอกว่าขวดไหนพร้อมดื่ม · ซื้อเพิ่มเข้าล็อตเดิมจะเฉลี่ยอายุใหม่ ไม่ได้อายุของขวดเก่าไปฟรีๆ": "Every bottle in the cellar goes through 4 stages: <b>young → ready to drink → past peak → declining</b> (see the age bar on each cellar card)<br><br>🍷 <b>Serving at the peak pays best:</b><br>• Customers pay more: +15% (Table Wine) up to +35% (Grand Cru)<br>• The pairing scores higher, so you earn a bigger markup and tips<br>• A perfect pairing with a bottle at its peak earns extra reputation<br><br>⚠️ Young fine reds are still harsh with tannin, lowering the pairing score · past-peak and declining bottles sell for less<br><br>The wine list when serving shows which bottles are ready · topping up an existing lot averages its age, so new bottles don't inherit the old ones' aging for free",
+  "ออเรนจ์": "Orange",
+  "ยังอ่อน — แทนนินยังฝาด": "Young — tannin still harsh",
+  "ชีสเค็มเนยมันกับไข่ ต้องการกรดและแทนนินบางๆ มาตัด": "Salty cheese, butter and egg want acidity and a little tannin to cut through",
+  "ชีสทอดมันจัด ไวน์ต้องมีทั้งกรดและแทนนินเล็กน้อย": "Rich fried cheese needs a wine with both acidity and a touch of tannin",
+  "ผักและเครื่องเทศหลายรส ต้องการไวน์ที่มีโครงสร้างแต่ไม่หนัก": "Many vegetables and spices want a wine with structure but not weight",
+  "ของหมักเปรี้ยวจัดกับหมูมัน ไวน์ต้องกรดสูงและมีแทนนินเบาๆ": "Very sour fermented food with fatty pork wants high acidity and light tannin",
+  "ครีมชีสเปรี้ยวหวาน ต้องการไวน์หวานกว่าและกรดสูง": "Tangy-sweet cream cheese wants a sweeter wine with high acidity",
+  "สเต๊ก แฮม ไข่ และชีสในชิ้นเดียว ต้องการแทนนินสูงสุดมาตัด": "Steak, ham, egg and cheese in one bite need the highest tannin to cut through",
+  "แกะนมเนื้อนุ่มกลิ่นไม่แรง เข้ากับแดงบ่มนานที่แทนนินนุ่มแล้ว": "Tender, mild milk-fed lamb suits a long-aged red whose tannin has softened",
+  "ไส้กรอกหมูมัน ต้องการแดงเบาผลไม้สดกรดดี": "Fatty pork sausage wants a light red with fresh fruit and good acidity",
+  "ซอสทูน่าครีมเค็ม ต้องการแดงกรดสดแทนนินนุ่ม": "Salty, creamy tuna sauce wants a red with fresh acidity and soft tannin",
+  "ของหวานเบาๆ ไวน์ต้องหวานเบาและไม่หนักกว่าขนม": "A light dessert needs a lightly sweet wine no heavier than the dish",
+  "ปูหวานกับเนยกระเทียม ต้องการไวน์ขาวเนื้อเต็มกรดดี": "Sweet crab with garlic butter wants a full-bodied white with good acidity",
+  "สตูถั่วเป็ดและไส้กรอกหนักมาก ต้องการแดงเข้มแทนนินแน่น": "A very heavy stew of beans, duck and sausage wants a dark red with firm tannin",
+  "กาแฟ ครีม โกโก้ ต้องการไวน์หวานกลิ่นคาราเมลหรือกาแฟ": "Coffee, cream and cocoa want a sweet wine with caramel or coffee notes",
+  "น้ำเชื่อมและถั่ว ต้องการไวน์หวานเข้มกรดสูงพอจะไม่เลี่ยน": "Syrup and nuts want an intensely sweet wine with enough acidity not to cloy",
+  "· เปิดในจังหวะที่ดีที่สุดของขวด": "· opened at the very best moment in the bottle's life",
+  "จอร์เจีย": "Georgia",
+  "สโลวีเนีย": "Slovenia",
+  "แคนาดา": "Canada",
+  "อุรุกวัย": "Uruguay",
+  "ตอนนี้เกมมีไวน์ <b>231 ขวดจาก 58 เขต</b> ครอบคลุมทั้งคลาสสิกและแหล่งใหม่ที่กำลังมาแรง — โพรวองซ์ · โตกาจ · ซานโตรีนี · ปริโอราต · โมเซล · เอตนา · วาเคา · บารอสซา · เซ็นทรัลโอทาโก · หนิงเซี่ย · ยามานาชิ และอีกมาก<br><br>🌸 <b>โรเซ่เป็นประเภทที่สาม</b> แยกจากแดงและขาว มีตัวกรองของตัวเองในหน้าตลาด<br><br>จุดเด่นของโรเซ่คือ<b>เข้ากับอาหารได้แทบทุกจาน</b> — ไม่เคยได้คะแนนจับคู่สูงสุด แต่ก็แทบไม่เคยพลาดเลย เหมาะเมื่อไม่แน่ใจว่าลูกค้าสั่งอะไร หรือคลังเหลือไม่ตรงธีม": "The game now has <b>231 wines from 58 regions</b>, covering both the classics and rising new areas — Provence · Tokaj · Santorini · Priorat · Mosel · Etna · Wachau · Barossa · Central Otago · Ningxia · Yamanashi and many more<br><br>🌸 <b>Rosé is a third category</b>, separate from red and white, with its own filter on the Market page<br><br>Rosé's strength is that it <b>goes with almost any dish</b> — it never gets the top pairing score, but it almost never misses. Great when you're not sure what the customer ordered or your stock doesn't fit the theme",
   "ร้านไวน์ & เซลลาร์": "Wine Shop & Cellar"
 };
 function T(s){ if(LANG!=='en') return s; const v=EN[s]; return v===undefined ? s : v; }
@@ -4067,6 +4147,32 @@ const WINES = [
   {id:'w198', style:'white', name:'Vinho Verde Alvarinho Monção Reserva', cuvee:'Vinho Verde', region:'Vinho Verde', color:'#EEE9C4', tier:2, base:34000, vol:.05, score:88, note:T('อัลวารีนโญจากมงเซา ตัวจริงของวินโญเวร์ดี ไม่ใช่แค่ไวน์ซ่าราคาถูก'), body:2, tannin:0, acid:5, sweet:0, notes:[T('เกรปฟรุต'),T('ดอกส้ม'),T('เกลือ'),T('พีชขาว')]},
   {id:'w199', style:'white', name:'Jura Vin Jaune Château-Chalon', cuvee:'Vin Jaune', region:'Jura', color:'#D9A94E', tier:4, base:255000, vol:.06, score:94, note:T('แว็งโฌนจากชาโตชาลง บ่มใต้ฟิล์มยีสต์ 6 ปี 3 เดือน รสชาติไม่เหมือนไวน์ใดในโลก'), body:4, tannin:0, acid:5, sweet:0, notes:[T('วอลนัท'),T('แอปเปิลอบ'),T('เคอร์รี่'),T('ชีสแก่')]},
 
+  // ===== v5.4 — orange wine and twelve more regions =====
+  {id:'w208', style:'orange', name:'Kartuli Qvevri Rkatsiteli', cuvee:'Kakheti', region:'Kakheti', color:'#D9953F', tier:2, base:46000, vol:.05, score:89, note:T('รกัตซิเตลีหมักทั้งเปลือกในโอ่งดินเผาเกวฟรีฝังดิน วิธีทำไวน์ที่เก่าแก่ที่สุดในโลก 8,000 ปี'), body:3, tannin:2, acid:4, sweet:0, notes:[T('แอปริคอตแห้ง'),T('ใบชา'),T('ถั่ว'),T('เปลือกส้ม')]},
+  {id:'w209', style:'orange', name:'Kisi Amber Qvevri Reserve', cuvee:'Kakheti', region:'Kakheti', color:'#C9802F', tier:3, base:92000, vol:.06, score:91, note:T('คีซีพันธุ์พื้นเมืองจอร์เจีย แช่เปลือกหกเดือน สีอำพันเข้ม เนื้อแน่นมีแทนนินบางๆ'), body:3, tannin:2, acid:4, sweet:0, notes:[T('ส้มเชื่อม'),T('น้ำผึ้ง'),T('ใบชา'),T('วอลนัท')]},
+  {id:'w210', style:'orange', name:'Ribolla Gialla Anfora Oslavia', cuvee:'Collio', region:'Friuli', color:'#C27A2C', tier:4, base:260000, vol:.07, score:95, note:T('ริโบลลาจียาลาหมักในแอมโฟราดินเผาจากจอร์เจีย ผู้บุกเบิกออเรนจ์ไวน์ยุคใหม่ บ่มได้นานหลายสิบปี'), body:4, tannin:2, acid:4, sweet:0, notes:[T('แอปริคอตแห้ง'),T('เครื่องเทศหวาน'),T('ใบชา'),T('แร่ธาตุ')]},
+  {id:'w211', style:'orange', name:'Pinot Grigio Ramato Collio', cuvee:'Ramato', region:'Friuli', color:'#D49272', tier:2, base:42000, vol:.05, score:88, note:T('ปิโนต์กรีโจแบบดั้งเดิมของฟริอูลี แช่เปลือกชมพูอมทองแดงไม่กี่วัน จึงได้สีทองแดง "รามาโต"'), body:2, tannin:1, acid:4, sweet:0, notes:[T('ลูกแพร์'),T('สตรอว์เบอร์รี่'),T('ดอกไม้ขาว'),T('เปลือกส้ม')]},
+  {id:'w212', style:'orange', name:'Rebula Macerated Goriška Brda', cuvee:'Brda', region:'Brda', color:'#CC8A35', tier:3, base:88000, vol:.06, score:92, note:T('เรบูลาจากเนินเขาบรดา สโลวีเนีย ติดชายแดนอิตาลี แช่เปลือกนาน กรดสดและแทนนินละเอียด'), body:3, tannin:2, acid:5, sweet:0, notes:[T('ส้มยูซุ'),T('สมุนไพรแห้ง'),T('แร่ธาตุ'),T('เฮเซลนัท')]},
+  {id:'w213', style:'red', name:'Saperavi Qvevri Mukuzani', cuvee:'Mukuzani', region:'Kakheti', color:'#3A0E1A', tier:2, base:48000, vol:.06, score:89, note:T('ซาเปราวี องุ่นแดงเนื้อแดงของจอร์เจีย สีเข้มจนแทบดำ แทนนินแน่นและกรดสูง'), body:4, tannin:4, acid:4, sweet:0, notes:[T('เชอร์รี่ดำ'),T('ลูกหม่อน'),T('เครื่องเทศ'),T('ดิน')]},
+  {id:'w214', style:'sweet', name:'Vidal Icewine Niagara Bench', cuvee:'Icewine', region:'Niagara', color:'#E2B14A', tier:3, base:120000, vol:.06, score:92, note:T('ไอซ์ไวน์จากองุ่นที่แข็งตัวบนเถาที่ −8°C เก็บกลางดึกฤดูหนาวแคนาดา หวานเข้มแต่กรดสด'), body:4, tannin:0, acid:5, sweet:5, notes:[T('แอปริคอตแห้ง'),T('น้ำผึ้ง'),T('ลิ้นจี่'),T('ส้มเชื่อม')]},
+  {id:'w215', style:'sweet', name:'Riesling Icewine Reserve Lakeshore', cuvee:'Icewine', region:'Niagara', color:'#DDA644', tier:4, base:290000, vol:.06, score:95, note:T('ไอซ์ไวน์รีสลิง ผลผลิตเพียงไม่กี่หยดต่อเถา กรดคมตัดความหวานจนสมดุลอย่างน่าทึ่ง'), body:4, tannin:0, acid:5, sweet:5, notes:[T('พีช'),T('มะนาว'),T('น้ำผึ้ง'),T('หินชนวน')]},
+  {id:'w216', style:'red', name:'Tannat Reserva Las Violetas', cuvee:'Canelones', region:'Canelones', color:'#36101A', tier:2, base:44000, vol:.05, score:89, note:T('ทานนาต์ องุ่นประจำชาติอุรุกวัย แทนนินสูงที่สุดพันธุ์หนึ่งของโลก เกิดมาเพื่อเนื้อย่าง'), body:5, tannin:5, acid:4, sweet:0, notes:[T('แบล็กเบอร์รี่'),T('พลัม'),T('ช็อกโกแลตดำ'),T('ยาสูบ')]},
+  {id:'w217', style:'white', name:'Sonoma Coast Chardonnay Fort Ross', cuvee:'Sonoma Coast', region:'Sonoma', color:'#E6C766', tier:3, base:108000, vol:.06, score:92, note:T('ชาร์ดอนเนย์จากไร่ริมหน้าผาแปซิฟิก หมอกทะเลทำให้กรดสดกว่าไวน์แคลิฟอร์เนียทั่วไป'), body:4, tannin:0, acid:4, sweet:0, notes:[T('พีชขาว'),T('เฮเซลนัท'),T('มะนาว'),T('โอ๊คหวาน')]},
+  {id:'w218', style:'red', name:'Russian River Pinot Noir Bacigalupi', cuvee:'Russian River', region:'Sonoma', color:'#782432', tier:3, base:122000, vol:.07, score:92, note:T('ปิโนต์นัวร์หุบเขารัสเซียนริเวอร์ ผลไม้สุกฉ่ำแบบแคลิฟอร์เนีย แต่ยังสดด้วยหมอกยามเช้า'), body:3, tannin:3, acid:4, sweet:0, notes:[T('ราสป์เบอร์รี่'),T('เชอร์รี่ดำ'),T('อบเชย'),T('ดินชื้น')]},
+  {id:'w219', style:'red', name:'Rioja Gran Reserva Viña Tondela', cuvee:'Gran Reserva', region:'Rioja', color:'#5A1A22', tier:4, base:210000, vol:.06, score:94, note:T('รีโอคาแกรนด์รีเซร์วา บ่มถังอเมริกันโอ๊กหลายปีก่อนออกขาย พร้อมดื่มทันทีแต่ยังเก็บได้อีกนาน'), body:4, tannin:3, acid:4, sweet:0, notes:[T('สตรอว์เบอร์รี่'),T('วานิลลา'),T('หนัง'),T('ยาสูบหวาน')]},
+  {id:'w220', style:'red', name:'Rioja Crianza Alavesa', cuvee:'Crianza', region:'Rioja', color:'#6A1E28', tier:1, base:24000, vol:.04, score:86, note:T('รีโอคาคริอันซาจากริโอคาอาลาเวซา เทมปรานิโยผลไม้สดกับโอ๊กบางๆ ไวน์ประจำโต๊ะของสเปน'), body:3, tannin:3, acid:4, sweet:0, notes:[T('เชอร์รี่แดง'),T('วานิลลา'),T('สมุนไพรแห้ง')]},
+  {id:'w221', style:'white', name:'Rioja Blanco Reserva Viña Gravonia', cuvee:'Blanco Reserva', region:'Rioja', color:'#D9B25A', tier:3, base:86000, vol:.06, score:92, note:T('ไวน์ขาวบ่มนานแบบเก่าของรีโอคา ตั้งใจให้สัมผัสอากาศจนได้กลิ่นถั่วอบ หาได้ยากมาก'), body:3, tannin:0, acid:4, sweet:0, notes:[T('ถั่ว'),T('น้ำผึ้ง'),T('มะนาว'),T('ขนมปังอบ')]},
+  {id:'w222', style:'red', name:'Morgon Côte du Py', cuvee:'Morgon', region:'Beaujolais', color:'#7A2238', tier:2, base:38000, vol:.05, score:90, note:T('กาเมจากหินแกรนิตผุของโกตดูปี ครูโบโฌเลส์ที่บ่มได้นานจนคล้ายเบอร์กันดี'), body:2, tannin:2, acid:4, sweet:0, notes:[T('เชอร์รี่ดำ'),T('ไวโอเล็ต'),T('แร่ธาตุ'),T('พริกไทย')]},
+  {id:'w223', style:'red', name:'Fleurie La Madone', cuvee:'Fleurie', region:'Beaujolais', color:'#8A2A40', tier:1, base:26000, vol:.04, score:87, note:T('เฟลอรีหอมดอกไม้ "ราชินีแห่งโบโฌเลส์" ดื่มเย็นนิดๆ ได้สดชื่น'), body:2, tannin:1, acid:4, sweet:0, notes:[T('ราสป์เบอร์รี่'),T('ไวโอเล็ต'),T('กุหลาบ')]},
+  {id:'w224', style:'red', name:'Barbaresco Asili Riserva', cuvee:'Barbaresco', region:'Piedmont', color:'#7A2A2A', tier:4, base:280000, vol:.07, score:95, note:T('เนบบิโอโลจากแปลงอาซิลีในบาร์บาเรสโก สีอ่อนแต่แทนนินแรง ต้องบ่มนานจึงเผยความงาม'), body:4, tannin:5, acid:5, sweet:0, notes:[T('กุหลาบแห้ง'),T('ทรัฟเฟิล'),T('เชอร์รี่แห้ง'),T('ชะเอม')]},
+  {id:'w225', style:'red', name:'Barbera d\'Asti Superiore', cuvee:'Barbera d\'Asti', region:'Piedmont', color:'#5A1420', tier:2, base:36000, vol:.05, score:89, note:T('บาร์เบราไวน์แดงประจำวันของชาวพีดมอนต์ กรดสดสูง แทนนินนุ่ม เข้ากับอาหารแทบทุกอย่าง'), body:3, tannin:2, acid:5, sweet:0, notes:[T('เชอร์รี่เปรี้ยว'),T('พลัม'),T('สมุนไพร')]},
+  {id:'w226', style:'sweet', name:'Moscato d\'Asti Canelli', cuvee:'Moscato d\'Asti', region:'Piedmont', color:'#EFE29A', tier:1, base:20000, vol:.04, score:87, note:T('มอสกาโตซ่าเบาๆ แอลกอฮอล์ต่ำเพียง 5% หวานหอมเหมือนกัดองุ่นสด'), body:1, tannin:0, acid:3, sweet:4, notes:[T('พีช'),T('ดอกส้ม'),T('องุ่น')]},
+  {id:'w227', style:'red', name:'Pic Saint-Loup Rouge Garrigue', cuvee:'Pic Saint-Loup', region:'Languedoc', color:'#4E1520', tier:2, base:34000, vol:.05, score:89, note:T('ชีราซและกรอนาชจากเชิงเขาปิกแซ็งลู กลิ่นสมุนไพรป่าการิกของทางใต้ฝรั่งเศส คุ้มราคามาก'), body:4, tannin:3, acid:3, sweet:0, notes:[T('สมุนไพรการิก'),T('แบล็กเบอร์รี่'),T('พริกไทยดำ')]},
+  {id:'w228', style:'sparkling', name:'Crémant de Limoux Brut', cuvee:'Limoux', region:'Languedoc', color:'#E6D58A', tier:1, base:22000, vol:.04, score:87, note:T('ลีมูทำสปาร์กลิงมาก่อนแชมเปญเสียอีก วิธีเดียวกันในราคาเศษเสี้ยว'), body:2, tannin:0, acid:5, sweet:1, notes:[T('แอปเปิลเขียว'),T('ขนมปังอบ'),T('ฟองละเอียด')]},
+  {id:'w229', style:'fortified', name:'Marsala Superiore Riserva', cuvee:'Marsala', region:'Sicily', color:'#8A4A1E', tier:2, base:40000, vol:.05, score:89, note:T('มาร์ซาลาบ่มแบบโซเลราที่ชายฝั่งตะวันตกของซิซิลี ไม่ได้มีไว้แค่ทำอาหาร ของแท้ซับซ้อนมาก'), body:4, tannin:0, acid:4, sweet:3, notes:[T('คาราเมล'),T('อัลมอนด์'),T('ผลไม้แห้ง'),T('ลูกเกด')]},
+  {id:'w230', style:'fortified', name:'Rutherglen Muscat Grand', cuvee:'Rutherglen', region:'Rutherglen', color:'#5A2A10', tier:3, base:98000, vol:.06, score:94, note:T('มัสกัตเสริมแอลกอฮอล์จากรัทเทอร์เกลน ออสเตรเลีย บ่มในโรงเก็บร้อนหลายสิบปีจนเข้มข้นเหมือนน้ำเชื่อม'), body:5, tannin:0, acid:3, sweet:5, notes:[T('ลูกเกด'),T('เอสเพรสโซ'),T('คาราเมล'),T('วอลนัท')]},
+  {id:'w231', style:'sweet', name:'Vinsanto Santorini 12 Year', cuvee:'Vinsanto', region:'Santorini', color:'#9A5A20', tier:3, base:110000, vol:.06, score:93, note:T('วินซานโตจากซานโตรีนี ตากองุ่นอัสซีร์ติโกบนดินภูเขาไฟแล้วบ่มถังนานสิบสองปี'), body:4, tannin:0, acid:5, sweet:5, notes:[T('แอปริคอตแห้ง'),T('ส้มเชื่อม'),T('หินภูเขาไฟ'),T('น้ำผึ้ง')]},
+
   // ===== RARE UNLOCK WINES (hidden until earned) =====
   {id:'w200', style:'red', name:'Domaine Ducharme Musigny Grand Cru', cuvee:'Musigny', region:'Burgundy', color:'#5A1622', tier:5, base:1650000, vol:.09, score:99, note:T('มูซินญีคือยอดของยอดในโกตเดอนุยต์ ปิโนต์นัวร์ที่บอบบางแต่ทรงพลังพร้อมกัน ผลิตน้อยมากในแต่ละปี'), body:4, tannin:4, acid:5, sweet:0, notes:[T('ราสป์เบอร์รี่ป่า'),T('กุหลาบ'),T('ดินป่า'),T('เครื่องเทศ')]},
   {id:'w201', style:'red', name:'Château Margaux Balthazar', cuvee:'Margaux', region:'Bordeaux', color:'#4A1420', tier:5, base:1280000, vol:.08, score:98, note:T('ขวดบัลธาซาร์ (12 ลิตร) ของชาโตมาร์โกซ์ในปีระดับตำนาน เปิดเฉพาะโอกาสพิเศษระดับประวัติศาสตร์'), body:5, tannin:5, acid:4, sweet:0, notes:[T('ลูกเกดดำ'),T('ไวโอเล็ต'),T('ซีดาร์'),T('ตะกั่วดินสอ')]},
@@ -4136,7 +4242,7 @@ const FOODS = [
   {em:'🎣', ic:'sardines', name:T('ซาร์ดีนย่างถ่าน'), pairRegions:['Vinho Verde','Portugal','Santorini','Spain'], pairColor:'white', note:T('ปลาตัวเล็กมันเค็มทะเล ต้องการไวน์ขาวเบาซ่านิดๆ แบบวินโญ แวร์ดี')},
   {em:'🐓', ic:'vinjaune', name:T('ไก่ตุ๋นแว็งโจน'), pairRegions:['Jura','Burgundy','Alsace','Sherry'], pairColor:'white', note:T('ไก่ครีมเห็ดมอเรล ปรุงด้วยไวน์ขาวจูราที่บ่มใต้ฟิล์มยีสต์')},
   {em:'🫙', ic:'caviar', name:T('คาเวียร์บนบลินี'), pairRegions:['Champagne','England','Loire'], pairColor:'sparkling', note:T('ความเค็มนุ่มของไข่ปลาต้องการฟองละเอียดและกรดคม')},
-  {em:'🍟', ic:'fishchips', name:T('ฟิชแอนด์ชิปส์'), pairRegions:['England','Champagne','Australia','Italy'], pairColor:'sparkling', note:T('ของทอดเค็มมันกับฟองซ่า — ฟองช่วยล้างน้ำมันออกจากปาก')},
+  {em:'🍟', ic:'fishchips', name:T('ฟิชแอนด์ชิปส์'), pairRegions:['England','Champagne','Australia','Italy','Languedoc'], pairColor:'sparkling', note:T('ของทอดเค็มมันกับฟองซ่า — ฟองช่วยล้างน้ำมันออกจากปาก')},
   {em:'🥚', ic:'nicoise', name:T('สลัดนิซัวส์'), pairRegions:['Provence','Rhône','Spain','Abruzzo'], pairColor:'rose', note:T('ทูน่า ไข่ มะกอก — จานริเวียร่าที่โรเซ่โพรวองซ์ทำได้ดีที่สุด')},
   {em:'🥣', ic:'bouillabaisse', name:T('บุยยาแบสซุปปลา'), pairRegions:['Provence','Rhône','Loire','Italy'], pairColor:'rose', note:T('ซุปปลาหญ้าฝรั่นแห่งมาร์แซย์ คู่กับโรเซ่แห้งบอดี้กลาง')},
   {em:'🥜', ic:'stilton', name:T('สติลตันกับวอลนัท'), pairRegions:['Douro','Portugal','Madeira','England'], pairColor:'fortified', note:T('บลูชีสอังกฤษกับพอร์ต — คู่ปิดท้ายมื้อแบบคลาสสิก')},
@@ -4144,6 +4250,21 @@ const FOODS = [
   {em:'🥒', ic:'somtam', name:T('ส้มตำปูปลาร้า'), pairRegions:['Mosel','Germany','Finger Lakes','New Zealand'], pairColor:'white', note:T('เผ็ดเปรี้ยวจัด ต้องการรีสลิงหวานนิดกรดสูงมาดับเผ็ด')},
   {em:'🥔', ic:'massaman', name:T('แกงมัสมั่นไก่'), pairRegions:['Alsace','Germany','Tokaj','Swartland'], pairColor:'white', note:T('แกงหอมเครื่องเทศหวานมัน เข้ากับเกวือร์ซหรือเชอแน็งที่มีความหวานเล็กน้อย')},
   {em:'🥐', ic:'nata', name:T('พาสเตล เด นาตา'), pairRegions:['Madeira','Portugal','Douro'], pairColor:'fortified', note:T('ทาร์ตไข่โปรตุเกสคาราเมลไหม้ คู่กับมาเดราหวานกรดสูง')},
+  // v5.4 — dishes for the new regions and for orange wine
+  {em:'🥯', ic:'khachapuri', name:T('คาชาปูรีชีสไข่แดง'), pairRegions:['Kakheti','Friuli','Brda'], pairColor:'orange', note:T('ขนมปังเรือชีสของจอร์เจีย คู่กับไวน์อำพันจากโอ่งเกวฟรี — คู่ที่ชาวจอร์เจียกินกันมาหลายพันปี')},
+  {em:'🧈', ic:'frico', name:T('ฟริโกชีสมันฝรั่งทอด'), pairRegions:['Friuli','Brda','Kakheti','Austria'], pairColor:'orange', note:T('ชีสมอนตาซิโอทอดกรอบกับมันฝรั่ง จานประจำฟริอูลี ต้องการไวน์ที่มีทั้งกรดและแทนนินตัดความมัน')},
+  {em:'🫛', ic:'mezze', name:T('เมซเซ่ฮัมมุสและบาบากานุช'), pairRegions:['Kakheti','Lebanon','Greece','Friuli'], pairColor:'orange', note:T('จานผักเครื่องเทศหลายอย่าง ไวน์ขาวธรรมดาสู้กลิ่นไม่ไหว ออเรนจ์ไวน์เอาอยู่')},
+  {em:'🥬', ic:'kimchipork', name:T('หมูสามชั้นย่างกิมจิ'), pairRegions:['Brda','Friuli','Kakheti','Alsace'], pairColor:'orange', note:T('ของหมักเปรี้ยวเผ็ดกับหมูมัน — ออเรนจ์ไวน์ที่หมักนานเข้ากับอาหารหมักได้อย่างน่าประหลาดใจ')},
+  {em:'🍰', ic:'cheesecake', name:T('ชีสเค้กเบอร์รี่'), pairRegions:['Niagara','Tokaj','Germany','Piedmont'], pairColor:'sweet', note:T('ชีสเค้กเปรี้ยวหวานต้องการไวน์ที่หวานกว่าและกรดสูง — ไอซ์ไวน์คือคำตอบ')},
+  {em:'🥪', ic:'chivito', name:T('ชีวิโตสเต๊กอุรุกวัย'), pairRegions:['Canelones','Uco Valley','Argentina','Chile'], pairColor:'red', note:T('แซนด์วิชสเต๊กประจำชาติอุรุกวัย มันจัดจนต้องใช้แทนนินระดับทานนาต์')},
+  {em:'🦴', ic:'lechazo', name:T('เลชาโซแกะนมอบเตาฟืน'), pairRegions:['Rioja','Spain','Priorat','Douro'], pairColor:'red', note:T('ลูกแกะอบเตาฟืนแบบกัสติยา คู่กับรีโอคาบ่มนานที่แทนนินนุ่มแล้ว')},
+  {em:'🥖', ic:'lyonsausage', name:T('ไส้กรอกลียงกับมันฝรั่งอุ่น'), pairRegions:['Beaujolais','Burgundy','Loire','Rhône'], pairColor:'red', note:T('อาหารบูชองของลียง เนื้อหมูมันกับกาเมผลไม้สดที่ดื่มเย็นๆ')},
+  {em:'🍙', ic:'vitello', name:T('วิเทลโลตอนนาโต'), pairRegions:['Piedmont','Italy','Burgundy'], pairColor:'red', note:T('เนื้อลูกวัวเย็นราดซอสทูน่า จานเปิดของพีดมอนต์ เหมาะกับบาร์เบราที่กรดสด')},
+  {em:'🧁', ic:'pannacotta', name:T('พานาค็อตต้าพีช'), pairRegions:['Piedmont','Italy','Niagara','Germany'], pairColor:'sweet', note:T('ครีมเย็นหวานอ่อนกับพีช — มอสกาโตดาสตีซ่าเบาๆ เข้ากันพอดี')},
+  {em:'🍳', ic:'dungeness', name:T('ปูดันเจเนสอบเนยกระเทียม'), pairRegions:['Sonoma','Napa','Burgundy','Champagne'], pairColor:'white', note:T('ปูหวานแห่งชายฝั่งแปซิฟิก คู่กับชาร์ดอนเนย์ซอนอมาที่เนื้อมันแต่กรดยังสด')},
+  {em:'🫘', ic:'cassoulet', name:T('คาสซูเลต์เป็ดกับถั่วขาว'), pairRegions:['Languedoc','Rhône','Bordeaux','Provence'], pairColor:'red', note:T('สตูถั่วขาวกับเป็ดคอนฟีและไส้กรอกจากทางใต้ฝรั่งเศส ต้องการไวน์แดงล็องก์ด็อกเข้มๆ')},
+  {em:'🍨', ic:'tiramisu', name:T('ทีรามิสุ'), pairRegions:['Sicily','Rutherglen','Madeira','Italy'], pairColor:'fortified', note:T('กาแฟ ครีม และโกโก้ — ไวน์เสริมแอลกอฮอล์กลิ่นคาราเมลอย่างมาร์ซาลาเข้ากันพอดี')},
+  {em:'🍪', ic:'baklava', name:T('บักลาวาพิสตาชิโอ'), pairRegions:['Santorini','Greece','Rutherglen','Lebanon'], pairColor:'sweet', note:T('แป้งบางกรอบชุ่มน้ำเชื่อมกับถั่ว ต้องการไวน์หวานเข้มแบบวินซานโต')},
 ];
 
 /* Customers — av = SVG avatar key, trait shapes their behaviour */
@@ -4354,7 +4475,7 @@ function seasonPref(w){
 const UPGRADES = [
   {id:'seats', icon:'🪑', name:T('ขยายที่นั่ง'), desc:T('รับลูกค้าได้มากขึ้นต่อสัปดาห์'), max:5, cost:l=>480000*(l+1)},
   {id:'sommelier', icon:'🎩', name:T('ปรับปรุงบาร์'), desc:T('เพิ่มโอกาสจับคู่สำเร็จ + ทิป'), max:5, cost:l=>720000*(l+1)},
-  {id:'cellarCap', icon:'🏛️', name:T('ขยายเซลลาร์'), desc:T('เก็บไวน์ได้มากขึ้น + บ่มดีขึ้น'), max:8, cost:l=>600000*(l+1)},
+  {id:'cellarCap', icon:'🏛️', name:T('ขยายเซลลาร์'), desc:T('เก็บไวน์ได้มากขึ้น + บ่มดีขึ้น'), max:10, cost:l=>Math.round(300000*Math.pow(l+1,1.4)/10000)*10000},
   {id:'marketing', icon:'📣', name:T('การตลาด'), desc:T('ดึงลูกค้าระดับสูง + ชื่อเสียงขึ้นเร็ว'), max:5, cost:l=>640000*(l+1)},
 ];
 
@@ -4389,7 +4510,8 @@ function staffBonus(skill){
   return G.staff.filter(s=>s.skill===skill).reduce((sum,s)=>sum+tierOf(s.lvl).mult,0);
 }
 function weeklySalaries(){ return G.staff.reduce((s,x)=>s+x.salary,0); }
-function weeklyRent(){ return 96000 + G.upgrades.seats*56000 + G.upgrades.cellarCap*40000; }
+// rent grows with the space you actually rent: ฿1,200 a week per bottle slot over the first 24
+function weeklyRent(){ return 96000 + G.upgrades.seats*56000 + (cellarCapacity()-24)*1200; }
 /* ============================================================
    OPPORTUNITY EVENTS — occasional pop-up choices that add texture
    and replayability. Each offers a decision with a payoff and a
@@ -4727,7 +4849,7 @@ function makePartyOffer(){
   const color = colorRoll<0.4?'red' : colorRoll<0.8?'white' : 'any';
   // bigger parties as the shop grows
   const repScale = 1 + Math.min(G.rep,300)/300*2;   // 1x..3x
-  const need = Math.round((12 + Math.floor(Math.random()*18)) * repScale);   // ~12-90 bottles
+  const need = Math.min(Math.round((12 + Math.floor(Math.random()*18)) * repScale), Math.round(cellarCapacity()*0.6)+6);   // ~12-90 bottles, sized to the cellar
   // parties buy affordable wine — a price ceiling keeps it to cheap/mid stock
   const maxTier = colorRoll<0.5 ? 2 : 3;
   // they pay a bulk premium over market for the convenience of one big sale
@@ -5865,6 +5987,8 @@ const REGION_COUNTRY = {
   Australia:'au', Barossa:'au', 'New Zealand':'nz', 'Central Otago':'nz', Chile:'cl', Colchagua:'cl',
   Argentina:'ar', 'Uco Valley':'ar', 'South Africa':'za', Stellenbosch:'za', Swartland:'za',
   Lebanon:'lb', England:'gb', Ningxia:'cn', Yamanashi:'jp',
+  Kakheti:'ge', Friuli:'it', Brda:'si', Niagara:'ca', Canelones:'uy', Sonoma:'us', Rioja:'es',
+  Beaujolais:'fr', Piedmont:'it', Languedoc:'fr', Sicily:'it', Rutherglen:'au',
 };
 function flagSVG(region, h=11){
   const c=REGION_COUNTRY[region]; if(!c) return '';
@@ -5886,6 +6010,10 @@ function flagSVG(region, h=11){
     lb:`<rect width="24" height="16" fill="#fff"/><rect width="24" height="4" fill="#D5232E"/><rect y="12" width="24" height="4" fill="#D5232E"/><path d="M12 4.6l3.4 5.6h-2.4l1.4 1.6H9.6l1.4-1.6H8.6z" fill="#1E7A3A"/>`,
     cn:`<rect width="24" height="16" fill="#D5232E"/><path d="M5 2.5l.9 2.6h2.7l-2.2 1.6.8 2.6L5 7.7 2.8 9.3l.8-2.6L1.4 5.1h2.7z" fill="#F5C400"/>${[[10,2],[11.5,4.5],[11.5,7.5],[10,10]].map(([x,y])=>`<circle cx="${x}" cy="${y}" r=".8" fill="#F5C400"/>`).join('')}`,
     jp:`<rect width="24" height="16" fill="#fff"/><circle cx="12" cy="8" r="4.6" fill="#C8202E"/>`,
+    ge:`<rect width="24" height="16" fill="#fff"/><path d="M12 0v16M0 8h24" stroke="#D5232E" stroke-width="2.6"/>${[[5.5,3.8],[18.5,3.8],[5.5,12.2],[18.5,12.2]].map(([x,y])=>`<path d="M${x} ${y-1.8}v3.6M${x-1.8} ${y}h3.6" stroke="#D5232E" stroke-width="1.1"/>`).join('')}`,
+    si:h3('#fff','#1F4FA0','#D5232E')+`<path d="M5 2.6h5v3.4q0 2.4-2.5 3.2Q5 8.4 5 6z" fill="#1F4FA0" stroke="#D5232E" stroke-width=".6"/><path d="M5.6 6.6l1.1-1.4 .8 1 .8-1 1.1 1.4" stroke="#fff" stroke-width=".6" fill="none"/>`,
+    ca:`<rect width="24" height="16" fill="#fff"/><rect width="6" height="16" fill="#D5232E"/><rect x="18" width="6" height="16" fill="#D5232E"/><path d="M12 3.2l.9 1.9 1.3-.6-.4 2.6 1.6-1.2.4 1.1 1.4-.3-.7 1.6.7.5-2.6 1.8.3 1-2.4-.4V13h-.9v-1.8l-2.4.4.3-1-2.6-1.8.7-.5-.7-1.6 1.4.3.4-1.1 1.6 1.2-.4-2.6 1.3.6z" fill="#D5232E"/>`,
+    uy:`${[0,1,2,3,4,5,6,7,8].map(i=>`<rect y="${i*16/9}" width="24" height="${16/9+.05}" fill="${i%2?'#2E66B0':'#fff'}"/>`).join('')}<rect width="9" height="8.9" fill="#fff"/><circle cx="4.5" cy="4.45" r="2.2" fill="#F5C400" stroke="#C8902A" stroke-width=".5"/>`,
   };
   return `<svg class="flag" viewBox="0 0 24 16" width="${h*1.5}" height="${h}" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">${F[c]}<rect width="24" height="16" fill="none" stroke="rgba(0,0,0,.18)" stroke-width="1"/></svg>`;
 }
@@ -6019,7 +6147,9 @@ const GUIDE = [
   {icon:'trophy', t:T('เทศกาลประจำปี — จังหวะทำเงินก้อนใหญ่'), d:T('ปีหนึ่ง (12 สัปดาห์) มี <b>6 เทศกาล</b> ที่ลูกค้าเยอะขึ้นและงบหนาขึ้น แต่ละงานมีไวน์ที่ขายดีเป็นพิเศษ:<br><br>🎉 ปีใหม่ (สปาร์กลิง) · ตรุษจีน (แดง) · ฤดูใบไม้ผลิ (โรเซ่) · กลางฤดูร้อน (ขาว) · <b>งานกาลาเก็บเกี่ยว</b> (แดง งานใหญ่สุด) · สิ้นปี (หวาน)<br><br>หน้าร้านจะเตือนล่วงหน้า 4 สัปดาห์ — <b>เตรียมสต๊อกไวน์ให้ตรงธีมไว้รับงาน</b> จะได้กำไรสูงสุด')},
   {icon:'shield', t:T('ภัยในเซลลาร์ — เก็บไวน์ก็มีความเสี่ยง'), d:T('ตั้งแต่บทที่ 8 ไวน์ที่เก็บไว้อาจเจอภัย: <b>ไฟดับ</b> (อุณหภูมิพุ่ง), <b>ท่อแตก</b> (น้ำท่วม), <b>จุกเสีย</b> (ออกซิไดซ์), <b>แมลงกัดฉลาก</b><br><br>เมื่อเกิดเหตุ เลือกได้ว่า<b>จ่ายจัดการทันที</b> (ปลอดภัย) หรือ<b>ปล่อยไว้</b> (เสี่ยงเสียหาย)<br><br>ป้องกันได้ 2 ทางในหน้าร้าน: <b>บำรุงระบบควบคุมอุณหภูมิ</b> (ยิ่งดูแลดี ยิ่งเกิดเหตุน้อย) และ<b>ทำประกัน</b> (ลดโอกาส + จ่ายคืน 70%) — ยิ่งเก็บไวน์แพงเยอะ ยิ่งควรป้องกัน')},
   {icon:'search', t:T('วิกเตอร์ ครูซ — คู่แข่งตัวจริง'), d:T('หลังเจอกันในเนื้อเรื่อง (บท 3) วิกเตอร์จะ<b>กว้านไวน์ชั้นดี (tier 4+) ในตลาดตัดหน้าคุณ</b>ทุกสัปดาห์ — ของดีจะหมดชั้นเร็ว รีบซื้อก่อน<br><br>ยิ่งคุณแย่งไวน์ดีๆ มาได้ <b>ความเป็นคู่แข่งยิ่งร้อนแรง</b> เขาจะสู้หนักขึ้นทั้งในตลาดและ<b>ในการประมูล</b> — แต่การเอาชนะเขาในงานประมูลก็ยิ่งสะใจ<br><br>ดูระดับความดุเดือดได้ที่แถบบนหน้าตลาด')},
-  {icon:'grape', t:T('โรเซ่ และเขตไวน์ทั่วโลก'), d:T('ตอนนี้เกมมีไวน์ <b>207 ขวดจาก 46 เขต</b> ครอบคลุมทั้งคลาสสิกและแหล่งใหม่ที่กำลังมาแรง — โพรวองซ์ · โตกาจ · ซานโตรีนี · ปริโอราต · โมเซล · เอตนา · วาเคา · บารอสซา · เซ็นทรัลโอทาโก · หนิงเซี่ย · ยามานาชิ และอีกมาก<br><br>🌸 <b>โรเซ่เป็นประเภทที่สาม</b> แยกจากแดงและขาว มีตัวกรองของตัวเองในหน้าตลาด<br><br>จุดเด่นของโรเซ่คือ<b>เข้ากับอาหารได้แทบทุกจาน</b> — ไม่เคยได้คะแนนจับคู่สูงสุด แต่ก็แทบไม่เคยพลาดเลย เหมาะเมื่อไม่แน่ใจว่าลูกค้าสั่งอะไร หรือคลังเหลือไม่ตรงธีม')},
+  {icon:'grape', t:T('ออเรนจ์ไวน์และเขตไวน์ใหม่'), d:T('ตอนนี้เกมมีไวน์ <b>231 ขวดจาก 58 เขต</b> เพิ่มจอร์เจีย · ฟริอูลี · สโลวีเนีย · แคนาดา · อุรุกวัย · ซอนอมา · รีโอคา · โบโฌเลส์ · พีดมอนต์ · ล็องก์ด็อก · ซิซิลี · รัทเทอร์เกลน<br><br>🍷 <b>ออเรนจ์ไวน์</b> คือไวน์ขาวที่หมักทั้งเปลือกแบบไวน์แดง จึงได้สีอำพันและแทนนินบางๆ — สดแบบไวน์ขาวแต่มีโครงสร้างแบบไวน์แดง<br><br>เข้ากับอาหารที่ไวน์ขาวสู้ไม่ไหวแต่ไวน์แดงหนักเกิน เช่น ชีสทอด อาหารหมัก กิมจิ และจานเครื่องเทศหลายอย่าง มีอาหารคู่ของมันเองในร้าน')},
+  {icon:'cellar', t:T('บ่มไวน์ให้ถึงจุดพร้อมดื่ม'), d:T('ไวน์ทุกขวดในเซลลาร์ผ่าน 4 ช่วง: <b>ยังอ่อน → พร้อมดื่ม → เลยจุดพีค → เสื่อมสภาพ</b> (ดูแถบอายุบนการ์ดในเซลลาร์)<br><br>🍷 <b>เสิร์ฟตอนพร้อมดื่มคุ้มที่สุด:</b><br>• ลูกค้าจ่ายแพงขึ้น +15% (Table Wine) ถึง +35% (Grand Cru)<br>• คะแนนจับคู่ดีขึ้น จึงได้ markup และทิปมากขึ้น<br>• จับคู่สมบูรณ์แบบด้วยขวดที่พร้อมดื่ม ได้ชื่อเสียงเพิ่มอีก<br><br>⚠️ ไวน์แดงชั้นดีที่ยังอ่อนแทนนินจะฝาด คะแนนจับคู่ลดลง · ขวดที่เลยพีคหรือเสื่อมจะขายได้น้อยลง<br><br>รายการไวน์ตอนเสิร์ฟมีป้ายบอกว่าขวดไหนพร้อมดื่ม · ซื้อเพิ่มเข้าล็อตเดิมจะเฉลี่ยอายุใหม่ ไม่ได้อายุของขวดเก่าไปฟรีๆ')},
+  {icon:'grape', t:T('โรเซ่ และเขตไวน์ทั่วโลก'), d:T('ตอนนี้เกมมีไวน์ <b>231 ขวดจาก 58 เขต</b> ครอบคลุมทั้งคลาสสิกและแหล่งใหม่ที่กำลังมาแรง — โพรวองซ์ · โตกาจ · ซานโตรีนี · ปริโอราต · โมเซล · เอตนา · วาเคา · บารอสซา · เซ็นทรัลโอทาโก · หนิงเซี่ย · ยามานาชิ และอีกมาก<br><br>🌸 <b>โรเซ่เป็นประเภทที่สาม</b> แยกจากแดงและขาว มีตัวกรองของตัวเองในหน้าตลาด<br><br>จุดเด่นของโรเซ่คือ<b>เข้ากับอาหารได้แทบทุกจาน</b> — ไม่เคยได้คะแนนจับคู่สูงสุด แต่ก็แทบไม่เคยพลาดเลย เหมาะเมื่อไม่แน่ใจว่าลูกค้าสั่งอะไร หรือคลังเหลือไม่ตรงธีม')},
   {icon:'question', t:T('ไม่รู้จักศัพท์ไวน์? แตะดูได้เลย'), d:T('คำเฉพาะทางในเกมจะมี<b>ไอคอน ? เล็กๆ</b> ต่อท้าย แตะแล้วมีคำอธิบายสั้นๆ เด้งขึ้นมาทันที ไม่ต้องออกจากหน้าที่เล่นอยู่<br><br>ครอบคลุมคำอย่าง Grand Cru · Premier Cru · Cru Bourgeois · En Primeur · Vintage · Terroir · Tannin · Négociant และอีกหลายคำ<br><br>💡 ถ้าเงินสดใกล้หมด <b>มีอา แทน</b> โบรกเกอร์จะโผล่มาเตือนพร้อมบอกทางออก (ขายขวดไหนดี · กู้ได้เท่าไร · ลดค่าใช้จ่ายยังไง) ก่อนที่จะสายเกินแก้')},
   {icon:'search', t:T('กรองและเรียงลำดับให้เจอไวน์เร็วขึ้น'), d:T('ทั้งหน้า <b>ตลาด</b> และ <b>เซลลาร์</b> ใช้ปุ่มกดแทนเมนูดรอปดาวน์ แตะครั้งเดียวได้เลย ไม่ต้องเลื่อนหา<br><br>🔍 <b>ตลาด</b>: กรองตามระดับชั้น (Grand Cru → Table) · ประเภท (แดง/ขาว) · ภูมิภาค · เฉพาะที่มีในคลัง · <b>เฉพาะที่ซื้อไหว</b> (ซ่อนขวดที่เงินไม่พอ) แล้วเรียงตามราคา/คะแนน/ความเปลี่ยนแปลง<br><br>🍷 <b>เซลลาร์</b>: กรองระดับชั้นและภูมิภาค เรียงตามมูลค่า กำไร% อายุบ่ม ความพร้อมดื่ม หรือ vintage<br><br>ปุ่ม <b>ล้างตัวกรอง</b> จะโผล่มาเมื่อมีตัวกรองทำงานอยู่ กดครั้งเดียวกลับมาดูทั้งหมด<br><br>💡 การ์ดไวน์แต่ละใบมีป้ายระดับชั้นมุมขวาบน (GC / 1er / VIL / CB / TBL) และชื่อภูมิภาคใต้ชื่อไวน์ ดูปราดเดียวรู้ว่าหายากแค่ไหน')},
   {icon:'bell', t:T('เสียงและเพลงประกอบ'), d:T('เกมมี<b>เอฟเฟกต์เสียง</b>ครบทุกจังหวะ — เปิดจุกไวน์ รินไวน์ เคาะค้อนประมูล เสียงเงิน และแตรแฟนแฟร์เมื่อทำสำเร็จ<br><br>🎵 <b>เพลงประกอบ (BGM)</b> เป็นดนตรีบรรยากาศแบบสังเคราะห์สดๆ — คอร์ดอุ่นๆ กับทำนองเบาๆ ให้ฟีลร้านไวน์หรู วนไม่ซ้ำ ปรับระดับเสียงได้<br><br>เปิด/ปิดเสียงและเพลงแยกกันได้ที่หน้า <b>ตั้งค่า</b> · เพลงจะเริ่มหลังแตะหน้าจอครั้งแรก (ข้อจำกัดของเบราว์เซอร์) ทั้งหมดสร้างในเกม ไม่ต้องโหลดไฟล์เสียง เหมาะกับเน็ตในรถ')},
@@ -6044,7 +6174,7 @@ const GUIDE = [
 ];
 
 /* ---------- GAME STATE ---------- */
-const VERSION = '5.3';
+const VERSION = '5.4';
 const SAVE_KEY = 'cellarAndVine_save_v3';
 const freshState = () => ({
   week:1,
@@ -6198,7 +6328,9 @@ function vintageLabel(rating){
   return {t:T('ปานกลาง'), c:'var(--ink-soft)'};
 }
 
-function cellarCapacity(){ return 20 + G.upgrades.cellarCap*15; }
+// each extension adds more room than the last: 24 → 40 → 60 … → 400 bottles
+const CELLAR_SIZES=[24,40,60,85,115,150,190,235,285,340,400];
+function cellarCapacity(){ const l=Math.max(0,Math.min(G.upgrades.cellarCap||0, CELLAR_SIZES.length-1)); return CELLAR_SIZES[l]; }
 function cellarUsed(){ return Object.values(G.cellar).reduce((s,c)=>s+c.qty,0); }
 function primeurReserved(){ return Object.values(G.primeur||{}).reduce((s,p)=>s+p.qty,0); }
 function cellarFreeForPrimeur(){ return Math.max(0, cellarCapacity() - cellarUsed() - primeurReserved()); }
@@ -6228,12 +6360,26 @@ function drinkWindow(id){
   const pot=agingPotential(w);
   const peakStart=Math.round(pot*0.45), peakEnd=pot;
   const pct=Math.min(1.6, age/Math.max(1,peakEnd));
+  // a bottle opened at its peak is worth much more — most of all for fine wine
+  const peakMult = 1.10 + (w.tier||3)*0.05;   // Table Wine +15% … Grand Cru +35%
   if(age<peakStart)     return {state:'young', pct, label:T('ยังอ่อน'),    mult:1.00, until:peakStart-age};
-  if(age<=peakEnd)      return {state:'peak',  pct, label:T('พร้อมดื่ม'),  mult:1.12, until:peakEnd-age};
-  if(age<=peakEnd*1.45) return {state:'late',  pct, label:T('เลยจุดพีค'),  mult:0.97, until:0};
-  return {state:'old', pct, label:T('เสื่อมสภาพ'), mult:0.85, until:0};
+  if(age<=peakEnd)      return {state:'peak',  pct, label:T('พร้อมดื่ม'),  mult:peakMult, until:peakEnd-age};
+  if(age<=peakEnd*1.45) return {state:'late',  pct, label:T('เลยจุดพีค'),  mult:0.95, until:0};
+  return {state:'old', pct, label:T('เสื่อมสภาพ'), mult:0.80, until:0};
 }
 
+// What a guest pays is set by today's price and how ready the bottle is to
+// drink (long-term appreciation stays in its resale/portfolio value).
+function servePrice(id){ return Math.round((G.prices[id]||0) * drinkWindow(id).mult); }
+// How ready the bottle is changes how good the pairing tastes, too.
+function maturityPairing(w){
+  if(!w || !G.cellar[w.id]) return 0;
+  const st=drinkWindow(w.id).state;
+  if(st==='peak') return 0.06;
+  if(st==='young') return (w.tier>=3 && (w.tannin??3)>=3) ? -0.05 : 0;   // big young reds are still harsh
+  if(st==='late') return -0.02;
+  return -0.10;
+}
 function agingMult(id){
   const c = G.cellar[id]; if(!c) return 1;
   const age = G.week - c.buyWeek;
@@ -6604,9 +6750,9 @@ function wineLiquid(w){
 /* Every wine carries an explicit `style`, so a bottle belongs to exactly one
    group. Guessing from tannin used to put Tokaji in "white" and Port in
    "red" — and sweet wines matched two filters at once. */
-const WINE_STYLES = ['red','white','rose','sweet','fortified','sparkling'];
+const WINE_STYLES = ['red','white','rose','orange','sweet','fortified','sparkling'];
 const STYLE_LABELS = {
-  red:T('แดง'), white:T('ขาว'), rose:T('โรเซ่'),
+  red:T('แดง'), white:T('ขาว'), rose:T('โรเซ่'), orange:T('ออเรนจ์'),
   sweet:T('หวาน'), fortified:T('เสริมแอลกอฮอล์'), sparkling:T('สปาร์กลิง'),
 };
 
@@ -6965,6 +7111,20 @@ function foodIcon(name, size=34){
     somtam:`<path d="M6 22h28c-1 7-7 11-14 11S7 29 6 22z" fill="#C8A86A"/><path d="M6 22h28" stroke="#8E6A3A" stroke-width="1.6"/><ellipse cx="20" cy="22" rx="13" ry="3" fill="#C8E07A"/>${[10,14,18,22,26,30].map((x,i)=>`<path d="M${x-2} ${21.5+(i%2)}l4-1.6" stroke="#E8F2B8" stroke-width="1.4" stroke-linecap="round"/>`).join('')}<circle cx="15" cy="21" r="1.6" fill="#E84A3A"/><circle cx="24" cy="22" r="1.6" fill="#E84A3A"/><path d="M27 10l5 9" stroke="#D02A2A" stroke-width="2.4" stroke-linecap="round"/><path d="M27 10l-1-2" stroke="#5E8A3A" stroke-width="1.6"/><path d="M12 14l2 4" stroke="#7A9A3A" stroke-width="2.2" stroke-linecap="round"/>`,
     massaman:`<path d="M5 20a15 11 0 0 0 30 0z" fill="#8E4A2E"/><ellipse cx="20" cy="20" rx="15" ry="4.6" fill="#C8702E"/><ellipse cx="20" cy="20" rx="13" ry="3.4" fill="#D9883A"/><ellipse cx="15" cy="19.5" rx="3" ry="2.2" fill="#F2D08A"/><ellipse cx="24" cy="20.5" rx="2.6" ry="2" fill="#F2D08A"/><path d="M19 18.5l1.6 1M21 19.5l1-1" stroke="#7A4A28" stroke-width="1.2" stroke-linecap="round"/><path d="M10 11c2-2 2-4 0-6M15 11c2-2 2-4 0-6" stroke="#E8B88A" stroke-width="1.2" fill="none" opacity=".8"/><path d="M27 10l5-2-1 4z" fill="#7A4A28"/>`,
     nata:`<ellipse cx="20" cy="28" rx="15" ry="5" fill="#E8DCC8"/>${[[13,22],[27,22],[20,27]].map(([x,y])=>`<path d="M${x-7} ${y}l1.5 5h11l1.5-5z" fill="#E0A055"/><ellipse cx="${x}" cy="${y}" rx="7" ry="2.6" fill="#F2D06A"/><ellipse cx="${x-1}" cy="${y-.3}" rx="2.6" ry="1.2" fill="#8A4A1E" opacity=".75"/><ellipse cx="${x+2.4}" cy="${y+.6}" rx="1.4" ry=".8" fill="#8A4A1E" opacity=".6"/>`).join('')}<path d="M30 9l1 2 2 .3-1.5 1.5.4 2-1.9-1-1.9 1 .4-2-1.5-1.5 2-.3z" fill="#E8B048"/>`,
+    khachapuri:`<ellipse cx="20" cy="31" rx="16" ry="4" fill="#E8DCC8"/><path d="M3 22c5-10 29-10 34 0-5 9-29 9-34 0z" fill="#D9A050"/><path d="M8 22c4-6 20-6 24 0-4 5-20 5-24 0z" fill="#F5E6B0"/><ellipse cx="20" cy="22" rx="4" ry="3" fill="#F2B526"/><ellipse cx="19" cy="21.2" rx="1.4" ry=".9" fill="#FCE07A"/><circle cx="14" cy="21" r=".8" fill="#E8C878"/><circle cx="26" cy="23" r=".8" fill="#E8C878"/>`,
+    frico:`<ellipse cx="20" cy="29" rx="15" ry="4.5" fill="#E8DCC8"/><path d="M6 24c0-7 6-11 14-11s14 4 14 11c-2 4-8 6-14 6s-12-2-14-6z" fill="#E0A848"/><path d="M8 24c1-5 6-8 12-8" stroke="#F5D07A" stroke-width="2" fill="none" stroke-linecap="round"/>${[[14,20],[24,19],[19,25],[28,24],[11,26]].map(([x,y])=>`<circle cx="${x}" cy="${y}" r="1.4" fill="#B8742A" opacity=".7"/>`).join('')}<path d="M29 11l2-3M32 13l3-1" stroke="#7CA84E" stroke-width="1.6" stroke-linecap="round"/>`,
+    mezze:`<ellipse cx="20" cy="25" rx="17" ry="9" fill="#E8DCC8"/><circle cx="12" cy="22" r="6" fill="#EBD7A6"/><path d="M9 21c2-2 4-2 6 0" stroke="#C8973F" stroke-width="1" fill="none"/><circle cx="12" cy="22" r="1.2" fill="#B85030"/><circle cx="26" cy="21" r="5.5" fill="#B89878"/><path d="M23 20h6M24 22.5h4" stroke="#8A6A4A" stroke-width=".8"/><circle cx="19" cy="29" r="4" fill="#7CA84E"/><circle cx="18" cy="28" r="1" fill="#C0392B"/><circle cx="21" cy="30" r="1" fill="#F2F2EC"/><path d="M28 28l5 2M29 30.5l4 1" stroke="#D9A85A" stroke-width="2" stroke-linecap="round"/>`,
+    kimchipork:`<ellipse cx="20" cy="29" rx="16" ry="5" fill="#2E2A2A"/><ellipse cx="20" cy="28" rx="14" ry="3.6" fill="#4A4040"/>${[10,16,22].map(x=>`<rect x="${x}" y="19" width="6" height="9" rx="1.5" fill="#E8B898"/><rect x="${x}" y="22" width="6" height="1.6" fill="#F5E0CC"/><rect x="${x}" y="25" width="6" height="1.2" fill="#C88A62"/>`).join('')}<path d="M28 22c2-3 6-3 7 0-1 3-5 4-7 0z" fill="#D9442E"/><path d="M29 22c1-1 3-1 4 0" stroke="#F2C2A0" stroke-width=".8" fill="none"/>`,
+    cheesecake:`<ellipse cx="20" cy="31" rx="15" ry="4" fill="#E8DCC8"/><path d="M8 18l24-4v14H8z" fill="#F5E8C8"/><path d="M8 18l24-4" stroke="#E0C890" stroke-width="1"/><rect x="8" y="26" width="24" height="3" fill="#C8904A"/><path d="M8 18c3-3 9-4 13-5l11-1c-1 2-3 3-6 3l-18 3z" fill="#8A2A5A"/>${[[14,14.6],[20,13.4],[26,12.8]].map(([x,y])=>`<circle cx="${x}" cy="${y}" r="1.8" fill="#5A2A8A"/><circle cx="${x-.5}" cy="${y-.5}" r=".5" fill="#B898D8"/>`).join('')}`,
+    chivito:`<path d="M5 22c0-6 7-9 15-9s15 3 15 9z" fill="#E0A055"/><path d="M5 22h30" stroke="#C88A3A" stroke-width="1"/><rect x="5" y="22" width="30" height="2.4" fill="#7CA84E"/><rect x="5" y="24.4" width="30" height="3" fill="#8A4A2E"/><rect x="6" y="27.4" width="28" height="1.8" fill="#F5C842"/><path d="M5 29.2h30c0 2-3 4-15 4s-15-2-15-4z" fill="#D99A48"/>${[[12,17],[20,16],[28,17]].map(([x,y])=>`<circle cx="${x}" cy="${y}" r=".8" fill="#F5E6C0"/>`).join('')}`,
+    lechazo:`<ellipse cx="20" cy="30" rx="17" ry="5" fill="#8A5A3A"/><ellipse cx="20" cy="29" rx="15" ry="3.6" fill="#B07A4A"/><path d="M8 26c1-8 8-12 14-11 6 1 10 6 10 11-2 3-7 4-12 4s-10-1-12-4z" fill="#A8582E"/><path d="M11 24c2-4 6-6 10-6" stroke="#D9884A" stroke-width="2" fill="none" stroke-linecap="round"/><path d="M30 18l5-6" stroke="#F2E8D4" stroke-width="2.6" stroke-linecap="round"/><circle cx="35.5" cy="11.5" r="1.8" fill="#F2E8D4"/><path d="M6 14c-1-3 1-5 0-8M11 13c-1-3 1-5 0-8" stroke="#E8A050" stroke-width="1.4" fill="none" opacity=".8"/>`,
+    lyonsausage:`<ellipse cx="20" cy="29" rx="16" ry="5" fill="#E8E2D4"/><path d="M6 24c4-7 24-7 28 0-3 4-25 4-28 0z" fill="#9A3A30"/><path d="M8 23c4-4 20-4 24 0" stroke="#C05A4A" stroke-width="1.4" fill="none"/>${[[12,25],[18,26],[25,25]].map(([x,y])=>`<ellipse cx="${x}" cy="${y}" rx="2.6" ry="1.6" fill="#D88878"/><circle cx="${x}" cy="${y}" r=".6" fill="#F2D8C8"/>`).join('')}<ellipse cx="29" cy="30" rx="4" ry="2.6" fill="#F2D08A"/><ellipse cx="11" cy="30.5" rx="3.4" ry="2.2" fill="#F2D08A"/><path d="M27 29.5l3 .5" stroke="#7CA84E" stroke-width="1" />`,
+    vitello:`<ellipse cx="20" cy="27" rx="17" ry="7" fill="#F2F2EC"/><ellipse cx="20" cy="26" rx="15" ry="5.4" fill="#E8E2D4"/>${[[13,25],[20,24],[27,25]].map(([x,y])=>`<ellipse cx="${x}" cy="${y}" rx="5" ry="3.2" fill="#C8A498"/><ellipse cx="${x}" cy="${y}" rx="3.4" ry="2" fill="#DDBCB0"/>`).join('')}<path d="M8 23c4 2 8-1 12 1s8-1 12 1" stroke="#EDE0B0" stroke-width="3" fill="none" stroke-linecap="round"/>${[[12,22],[19,25],[26,22],[23,27]].map(([x,y])=>`<circle cx="${x}" cy="${y}" r="1" fill="#5E7A3A"/>`).join('')}`,
+    pannacotta:`<ellipse cx="20" cy="32" rx="13" ry="3.4" fill="#E8DCC8"/><path d="M11 30c0-8 2-15 9-15s9 7 9 15z" fill="#FBF4E4"/><path d="M11 30c0-3 1-5 2-6M29 30c0-3-1-5-2-6" stroke="#EADFC6" stroke-width="1.2" fill="none"/><path d="M12 17c3-2 13-2 16 0-1 3-3 4-8 4s-7-1-8-4z" fill="#F2A458"/><circle cx="20" cy="13" r="4" fill="#F7B26A"/><path d="M20 9c1-2 3-2 4-1" stroke="#6F8A3A" stroke-width="1.2" fill="none"/><path d="M17 12l1-1" stroke="#fff" stroke-width=".8" opacity=".8"/>`,
+    dungeness:`<ellipse cx="20" cy="30" rx="16" ry="5" fill="#E8E2D4"/><ellipse cx="20" cy="23" rx="10" ry="7" fill="#C0503A"/><ellipse cx="20" cy="21.5" rx="8" ry="5" fill="#D8684A"/><path d="M10 22c-4-1-6-4-5-7 2 0 4 2 5 4M30 22c4-1 6-4 5-7-2 0-4 2-5 4M11 26l-4 3M29 26l4 3M13 28l-3 3M27 28l3 3" stroke="#B0402E" stroke-width="2" fill="none" stroke-linecap="round"/><circle cx="17" cy="18" r="1" fill="#2E1A16"/><circle cx="23" cy="18" r="1" fill="#2E1A16"/><path d="M14 23c3 2 9 2 12 0" stroke="#F2B898" stroke-width="1" fill="none"/><ellipse cx="31" cy="31" rx="3" ry="1.4" fill="#F5D63D"/>`,
+    cassoulet:`<path d="M5 20h30c0 9-7 13-15 13S5 29 5 20z" fill="#B85A30"/><path d="M3 20h34" stroke="#8A3E1E" stroke-width="2.4" stroke-linecap="round"/><ellipse cx="20" cy="20.5" rx="14" ry="3.6" fill="#D9A050"/>${[[10,20],[14,21.5],[18,19.6],[22,21.4],[26,20],[30,21],[16,22.6],[24,22.6]].map(([x,y])=>`<ellipse cx="${x}" cy="${y}" rx="1.5" ry="1" fill="#F5E6C8"/>`).join('')}<path d="M19 18c1-4 6-5 8-3-1 3-5 4-8 3z" fill="#8A4A2E"/><rect x="11" y="16.6" width="6" height="2.4" rx="1.2" fill="#9A3A30"/>`,
+    tiramisu:`<ellipse cx="20" cy="31" rx="15" ry="4" fill="#E8DCC8"/><rect x="8" y="14" width="24" height="15" rx="1.5" fill="#F5E8D0"/><rect x="8" y="14" width="24" height="3" fill="#6A3E22"/><rect x="8" y="20" width="24" height="2.6" fill="#C8904A"/><rect x="8" y="25.4" width="24" height="2.6" fill="#C8904A"/>${[[11,15],[15,15.6],[20,15],[25,15.6],[29,15]].map(([x,y])=>`<circle cx="${x}" cy="${y}" r=".6" fill="#3A2016"/>`).join('')}<path d="M28 10l4-3" stroke="#6A3E22" stroke-width="2" stroke-linecap="round"/><ellipse cx="33" cy="6" rx="1.6" ry="1" fill="#6A3E22"/>`,
+    baklava:`<ellipse cx="20" cy="30" rx="16" ry="5" fill="#E8DCC8"/>${[[12,24],[20,22],[28,24],[16,28],[24,28]].map(([x,y])=>`<path d="M${x-5} ${y}l5-4 5 4-5 4z" fill="#D9A050"/><path d="M${x-3.5} ${y}l3.5-2.6 3.5 2.6" stroke="#B8782A" stroke-width=".8" fill="none"/><circle cx="${x}" cy="${y}" r="1.1" fill="#7CA84E"/>`).join('')}<path d="M8 15c3-2 5 1 8-1" stroke="#E8B048" stroke-width="1.4" fill="none" stroke-linecap="round" opacity=".8"/>`,
   }[name]||'';
   return `<svg viewBox="0 0 40 40" width="${size}" height="${size}" xmlns="http://www.w3.org/2000/svg" style="display:block">${A}</svg>`;
 }
@@ -7759,7 +7919,7 @@ function auctionWin(a){
   const yr=gameYear();
   if(cellarUsed()+a.qty<=cellarCapacity()){
     const c=G.cellar[a.id];
-    if(c){ c.buyPrice=(c.buyPrice*c.qty+a.current)/(c.qty+a.qty); c.qty+=a.qty; }
+    if(c){ c.buyPrice=(c.buyPrice*c.qty+a.current)/(c.qty+a.qty); c.buyWeek=Math.round((c.buyWeek*c.qty+G.week*a.qty)/(c.qty+a.qty)); c.qty+=a.qty; }
     else { G.cellar[a.id]={qty:a.qty, buyWeek:G.week, buyPrice:Math.round(a.current/a.qty), vintage:yr, quality:vintageRating(a.id,yr), fake:0, suspect:0}; sealLot(G.cellar[a.id]); }
   } else {
     G.cash+=a.current*0.9;
@@ -8048,7 +8208,8 @@ function doBuy(id, qty){
   const c=G.cellar[id];
   if(c){
     sealLot(c);
-    c.buyPrice=(c.buyPrice*c.qty+off*slip*qty)/(c.qty+qty); c.qty+=qty;
+    c.buyPrice=(c.buyPrice*c.qty+off*slip*qty)/(c.qty+qty);
+    c.buyWeek=Math.round((c.buyWeek*c.qty+G.week*qty)/(c.qty+qty)); c.qty+=qty;
     if(lot.fake){ c.fake=(c.fake||0)+qty; if(staffBonus('quality')>0) c.suspect=(c.suspect||0)+qty; }
     c.fake=Math.min(c.fake||0, c.qty); c.suspect=Math.min(c.suspect||0, c.fake||0);
   }
@@ -8632,6 +8793,11 @@ function pageShop(){
       if(regionOK) chips+=`<span class="rchip ok">${T("ภูมิภาคเข้ากัน")}</span>`;
       R.good.slice(0,2).forEach(k=>chips+=`<span class="rchip ok">${k}${T("พอดี")}</span>`);
       if(expert) R.bad.slice(0,2).forEach(t=>chips+=`<span class="rchip warn">${t}</span>`);
+      { const dw=drinkWindow(id);
+        if(dw.state==='peak') chips+=`<span class="rchip ok">${T("พร้อมดื่ม")} +${Math.round((dw.mult-1)*100)}%</span>`;
+        else if(dw.state==='young' && maturityPairing(w)<0) chips+=`<span class="rchip warn">${T("ยังอ่อน — แทนนินยังฝาด")}</span>`;
+        else if(dw.state==='late') chips+=`<span class="rchip warn">${T("เลยจุดพีค")}</span>`;
+        else if(dw.state==='old') chips+=`<span class="rchip bad">${T("เสื่อมสภาพ")}</span>`; }
       if(overBudget) chips+=`<span class="rchip bad">${T("ลูกค้าจ่ายได้แค่")} ${fmtK(cust.budget)}</span>`;
       const notes=(w.notes||[]).slice(0,4).map(n=>`<span class="nchip">${n}</span>`).join('');
       html+=`<div class="pair-opt ${overBudget?'is-over':''}" data-focus="pair" data-id="${id}" tabindex="0">
@@ -8887,6 +9053,20 @@ const FOOD_PROFILE={
   somtam:    {body:2, tannin:0, acid:5, sweet:2, why:T('เผ็ดเปรี้ยวจัด ความหวานเล็กน้อยช่วยดับเผ็ด แทนนินยิ่งแสบ')},
   massaman:  {body:4, tannin:0, acid:4, sweet:2, why:T('แกงเครื่องเทศหวานมัน ต้องการไวน์ขาวหอมหวานนิด')},
   nata:      {body:4, tannin:0, acid:4, sweet:4, why:T('คัสตาร์ดคาราเมลไหม้ ต้องการไวน์หวานบ่มกลิ่นคาราเมล')},
+  khachapuri:{body:4, tannin:1, acid:4, sweet:0, why:T('ชีสเค็มเนยมันกับไข่ ต้องการกรดและแทนนินบางๆ มาตัด')},
+  frico:     {body:4, tannin:2, acid:4, sweet:0, why:T('ชีสทอดมันจัด ไวน์ต้องมีทั้งกรดและแทนนินเล็กน้อย')},
+  mezze:     {body:3, tannin:2, acid:4, sweet:0, why:T('ผักและเครื่องเทศหลายรส ต้องการไวน์ที่มีโครงสร้างแต่ไม่หนัก')},
+  kimchipork:{body:3, tannin:2, acid:5, sweet:0, why:T('ของหมักเปรี้ยวจัดกับหมูมัน ไวน์ต้องกรดสูงและมีแทนนินเบาๆ')},
+  cheesecake:{body:4, tannin:0, acid:5, sweet:5, why:T('ครีมชีสเปรี้ยวหวาน ต้องการไวน์หวานกว่าและกรดสูง')},
+  chivito:   {body:5, tannin:5, acid:4, sweet:0, why:T('สเต๊ก แฮม ไข่ และชีสในชิ้นเดียว ต้องการแทนนินสูงสุดมาตัด')},
+  lechazo:   {body:4, tannin:3, acid:4, sweet:0, why:T('แกะนมเนื้อนุ่มกลิ่นไม่แรง เข้ากับแดงบ่มนานที่แทนนินนุ่มแล้ว')},
+  lyonsausage:{body:3, tannin:2, acid:4, sweet:0, why:T('ไส้กรอกหมูมัน ต้องการแดงเบาผลไม้สดกรดดี')},
+  vitello:   {body:3, tannin:2, acid:5, sweet:0, why:T('ซอสทูน่าครีมเค็ม ต้องการแดงกรดสดแทนนินนุ่ม')},
+  pannacotta:{body:2, tannin:0, acid:3, sweet:4, why:T('ของหวานเบาๆ ไวน์ต้องหวานเบาและไม่หนักกว่าขนม')},
+  dungeness: {body:4, tannin:0, acid:4, sweet:0, why:T('ปูหวานกับเนยกระเทียม ต้องการไวน์ขาวเนื้อเต็มกรดดี')},
+  cassoulet: {body:5, tannin:4, acid:3, sweet:0, why:T('สตูถั่วเป็ดและไส้กรอกหนักมาก ต้องการแดงเข้มแทนนินแน่น')},
+  tiramisu:  {body:4, tannin:0, acid:3, sweet:4, why:T('กาแฟ ครีม โกโก้ ต้องการไวน์หวานกลิ่นคาราเมลหรือกาแฟ')},
+  baklava:   {body:4, tannin:0, acid:4, sweet:5, why:T('น้ำเชื่อมและถั่ว ต้องการไวน์หวานเข้มกรดสูงพอจะไม่เลี่ยน')},
 };
 function foodProfile(food){ return FOOD_PROFILE[food.ic] || {body:3,tannin:3,acid:4,sweet:0,why:''}; }
 
@@ -8926,6 +9106,9 @@ function styleBonus(pc, w){
   const st = wineStyle(w);
   const sweet = (w.sweet??0)>=4;
   if(pc==='any') return 0.05;
+  // orange (skin-contact) wine: white-wine freshness with a little tannin grip
+  if(pc==='orange') return st==='orange' ? 0.12 : (st==='white'||st==='rose') ? 0.04 : 0;
+  if(st==='orange') return pc==='white' ? 0.05 : pc==='rose' ? 0.06 : (pc==='red'&&(w.body??3)<=3) ? 0.03 : 0;
   if(pc==='rose') return st==='rose' ? 0.12 : (st==='white' || (st==='red' && (w.body??3)<=3)) ? 0.04 : 0;
   // Rosé is the great all-rounder: never the top score for a specific
   // pairing, but it rarely clashes either.
@@ -8945,6 +9128,8 @@ function evalPairing(cust, w, c){
   q += styleBonus(cust.food.pairColor, w);
   // quality/vintage of the specific bottle helps
   if(c&&c.quality) q += (c.quality-82)/18*0.10;
+  // …and so does opening it at the right moment
+  if(c) q += maturityPairing(w);
   // staff + upgrade
   q += G.upgrades.sommelier*0.03 + staffBonus('pairing')*0.05;
   // score prestige nudges impression
@@ -8964,8 +9149,9 @@ function serveCustomer(id){
   if(!c||c.qty<1){ toast(T('ไม่มีไวน์นี้แล้ว'),'bad'); return; }
   G._serving=true;
   const quality=evalPairing(cust, w, c);
+  const atPeak=drinkWindow(id).state==='peak';
 
-  const price=G.prices[id];
+  const price=servePrice(id);
   const servedCost=Math.round(c.buyPrice||price);   // captured before the lot is decremented
   const markup=1.05+quality*quality*0.75;
   let sellPrice=price*markup*seasonPref(w)*festivalStyleBonus(w);
@@ -8989,6 +9175,7 @@ function serveCustomer(id){
     if(quality>0.78){ repGain=3+repPrem+Math.floor(staffBonus('pairing')/2); tip=sellPrice*(0.15+tierPrem+staffBonus('pairing')*0.02); 
       reaction=`${T("✨ \"สมบูรณ์แบบ!")} ${w.cuvee} ${T("เข้ากับ")}${cust.food.name}${T("อย่างเหลือเชื่อ\" —")} ${cust.name}${T("ประทับใจสุดๆ")}`; mood='great';
       G.stats.perfectPairs++; questProgress('perfect',1);
+      if(atPeak){ repGain+=1; G.stats.peakServes=(G.stats.peakServes||0)+1; reaction+=` ${T("· เปิดในจังหวะที่ดีที่สุดของขวด")}`; }
       if(w.tier>=4) G.stats.perfectHigh=(G.stats.perfectHigh||0)+1;
       if(w.tier>=4){ reaction=`${T("✨ \"ขวดระดับนี้หายากมาก!")} ${w.cuvee} ${T("กับ")}${cust.food.name} ${T("คือประสบการณ์ที่ผมจะไม่มีวันลืม\" —")} ${cust.name}${T("ตื้นตัน")}`; } }
     else if(quality>0.55){ repGain=2; tip=sellPrice*(0.06+tierPrem*0.4);
@@ -9162,13 +9349,14 @@ function bindFilterToggle(nActive){
 
 /* ---------- filter sets: tabs + origin drill-down (zone › country › region) ---------- */
 const ZONES=[
-  {k:'eu', t:T('ยุโรป'), c:['fr','it','es','pt','de','at','hu','gr','gb']},
-  {k:'nw', t:T('โลกใหม่'), c:['us','au','nz','cl','ar','za']},
+  {k:'eu', t:T('ยุโรป'), c:['fr','it','es','pt','de','at','hu','gr','gb','si','ge']},
+  {k:'nw', t:T('โลกใหม่'), c:['us','ca','au','nz','cl','ar','uy','za']},
   {k:'as', t:T('เอเชีย & ตะวันออกกลาง'), c:['lb','cn','jp']},
 ];
 const COUNTRY_NAMES={fr:T('ฝรั่งเศส'), it:T('อิตาลี'), es:T('สเปน'), pt:T('โปรตุเกส'), de:T('เยอรมนี'), at:T('ออสเตรีย'),
   hu:T('ฮังการี'), gr:T('กรีซ'), gb:T('อังกฤษ'), us:T('สหรัฐฯ'), au:T('ออสเตรเลีย'), nz:T('นิวซีแลนด์'), cl:T('ชิลี'),
-  ar:T('อาร์เจนตินา'), za:T('แอฟริกาใต้'), lb:T('เลบานอน'), cn:T('จีน'), jp:T('ญี่ปุ่น')};
+  ar:T('อาร์เจนตินา'), za:T('แอฟริกาใต้'), lb:T('เลบานอน'), cn:T('จีน'), jp:T('ญี่ปุ่น'),
+  ge:T('จอร์เจีย'), si:T('สโลวีเนีย'), ca:T('แคนาดา'), uy:T('อุรุกวัย')};
 function countryOf(region){ return REGION_COUNTRY[region]||''; }
 function zoneOf(region){ const c=countryOf(region); const z=ZONES.find(z=>z.c.includes(c)); return z?z.k:''; }
 function countryFlag(code, h){ const r=Object.keys(REGION_COUNTRY).find(x=>REGION_COUNTRY[x]===code); return r?flagSVG(r,h||11):''; }
@@ -10403,7 +10591,7 @@ function prestigeMult(){ return 1 + (G.prestigeBonus||0)/100; }
 function estimateServe(id, cust, quality){
   const w=wineById(id); const c=G.cellar[id];
   if(!w||!c) return null;
-  const price=G.prices[id];
+  const price=servePrice(id);
   const markup=1.05+quality*quality*0.75;
   let sellPrice=price*markup*seasonPref(w)*festivalStyleBonus(w);
   const tierPrem=[0,0,0.04,0.10,0.20,0.35][w.tier]||0;
