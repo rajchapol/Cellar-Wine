@@ -61,6 +61,7 @@
     --wine-bright:#A23A4C;
     --gold:       #C8973F;   /* warm gold */
     --gold-soft:  #E4C77E;
+    --gold-deep:  #8E6420;   /* gold text on cream */
     --sage:       #7C8B5E;   /* olive/sage green */
     --sage-deep:  #5B6A42;
     --sky:        #6E93A6;   /* dusty blue */
@@ -104,6 +105,7 @@
     --wine-bright:#D98698;
     --gold:       #E0B25C;
     --gold-soft:  #8A6B32;
+    --gold-deep:  #E8C070;
     --sage:       #8FA06F;
     --sage-deep:  #A8BA85;
     --sky:        #8FB4C6;
@@ -755,6 +757,47 @@
     display:flex; gap:10px; flex-wrap:wrap; align-items:center; }
   .fb-tags svg{ vertical-align:middle; margin-right:1px; }
 
+
+  /* ---- Business page ---- */
+  .biz-tabs{display:grid; grid-template-columns:repeat(4,1fr); gap:6px; margin:0 0 12px; padding:4px; border-radius:14px; background:var(--paper-2); border:1.5px solid var(--line);}
+  .biz-tab{display:flex; flex-direction:column; align-items:center; gap:3px; padding:8px 4px; border:0; border-radius:10px; background:transparent; font:inherit; font-size:12px; font-weight:800; color:var(--ink-soft); cursor:pointer; position:relative; line-height:1.25; text-align:center;}
+  .biz-tab.on{background:var(--wine); color:#fff; box-shadow:0 2px 6px rgba(0,0,0,.18);}
+  .biz-tab.locked{opacity:.55;}
+  .biz-tab .f-count{position:absolute; top:3px; right:6px; display:inline-flex; align-items:center; justify-content:center; min-width:18px; height:18px; padding:0 5px; border-radius:9px; font-size:11px; background:var(--gold); color:#3E2C15;}
+  .biz-how{font-size:12.5px; line-height:1.7; padding:10px 13px; border-radius:12px; background:rgba(200,151,63,.12); border:1.5px solid var(--gold-soft); margin-bottom:12px;}
+  .biz-empty{padding:16px; color:var(--ink-soft); font-size:13px;}
+  .biz-locked{display:flex; gap:12px; align-items:center; padding:18px;}
+  .biz-head{display:flex; justify-content:space-between; align-items:flex-start; gap:10px; margin-bottom:8px;}
+  .biz-title{font-family:Fraunces,'Noto Serif Thai',serif; font-size:16px; color:var(--wine); font-weight:600;}
+  .biz-label{display:flex; align-items:center; gap:6px; font-size:12px; font-weight:800; color:var(--ink-soft); letter-spacing:.2px; margin:12px 0 6px;}
+  .biz-food{display:flex; align-items:center; gap:10px; font-size:13px; margin:4px 0 8px; padding:6px 10px; border-radius:10px; background:var(--paper-2);}
+  .biz-food > svg{flex-shrink:0; background:#FFFDF8; border-radius:50%; box-shadow:0 0 0 1.5px var(--line);}
+  .wrow{display:flex; align-items:center; gap:10px; padding:7px 0;}
+  .wrow + .wrow{border-top:1px dashed var(--line);}
+  .wrow-b{flex-shrink:0; width:26px; display:flex; justify-content:center;}
+  .wrow-t{flex:1; min-width:0; display:flex; flex-direction:column; gap:2px;}
+  .wrow-t > b{font-size:14px; line-height:1.3;}
+  .wrow-t > span{font-size:11.5px; color:var(--ink-soft); line-height:1.5;}
+  .wrow-t .flag{vertical-align:-1px; border-radius:2px; margin-right:2px;}
+  .wrow-x{font-size:12px !important; color:var(--ink) !important;}
+  .wrow-q{font-family:inherit; color:var(--gold-deep); font-weight:800;}
+  .wrow-r{display:flex; gap:6px; align-items:center; flex-shrink:0; text-align:right;}
+  .wrow-p{font-size:12.5px; font-weight:700; line-height:1.35;}
+  .tier-name{font-style:normal; font-weight:700;}
+  .deal-box{display:grid; grid-template-columns:1fr 1fr; gap:6px; margin-top:10px;}
+  .deal-box > div{background:var(--paper-2); border-radius:10px; padding:7px 10px; display:flex; flex-direction:column;}
+  .deal-box span{font-size:11px; color:var(--ink-soft); font-weight:700;}
+  .deal-box b{font-size:13.5px;} .deal-box b.up{color:var(--up);} .deal-box b.down{color:var(--down);}
+  .deal-verdict{margin-top:8px; padding:7px 11px; border-radius:10px; font-size:13px; font-weight:800;}
+  .deal-verdict.good{background:rgba(94,138,58,.14); color:var(--up);}
+  .deal-verdict.ok{background:rgba(200,151,63,.16); color:var(--gold-deep);}
+  .deal-verdict.bad{background:rgba(178,74,62,.12); color:var(--down);}
+  .biz-rules{margin-top:8px; font-size:12px; line-height:1.75; color:var(--ink-soft);}
+  .biz-rules b{color:var(--ink);}
+  .party-item .wrow{padding:0;}
+  @media(max-width:560px){ .wrow{flex-wrap:wrap;} .wrow-r{width:100%; justify-content:flex-end;} }
+  body.car .biz-tab{font-size:14px; padding:12px 6px; min-height:60px;}
+  body.car .wrow-t > b{font-size:16px;} body.car .wrow-t > span{font-size:13px;}
   /* party card: requirements grid, how-it-works, shop reminder */
   .pt-deadline{font-size:12.5px; padding:5px 11px; border-radius:999px; background:rgba(200,151,63,.16); border:1.5px solid var(--gold-soft); white-space:nowrap;}
   .pt-grid{display:grid; grid-template-columns:repeat(auto-fit,minmax(130px,1fr)); gap:8px; margin:12px 0 10px;}
@@ -1198,7 +1241,6 @@
   body.car .weekbtn{font-size:18px; padding:18px 32px; border-radius:20px;}
   body.car .page-head h2{font-size:28px;}
   body.car .page-head p{font-size:14.5px;}
-  body.car .content{padding-bottom:110px;}   /* clear the floating week button */
   body.car .toast{font-size:16px; padding:13px 24px;}
   /* Phones (portrait): the top bar used to wrap into three tall rows and eat a
      third of the screen. Two compact rows: brand + stats, then the buttons. */
@@ -1275,6 +1317,10 @@
   @media(hover:hover){ body.dark .tb-btn:hover{background:rgba(255,255,255,.12);} }
   @keyframes foil{ 0%,62%{left:-60%;} 100%{left:130%;} }
   /* the next-week button catches the light now and then */
+  /* the floating Next Week button must never cover the last row of a page */
+  .content{padding-bottom:96px;}
+  @media(max-width:700px){ .content{padding-bottom:84px;} }
+  body.car .content{padding-bottom:116px;}
   .weekbtn{overflow:hidden;}
   .weekbtn::after{content:''; position:absolute; top:0; bottom:0; left:-60%; width:40%; pointer-events:none;
     background:linear-gradient(105deg, transparent, rgba(255,250,230,.6), transparent); transform:skewX(-18deg); animation:foil 6s ease-in-out infinite;}
@@ -3835,6 +3881,63 @@ const EN = {
   "แคนาดา": "Canada",
   "อุรุกวัย": "Uruguay",
   "ตอนนี้เกมมีไวน์ <b>231 ขวดจาก 58 เขต</b> ครอบคลุมทั้งคลาสสิกและแหล่งใหม่ที่กำลังมาแรง — โพรวองซ์ · โตกาจ · ซานโตรีนี · ปริโอราต · โมเซล · เอตนา · วาเคา · บารอสซา · เซ็นทรัลโอทาโก · หนิงเซี่ย · ยามานาชิ และอีกมาก<br><br>🌸 <b>โรเซ่เป็นประเภทที่สาม</b> แยกจากแดงและขาว มีตัวกรองของตัวเองในหน้าตลาด<br><br>จุดเด่นของโรเซ่คือ<b>เข้ากับอาหารได้แทบทุกจาน</b> — ไม่เคยได้คะแนนจับคู่สูงสุด แต่ก็แทบไม่เคยพลาดเลย เหมาะเมื่อไม่แน่ใจว่าลูกค้าสั่งอะไร หรือคลังเหลือไม่ตรงธีม": "The game now has <b>231 wines from 58 regions</b>, covering both the classics and rising new areas — Provence · Tokaj · Santorini · Priorat · Mosel · Etna · Wachau · Barossa · Central Otago · Ningxia · Yamanashi and many more<br><br>🌸 <b>Rosé is a third category</b>, separate from red and white, with its own filter on the Market page<br><br>Rosé's strength is that it <b>goes with almost any dish</b> — it never gets the top pairing score, but it almost never misses. Great when you're not sure what the customer ordered or your stock doesn't fit the theme",
+  "ไรน์ & ดานูบ ไวน์เฮาส์": "Rhine & Danube Wine House",
+  "ส่งตรงจากไร่ในยุโรปกลาง ต้องรับทั้งลัง": "Ships straight from Central European estates — whole cases only",
+  "นิวเวิลด์ ไฟน์ไวน์ส": "New World Fine Wines",
+  "ตัวแทนไวเนอรีโลกใหม่ จัดลังรวมหลายประเทศ": "Agent for New World wineries, mixed cases from several countries",
+  "เชฟลูก้า": "Chef Luca",
+  "พาสต้าทรัฟเฟิลและริซอตโต": "Truffle pasta and risotto",
+  "เชฟนีน่า": "Chef Nina",
+  "หอยนางรมและอาหารทะเลดิบ": "Oysters and raw seafood",
+  "มีในคลัง": "In cellar",
+  "ดู / ซื้อ": "View / Buy",
+  "สัญญาร้านอาหาร": "Restaurant Contracts",
+  "โควตาพ่วง": "Allocations",
+  "ไวน์หายาก": "Rare Wines",
+  "งานปาร์ตี้ · สัญญาร้านอาหาร · โควตาพ่วง · ไวน์หายาก": "Parties · Restaurant contracts · Allocations · Rare wines",
+  "ยังไม่เปิด": "isn't open yet",
+  "ปลดล็อกเมื่อเดินเรื่องถึงบทที่": "Unlocks when the story reaches chapter",
+  "ตอนนี้อยู่บทที่": "You're on chapter",
+  "พ่อค้าคนกลางขายไวน์ระดับสูงให้ในราคาลด แต่ต้อง<b>รับไวน์ระดับล่างพ่วงไปด้วย</b>ในราคาเต็ม ดูช่อง \"ขายคืนทันทีได้\" — ถ้าสูงกว่าราคาแพ็กเกจคือได้กำไรทันที ถ้าต่ำกว่า ส่วนต่างคือค่าเข้าถึงไวน์ระดับสูง": "Négociants sell top wine at a discount, but you must <b>take lower-tier wine bundled with it</b> at full price. Check \"Resell now for\" — if it's above the package price you're in profit straight away; if it's below, the difference is your price of access to the top wine",
+  "คุ้ม — ขายคืนทันทีก็ได้กำไร": "Worth it — profitable even if you resell now",
+  "พอได้ — กำไรอยู่ที่ขวดเด่นถ้าเก็บไว้": "Fair — the profit is in the trophy bottle if you keep it",
+  "แพงไป — ของพ่วงกินกำไรหมด": "Too expensive — the bundle eats the profit",
+  "ไวน์เด่น (ราคาลด 18%)": "Trophy wine (18% off)",
+  "ของพ่วงที่ต้องรับด้วย (ราคาเต็ม)": "Bundled wine you must take too (full price)",
+  "ราคาแพ็กเกจ": "Package price",
+  "มูลค่าตลาดรวม": "Total market value",
+  "ขายคืนทันทีได้": "Resell now for",
+  "พื้นที่ที่ใช้": "Space needed",
+  "ว่าง": "free",
+  "เชฟสั่งไวน์ที่เข้ากับเมนูของร้าน <b>ส่งทุกสัปดาห์ในราคาคงที่</b> ระบบส่งให้อัตโนมัติตอนสิ้นสัปดาห์จากเซลลาร์ของคุณ — แค่มีไวน์พอในคลัง ตลาดจะกันของไว้ให้อย่างน้อย 2 สัปดาห์ต่อครั้งเสมอ": "Chefs order wine that suits their menu, <b>delivered every week at a fixed price</b>. Deliveries go out automatically at the end of each week from your cellar — just keep enough in stock. The market always holds back at least 2 weeks' worth for you",
+  "สัญญาที่กำลังส่ง": "Active contracts",
+  "ขวด/สัปดาห์": "bottles/week",
+  "ขวด — พอส่งอีก": "bottles — enough for another",
+  "มีแค่": "Only",
+  "ขวด — ซื้อเพิ่มก่อนจบสัปดาห์": "bottles — buy more before the week ends ",
+  "ส่งขาดครั้งถัดไปโดนปรับ": "the next miss will be fined",
+  "ครั้งแรกเชฟยังให้อภัย": "the chef forgives the first miss",
+  "ส่งขาดแล้ว": "Missed deliveries:",
+  "เมนู:": "Menu:",
+  "ตอบภายใน": "Reply within",
+  "จานหลัก:": "Main dish:",
+  "ไวน์ที่ขอ": "the requested wine",
+  "ตลาดมีของสัปดาห์นี้": "On the market this week",
+  "ส่งสัปดาห์ละ": "Delivers per week",
+  "ขวด ×": "bottles ×",
+  "ราคาคงที่ต่อขวด": "Fixed price per bottle",
+  "รายได้ทั้งสัญญา": "Contract revenue",
+  "กำไรถ้าซื้อจากตลาดมาส่ง": "Profit if bought from the market",
+  "มีในคลังตอนนี้": "In your cellar now",
+  "ต้องใช้ทั้งหมด": "total needed",
+  "ส่งครบทุกสัปดาห์ จบสัญญาได้โบนัส": "Deliver every week and finish the contract for a bonus of",
+  "ส่งขาดครั้งแรกเชฟให้อภัย ครั้งต่อไปโดนปรับ": "The chef forgives the first miss; after that each miss is fined",
+  "และ −★3 ต่อครั้ง": "and −★3 each time",
+  "ยังไม่มีสัญญา — เชฟจะติดต่อมาเป็นระยะ ยิ่งร้านมีชื่อเสียงยิ่งมีข้อเสนอ": "No contracts yet — chefs get in touch from time to time, and more often the more famous your shop",
+  "ราว 1-2 เดือนครั้ง โรงแรม บริษัท หรืองานแต่งจะสั่งไวน์ราคาไม่แพงทีละหลายสิบขวด จ่ายราคาตลาด +15-40% ทันทีทุกขวด": "Every month or two, a hotel, company or wedding orders dozens of inexpensive bottles at once, paying market price +15-40% straight away for every bottle",
+  "ยังไม่มีงานตอนนี้ — เก็บไวน์ระดับล่างไว้รองานได้เลย": "No party right now — keep some lower-tier wine ready for one",
+  "งานจ่าย": "party pays",
+  "ซื้อจากตลาดมาส่งได้ — กำไรต่อขวดสูงสุด 5 อันดับ": "Buy on the market to deliver — top 5 by profit per bottle",
   "ร้านไวน์ & เซลลาร์": "Wine Shop & Cellar"
 };
 function T(s){ if(LANG!=='en') return s; const v=EN[s]; return v===undefined ? s : v; }
@@ -3925,7 +4028,7 @@ const WINES = [
   {id:'w20', style:'sweet', name:'Château d\'Yquenne', cuvee:'Sauternes', region:'Bordeaux', color:'#C99A2E', tier:4, base:380000, vol:.05, score:96, note:T('ไวน์หวานราเชื้อดี น้ำผึ้งและแอปริคอต บ่มได้เป็นร้อยปี'), body:4, tannin:2, acid:3, sweet:4, notes:[T('ลูกเกดดำ'),T('ซีดาร์'),T('ยาสูบ'),T('ดินสอดำ')]},
   // ---- More Burgundy ----
   {id:'w21', style:'red', name:'Domaine Lereux', cuvee:'Musigny GC', region:'Burgundy', color:'#6A1E2C', tier:5, base:1470000, vol:.08, score:99, note:T('ปิโนต์นัวร์ไบโอไดนามิก ผลิตน้อยมาก ราคาแซงหลายเฟิร์สโกรท'), body:3, tannin:3, acid:4, sweet:0, notes:[T('เชอร์รี่แดง'),T('ดอกไม้แห้ง'),T('เห็ด'),T('ดินป่า')]},
-  {id:'w22', style:'red', name:'Coche-Duroy', cuvee:'Meursault', region:'Burgundy', color:'#CBAA52', tier:4, base:420000, vol:.06, score:94, note:T('ชาร์ดอนเนย์ระดับเทพ กลิ่นเฮเซลนัทและควันไฟ'), body:3, tannin:3, acid:4, sweet:0, notes:[T('เชอร์รี่แดง'),T('ดอกไม้แห้ง'),T('เห็ด'),T('ดินป่า')]},
+  {id:'w22', style:'white', name:'Coche-Duroy', cuvee:'Meursault', region:'Burgundy', color:'#CBAA52', tier:4, base:420000, vol:.06, score:94, note:T('ชาร์ดอนเนย์ระดับเทพ กลิ่นเฮเซลนัทและควันไฟ'), body:4, tannin:0, acid:4, sweet:0, notes:[T('เฮเซลนัท'),T('พีชขาว'),T('มะนาว'),T('โอ๊คหวาน')]},
   {id:'w23', style:'red', name:'Clos de Tarte', cuvee:'Grand Cru', region:'Burgundy', color:'#631C2A', tier:5, base:1030000, vol:.07, score:97, note:T('มอนอโปลเจ้าของรายเดียวมากว่า 500 ปี'), body:3, tannin:3, acid:4, sweet:0, notes:[T('เชอร์รี่แดง'),T('ดอกไม้แห้ง'),T('เห็ด'),T('ดินป่า')]},
   // ---- More Bordeaux ----
   {id:'w24', style:'red', name:'Château Latoure', cuvee:'Pauillac', region:'Bordeaux', color:'#4A121F', tier:5, base:900000, vol:.05, score:98, note:T('เฟิร์สโกรทสายพลัง โครงสร้างแน่น บ่มได้เกินศตวรรษ'), body:4, tannin:4, acid:3, sweet:0, notes:[T('ลูกเกดดำ'),T('ซีดาร์'),T('ยาสูบ'),T('ดินสอดำ')]},
@@ -3989,7 +4092,7 @@ const WINES = [
   {id:'w67', style:'red', name:'Errazuruz Sena', cuvee:'Aconcagua', region:'Chile', color:'#571A26', tier:3, base:140000, vol:.06, score:92, note:T('ไบโอไดนามิกจากหุบเขาอาคอนคากัว เนื้อแน่นสง่า'), body:4, tannin:4, acid:3, sweet:0, notes:[T('ลูกเกดดำ'),T('พริกหยวก'),T('โกโก้'),T('มินต์')]},
   // ---- Japan ----
   {id:'w68', style:'white', name:'Grace Koshu', cuvee:'Kayagatake', region:'Japan', color:'#D6CE86', tier:3, base:120000, vol:.05, score:90, note:T('โคชูจากยามานาชิ บางเบาสะอาด คู่อาหารญี่ปุ่นได้ดี'), body:2, tannin:1, acid:5, sweet:0, notes:[T('ลูกแพร์'),T('ส้มยูซุ'),T('ดอกไม้'),T('แร่ธาตุ')]},
-  {id:'w69', style:'white', name:'Kenzo Estate Rindo', cuvee:'Napa Blend', region:'Japan', color:'#521824', tier:4, base:310000, vol:.06, score:93, note:T('ไร่ญี่ปุ่นในนาปา ประณีตแบบช่างฝีมือ'), body:2, tannin:1, acid:5, sweet:0, notes:[T('ลูกแพร์'),T('ส้มยูซุ'),T('ดอกไม้'),T('แร่ธาตุ')]},
+  {id:'w69', style:'red', name:'Kenzo Estate Rindo', cuvee:'Napa Blend', region:'Japan', color:'#521824', tier:4, base:310000, vol:.06, score:93, note:T('ไร่ญี่ปุ่นในนาปา ประณีตแบบช่างฝีมือ'), body:4, tannin:4, acid:3, sweet:0, notes:[T('ลูกเกดดำ'),T('พลัม'),T('ซีดาร์'),T('ช็อกโกแลต')]},
   // ---- England ----
   {id:'w70', style:'sparkling', name:'Nyetimber Classic', cuvee:'Sparkling', region:'England', color:'#CBBE68', tier:3, base:120000, vol:.05, score:91, note:T('สปาร์กลิงอังกฤษจากดินชอล์กเดียวกับแชมเปญ'), body:3, tannin:0, acid:5, sweet:1, notes:[T('แอปเปิลเขียว'),T('ขนมปัง'),T('มะนาว'),T('ชอล์ก')]},
   {id:'w71', style:'sparkling', name:'Gusbourne Blanc', cuvee:'Blanc de Blancs', region:'England', color:'#CFC470', tier:3, base:130000, vol:.05, score:91, note:T('ชาร์ดอนเนย์เคนต์ กรดคมสดใส'), body:3, tannin:0, acid:5, sweet:1, notes:[T('แอปเปิลเขียว'),T('ขนมปัง'),T('มะนาว'),T('ชอล์ก')]},
@@ -4011,14 +4114,14 @@ const WINES = [
   {id:'w82', style:'sparkling', name:'Philipponnat Goutes', cuvee:'Clos', region:'Champagne', color:'#CBAA50', tier:4, base:370000, vol:.06, score:94, note:T('โคลสกำแพงหินแปลงเดียวในแชมเปญ ชันที่สุด'), body:3, tannin:0, acid:5, sweet:1, notes:[T('แอปเปิลเขียว'),T('ขนมปังอบ'),T('ส้ม'),T('ฟองละเอียด')]},
   // ---- More Rhône / Loire ----
   {id:'w83', style:'red', name:'Beaucastel Hommage', cuvee:'Châteauneuf', region:'Rhône', color:'#571A24', tier:5, base:820000, vol:.07, score:98, note:T('รุ่นพิเศษจากต้นมูร์เวดร์แก่ ผลิตเฉพาะปีดีเยี่ยม'), body:4, tannin:4, acid:4, sweet:0, notes:[T('พริกไทยดำ'),T('แบล็กเบอร์รี่'),T('สมุนไพร'),T('เนื้อรมควัน')]},
-  {id:'w84', style:'red', name:'Dagueneau Silex', cuvee:'Pouilly-Fumé', region:'Loire', color:'#CDC46E', tier:4, base:340000, vol:.06, score:94, note:T('ซอวีญงบล็องจากหินเหล็กไฟ ลึกและมีมิติผิดปกติ'), body:3, tannin:2, acid:5, sweet:1, notes:[T('ควินซ์'),T('ดอกไม้ขาว'),T('หินเหล็กไฟ'),T('มะนาว')]},
+  {id:'w84', style:'white', name:'Dagueneau Silex', cuvee:'Pouilly-Fumé', region:'Loire', color:'#CDC46E', tier:4, base:340000, vol:.06, score:94, note:T('ซอวีญงบล็องจากหินเหล็กไฟ ลึกและมีมิติผิดปกติ'), body:3, tannin:0, acid:5, sweet:0, notes:[T('หินเหล็กไฟ'),T('มะนาวเขียว'),T('เกรปฟรุต'),T('หญ้าสด')]},
   {id:'w85', style:'red', name:'Clos Rougeard', cuvee:'Saumur-Champigny', region:'Loire', color:'#5E1F2A', tier:4, base:340000, vol:.07, score:94, note:T('กาแบร์เนต์ฟรังก์ในตำนานของลัวร์ ผลิตน้อยมาก'), body:3, tannin:2, acid:5, sweet:1, notes:[T('ควินซ์'),T('ดอกไม้ขาว'),T('หินเหล็กไฟ'),T('มะนาว')]},
   // ---- Entry-level everyday wines (early game) ----
   {id:'w86', style:'red', name:'Villa Antinori Rosso', cuvee:'Toscana IGT', region:'Italy', color:'#6B2430', tier:1, base:21000, vol:.04, score:86, note:T('แดงทัสคานีดื่มง่าย คุ้มค่าที่สุดสำหรับเปิดร้าน'), body:4, tannin:4, acid:5, sweet:0, notes:[T('เชอร์รี่เปรี้ยว'),T('สมุนไพรแห้ง'),T('ดิน'),T('ยาสูบ')]},
   {id:'w87', style:'red', name:'Marques de Caceres', cuvee:'Rioja Crianza', region:'Spain', color:'#66222E', tier:1, base:18000, vol:.04, score:86, note:T('ริโอฮาระดับเริ่มต้น นุ่มกลมกล่อม ขายง่าย'), body:4, tannin:4, acid:4, sweet:0, notes:[T('พลัม'),T('หนัง'),T('วานิลลา'),T('เครื่องเทศ')]},
   {id:'w88', style:'white', name:'Dr. Loesen Riesling', cuvee:'Kabinett', region:'Germany', color:'#D2C86E', tier:1, base:24000, vol:.04, score:87, note:T('รีสลิงหวานเล็ก คู่อาหารเผ็ดได้ดีเยี่ยม'), body:2, tannin:0, acid:5, sweet:3, notes:[T('พีช'),T('มะนาว'),T('น้ำผึ้ง'),T('แร่ธาตุ')]},
-  {id:'w89', style:'red', name:'Yalumba Viognier', cuvee:'Eden Valley', region:'Australia', color:'#D4BE62', tier:1, base:26000, vol:.05, score:86, note:T('วิโอเนียร์หอมดอกไม้ ราคาเป็นมิตร'), body:5, tannin:4, acid:3, sweet:0, notes:[T('แบล็กเบอร์รี่'),T('ยูคาลิปตัส'),T('ช็อกโกแลต'),T('เครื่องเทศ')]},
-  {id:'w90', style:'red', name:'Bourgogne Chardonnay', cuvee:'Régionale', region:'Burgundy', color:'#CFC272', tier:2, base:51000, vol:.05, score:87, note:T('เบอร์กันดีขาวระดับภูมิภาค ประตูสู่ชาร์ดอนเนย์ชั้นดี'), body:3, tannin:3, acid:4, sweet:0, notes:[T('เชอร์รี่แดง'),T('ดอกไม้แห้ง'),T('เห็ด'),T('ดินป่า')]},
+  {id:'w89', style:'white', name:'Yalumba Viognier', cuvee:'Eden Valley', region:'Australia', color:'#D4BE62', tier:1, base:26000, vol:.05, score:86, note:T('วิโอเนียร์หอมดอกไม้ ราคาเป็นมิตร'), body:4, tannin:0, acid:3, sweet:0, notes:[T('พีช'),T('แอปริคอตแห้ง'),T('ดอกไม้ขาว'),T('น้ำผึ้ง')]},
+  {id:'w90', style:'white', name:'Bourgogne Chardonnay', cuvee:'Régionale', region:'Burgundy', color:'#CFC272', tier:2, base:51000, vol:.05, score:87, note:T('เบอร์กันดีขาวระดับภูมิภาค ประตูสู่ชาร์ดอนเนย์ชั้นดี'), body:3, tannin:0, acid:4, sweet:0, notes:[T('แอปเปิลเขียว'),T('มะนาว'),T('ดอกไม้ขาว'),T('แร่ธาตุ')]},
   {id:'w91', style:'red', name:'Cotes du Rhone Villages', cuvee:'Grenache Blend', region:'Rhône', color:'#5F2028', tier:1, base:23000, vol:.04, score:86, note:T('เกรอนาชผสมจากทางใต้ เครื่องเทศอบอุ่น ดื่มได้ทุกวัน'), body:4, tannin:4, acid:4, sweet:0, notes:[T('พริกไทยดำ'),T('แบล็กเบอร์รี่'),T('สมุนไพร'),T('เนื้อรมควัน')]},
   {id:'w92', style:'white', name:'Vinho Verde Aveleda', cuvee:'Loureiro', region:'Portugal', color:'#D6D08A', tier:1, base:14000, vol:.04, score:84, note:T('ขาวซ่าเบาๆ สดชื่นที่สุดในวันร้อน ราคาถูกที่สุดในร้าน'), body:2, tannin:1, acid:4, sweet:1, notes:[T('มะนาว'),T('แอปเปิลเขียว'),T('ซ่าเบาๆ')]},
 
@@ -4543,7 +4646,7 @@ function buildEvents(){
             if(c){ sealLot(c); c.qty+=qty; if(isFake) c.fake=(c.fake||0)+qty; }
             else { G.cellar[w.id]={qty, buyWeek:G.week, buyPrice:Math.round(cost/n/qty), vintage:yr, quality:vintageRating(w.id,yr), fake:isFake?qty:0, suspect:0}; }
             sealLot(G.cellar[w.id]);
-            got.push(w.cuvee||w.name); if(isFake) fakes++;
+            got.push(w.name); if(isFake) fakes++;
           }
           normalizeCellarLots();
           return `${T("ได้ไวน์")} ${n} ${T("ชนิด:")} ${got.join(', ')}${fakes?` ${T("(ระวัง! อาจมีของปลอมปน — ส่งตรวจแล็บก่อนขาย)")}`:T(' — ดูเหมือนของแท้ทั้งหมด')}`;
@@ -4947,7 +5050,7 @@ function fillParty(id, qty){
     G.party=null;
     checkAchievements();
   } else {
-    toast(`${T("🍷 ส่ง")} ${w.cuvee||w.name} ×${want} ${T("เข้างาน (+")}${fmtK(gain)}${T(") — เหลืออีก")} ${P.need-P.filled} ${T("ขวด")}`,'good');
+    toast(`${T("🍷 ส่ง")} ${w.name} ×${want} ${T("เข้างาน (+")}${fmtK(gain)}${T(") — เหลืออีก")} ${P.need-P.filled} ${T("ขวด")}`,'good');
   }
   normalizeCellarLots();
   renderTop(); routePage();
@@ -5025,9 +5128,11 @@ const ALLOC_CHAPTER = 12;
 function allocUnlocked(){ return G.chapter >= ALLOC_CHAPTER; }
 
 const NEGOCIANTS = [
-  {name:T('เมซง ดูว์ปองต์'),  style:T('เข้มงวดเรื่องโควตา ไม่ต่อรอง')},
-  {name:T('กาซา แบร์นินี'),   style:T('ชอบผลักสต๊อกภูมิภาครองออกมาพร้อมของดี')},
-  {name:T('บอร์กโดซ์ เพลส'),  style:T('ขายเป็นลังผสม ไม่แยกขาย')},
+  {name:T('เมซง ดูว์ปองต์'),  c:['fr'], style:T('เข้มงวดเรื่องโควตา ไม่ต่อรอง')},
+  {name:T('บอร์กโดซ์ เพลส'),  c:['fr'], style:T('ขายเป็นลังผสม ไม่แยกขาย')},
+  {name:T('กาซา แบร์นินี'),   c:['it','es','pt','gr','si'], style:T('ชอบผลักสต๊อกภูมิภาครองออกมาพร้อมของดี')},
+  {name:T('ไรน์ & ดานูบ ไวน์เฮาส์'), c:['de','at','hu','ge','gb'], style:T('ส่งตรงจากไร่ในยุโรปกลาง ต้องรับทั้งลัง')},
+  {name:T('นิวเวิลด์ ไฟน์ไวน์ส'), c:['us','ca','au','nz','cl','ar','uy','za','lb','cn','jp'], style:T('ตัวแทนไวเนอรีโลกใหม่ จัดลังรวมหลายประเทศ')},
 ];
 
 // The trophy bottle you actually want, plus filler you must absorb.
@@ -5053,7 +5158,9 @@ function makeAllocOffer(){
   // price: the star at a genuine discount, the filler at full freight
   const starPrice = (G.prices[star.id]||star.base) * starQty * 0.82;
   const fillPrice = bundle.reduce((a,b)=>a+(G.prices[b.id]||wineById(b.id).base)*b.qty, 0);
-  const neg = NEGOCIANTS[Math.floor(Math.random()*NEGOCIANTS.length)];
+  const fits = NEGOCIANTS.filter(n=>n.c.includes(countryOf(star.region)));
+  const negPool = fits.length ? fits : NEGOCIANTS;
+  const neg = negPool[Math.floor(Math.random()*negPool.length)];
   return {
     id: G.allocSeq++,
     negociant: neg.name,
@@ -5127,16 +5234,26 @@ const CONTRACT_CHAPTER = 16;
 function contractsUnlocked(){ return G.chapter >= CONTRACT_CHAPTER; }
 
 const CHEFS = [
-  {chef:T('เชฟอากิระ'),   rest:'Kaiseki Nine',    menu:T('คอร์สปลาดิบและดาชิ'),      want:{white:true}},
-  {chef:T('เชฟมาร์โก'),   rest:'Osteria Rossa',   menu:T('พาสต้าราคุและเนื้อตุ๋น'),   want:{red:true}},
-  {chef:T('เชฟปิแอร์'),   rest:'La Douzieme',     menu:T('เป็ดรมควันซอสเชอร์รี่'),    want:{red:true}},
-  {chef:T('เชฟนภา'),      rest:T('ห้องอาหารบ้านสวน'), menu:T('อาหารไทยรสจัดร่วมสมัย'),   want:{white:true}},
-  {chef:T('เชฟเอเลน่า'),  rest:'Brasa',           menu:T('เนื้อย่างถ่านและผักรมควัน'), want:{red:true}},
+  {chef:T('เชฟอากิระ'),   rest:'Kaiseki Nine',    menu:T('คอร์สปลาดิบและดาชิ'),      want:{white:true}, food:'fish'},
+  {chef:T('เชฟมาร์โก'),   rest:'Osteria Rossa',   menu:T('พาสต้าราคุและเนื้อตุ๋น'),   want:{red:true},   food:'stew'},
+  {chef:T('เชฟปิแอร์'),   rest:'La Douzieme',     menu:T('เป็ดรมควันซอสเชอร์รี่'),    want:{red:true},   food:'duck'},
+  {chef:T('เชฟนภา'),      rest:T('ห้องอาหารบ้านสวน'), menu:T('อาหารไทยรสจัดร่วมสมัย'),   want:{white:true}, food:'somtam'},
+  {chef:T('เชฟเอเลน่า'),  rest:'Brasa',           menu:T('เนื้อย่างถ่านและผักรมควัน'), want:{red:true},   food:'steak'},
+  {chef:T('เชฟลูก้า'),    rest:'Trattoria Nonna', menu:T('พาสต้าทรัฟเฟิลและริซอตโต'),  want:{red:true},   food:'truffle'},
+  {chef:T('เชฟนีน่า'),    rest:'Oyster & Pearl',  menu:T('หอยนางรมและอาหารทะเลดิบ'),  want:{white:true}, food:'oyster'},
 ];
+function chefFood(o){ const c=CHEFS.find(c=>c.chef===o.chef || c.rest===o.restaurant); return c ? FOODS.find(f=>f.ic===c.food) : null; }
 
 function makeContractOffer(){
-  const c = CHEFS[Math.floor(Math.random()*CHEFS.length)];
-  const pool = WINES.filter(w=>{
+  // one offer per kitchen at a time
+  const busy=new Set([...(G.contracts||[]), ...(G.contractOffers||[])].map(k=>k.chef));
+  const free=CHEFS.filter(c=>!busy.has(c.chef));
+  if(!free.length) return null;
+  const c = free[Math.floor(Math.random()*free.length)];
+  // the chef asks for a wine that genuinely suits the menu
+  const food = FOODS.find(f=>f.ic===c.food);
+  const suits = food ? WINES.filter(w=>!isRareLocked(w.id) && w.tier>=2 && w.tier<=4 && evalPairing({food, fussy:0.4}, w, null)>=0.62) : [];
+  const pool = suits.length>=3 ? suits : WINES.filter(w=>{
     if(isRareLocked(w.id)) return false;
     const white = isWhiteWine(w);
     if(c.want.white && !white) return false;
@@ -5183,7 +5300,7 @@ function signContract(offerId){
   G.contracts.push(o);
   G.contractOffers=G.contractOffers.filter(x=>x.id!==offerId);
   sfx('great');
-  toast(`${T("✍️ เซ็นสัญญากับ")} ${o.chef} ${T("— ส่ง")} ${wineById(o.wineId).cuvee||wineById(o.wineId).name} ${T("สัปดาห์ละ")} ${o.perWeek} ${T("ขวด")}`,'gold');
+  toast(`${T("✍️ เซ็นสัญญากับ")} ${o.chef} ${T("— ส่ง")} ${wineById(o.wineId).name} ${T("สัปดาห์ละ")} ${o.perWeek} ${T("ขวด")}`,'gold');
   closeModal(); routePage();
 }
 
@@ -6174,7 +6291,7 @@ const GUIDE = [
 ];
 
 /* ---------- GAME STATE ---------- */
-const VERSION = '5.4';
+const VERSION = '5.5';
 const SAVE_KEY = 'cellarAndVine_save_v3';
 const freshState = () => ({
   week:1,
@@ -7760,7 +7877,7 @@ function tickRival(){
     const w=grabbed[0];
     const barbs=[
       `${T("วิกเตอร์กว้าน")}${w.name}${T("ไปเกือบหมดตลาด — \"ของดีต้องอยู่กับคนที่เข้าใจ\"")}`,
-      `${T("Cruz Cellars เหมา")}${w.cuvee||w.name}${T("ตัดหน้าคุณอีกแล้ว")}`,
+      `${T("Cruz Cellars เหมา")}${w.name}${T("ตัดหน้าคุณอีกแล้ว")}`,
       `${T("วิกเตอร์โพสต์รูปคู่กับ")}${w.name} ${T("— \"บางคนได้แต่มองราคา\"")}`,
       `${w.region}${T(": ตลาดตึงตัว วิกเตอร์กว้านเก็บก่อนใคร")}`,
     ];
@@ -9327,7 +9444,7 @@ function applyDisplay(){
 let UI = {
   marketSearch:'', marketRegion:'all', marketSort:'name', marketOwnedOnly:false, marketTier:0, marketColor:'all', marketAfford:false,
   cellarSort:'name', cellarDir:'desc', cellarReadyOnly:false, cellarFakeOnly:false, cellarTier:0, cellarRegion:'all',
-  filtersOpen:false, filterTab:'type',
+  filtersOpen:false, filterTab:'type', bizTab:null,
   marketZone:'all', marketCountry:'all', cellarZone:'all', cellarCountry:'all',
 };
 // "ตัวกรอง" toggle shared by the market and cellar toolbars. It flips the
@@ -9477,193 +9594,217 @@ function updateNavBadges(){
 }
 setInterval(updateNavBadges, 700);
 
+// One way to show a wine anywhere on the Business page: its full name (the
+// same one the market uses), where it's from, its tier and how many you hold.
+function wineSub(w){
+  const parts=[]; if(w.cuvee && !w.name.includes(w.cuvee)) parts.push(w.cuvee); parts.push(w.region);
+  return parts.join(' · ');
+}
+function wineRowHTML(w, o={}){
+  if(!w) return '';
+  const own=(G.cellar[w.id]?.qty)||0;
+  return `<div class="wrow">
+    <span class="wrow-b">${bottleSVGLite(w,26)}</span>
+    <div class="wrow-t"><b>${w.name}${o.qty?` <span class="wrow-q">×${o.qty}</span>`:''}</b>
+      <span>${flagSVG(w.region,10)} ${wineSub(w)} · <i class="tier-name t${w.tier}">${TIER_NAMES[w.tier]}</i>${o.owned===false?'':` · ${T("มีในคลัง")} <b>${own}</b>`}</span>
+      ${o.extra?`<span class="wrow-x">${o.extra}</span>`:''}</div>
+    <div class="wrow-r">${o.right||''}${o.buy?`<button class="btn ghost sm" data-focus="wine" data-id="${w.id}" tabindex="0">${T("ดู / ซื้อ")}</button>`:''}</div>
+  </div>`;
+}
+function bizCounts(){
+  const short=(G.contracts||[]).filter(k=>{ const c=G.cellar[k.wineId]; return !c || c.qty-(c.suspect||0) < k.perWeek; }).length;
+  return {
+    party: partyUnlocked()&&G.party?1:0,
+    contract: contractsUnlocked()?((G.contractOffers||[]).length+short):0,
+    alloc: allocUnlocked()?(G.allocOffers||[]).length:0,
+  };
+}
+
 function pageBiz(){
-  const showAlloc = allocUnlocked(), showCon = contractsUnlocked();
-  let html = `<div class="page-head"><h2>${T("ธุรกิจ")}</h2><p>${T("โควตาจากพ่อค้าคนกลาง และสัญญาส่งร้านอาหาร")}</p></div>`;
-
-  if(!showAlloc && !showCon && !partyUnlocked()){
-    html += `<div class="card" style="text-align:center;padding:20px">
-      <div style="display:flex;justify-content:center">${lineIcon('lock',28)}</div>
-      <div style="margin-top:6px;font-weight:700">${T("โควตาและสัญญายังไม่เปิด")}</div>
-      <div style="font-size:12.5px;color:var(--ink-soft);margin-top:5px">
-        ${T("งานปาร์ตี้เปิดในบทที่")} ${PARTY_CHAPTER+1} ${T("· โควตาบทที่")} ${ALLOC_CHAPTER+1} ${T("· สัญญาบทที่")} ${CONTRACT_CHAPTER+1}<br>${T("แต่ไวน์หายากด้านล่างเริ่มสะสมเป้าหมายได้เลย")}
-      </div></div>`;
-    // fall through — the rare-wine collection below is always available
+  const cnt=bizCounts();
+  const tabs=[
+    {k:'party',    t:T('งานปาร์ตี้'),       ic:'party',   open:partyUnlocked(),     ch:PARTY_CHAPTER,    n:cnt.party},
+    {k:'contract', t:T('สัญญาร้านอาหาร'),   ic:'plate',   open:contractsUnlocked(), ch:CONTRACT_CHAPTER, n:cnt.contract},
+    {k:'alloc',    t:T('โควตาพ่วง'),         ic:'box',     open:allocUnlocked(),     ch:ALLOC_CHAPTER,    n:cnt.alloc},
+    {k:'rare',     t:T('ไวน์หายาก'),         ic:'unicorn', open:true,                 ch:0,                n:0},
+  ];
+  if(!tabs.some(t=>t.k===UI.bizTab)) UI.bizTab = (tabs.find(t=>t.open&&t.n) || tabs.find(t=>t.open)).k;
+  let html = `<div class="page-head"><h2>${T("ธุรกิจ")}</h2><p>${T("งานปาร์ตี้ · สัญญาร้านอาหาร · โควตาพ่วง · ไวน์หายาก")}</p></div>`;
+  html += `<div class="biz-tabs" role="tablist">${tabs.map(t=>`<button class="biz-tab ${UI.bizTab===t.k?'on':''} ${t.open?'':'locked'}" data-biztab="${t.k}" role="tab">
+      ${lineIcon(t.open?t.ic:'lock',16)}<span>${t.t}</span>${t.n?`<b class="f-count">${t.n}</b>`:''}</button>`).join('')}</div>`;
+  const tab=tabs.find(t=>t.k===UI.bizTab);
+  if(!tab.open){
+    html += `<div class="card biz-locked">${lineIcon('lock',26)}<div><b>${tab.t} ${T("ยังไม่เปิด")}</b>
+      <div class="wine-sub">${T("ปลดล็อกเมื่อเดินเรื่องถึงบทที่")} ${tab.ch+1} — ${T("ตอนนี้อยู่บทที่")} ${Math.min(G.chapter+1, CHAPTERS.length)}</div></div></div>`;
   }
+  else if(tab.k==='party') html += bizPartyHTML();
+  else if(tab.k==='contract') html += bizContractHTML();
+  else if(tab.k==='alloc') html += bizAllocHTML();
+  else html += bizRareHTML();
+  document.getElementById('content').innerHTML=html;
+  document.querySelectorAll('[data-biztab]').forEach(b=>b.onclick=()=>{ UI.bizTab=b.dataset.biztab; sfx('click'); routePage(); });
+  bindFocusables();
+}
 
-  /* ---- allocations ---- */
-  if(showAlloc){
-    html += `<h3 class="sec-h">${lineIcon('box',18)} ${T("โควตาพ่วงสินค้า")}</h3>`;
-    const offers=G.allocOffers||[];
-    if(!offers.length){
-      html += `<div class="card" style="padding:16px;color:var(--ink-soft);font-size:13px">${T("ยังไม่มีข้อเสนอตอนนี้ — พ่อค้าคนกลางจะติดต่อมาเป็นระยะ")}</div>`;
-    } else {
-      for(const o of offers){
-        const star=wineById(o.wineId);
-        const need=allocBottles(o);
-        const space=cellarCapacity()-cellarUsed();
-        const fits=space>=need, afford=G.cash>=o.price;
-        const mkt=o.starValue+o.fillValue;
-        const disc=Math.round((1-o.price/Math.max(1,mkt))*100);
-        html += `<div class="card biz-card">
-          <div class="row" style="justify-content:space-between;align-items:flex-start;gap:10px">
-            <div>
-              <div style="font-family:Fraunces;font-size:16px;color:var(--wine)">${star.name}</div>
-              <div style="font-size:12px;color:var(--ink-soft)">${o.negociant} · ${o.note}</div>
-            </div>
-            <div style="text-align:right">
-              <div style="font-family:Fraunces;font-size:17px">${fmtK(o.price)}</div>
-              ${disc>0?`<div style="font-size:11px;color:var(--up)">${T("ถูกกว่าตลาด")} ${disc}%</div>`:''}
-            </div>
-          </div>
-          <div class="alloc-star">${lineIcon('trophy',15)} ${T("ของที่ต้องการ:")} <b>${star.cuvee||star.name} ×${o.qty}</b> <span class="tag t${star.tier}">Tier ${star.tier}</span></div>
-          <div class="alloc-fill"><b>${T("ของพ่วงที่ต้องรับด้วย:")}</b><br>${o.bundle.map(b=>{
-            const w=wineById(b.id); return `${w.cuvee||w.name} ×${b.qty}`;
-          }).join(' · ')}</div>
-          <div style="font-size:12px;color:var(--ink-soft);margin-top:6px">
-            ${T("รวม")} ${need} ${T("ขวด · ต้องมีที่ว่าง")} ${need} ${T("(เหลือ")} ${space}${T(") · หมดอายุสัปดาห์ที่")} ${o.expires}
-          </div>
-          <div class="row" style="gap:9px;margin-top:10px">
-            <button class="btn gold ${(!fits||!afford)?'off':''}" data-focus="allocTake" data-id="${o.id}" tabindex="0">
-              ${!fits?T('เซลลาร์ไม่พอ'):(!afford?T('เงินไม่พอ'):T('รับโควตา'))}
-            </button>
-            <button class="btn ghost" data-focus="allocPass" data-id="${o.id}" tabindex="0">${T("ปฏิเสธ")}</button>
-          </div>
-        </div>`;
-      }
-    }
+/* ---- allocations: a trophy bottle bundled with filler you must take ---- */
+function bizAllocHTML(){
+  let html=`<div class="biz-how">${T("พ่อค้าคนกลางขายไวน์ระดับสูงให้ในราคาลด แต่ต้อง<b>รับไวน์ระดับล่างพ่วงไปด้วย</b>ในราคาเต็ม ดูช่อง \"ขายคืนทันทีได้\" — ถ้าสูงกว่าราคาแพ็กเกจคือได้กำไรทันที ถ้าต่ำกว่า ส่วนต่างคือค่าเข้าถึงไวน์ระดับสูง")}</div>`;
+  const offers=G.allocOffers||[];
+  if(!offers.length) return html+`<div class="card biz-empty">${T("ยังไม่มีข้อเสนอตอนนี้ — พ่อค้าคนกลางจะติดต่อมาเป็นระยะ")}</div>`;
+  for(const o of offers){
+    const star=wineById(o.wineId); if(!star) continue;
+    const need=allocBottles(o), space=cellarCapacity()-cellarUsed();
+    const fits=space>=need, afford=G.cash>=o.price;
+    const items=[{id:o.wineId, qty:o.qty, star:true}, ...o.bundle];
+    const mkt=items.reduce((a,x)=>a+(G.prices[x.id]||0)*x.qty,0);
+    const resale=items.reduce((a,x)=>a+bidPrice(x.id)*x.qty,0);
+    const diff=resale-o.price, pct=diff/Math.max(1,o.price);
+    const verdict = diff>=0 ? {c:'good', t:T('คุ้ม — ขายคืนทันทีก็ได้กำไร')} : pct>-0.12 ? {c:'ok', t:T('พอได้ — กำไรอยู่ที่ขวดเด่นถ้าเก็บไว้')} : {c:'bad', t:T('แพงไป — ของพ่วงกินกำไรหมด')};
+    const weeks=Math.max(0,o.expires-G.week);
+    html += `<div class="card biz-card">
+      <div class="biz-head"><div><div class="biz-title">${o.negociant}</div><div class="wine-sub">${o.note}</div></div>
+        <div class="pt-deadline">${T("เหลือ")} <b>${weeks}</b> ${T("สัปดาห์")}</div></div>
+      <div class="biz-label">${lineIcon('trophy',14)} ${T("ไวน์เด่น (ราคาลด 18%)")}</div>
+      ${wineRowHTML(star,{qty:o.qty, buy:true, right:`<span class="wrow-p">${fmtK((G.prices[star.id]||0)*o.qty)}</span>`})}
+      <div class="biz-label">${lineIcon('box',14)} ${T("ของพ่วงที่ต้องรับด้วย (ราคาเต็ม)")}</div>
+      ${o.bundle.map(b=>{ const w=wineById(b.id); return wineRowHTML(w,{qty:b.qty, right:`<span class="wrow-p">${fmtK((G.prices[b.id]||0)*b.qty)}</span>`}); }).join('')}
+      <div class="deal-box">
+        <div><span>${T("ราคาแพ็กเกจ")}</span><b>${fmtK(o.price)}</b></div>
+        <div><span>${T("มูลค่าตลาดรวม")}</span><b>${fmtK(mkt)}</b></div>
+        <div><span>${T("ขายคืนทันทีได้")}</span><b class="${diff>=0?'up':'down'}">${fmtK(resale)}</b></div>
+        <div><span>${T("พื้นที่ที่ใช้")}</span><b class="${fits?'':'down'}">${need} / ${T("ว่าง")} ${space}</b></div>
+      </div>
+      <div class="deal-verdict ${verdict.c}">${verdict.t} (${diff>=0?'+':'−'}${fmtK(Math.abs(diff))})</div>
+      <div class="row" style="gap:9px;margin-top:10px">
+        <button class="btn gold ${(!fits||!afford)?'off':''}" data-focus="allocTake" data-id="${o.id}" tabindex="0">${!fits?T('เซลลาร์ไม่พอ'):(!afford?T('เงินไม่พอ'):`${T("รับโควตา")} ${fmtK(o.price)}`)}</button>
+        <button class="btn ghost" data-focus="allocPass" data-id="${o.id}" tabindex="0">${T("ปฏิเสธ")}</button>
+      </div>
+    </div>`;
   }
+  return html;
+}
 
-  /* ---- contracts ---- */
-  if(showCon){
-    html += `<h3 class="sec-h">${lineIcon('plate',18)} ${T("สัญญาส่งร้านอาหาร")}</h3>`;
-    const active=G.contracts||[];
-    if(active.length){
-      for(const k of active){
-        const w=wineById(k.wineId);
-        const c=G.cellar[k.wineId];
-        const have=c?Math.max(0,c.qty-(c.suspect||0)):0;
-        const okNow=have>=k.perWeek;
-        html += `<div class="card biz-card ${okNow?'':'risk'}">
-          <div class="row" style="justify-content:space-between;gap:10px">
-            <div>
-              <div style="font-family:Fraunces;font-size:15px">${k.restaurant}</div>
-              <div style="font-size:12px;color:var(--ink-soft)">${k.chef} · ${k.menu}</div>
-            </div>
-            <div style="text-align:right;font-size:12px">
-              <div>${T("เหลือ")} <b>${k.weeksLeft}</b> ${T("สัปดาห์")}</div>
-              ${k.missed?`<div style="color:var(--down)">${T("ส่งขาด")} ${k.missed} ${T("ครั้ง")}</div>`:T('<div style="color:var(--up)">ส่งครบทุกครั้ง</div>')}
-            </div>
-          </div>
-          <div style="margin-top:8px;font-size:13px">
-            ${T("ส่ง")} <b>${w.cuvee||w.name}</b> ${T("สัปดาห์ละ")} <b>${k.perWeek}</b> ${T("ขวด @")} ${fmtK(k.price)}${T("/ขวด")}
-          </div>
-          <div class="con-stock ${okNow?'ok':'short'}">
-            ${okNow?`${T("✅ มีในเซลลาร์")} ${have} ${T("ขวด พร้อมส่ง")}`:`${T("⚠️ มีแค่")} ${have} ${T("ขวด ต้องการ")} ${k.perWeek} ${T("— รีบหาเพิ่มก่อนสิ้นสัปดาห์!")}`}
-          </div>
-        </div>`;
-      }
-    }
-    const offers=G.contractOffers||[];
-    if(offers.length){
-      html += `<div style="font-size:13px;font-weight:700;margin:14px 0 6px">${T("ข้อเสนอใหม่")}</div>`;
-      for(const o of offers){
-        const w=wineById(o.wineId);
-        const mkt=G.prices[o.wineId]||w.base;
-        const prem=Math.round((o.price/mkt-1)*100);
-        html += `<div class="card biz-card">
-          <div style="font-family:Fraunces;font-size:15px">${o.restaurant}</div>
-          <div style="font-size:12px;color:var(--ink-soft)">${o.chef} ${T("· เมนู:")} ${o.menu}</div>
-          <div style="margin-top:8px;font-size:13px">
-            ${T("ขอ")} <b>${w.cuvee||w.name}</b> ${T("สัปดาห์ละ")} <b>${o.perWeek}</b> ${T("ขวด นาน")} <b>${o.totalWeeks}</b> ${T("สัปดาห์")}<br>
-            ${T("ราคาคงที่")} ${fmtK(o.price)}${T("/ขวด")} <span style="color:${prem>0?'var(--up)':'var(--down)'}">(${prem>0?'+':''}${prem}${T("% จากราคาตลาดวันนี้)")}</span>
-          </div>
-          <div style="font-size:12px;color:var(--ink-soft);margin-top:6px">
-            ${T("รวมทั้งสัญญา")} ${fmtK(o.price*o.perWeek*o.totalWeeks)} ${T("· ส่งขาดโดนค่าปรับและเสียชื่อเสียง")}
-          </div>
-          <div class="row" style="gap:9px;margin-top:10px">
-            <button class="btn gold" data-focus="conSign" data-id="${o.id}" tabindex="0">${T("เซ็นสัญญา")}</button>
-            <button class="btn ghost" data-focus="conPass" data-id="${o.id}" tabindex="0">${T("ปฏิเสธ")}</button>
-          </div>
-        </div>`;
-      }
-    }
-    if(!active.length && !offers.length){
-      html += `<div class="card" style="padding:16px;color:var(--ink-soft);font-size:13px">${T("ยังไม่มีสัญญา — เชฟจะติดต่อมาเมื่อร้านคุณมีชื่อเสียงพอ")}</div>`;
-    }
-  }
-
-  /* ---- rare-wine collection (always shown; it's the long game) ---- */
-  /* ---- party (bulk buyer) ---- */
-  if(partyUnlocked()){
-    html += `<h3 class="sec-h" id="partySec">${lineIcon('party',18)} ${T("งานปาร์ตี้")}</h3>`;
-    const P=G.party;
-    if(!P){
-      html += `<div class="card" style="padding:16px;color:var(--ink-soft);font-size:13px">${T("ยังไม่มีงานตอนนี้ — ราว 1-2 เดือนครั้ง โรงแรม บริษัท หรืองานแต่งจะสั่งไวน์ราคาไม่แพงทีละหลายสิบขวด เก็บไวน์ระดับล่างไว้รองานได้เลย")}</div>`;
-    } else {
-      const pct = Math.round(P.filled/P.need*100);
-      const left = P.need-P.filled;
-      const bonus = partyBonus(P);
-      // wines in the cellar that qualify, best profit first
-      const eligible = Object.keys(G.cellar)
-        .map(id=>({id, c:G.cellar[id], w:wineById(id)}))
-        .filter(x=>x.w && partyEligible(x.w) && (x.c.qty-(x.c.suspect||0))>0)
-        .map(x=>({...x, unit:partyUnitPrice(x.w), cost:Math.round(x.c.buyPrice||G.prices[x.id]||x.w.base)}))
-        .sort((a,b)=>(b.unit-b.cost)-(a.unit-a.cost));
-      const ready = eligible.reduce((a,x)=>a+(x.c.qty-(x.c.suspect||0)),0);
-      html += `<div class="card party-card">
-        <div class="row" style="justify-content:space-between;align-items:flex-start;gap:10px">
-          <div>
-            <div style="font-family:Fraunces;font-size:16px;color:var(--wine)">${P.host} · ${P.theme}</div>
-            <div style="font-size:12px;color:var(--ink-soft)">${P.flavor}</div>
-          </div>
-          <div class="pt-deadline">${T("เหลือ")} <b>${P.weeksLeft}</b> ${T("สัปดาห์")}</div>
-        </div>
-        <div class="pt-grid">
-          <div class="pt-box"><div class="pt-k">${T("ต้องการ")}</div><div class="pt-v">${P.need} ${T("ขวด")}</div></div>
-          <div class="pt-box"><div class="pt-k">${T("ประเภท")}</div><div class="pt-v">${partyColorText(P)}</div></div>
-          <div class="pt-box"><div class="pt-k">${T("ระดับที่รับ")}</div><div class="pt-v">${partyTierText(P)}</div></div>
-          <div class="pt-box"><div class="pt-k">${T("ราคาที่จ่าย")}</div><div class="pt-v up">${T("ราคาตลาด +")}${Math.round((P.premium-1)*100)}%</div></div>
-        </div>
+/* ---- restaurant contracts: a fixed weekly delivery at a fixed price ---- */
+function bizContractHTML(){
+  let html=`<div class="biz-how">${T("เชฟสั่งไวน์ที่เข้ากับเมนูของร้าน <b>ส่งทุกสัปดาห์ในราคาคงที่</b> ระบบส่งให้อัตโนมัติตอนสิ้นสัปดาห์จากเซลลาร์ของคุณ — แค่มีไวน์พอในคลัง ตลาดจะกันของไว้ให้อย่างน้อย 2 สัปดาห์ต่อครั้งเสมอ")}</div>`;
+  const active=G.contracts||[], offers=G.contractOffers||[];
+  if(active.length){
+    html += `<div class="biz-label">${T("สัญญาที่กำลังส่ง")}</div>`;
+    for(const k of active){
+      const w=wineById(k.wineId); if(!w) continue;
+      const c=G.cellar[k.wineId], have=c?Math.max(0,c.qty-(c.suspect||0)):0;
+      const okNow=have>=k.perWeek, weeksCovered=Math.floor(have/Math.max(1,k.perWeek));
+      const pct=Math.round((k.totalWeeks-k.weeksLeft)/Math.max(1,k.totalWeeks)*100);
+      html += `<div class="card biz-card ${okNow?'':'risk'}">
+        <div class="biz-head"><div><div class="biz-title">${k.restaurant}</div><div class="wine-sub">${k.chef} · ${k.menu}</div></div>
+          <div class="pt-deadline">${T("เหลือ")} <b>${k.weeksLeft}</b> ${T("สัปดาห์")}</div></div>
+        ${wineRowHTML(w,{buy:true, right:`<span class="wrow-p">${k.perWeek} ${T("ขวด/สัปดาห์")}<br>@ ${fmtK(k.price)}</span>`})}
         <div class="party-bar"><div class="party-fill" style="width:${pct}%"></div></div>
-        <div style="text-align:center;font-size:12px;margin-top:3px">${T("ส่งแล้ว")} ${P.filled}/${P.need} ${T("ขวด")} · ${T("ขาดอีก")} <b>${left}</b></div>
-        <div class="pt-how">
-          <div>① ${T("กดส่งไวน์จากคลังด้านล่าง — ได้เงินทันทีทุกขวด")}</div>
-          <div>② ${T("ส่งครบ")} ${P.need} ${T("ขวดก่อนหมดเวลา รับโบนัส")} <b>${fmtK(bonus)}</b> ${T("+ ชื่อเสียง")} <b>★${P.reward}</b></div>
-          <div>③ ${T("ส่งไม่ครบก็ไม่โดนปรับ — แค่ไม่ได้โบนัส")}</div>
+        <div class="con-stock ${okNow?'ok':'short'}">${okNow
+          ? `✅ ${T("มีในคลัง")} ${have} ${T("ขวด — พอส่งอีก")} ${weeksCovered} ${T("สัปดาห์")}`
+          : `⚠️ ${T("มีแค่")} ${have}/${k.perWeek} ${T("ขวด — ซื้อเพิ่มก่อนจบสัปดาห์")}${k.missed?` · ${T("ส่งขาดครั้งถัดไปโดนปรับ")}`:` · ${T("ครั้งแรกเชฟยังให้อภัย")}`}`}</div>
+        ${k.missed?`<div class="wine-sub" style="color:var(--down)">${T("ส่งขาดแล้ว")} ${k.missed} ${T("ครั้ง")}</div>`:''}
+      </div>`;
+    }
+  }
+  if(offers.length){
+    html += `<div class="biz-label">${T("ข้อเสนอใหม่")}</div>`;
+    for(const o of offers){
+      const w=wineById(o.wineId); if(!w) continue;
+      const total=o.perWeek*o.totalWeeks, buy=offerPrice(o.wineId);
+      const prem=Math.round((o.price/Math.max(1,G.prices[o.wineId]||w.base)-1)*100);
+      const profit=(o.price-buy)*total;
+      const have=(G.cellar[o.wineId]?.qty)||0, stock=stockOf(o.wineId);
+      const food=chefFood(o);
+      const q=food?evalPairing({food,fussy:0.4},w,null):0;
+      const weeks=Math.max(0,o.expires-G.week);
+      html += `<div class="card biz-card">
+        <div class="biz-head"><div><div class="biz-title">${o.restaurant}</div><div class="wine-sub">${o.chef} · ${T("เมนู:")} ${o.menu}</div></div>
+          <div class="pt-deadline">${T("ตอบภายใน")} <b>${weeks}</b> ${T("สัปดาห์")}</div></div>
+        ${food?`<div class="biz-food">${foodIcon(food.ic,30)}<span>${T("จานหลัก:")} <b>${food.name}</b> — ${T("ไวน์ที่ขอ")} <span class="pmatch ${q>0.78?'great':q>0.55?'good':'meh'}">${q>0.78?T('เข้ากันเยี่ยม'):q>0.55?T('เข้ากันดี'):T('พอใช้')}</span></span></div>`:''}
+        ${wineRowHTML(w,{buy:true, extra:`${T("ราคาตลาด")} ${fmtK(buy)} · ${T("ตลาดมีของสัปดาห์นี้")} ${stock}`})}
+        <div class="deal-box">
+          <div><span>${T("ส่งสัปดาห์ละ")}</span><b>${o.perWeek} ${T("ขวด ×")} ${o.totalWeeks} ${T("สัปดาห์")}</b></div>
+          <div><span>${T("ราคาคงที่ต่อขวด")}</span><b class="up">${fmtK(o.price)} (+${prem}%)</b></div>
+          <div><span>${T("รายได้ทั้งสัญญา")}</span><b>${fmtK(o.price*total)}</b></div>
+          <div><span>${T("กำไรถ้าซื้อจากตลาดมาส่ง")}</span><b class="${profit>=0?'up':'down'}">${fmtK(profit)}</b></div>
+        </div>
+        <div class="biz-rules">
+          <div>• ${T("มีในคลังตอนนี้")} <b>${have}</b> ${T("ขวด")} · ${T("ต้องใช้ทั้งหมด")} <b>${total}</b> ${T("ขวด")}</div>
+          <div>• ${T("ส่งครบทุกสัปดาห์ จบสัญญาได้โบนัส")} <b>${fmtK(o.price*o.perWeek*1.5)}</b> + ★8</div>
+          <div>• ${T("ส่งขาดครั้งแรกเชฟให้อภัย ครั้งต่อไปโดนปรับ")} <b>${fmtK(o.price*o.perWeek*0.35)}</b> ${T("และ −★3 ต่อครั้ง")}</div>
+        </div>
+        <div class="row" style="gap:9px;margin-top:10px">
+          <button class="btn gold" data-focus="conSign" data-id="${o.id}" tabindex="0">${T("เซ็นสัญญา")}</button>
+          <button class="btn ghost" data-focus="conPass" data-id="${o.id}" tabindex="0">${T("ปฏิเสธ")}</button>
         </div>
       </div>`;
-      if(eligible.length){
-        html += `<div style="font-size:12.5px;font-weight:700;margin:10px 0 6px">${T("ไวน์ในคลังที่ส่งเข้างานได้")} (${ready} ${T("ขวด")}${ready<left?` · ${T("ยังขาด")} ${left-ready}`:''})</div>`;
-        for(const x of eligible){
-          const avail=x.c.qty-(x.c.suspect||0);
-          const canSend=Math.min(avail, left);
-          const gain=x.unit-x.cost;
-          html += `<div class="card party-item">
-            <div class="row" style="justify-content:space-between;align-items:center;gap:8px">
-              <div>
-                <div style="font-size:13.5px;font-weight:600">${x.w.cuvee||x.w.name} <span class="pt-tier">${TIER_NAMES[x.w.tier]}</span></div>
-                <div style="font-size:11.5px;color:var(--ink-soft)">${T("มี")} ${avail} ${T("ขวด · งานจ่าย")} ${fmtK(x.unit)}${T("/ขวด")} · <span style="color:${gain>=0?'var(--up)':'var(--down)'};font-weight:700">${gain>=0?T('กำไร'):T('ขาดทุน')} ${fmtK(Math.abs(gain))}${T("/ขวด")}</span></div>
-              </div>
-              <div class="row" style="gap:6px">
-                <button class="btn ghost sm" data-focus="partyOne" data-id="${x.id}" tabindex="0">+1</button>
-                <button class="btn gold sm" data-focus="partyMax" data-id="${x.id}" tabindex="0">${T("ส่ง")} ${canSend}</button>
-              </div>
-            </div>
-          </div>`;
-        }
-      } else {
-        html += `<div class="card" style="padding:14px;color:var(--ink-soft);font-size:12.5px">${T("ยังไม่มีไวน์ในคลังที่ตรงกับงานนี้ — ต้องเป็น")} <b>${partyColorText(P)}</b> ${T("ระดับ")} ${partyTierText(P)}</div>`;
-      }
-      if(ready<left){
-        html += `<button class="btn" data-focus="partyShop" tabindex="0" style="margin-top:8px">${lineIcon('market',15)} ${T("หาซื้อไวน์ที่เข้างานได้ในตลาด")}</button>`;
+    }
+  }
+  if(!active.length && !offers.length) html += `<div class="card biz-empty">${T("ยังไม่มีสัญญา — เชฟจะติดต่อมาเป็นระยะ ยิ่งร้านมีชื่อเสียงยิ่งมีข้อเสนอ")}</div>`;
+  return html;
+}
+
+/* ---- party: a big client buying in bulk ---- */
+function bizPartyHTML(){
+  const P=G.party;
+  if(!P) return `<div class="biz-how">${T("ราว 1-2 เดือนครั้ง โรงแรม บริษัท หรืองานแต่งจะสั่งไวน์ราคาไม่แพงทีละหลายสิบขวด จ่ายราคาตลาด +15-40% ทันทีทุกขวด")}</div><div class="card biz-empty">${T("ยังไม่มีงานตอนนี้ — เก็บไวน์ระดับล่างไว้รองานได้เลย")}</div>`;
+  const pct=Math.round(P.filled/P.need*100), left=P.need-P.filled, bonus=partyBonus(P);
+  const eligible=Object.keys(G.cellar)
+    .map(id=>({id, c:G.cellar[id], w:wineById(id)}))
+    .filter(x=>x.w && partyEligible(x.w) && (x.c.qty-(x.c.suspect||0))>0)
+    .map(x=>({...x, unit:partyUnitPrice(x.w), cost:Math.round(x.c.buyPrice||G.prices[x.id]||x.w.base)}))
+    .sort((a,b)=>(b.unit-b.cost)-(a.unit-a.cost));
+  const ready=eligible.reduce((a,x)=>a+(x.c.qty-(x.c.suspect||0)),0);
+  let html=`<div class="card party-card" id="partySec">
+    <div class="biz-head"><div><div class="biz-title">${P.host} · ${P.theme}</div><div class="wine-sub">${P.flavor}</div></div>
+      <div class="pt-deadline">${T("เหลือ")} <b>${P.weeksLeft}</b> ${T("สัปดาห์")}</div></div>
+    <div class="pt-grid">
+      <div class="pt-box"><div class="pt-k">${T("ต้องการ")}</div><div class="pt-v">${P.need} ${T("ขวด")}</div></div>
+      <div class="pt-box"><div class="pt-k">${T("ประเภท")}</div><div class="pt-v">${partyColorText(P)}</div></div>
+      <div class="pt-box"><div class="pt-k">${T("ระดับที่รับ")}</div><div class="pt-v">${partyTierText(P)}</div></div>
+      <div class="pt-box"><div class="pt-k">${T("ราคาที่จ่าย")}</div><div class="pt-v up">${T("ราคาตลาด +")}${Math.round((P.premium-1)*100)}%</div></div>
+    </div>
+    <div class="party-bar"><div class="party-fill" style="width:${pct}%"></div></div>
+    <div style="text-align:center;font-size:12px;margin-top:3px">${T("ส่งแล้ว")} ${P.filled}/${P.need} ${T("ขวด")} · ${T("ขาดอีก")} <b>${left}</b></div>
+    <div class="pt-how">
+      <div>① ${T("กดส่งไวน์จากคลังด้านล่าง — ได้เงินทันทีทุกขวด")}</div>
+      <div>② ${T("ส่งครบ")} ${P.need} ${T("ขวดก่อนหมดเวลา รับโบนัส")} <b>${fmtK(bonus)}</b> ${T("+ ชื่อเสียง")} <b>★${P.reward}</b></div>
+      <div>③ ${T("ส่งไม่ครบก็ไม่โดนปรับ — แค่ไม่ได้โบนัส")}</div>
+    </div>
+  </div>`;
+  html += `<div class="biz-label">${T("ไวน์ในคลังที่ส่งเข้างานได้")} (${ready} ${T("ขวด")}${ready<left?` · ${T("ยังขาด")} ${left-ready}`:''})</div>`;
+  if(eligible.length){
+    for(const x of eligible){
+      const avail=x.c.qty-(x.c.suspect||0), canSend=Math.min(avail,left), gain=x.unit-x.cost;
+      html += `<div class="card party-item">${wineRowHTML(x.w,{
+        extra:`${T("งานจ่าย")} ${fmtK(x.unit)}${T("/ขวด")} · <span style="color:${gain>=0?'var(--up)':'var(--down)'};font-weight:700">${gain>=0?T('กำไร'):T('ขาดทุน')} ${fmtK(Math.abs(gain))}${T("/ขวด")}</span>`,
+        right:`<button class="btn ghost sm" data-focus="partyOne" data-id="${x.id}" tabindex="0">+1</button><button class="btn gold sm" data-focus="partyMax" data-id="${x.id}" tabindex="0">${T("ส่ง")} ${canSend}</button>`})}</div>`;
+    }
+  } else {
+    html += `<div class="card biz-empty">${T("ยังไม่มีไวน์ในคลังที่ตรงกับงานนี้ — ต้องเป็น")} <b>${partyColorText(P)}</b> ${T("ระดับ")} ${partyTierText(P)}</div>`;
+  }
+  if(ready<left){
+    // the cheapest qualifying bottles on the market, with what each earns at the party
+    const buyable=WINES.filter(w=>partyEligible(w) && stockOf(w.id)>0)
+      .map(w=>({w, buy:offerPrice(w.id), unit:partyUnitPrice(w)}))
+      .sort((a,b)=>(b.unit-b.buy)-(a.unit-a.buy)).slice(0,5);
+    if(buyable.length){
+      html += `<div class="biz-label">${T("ซื้อจากตลาดมาส่งได้ — กำไรต่อขวดสูงสุด 5 อันดับ")}</div>`;
+      for(const x of buyable){
+        const g=x.unit-x.buy;
+        html += `<div class="card party-item">${wineRowHTML(x.w,{buy:true, owned:false,
+          extra:`${T("ซื้อ")} ${fmtK(x.buy)} → ${T("งานจ่าย")} ${fmtK(x.unit)} · <span style="color:${g>=0?'var(--up)':'var(--down)'};font-weight:700">${g>=0?'+':'−'}${fmtK(Math.abs(g))}${T("/ขวด")}</span> · ${T("ตลาดมี")} ${stockOf(x.w.id)}`})}</div>`;
       }
     }
   }
+  return html;
+}
 
-  html += `<h3 class="sec-h">${lineIcon('unicorn',18)} ${T("ไวน์หายากในตำนาน")}</h3>`;
+/* ---- the legendary bottles you earn access to ---- */
+function bizRareHTML(){
   const unlockedCount = RARE_UNLOCKS.filter(u=>G.unlockedWines&&G.unlockedWines[u.id]).length;
-  html += `<div style="font-size:12.5px;color:var(--ink-soft);margin-bottom:8px">${T("ปลดล็อกแล้ว")} ${unlockedCount}/${RARE_UNLOCKS.length} ${T("— ขวดเหล่านี้ไม่มีขายทั่วไป ต้องพิสูจน์ตัวเองก่อน")}</div>`;
+  let html = `<div class="biz-how">${T("ปลดล็อกแล้ว")} ${unlockedCount}/${RARE_UNLOCKS.length} ${T("— ขวดเหล่านี้ไม่มีขายทั่วไป ต้องพิสูจน์ตัวเองก่อน")}</div>`;
   for(const u of RARE_UNLOCKS){
     const w=wineById(u.id);
     const done=G.unlockedWines&&G.unlockedWines[u.id];
@@ -9684,9 +9825,7 @@ function pageBiz(){
       <div class="rare-cond ${done?'met':''}">${done?'✅ ':'🎯 '}${T("เงื่อนไข:")} ${u.how}</div>
     </div>`;
   }
-
-  document.getElementById('content').innerHTML=html;
-  bindFocusables();
+  return html;
 }
 
 /* ---------- ROUTER ---------- */
@@ -9772,7 +9911,7 @@ function nextWeek(){
   }
   if(G._justRipe.length){
     const nm = wineById(G._justRipe[0]);
-    toast(`🍷 ${nm?nm.cuvee||nm.name:T('ไวน์')}${G._justRipe.length>1?` ${T("และอีก")} ${G._justRipe.length-1} ${T("รายการ")}`:''} ${T("พร้อมดื่มแล้ว")}`,'gold');
+    toast(`🍷 ${nm?nm.name:T('ไวน์')}${G._justRipe.length>1?` ${T("และอีก")} ${G._justRipe.length-1} ${T("รายการ")}`:''} ${T("พร้อมดื่มแล้ว")}`,'gold');
   }
 
   // loan interest is charged after operating costs
@@ -10922,7 +11061,7 @@ function activate(el){
       UI.marketColor = P.color==='red'?'red' : P.color==='white'?'white' : 'all';
       UI.marketTier = 0; UI.marketOwnedOnly=false; UI.marketSort='priceUp';
       G.page='market';
-    } else { G.page='biz'; UI.scrollTo='partySec'; }
+    } else { G.page='biz'; UI.bizTab='party'; }
     sfx('click'); routePage();
   }
   else if(type==='conSign'){ signContract(+el.dataset.id); }
