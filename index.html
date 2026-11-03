@@ -759,6 +759,33 @@
 
 
 
+
+  /* wine book, side stories */
+  .book-top{display:flex; gap:14px; align-items:center; margin-bottom:14px;}
+  .book-count{font-family:Fraunces,'Noto Serif Thai',serif; font-size:15px; color:var(--ink-soft); white-space:nowrap;}
+  .book-count b{font-size:30px; color:var(--wine);}
+  .book-ms{display:flex; gap:6px; flex-wrap:wrap; margin-top:6px;}
+  .book-ms span{font-size:11px; font-weight:800; padding:2px 8px; border-radius:999px; background:var(--paper-2); color:var(--ink-soft);}
+  .book-ms span.on{background:var(--gold); color:#3E2C15;}
+  .book-country{padding:0; overflow:hidden; margin-bottom:8px;}
+  .book-c-head{display:flex; align-items:center; gap:10px; width:100%; padding:12px 14px; border:0; background:transparent; font:inherit; font-size:14px; color:var(--ink); cursor:pointer; text-align:left;}
+  .book-c-head .flag{border-radius:2px;}
+  .book-c-n{margin-left:auto; font-weight:800; font-size:13px;}
+  .book-c-bar{width:70px; height:7px; border-radius:4px; background:var(--paper-2); overflow:hidden;}
+  .book-c-bar i{display:block; height:100%; background:linear-gradient(90deg,var(--sage),var(--gold));}
+  .book-done{font-style:normal; font-size:11px; font-weight:800; color:var(--up); margin-left:4px;}
+  .book-region{padding:8px 14px 12px; border-top:1px dashed var(--line);}
+  .book-r-head{font-size:13px; margin-bottom:6px;} .book-r-head span{color:var(--ink-soft); font-weight:700;}
+  .book-chips{display:flex; flex-wrap:wrap; gap:6px;}
+  .book-chip{display:inline-flex; align-items:center; gap:6px; padding:5px 10px; border-radius:999px; border:1.5px dashed var(--line); background:transparent; font:inherit; font-size:12px; color:var(--ink-soft); cursor:pointer;}
+  .book-chip.on{border-style:solid; border-color:var(--gold-soft); background:rgba(200,151,63,.12); color:var(--ink); font-weight:700;}
+  .book-chip em{font-style:normal; font-size:10px; font-weight:800; opacity:.6;}
+  .book-chip .dot{width:9px; height:9px; border-radius:50%; background:#999; flex-shrink:0;}
+  .book-chip:not(.on) .dot{opacity:.35;}
+  .dot.col-red{background:#7B2C3A;} .dot.col-white{background:#D4B35A;} .dot.col-rose{background:#D97D8E;} .dot.col-orange{background:#D98A3D;}
+  .dot.col-sparkling{background:#C9B26E;} .dot.col-sweet{background:#C87A2E;} .dot.col-fortified{background:#7A4A2E;}
+  .side-card .biz-title{font-size:15px;}
+  body.car .book-chip{font-size:14px; padding:9px 14px;}
   /* quests, VIP requests, league, post-story goals */
   .quest-chip.hard{border-color:var(--gold); background:rgba(200,151,63,.10);}
   .qc-hard{font-style:normal; font-size:10.5px; font-weight:800; padding:1px 7px; margin-right:5px; border-radius:999px; background:var(--wine); color:#fff;}
@@ -4027,6 +4054,178 @@ const EN = {
   "เริ่มแบบท้าทาย": "Start a challenge run",
   "🏆 จบลีกฤดูกาลที่": "🏆 League season",
   "🏆 จบฤดูกาล —": "🏆 Season over —",
+  "นักข่าวขอสัมภาษณ์": "A journalist wants an interview",
+  "นิตยสารไลฟ์สไตล์อยากสัมภาษณ์เรื่อง \"ทำไมไวน์บางขวดแพงเป็นล้าน\" — คำตอบของคุณอาจถูกตัดไปพาดหัว": "A lifestyle magazine wants to interview you on \"why some bottles cost a million\" — your answer could end up as the headline",
+  "ตอบตรงๆ ทุกคำถาม": "Answer everything honestly",
+  "บทสัมภาษณ์ได้รับคำชมว่าจริงใจ ชื่อเสียง +★5": "The interview is praised as refreshingly honest. Reputation +★5",
+  "ประโยคหนึ่งถูกตัดไปพาดหัวผิดบริบท ชื่อเสียง −★3": "One sentence is quoted out of context in the headline. Reputation −★3",
+  "ตอบแบบปลอดภัย": "Play it safe",
+  "บทความออกมาเรียบๆ ชื่อเสียง +★1": "The article comes out bland. Reputation +★1",
+  "คุณขอบคุณและปฏิเสธอย่างสุภาพ": "You thank them and politely decline",
+  "พนักงานขอลาออก": "A staff member wants to quit",
+  "ได้ข้อเสนอจากร้านคู่แข่ง เงินเดือนสูงกว่าเดิม 30%": "got an offer from a rival shop paying 30% more",
+  "ขึ้นเงินเดือน 30%": "Raise their salary 30%",
+  "เขาตัดสินใจอยู่ต่อ และทำงานหนักกว่าเดิม": "They decide to stay, and work harder than ever",
+  "ให้โบนัสก้อนเดียว": "Give a one-off bonus",
+  "เขารับโบนัสแล้วตัดสินใจอยู่ต่อ": "They take the bonus and decide to stay",
+  "เขารับโบนัส... แต่สุดท้ายก็ไปอยู่ดี — ตำแหน่งว่างแล้ว": "They take the bonus... but leave anyway — the position is open",
+  "ปล่อยไป": "Let them go",
+  "คุณอวยพรให้เขาโชคดี — ตำแหน่งว่างแล้ว ไปจ้างคนใหม่ได้ที่หน้าพนักงาน": "You wish them luck — the position is open; hire someone new on the Staff page",
+  "เซลลาร์ในบ้านเก่า": "A cellar in an old house",
+  "นายหน้าอสังหาฯ เจอห้องใต้ดินในบ้านอายุร้อยปี มีไวน์ฝุ่นจับวางเต็มชั้น เจ้าของขายเหมาโดยไม่รู้ว่าข้างในเป็นอะไร": "An estate agent found a cellar under a hundred-year-old house, its shelves full of dusty bottles. The owner will sell the lot without knowing what's inside",
+  "ซื้อเหมา": "Buy the lot",
+  "ส่งนักชิมไปดูก่อน": "Send your taster to look first",
+  "นักชิมยืนยันว่าเป็นของดี แต่เงินสดไม่พอซื้อ": "Your taster confirms it's good, but you don't have the cash",
+  "นักชิมยืนยันว่าเป็นของดี คุณจึงซื้อไว้ — ": "Your taster confirms it's good, so you buy it — ",
+  "นักชิมรายงานว่าส่วนใหญ่กลายเป็นน้ำส้มสายชู คุณรอดตัวไป": "Your taster reports most of it has turned to vinegar. Lucky escape",
+  "อินฟลูเอนเซอร์ขอไวน์ฟรี": "An influencer wants free wine",
+  "อินฟลูเอนเซอร์สายอาหารผู้ติดตามล้านคน ขอไวน์ 2 ขวดไปรีวิวแบบ \"ฟรี\"": "A food influencer with a million followers wants 2 bottles to review — \"for free\"",
+  "ให้ 2 ขวดดีๆ": "Give 2 good bottles",
+  "คลิปรีวิวยอดวิวพุ่ง ลูกค้าใหม่ตามมา ชื่อเสียง +★4": "The review clip goes viral and new customers follow. Reputation +★4",
+  "คลิปเงียบกว่าที่คิด ชื่อเสียง +★1": "The clip is quieter than expected. Reputation +★1",
+  "เสนอส่วนลดแทน": "Offer a discount instead",
+  "เธอโพสต์สตอรี่สั้นๆ ให้ ชื่อเสียง +★1": "She posts a short story for you. Reputation +★1",
+  "เธอโพสต์บ่นว่าร้านหยิ่ง ชื่อเสียง −★2": "She posts that your shop is snobbish. Reputation −★2",
+  "เธอเงียบหายไป ไม่มีอะไรเกิดขึ้น": "She disappears; nothing happens",
+  "ข้อเสนอใต้โต๊ะ": "An offer under the table",
+  "ชายแปลกหน้ายื่นซองให้ — ฉลากและจุกปลอมคุณภาพสูงของไวน์ดัง \"ติดขวดเก่าในร้านคุณ ขายได้เป็นสิบเท่า\"": "A stranger hands you an envelope — high-quality fake labels and corks of famous wines. \"Stick them on old bottles in your shop and sell for ten times the price\"",
+  "แจ้งตำรวจ": "Call the police",
+  "ตำรวจรวบแก๊งได้ สมาคมไวน์ส่งหนังสือขอบคุณ ชื่อเสียง +★4": "The police bust the gang and the wine society sends a letter of thanks. Reputation +★4",
+  "ปิดประตูใส่": "Shut the door on him",
+  "คุณปฏิเสธทันทีและไม่พูดถึงมันอีก": "You refuse at once and never mention it again",
+  "รับไว้...": "Take it...",
+  "ถูกจับได้! โดนปรับ": "Caught! Fined",
+  "และชื่อเสียง −★15": "and reputation −★15",
+  "คุณได้เงินมา": "You made",
+  "... แต่ความลับแบบนี้มักอยู่ได้ไม่นาน": "... but secrets like this rarely last",
+  "ดินเนอร์จับคู่ไวน์กับเชฟดัง": "A wine-pairing dinner with a famous chef",
+  "เชฟดาวมิชลินชวนจัดดินเนอร์ 8 คอร์ส คุณต้องเลือกไวน์ทุกคอร์สจากเซลลาร์ ค่าจัดงานแบ่งกันคนละครึ่ง — ยิ่งเซลลาร์หลากหลาย งานยิ่งปัง": "A Michelin-starred chef invites you to co-host an 8-course dinner. You pick every course's wine from your cellar and split the cost — the more varied your cellar, the better the night",
+  "รับจัด": "Host it",
+  "งานปังมาก! นักชิมยกให้เป็นดินเนอร์แห่งปี ได้คืน": "A triumph! Critics call it the dinner of the year. You get back",
+  "+ ชื่อเสียง ★6": "+ reputation ★6",
+  "งานผ่านไปด้วยดี ได้คืน": "The evening goes well. You get back",
+  "+ ★2 — เซลลาร์หลากหลายกว่านี้จะดีกว่า": "+ ★2 — a more varied cellar would have been better",
+  "ไวน์ซ้ำๆ กันจนแขกเบื่อ ขาดทุนค่าจัดงาน และชื่อเสียง −★1": "The wines were so similar the guests got bored. You lose the cost and reputation −★1",
+  "ขอเลื่อนไปก่อน": "Ask to postpone",
+  "เชฟบอกว่าไว้คราวหน้า": "The chef says maybe next time",
+  "โรงแรมปิดกิจการ": "A hotel closes down",
+  "โรงแรมเก่าเลหลังสต๊อกไวน์": "An old hotel is clearing its wine stock:",
+  "ขวด ในราคา 55% ของตลาด (ของแท้ มีเอกสารครบ)": "bottles at 55% of market price (genuine, with full paperwork)",
+  "ซื้อทั้งหมด": "Buy all",
+  "เข้าเซลลาร์": "into the cellar",
+  "ซื้อครึ่งเดียว": "Buy half",
+  "ไม่เอา": "No thanks",
+  "ร้านอื่นกวาดไปหมดภายในวันเดียว": "Another shop snaps it all up within a day",
+  "สรรพากรตรวจบัญชี": "A tax audit",
+  "เจ้าหน้าที่สรรพากรขอตรวจบัญชีร้านย้อนหลัง 3 ปี": "The revenue department wants to audit three years of the shop's books",
+  "จ้างนักบัญชีมืออาชีพ": "Hire a professional accountant",
+  "บัญชีเรียบร้อยทุกบรรทัด ไม่มีค่าปรับ": "Every line checks out — no fine",
+  "เตรียมเอกสารเอง": "Prepare the paperwork yourself",
+  "เจอข้อผิดพลาดหลายจุด โดนปรับ": "They find several mistakes. Fined",
+  "ผ่านฉลุย เจ้าหน้าที่ชมว่าบัญชีเป็นระเบียบ": "Passed with flying colours — the officer praises your tidy books",
+  "เจอของดี! ได้": "Treasure! You get",
+  "— บ่มมาจนพร้อมดื่มแล้ว": "— aged until ready to drink",
+  "ส่วนใหญ่กลายเป็นน้ำส้มสายชู เหลือรอดแค่": "Most of it turned to vinegar. All that survived:",
+  "ทุกขวดเสียหมดแล้ว — บทเรียนราคาแพง": "Every bottle had spoiled — an expensive lesson",
+  "ครบเขต": "Region complete:",
+  "ครบประเทศ": "Country complete:",
+  "สะสมครบ": "Collected",
+  "สมุดสะสมไวน์": "Wine Book",
+  "ไวน์ทุกขวดที่เสิร์ฟให้ลูกค้าได้ตราประทับ · ครบเขต ครบประเทศ หรือครบจำนวนได้รางวัล": "Every wine you serve to a guest earns a stamp · complete a region, a country or a milestone for rewards",
+  "ครบแล้ว": "Complete",
+  "บัญชีลับของมีอา": "Mia's Secret Ledger",
+  "ขอคุยเรื่องส่วนตัวหน่อยนะ... บริษัทโบรกเกอร์ที่ฉันทำงานอยู่ถูกสั่งปิด": "Can we talk about something personal... the brokerage I work for has been shut down.",
+  "ฉันมีไวน์สะสมส่วนตัวอยู่บ้าง แต่ต้องหาเงินจ่ายค่าเช่าห้องด่วน": "I have a private collection, but I need cash for my rent, fast.",
+  "ไม่ได้ขอให้ช่วยฟรีนะ แค่ช่วยซื้อไวน์เข้าร้านสักหน่อย ฉันจะได้ค่าคอมจากซัพพลายเออร์": "I'm not asking for charity. Just buy some wine for the shop — I'll get a commission from the supplier.",
+  "ซื้อไวน์เข้าเซลลาร์ 8 ขวด": "Buy 8 bottles for the cellar",
+  "มีอาจ่ายค่าเช่าทันเวลา และส่งข้อความขอบคุณยาวเหยียด (+฿120k, +★1)": "Mia pays her rent in time and sends you a very long thank-you message (+฿120k, +★1)",
+  "ฉันเจอเอกสารในออฟฟิศเก่า... หัวหน้าปล่อยขวดปลอมผ่านมือฉันโดยที่ฉันไม่รู้": "I found documents at my old office... my boss passed fake bottles through my hands without my knowing.",
+  "ล็อตพวกนั้นอาจกระจายมาถึงร้านคุณด้วย": "Some of those lots may have reached your shop too.",
+  "ช่วยเคลียร์เซลลาร์ให้สะอาด แล้วพิสูจน์ด้วยการเสิร์ฟให้ลูกค้าประทับใจ ชื่อฉันจะได้ไม่เปื้อนไปด้วย": "Clear your cellar of anything suspect, then prove it by delighting your customers — so my name stays clean too.",
+  "จับคู่สมบูรณ์แบบ 3 ครั้ง": "Make 3 perfect pairings",
+  "มีอานำหลักฐานไปให้สมาคม หัวหน้าเก่าถูกแบนจากวงการ (+฿200k, +★3)": "Mia takes the evidence to the wine society and her old boss is banned from the trade (+฿200k, +★3)",
+  "ฉันตัดสินใจแล้ว — จะเปิดโต๊ะเทรดเล็กๆ ของตัวเอง": "I've decided — I'm opening a small trading desk of my own.",
+  "ลูกค้ารายแรกที่ฉันอยากได้คือร้านของคุณ": "The first client I want is your shop.",
+  "แต่ฉันต้องรู้ว่าคุณเข้าใจตลาดทั่วโลก ไม่ใช่แค่ฝรั่งเศส — ลองเสิร์ฟไวน์จาก 5 ประเทศให้ลูกค้าดูสิ": "But I need to know you understand the whole world's market, not just France — serve wines from 5 countries.",
+  "เสิร์ฟไวน์จาก 5 ประเทศ": "Serve wines from 5 countries",
+  "มีอาเปิดโต๊ะเทรดของตัวเองสำเร็จ และสัญญาว่าจะส่งข่าววงในให้คุณก่อนใครเสมอ (+฿350k, +★4)": "Mia's own desk is up and running, and she promises you'll always hear her inside tips first (+฿350k, +★4)",
+  "ลูกศิษย์ของนักวิจารณ์": "The Critic's Apprentice",
+  "ฉันรับลูกศิษย์คนหนึ่ง ชื่อนก อายุยี่สิบสาม ลิ้นดีมากแต่ยังดื้อ": "I've taken on an apprentice. Nok, twenty-three — a superb palate, but stubborn.",
+  "นกเชื่อว่าไวน์ดีต้องเป็นไวน์แดงเท่านั้น": "Nok believes good wine can only be red.",
+  "ช่วยฉันหน่อย — ให้นกนั่งดูคุณเสิร์ฟสปาร์กลิงให้ลูกค้า แล้วเขาจะเข้าใจ": "Help me — let Nok watch you serve sparkling wine to customers, and he'll understand.",
+  "เสิร์ฟสปาร์กลิงให้ลูกค้า 2 ขวด": "Serve 2 sparkling wines to customers",
+  "นกจดโน้ตยาวสองหน้า \"ฟองพวกนี้ไม่ใช่แค่ของประดับ\" (+฿100k, +★2)": "Nok writes two pages of notes: \"These bubbles aren't just decoration\" (+฿100k, +★2)",
+  "นกเริ่มเปิดใจแล้ว แต่ยังมองว่าไวน์หวานเป็นของเด็ก": "Nok is opening up, but still thinks sweet wine is for children.",
+  "ไวน์หวานชั้นดีคือสิ่งที่ยากที่สุดที่คนทำไวน์จะทำได้": "Great sweet wine is the hardest thing a winemaker can make.",
+  "เสิร์ฟไวน์หวานหรือไวน์เสริมแอลกอฮอล์ให้ลูกค้าดูสัก 2 ขวด": "Serve 2 sweet or fortified wines to customers.",
+  "เสิร์ฟไวน์หวานหรือเสริมแอลกอฮอล์ 2 ขวด": "Serve 2 sweet or fortified wines",
+  "นกชิมโทกาจิครั้งแรกแล้วเงียบไปนาน ก่อนจะขอชิมอีกแก้ว (+฿150k, +★2)": "Nok tastes Tokaji for the first time, falls silent for a long while, then asks for another glass (+฿150k, +★2)",
+  "บททดสอบสุดท้ายของนก — ออเรนจ์ไวน์ ของที่แม้แต่ฉันยังเคยตัดสินผิด": "Nok's final test — orange wine, something even I once judged wrongly.",
+  "ถ้าคุณจับคู่มันกับอาหารได้ นกจะเห็นว่ากฎทุกข้อมีข้อยกเว้น": "If you can pair it with food, Nok will see that every rule has its exceptions.",
+  "เสิร์ฟออเรนจ์ไวน์ให้ลูกค้า 2 ขวด": "Serve 2 orange wines to customers.",
+  "เสิร์ฟออเรนจ์ไวน์ 2 ขวด": "Serve 2 orange wines",
+  "นกเขียนคอลัมน์แรกในชีวิต พาดหัวว่า \"สิ่งที่ฉันเรียนจากร้านไวน์ข้างถนน\" (+฿250k, +★5)": "Nok writes his first column, headlined \"What I learned from a wine shop on a side street\" (+฿250k, +★5)",
+  "สาขาที่สองของวิกเตอร์": "Victor's Second Branch",
+  "สาขาที่สองเปิดมาได้เดือนหนึ่งแล้ว... ลูกค้าบางคนยังไม่ไว้ใจชื่อฉัน": "The second branch has been open a month... some customers still don't trust my name.",
+  "ข่าวลือคราวนั้นยังตามหลอกหลอน — และมันสมควรแล้ว": "That rumor still haunts me — and I deserve it.",
+  "ช่วยฉันหน่อย ดูแลลูกค้า VIP ให้ประทับใจสักคน ฉันจะขอเรียนวิธีของเธอ": "Help me — delight one VIP guest, and let me learn how you do it.",
+  "ทำคำขอ VIP สำเร็จ 1 ครั้ง": "Complete 1 VIP request",
+  "ลูกค้าคนนั้นกลับมาที่สาขาสองอีกสองครั้ง โดยไม่รู้เลยว่าเคยเป็นร้านของวิกเตอร์ (+฿300k, +★3)": "That guest returns to the second branch twice more, never knowing it was once Victor's shop (+฿300k, +★3)",
+  "ฉันอยากเรียนการประมูลแบบใหม่ — แบบที่ไม่ใช้อารมณ์": "I want to learn a new way of bidding — one without emotion.",
+  "ไปงานประมูลด้วยกัน แล้วสอนฉันว่าเมื่อไหร่ควรถอย": "Come to an auction with me and teach me when to walk away.",
+  "วิกเตอร์ถอนตัวจากล็อตหนึ่งทั้งที่อยากได้มาก แล้วหัวเราะ \"นี่สินะที่เขาเรียกว่าโต\" (+฿400k, +★3)": "Victor walks away from a lot he badly wanted, then laughs: \"So this is what they call growing up\" (+฿400k, +★3)",
+  "ฉันมีอะไรจะให้ดู — ลิสต์ไวน์ใหม่ของสาขาสอง": "I have something to show you — the second branch's new wine list.",
+  "ขวดที่ถูกที่สุดราคาห้าร้อยบาท ฉันตั้งชื่อมันว่า \"สำหรับเด็กคนนั้น\"": "The cheapest bottle costs five hundred baht. I named it \"For that kid\".",
+  "ช่วยให้ทั้งสองร้านคึกคัก — เสิร์ฟลูกค้าให้ครบ 15 คน": "Help keep both shops busy — serve 15 customers.",
+  "เสิร์ฟลูกค้า 15 คน": "Serve 15 customers",
+  "สาขาสองติดอันดับร้านไวน์ที่เป็นมิตรที่สุดของเมือง วิกเตอร์ยิ้มจริงๆ เป็นครั้งแรก (+฿500k, +★6)": "The second branch is voted the friendliest wine shop in town, and Victor smiles — really smiles — for the first time (+฿500k, +★6)",
+  "เชฟหลานป้าโรซ่า": "Auntie Rosa's Chef Grandson",
+  "หลานป้าโทรมาบ่น ร้านเขาลูกค้าเยอะแต่ไวน์ขายไม่ออกเลยจ้ะ": "My grandson called to complain, dear — his restaurant is full, but the wine doesn't sell.",
+  "ลูกค้าสั่งแต่ขวดถูกที่สุดในลิสต์ เพราะไม่มีใครแนะนำ": "Customers only order the cheapest bottle on the list because nobody recommends anything.",
+  "หนูช่วยสอนพนักงานเขาหน่อยได้ไหม — ให้เห็นสัก 4 ครั้งว่าจับคู่ดีๆ เป็นยังไง": "Could you teach his staff? Show them 4 times what a great pairing looks like.",
+  "จับคู่สมบูรณ์แบบ 4 ครั้ง": "Make 4 perfect pairings",
+  "พนักงานร้านเขาจดทุกคำที่หนูพูด ยอดขายไวน์ของร้านเพิ่มเป็นเท่าตัว (+฿200k, +★2)": "His staff write down every word you say, and the restaurant's wine sales double (+฿200k, +★2)",
+  "ตอนนี้เขาอยากทำสัญญาส่งไวน์กับร้านหนูจริงจังแล้วจ้ะ": "Now he wants a proper wine-supply contract with your shop, dear.",
+  "ป้าบอกเขาว่าหนูไม่เคยส่งของขาด อย่าทำให้ป้าขายหน้านะ": "I told him you've never missed a delivery — don't make me look bad.",
+  "ส่งไวน์ให้ร้านอาหารครบสัญญา 1 ฉบับ": "Complete 1 restaurant contract",
+  "เชฟหลานป้าโรซ่าประกาศในงานว่า \"ไวน์ทุกขวดในร้านเรามาจากร้านนี้\" (+฿400k, +★3)": "Auntie Rosa's grandson tells his guests: \"Every bottle here comes from that shop\" (+฿400k, +★3)",
+  "ร้านเขาได้ดาวที่สองแล้วจ้ะ!": "His restaurant has earned its second star!",
+  "เขาอยากจัดงานฉลองใหญ่... และอยากให้ป้าได้นั่งเก้าอี้ตัวที่สามอีกครั้ง": "He wants a big celebration... and wants Auntie to sit in the third chair again.",
+  "ช่วยเตรียมงานให้ครบ — ส่งไวน์เข้างานปาร์ตี้ให้ครบสักงานนะ": "Help get everything ready — complete a party order.",
+  "คืนนั้นป้าโรซ่านั่งเก้าอี้ตัวที่สาม มองแสงห้าโมงเย็นตกลงที่เดิม (+฿600k, +★5)": "That night Auntie Rosa sits in the third chair, watching the five o'clock light fall in the same place (+฿600k, +★5)",
+  "เด็กหน้าร้าน": "The Kid Outside the Shop",
+  "เด็กคนนั้นกลับมาอีกแล้ว ยืนดูป้ายไวน์หน้าร้านนานกว่าเมื่อวาน": "That kid is back again, staring at the wine board out front longer than yesterday.",
+  "เขาไม่มีเงินซื้อหรอก แต่เขาจดชื่อไวน์ลงสมุดเล่มเล็กๆ": "He can't afford anything, but he writes the wine names in a little notebook.",
+  "สอนเขาด้วยสมุดของเธอเองสิ — สะสมตราประทับไวน์ใหม่ 15 ขวด แล้วเล่าให้เขาฟังทีละขวด": "Teach him with your own book — collect 15 new stamps, then tell him the story of each bottle.",
+  "ได้ตราประทับไวน์ใหม่ในสมุด 15 ขวด": "Earn 15 new stamps in the Wine Book",
+  "เด็กคนนั้นจดเรื่องราวไวน์ทั้ง 15 ขวดด้วยลายมือตัวโตๆ (+฿300k, +★3)": "The kid writes down the stories of all 15 wines in big handwriting (+฿300k, +★3)",
+  "เขาถามว่าทำไมไวน์จากคนละประเทศถึงรสไม่เหมือนกัน": "He asks why wines from different countries taste so different.",
+  "คำถามเดียวกับที่เธอเคยถามฉัน": "The same question you once asked me.",
+  "พาเขาเที่ยวรอบโลกผ่านแก้ว — เสิร์ฟไวน์จาก 8 ประเทศ": "Take him round the world by the glass — serve wines from 8 countries.",
+  "เสิร์ฟไวน์จาก 8 ประเทศ": "Serve wines from 8 countries",
+  "เขาวาดแผนที่โลกติดผนังห้อง ปักหมุดทุกประเทศที่ \"ชิม\" ผ่านเรื่องเล่าของคุณ (+฿500k, +★4)": "He draws a world map on his bedroom wall, pinning every country he has \"tasted\" through your stories (+฿500k, +★4)",
+  "เขาสอบติดโรงเรียนซอมเมอลิเยร์แล้ว": "He's been accepted into sommelier school.",
+  "ใบสมัครเขียนว่า \"แรงบันดาลใจ: ร้านไวน์ที่ฟังเรื่องราวของทุกขวด\"": "His application says: \"Inspiration: a wine shop that listens to the story of every bottle.\"",
+  "ทำให้ร้านนี้เป็นที่ที่เขาอยากกลับมาทำงาน — เพิ่มชื่อเสียงอีก ★15": "Make this a place he'll want to come back to work — gain another ★15.",
+  "เพิ่มชื่อเสียงอีก ★15": "Gain another ★15 reputation",
+  "วันที่เขาเรียนจบ เขาเดินเข้าร้านพร้อมใบสมัครงาน แล้วถามว่า \"ไวน์ขวดนี้มีเรื่องราวอะไรครับ\" (+฿800k, +★5)": "The day he graduates, he walks into the shop with a job application and asks: \"What's the story behind this bottle?\" (+฿800k, +★5)",
+  "📖 เนื้อเรื่องย่อยใหม่:": "📖 New side story:",
+  "สำเร็จ": "complete",
+  "เนื้อเรื่องย่อย": "Side Stories",
+  "มีฉากใหม่รอให้อ่าน": "A new scene is waiting",
+  "อ่านเลย": "Read now",
+  "จบแล้ว:": "Finished:",
+  "เรื่องถัดไปเปิดเมื่อถึงบทที่": "The next story opens at chapter",
+  "ง่าย": "Easy",
+  "โหด": "Expert",
+  "สมุดไวน์": "Wine Book",
+  "ระดับความยาก": "Difficulty",
+  "งบลูกค้า +15% · ลูกค้าใจดีขึ้น · ค่าใช้จ่าย −15% · ของในตลาดมากขึ้น · ภัยเซลลาร์น้อยลง · รางวัลลีกและ NG+ ×0.8": "Customer budgets +15% · kinder guests · costs −15% · more market stock · fewer cellar hazards · league and NG+ rewards ×0.8",
+  "สมดุลตามที่ออกแบบไว้": "The balance as designed",
+  "งบลูกค้า −12% · ลูกค้าจับผิดขึ้น · ค่าใช้จ่าย +20% · ของในตลาดน้อยลง · ภัยเซลลาร์บ่อยขึ้น · รางวัลลีกและ NG+ ×1.15": "Customer budgets −12% · fussier guests · costs +20% · less market stock · more cellar hazards · league and NG+ rewards ×1.15",
+  "งบลูกค้า −22% · ลูกค้าจับผิดมาก · ค่าใช้จ่าย +40% · ของในตลาดน้อยมาก · ภัยเซลลาร์บ่อยมาก · รางวัลลีกและ NG+ ×1.35": "Customer budgets −22% · very fussy guests · costs +40% · scarce market stock · frequent cellar hazards · league and NG+ rewards ×1.35",
+  "เปลี่ยนได้ตลอดเวลา": "Change any time",
+  "ระดับความยาก:": "Difficulty:",
   "ร้านไวน์ & เซลลาร์": "Wine Shop & Cellar"
 };
 function T(s){ if(LANG!=='en') return s; const v=EN[s]; return v===undefined ? s : v; }
@@ -4824,7 +5023,111 @@ function buildEvents(){
         {label:T('ปฏิเสธ'), tone:'ghost', cost:()=>0, do(){ return T('คุณบอกว่ายังไม่พร้อมรับคน'); }},
       ]
     },
+    ...moreEvents(),
   ];
+}
+
+// costs and payouts follow the size of the shop so the choices stay meaningful
+function evScale(){ return Math.max(1, avgWeekRevenue()/300000); }
+function evAddBottles(id, qty, unit, opt={}){
+  const yr=gameYear(), c=G.cellar[id];
+  const week=G.week-(opt.ageWeeks||0);
+  if(c){ sealLot(c); c.buyPrice=(c.buyPrice*c.qty+unit*qty)/(c.qty+qty); c.buyWeek=Math.round((c.buyWeek*c.qty+week*qty)/(c.qty+qty)); c.qty+=qty; }
+  else { G.cellar[id]={qty, buyWeek:week, buyPrice:Math.round(unit), vintage:opt.vintage||yr, quality:opt.quality||vintageRating(id,yr), fake:0, suspect:0}; sealLot(G.cellar[id]); }
+  G.stats.bottlesBought=(G.stats.bottlesBought||0)+qty;
+  normalizeCellarLots();
+}
+const freeSpace=()=>cellarCapacity()-cellarUsed();
+function moreEvents(){
+  const sc=evScale(), r=()=>Math.random();
+  const staff=G.staff&&G.staff.length?G.staff[Math.floor(Math.random()*G.staff.length)]:null;
+  const cw=WINES.filter(w=>w.tier>=2&&w.tier<=3&&!isRareLocked(w.id)); const cl=cw[Math.floor(Math.random()*cw.length)];
+  const clQty=6+Math.floor(Math.random()*7), clUnit=Math.round((G.prices[cl.id]||cl.base)*0.55);
+  return [
+    {key:'journalist', title:T('นักข่าวขอสัมภาษณ์'),
+     body:T('นิตยสารไลฟ์สไตล์อยากสัมภาษณ์เรื่อง "ทำไมไวน์บางขวดแพงเป็นล้าน" — คำตอบของคุณอาจถูกตัดไปพาดหัว'),
+     opts:[
+      {label:T('ตอบตรงๆ ทุกคำถาม'), tone:'gold', cost:()=>0, do(){ if(r()<0.6){ G.rep+=5; return T('บทสัมภาษณ์ได้รับคำชมว่าจริงใจ ชื่อเสียง +★5'); } G.rep=Math.max(0,G.rep-3); return T('ประโยคหนึ่งถูกตัดไปพาดหัวผิดบริบท ชื่อเสียง −★3'); }},
+      {label:T('ตอบแบบปลอดภัย'), tone:'sage', cost:()=>0, do(){ G.rep+=1; return T('บทความออกมาเรียบๆ ชื่อเสียง +★1'); }},
+      {label:T('ปฏิเสธ'), tone:'ghost', cost:()=>0, do(){ return T('คุณขอบคุณและปฏิเสธอย่างสุภาพ'); }},
+     ]},
+    {key:'staffquit', when:()=>!!staff, title:T('พนักงานขอลาออก'),
+     body: staff?`${staff.name} (${staff.role}) ${T("ได้ข้อเสนอจากร้านคู่แข่ง เงินเดือนสูงกว่าเดิม 30%")}`:'',
+     opts:[
+      {label:T('ขึ้นเงินเดือน 30%'), tone:'gold', cost:()=>0, do(){ if(!staff) return T('คุณปล่อยโอกาสนี้ไป'); staff.salary=Math.round(staff.salary*1.3); return T('เขาตัดสินใจอยู่ต่อ และทำงานหนักกว่าเดิม'); }},
+      {label:T('ให้โบนัสก้อนเดียว'), tone:'sage', cost:()=>staff?staff.salary*4:0, do(){ if(r()<0.55) return T('เขารับโบนัสแล้วตัดสินใจอยู่ต่อ'); G.staff=G.staff.filter(x=>x!==staff); return T('เขารับโบนัส... แต่สุดท้ายก็ไปอยู่ดี — ตำแหน่งว่างแล้ว'); }},
+      {label:T('ปล่อยไป'), tone:'ghost', cost:()=>0, do(){ G.staff=G.staff.filter(x=>x!==staff); return T('คุณอวยพรให้เขาโชคดี — ตำแหน่งว่างแล้ว ไปจ้างคนใหม่ได้ที่หน้าพนักงาน'); }},
+     ]},
+    {key:'oldcellar', title:T('เซลลาร์ในบ้านเก่า'),
+     body:T('นายหน้าอสังหาฯ เจอห้องใต้ดินในบ้านอายุร้อยปี มีไวน์ฝุ่นจับวางเต็มชั้น เจ้าของขายเหมาโดยไม่รู้ว่าข้างในเป็นอะไร'),
+     opts:[
+      {label:T('ซื้อเหมา'), tone:'gold', cost:()=>Math.round(250000*sc/1000)*1000, need:()=>freeSpace()>=5, do(){ return openOldCellar(); }},
+      {label:T('ส่งนักชิมไปดูก่อน'), tone:'sage', cost:()=>Math.round(60000*sc/1000)*1000, need:()=>staffBonus('quality')>0 && freeSpace()>=5, do(){
+        if(r()<0.55){ const price=Math.round(250000*sc/1000)*1000; if(G.cash<price) return T('นักชิมยืนยันว่าเป็นของดี แต่เงินสดไม่พอซื้อ'); G.cash-=price; return T('นักชิมยืนยันว่าเป็นของดี คุณจึงซื้อไว้ — ')+openOldCellar(true); }
+        return T('นักชิมรายงานว่าส่วนใหญ่กลายเป็นน้ำส้มสายชู คุณรอดตัวไป'); }},
+      {label:T('ไม่สนใจ'), tone:'ghost', cost:()=>0, do(){ return T('คุณปล่อยโอกาสนี้ไป'); }},
+     ]},
+    {key:'influencer', title:T('อินฟลูเอนเซอร์ขอไวน์ฟรี'),
+     body:T('อินฟลูเอนเซอร์สายอาหารผู้ติดตามล้านคน ขอไวน์ 2 ขวดไปรีวิวแบบ "ฟรี"'),
+     opts:[
+      {label:T('ให้ 2 ขวดดีๆ'), tone:'gold', cost:()=>0, need:()=>giftable().length>=2, do(){
+        giftable().slice(0,2).forEach(id=>{ const c=G.cellar[id]; c.qty--; sealLot(c); if(c.qty<=0) delete G.cellar[id]; });
+        normalizeCellarLots();
+        if(r()<0.75){ G.rep+=4; return T('คลิปรีวิวยอดวิวพุ่ง ลูกค้าใหม่ตามมา ชื่อเสียง +★4'); } G.rep+=1; return T('คลิปเงียบกว่าที่คิด ชื่อเสียง +★1'); }},
+      {label:T('เสนอส่วนลดแทน'), tone:'sage', cost:()=>0, do(){ G.rep+=1; return T('เธอโพสต์สตอรี่สั้นๆ ให้ ชื่อเสียง +★1'); }},
+      {label:T('ปฏิเสธ'), tone:'ghost', cost:()=>0, do(){ if(r()<0.35){ G.rep=Math.max(0,G.rep-2); return T('เธอโพสต์บ่นว่าร้านหยิ่ง ชื่อเสียง −★2'); } return T('เธอเงียบหายไป ไม่มีอะไรเกิดขึ้น'); }},
+     ]},
+    {key:'fakelabels', title:T('ข้อเสนอใต้โต๊ะ'),
+     body:T('ชายแปลกหน้ายื่นซองให้ — ฉลากและจุกปลอมคุณภาพสูงของไวน์ดัง "ติดขวดเก่าในร้านคุณ ขายได้เป็นสิบเท่า"'),
+     opts:[
+      {label:T('แจ้งตำรวจ'), tone:'gold', cost:()=>0, do(){ G.rep+=4; return T('ตำรวจรวบแก๊งได้ สมาคมไวน์ส่งหนังสือขอบคุณ ชื่อเสียง +★4'); }},
+      {label:T('ปิดประตูใส่'), tone:'sage', cost:()=>0, do(){ return T('คุณปฏิเสธทันทีและไม่พูดถึงมันอีก'); }},
+      {label:T('รับไว้...'), tone:'ghost', cost:()=>0, do(){
+        const gain=Math.round(800000*sc/1000)*1000;
+        if(r()<0.45){ const fine=gain*2; G.cash-=fine; G.rep=Math.max(0,G.rep-15); return `${T("ถูกจับได้! โดนปรับ")} ${fmtK(fine)} ${T("และชื่อเสียง −★15")}`; }
+        G.cash+=gain; return `${T("คุณได้เงินมา")} ${fmtK(gain)} ${T("... แต่ความลับแบบนี้มักอยู่ได้ไม่นาน")}`; }},
+     ]},
+    {key:'chefdinner', title:T('ดินเนอร์จับคู่ไวน์กับเชฟดัง'),
+     body:T('เชฟดาวมิชลินชวนจัดดินเนอร์ 8 คอร์ส คุณต้องเลือกไวน์ทุกคอร์สจากเซลลาร์ ค่าจัดงานแบ่งกันคนละครึ่ง — ยิ่งเซลลาร์หลากหลาย งานยิ่งปัง'),
+     opts:[
+      {label:T('รับจัด'), tone:'gold', cost:()=>Math.round(200000*sc/1000)*1000, need:()=>Object.keys(G.cellar).length>=4, do(cost){
+        const ids=Object.keys(G.cellar), styles=new Set(ids.map(id=>wineStyle(wineById(id)))).size, fine=ids.filter(id=>(wineById(id)||{}).tier>=3).length;
+        if(styles>=3 && fine>=2){ G.rep+=6; G.cash+=Math.round(cost*2.2); return `${T("งานปังมาก! นักชิมยกให้เป็นดินเนอร์แห่งปี ได้คืน")} ${fmtK(cost*2.2)} ${T("+ ชื่อเสียง ★6")}`; }
+        if(styles>=2){ G.rep+=2; G.cash+=Math.round(cost*1.1); return `${T("งานผ่านไปด้วยดี ได้คืน")} ${fmtK(cost*1.1)} ${T("+ ★2 — เซลลาร์หลากหลายกว่านี้จะดีกว่า")}`; }
+        G.rep=Math.max(0,G.rep-1); return T('ไวน์ซ้ำๆ กันจนแขกเบื่อ ขาดทุนค่าจัดงาน และชื่อเสียง −★1'); }},
+      {label:T('ขอเลื่อนไปก่อน'), tone:'ghost', cost:()=>0, do(){ return T('เชฟบอกว่าไว้คราวหน้า'); }},
+     ]},
+    {key:'clearance', title:T('โรงแรมปิดกิจการ'),
+     body:`${T("โรงแรมเก่าเลหลังสต๊อกไวน์")} ${cl.name} ${clQty} ${T("ขวด ในราคา 55% ของตลาด (ของแท้ มีเอกสารครบ)")}`,
+     opts:[
+      {label:`${T("ซื้อทั้งหมด")} ${clQty} ${T("ขวด")}`, tone:'gold', cost:()=>clUnit*clQty, need:()=>freeSpace()>=clQty, do(){ evAddBottles(cl.id, clQty, clUnit); return `${T("ได้")} ${cl.name} ×${clQty} ${T("เข้าเซลลาร์")}`; }},
+      {label:`${T("ซื้อครึ่งเดียว")} ${Math.ceil(clQty/2)} ${T("ขวด")}`, tone:'sage', cost:()=>clUnit*Math.ceil(clQty/2), need:()=>freeSpace()>=Math.ceil(clQty/2), do(){ evAddBottles(cl.id, Math.ceil(clQty/2), clUnit); return `${T("ได้")} ${cl.name} ×${Math.ceil(clQty/2)} ${T("เข้าเซลลาร์")}`; }},
+      {label:T('ไม่เอา'), tone:'ghost', cost:()=>0, do(){ return T('ร้านอื่นกวาดไปหมดภายในวันเดียว'); }},
+     ]},
+    {key:'audit', title:T('สรรพากรตรวจบัญชี'),
+     body:T('เจ้าหน้าที่สรรพากรขอตรวจบัญชีร้านย้อนหลัง 3 ปี'),
+     opts:[
+      {label:T('จ้างนักบัญชีมืออาชีพ'), tone:'gold', cost:()=>Math.round(120000*sc/1000)*1000, do(){ return T('บัญชีเรียบร้อยทุกบรรทัด ไม่มีค่าปรับ'); }},
+      {label:T('เตรียมเอกสารเอง'), tone:'sage', cost:()=>0, do(){
+        if(r()<0.5){ const fine=Math.round(Math.min(Math.max(0,G.cash)*0.06, 2000000*sc)/1000)*1000; G.cash-=fine; return `${T("เจอข้อผิดพลาดหลายจุด โดนปรับ")} ${fmtK(fine)}`; }
+        return T('ผ่านฉลุย เจ้าหน้าที่ชมว่าบัญชีเป็นระเบียบ'); }},
+     ]},
+  ];
+}
+function giftable(){ return Object.keys(G.cellar).filter(id=>{ const w=wineById(id), c=G.cellar[id]; return w && w.tier>=2 && c.qty-(c.suspect||0)>0; }).sort((a,b)=>(G.prices[a]||0)-(G.prices[b]||0)); }
+function openOldCellar(sure){
+  const roll=sure?0:Math.random();
+  if(roll<0.55){
+    const pool=WINES.filter(w=>w.tier>=3&&w.tier<=4&&!isRareLocked(w.id)), got=[];
+    const n=3+Math.floor(Math.random()*3);
+    for(let i=0;i<n;i++){ const w=pool[Math.floor(Math.random()*pool.length)];
+      evAddBottles(w.id, 1, Math.round((G.prices[w.id]||w.base)*0.3), {quality:92+Math.floor(Math.random()*7), vintage:gameYear()-15-Math.floor(Math.random()*15), ageWeeks:Math.round(agingPotential(w)*0.6)});
+      got.push(w.name); }
+    return `${T("เจอของดี! ได้")} ${got.join(', ')} ${T("— บ่มมาจนพร้อมดื่มแล้ว")}`;
+  }
+  if(roll<0.85){ const pool=WINES.filter(w=>w.tier===2&&!isRareLocked(w.id)), w=pool[Math.floor(Math.random()*pool.length)];
+    evAddBottles(w.id, 2, Math.round((G.prices[w.id]||w.base)*0.5)); return `${T("ส่วนใหญ่กลายเป็นน้ำส้มสายชู เหลือรอดแค่")} ${w.name} ×2`; }
+  return T('ทุกขวดเสียหมดแล้ว — บทเรียนราคาแพง');
 }
 
 /* ============================================================
@@ -4863,6 +5166,7 @@ function tickHazard(){
   let chance = 0.16 * (1.4 - upkeep*0.7);   // ~0.16 neglected, ~0.11 maintained
   if(G.cellarInsured) chance *= 0.85;
   if(cellarUsed() < 8) chance *= 0.4;        // little at stake, little risk
+  chance *= DIFF().hazard;
   if(Math.random() < chance){
     G.lastHazardWeek=G.week;
     G._pendingHazard=true;
@@ -4963,15 +5267,15 @@ function hazardResult(hz, ruined, lostVal, msg){
 function tickOpportunity(){
   if(!eventsUnlocked()) return;
   if(G.party || G.auction) return;   // don't stack modals
-  if(G.week - (G.lastEventWeek||0) < 6) return;
-  if(Math.random() < 0.28){
+  if(G.week - (G.lastEventWeek||0) < 4) return;
+  if(Math.random() < (G.chapter>=CHAPTERS.length ? 0.45 : 0.35)){
     G.lastEventWeek=G.week;
     G._pendingEvent=true;   // shown after the weekly report closes
   }
 }
 
 function showOpportunityEvent(){
-  const events=buildEvents();
+  const events=buildEvents().filter(e=>!e.when || e.when());
   const ev=events[Math.floor(Math.random()*events.length)];
   G.eventsSeen=(G.eventsSeen||0)+1;
   sfx('quest');
@@ -5227,6 +5531,7 @@ function fulfilVip(vid, id){
   G.cash+=pay; G.cash=Math.round(G.cash); G.rep+=v.rep;
   G._weekRevenue=(G._weekRevenue||0)+pay;
   G.stats.vipDone=(G.stats.vipDone||0)+1;
+  countServe(w);
   G.vips=G.vips.filter(x=>x.id!==vid);
   questProgress('vip',1); questProgress('revenue',0);
   floatMoney(pay); sfx('cash'); setTimeout(()=>sfx('fanfare'),150);
@@ -5256,6 +5561,224 @@ function vipCardsHTML(){
     }
     html+=`</div>`;
   }
+  return html;
+}
+
+/* ============================================================
+   WINE BOOK — every wine you serve to a guest is stamped.
+   Completing a region, a country, or a stamp milestone pays out.
+   ============================================================ */
+function bookWines(){ return WINES.filter(w=>!isRareLocked(w.id)); }
+function countServe(w){
+  if(!w) return;
+  const st=G.stats;
+  st.styleServes=st.styleServes||{}; st.countryServes=st.countryServes||{};
+  const sty=wineStyle(w), cc=countryOf(w.region)||'xx';
+  st.styleServes[sty]=(st.styleServes[sty]||0)+1;
+  st.countryServes[cc]=(st.countryServes[cc]||0)+1;
+  stampBook(w);
+}
+const BOOK_MILESTONES=[10,25,50,75,100,150,200,231];
+function stampBook(w){
+  G.book=G.book||{}; G.bookDone=G.bookDone||{regions:{},countries:{},ms:{}};
+  if(G.book[w.id]) return;
+  G.book[w.id]=G.week;
+  const all=bookWines(), D=G.bookDone, msgs=[];
+  const has=x=>!!G.book[x.id];
+  const reg=all.filter(x=>x.region===w.region);
+  if(!D.regions[w.region] && reg.every(has)){
+    D.regions[w.region]=G.week;
+    const cash=Math.max(50000, Math.round(reg.reduce((a,x)=>a+x.base,0)*0.15/1000)*1000);
+    G.cash+=cash; G.rep+=2; msgs.push(`${T("ครบเขต")} ${w.region} +${fmtK(cash)} ★2`);
+  }
+  const cc=countryOf(w.region), ctry=all.filter(x=>countryOf(x.region)===cc);
+  if(cc && !D.countries[cc] && ctry.length>1 && ctry.every(has)){
+    D.countries[cc]=G.week;
+    const cash=Math.max(150000, Math.round(ctry.reduce((a,x)=>a+x.base,0)*0.10/1000)*1000);
+    G.cash+=cash; G.rep+=5; msgs.push(`${T("ครบประเทศ")} ${COUNTRY_NAMES[cc]||cc} +${fmtK(cash)} ★5`);
+  }
+  const n=Object.keys(G.book).length;
+  for(const m of BOOK_MILESTONES){
+    if(n>=m && !D.ms[m]){ D.ms[m]=G.week; const cash=m*20000, r=Math.max(1,Math.round(m/10)); G.cash+=cash; G.rep+=r; msgs.push(`${T("สะสมครบ")} ${m} ${T("ขวด")} +${fmtK(cash)} ★${r}`); }
+  }
+  if(msgs.length){ G.cash=Math.round(G.cash); setTimeout(()=>{ sfx('fanfare'); toast(`📖 ${msgs.join(' · ')}`,'gold'); }, 900); }
+}
+function pageBook(){
+  const all=bookWines(), got=all.filter(w=>G.book&&G.book[w.id]).length;
+  const D=G.bookDone||{regions:{},countries:{},ms:{}};
+  let html=`<div class="page-head"><h2>${T("สมุดสะสมไวน์")}</h2><p>${T("ไวน์ทุกขวดที่เสิร์ฟให้ลูกค้าได้ตราประทับ · ครบเขต ครบประเทศ หรือครบจำนวนได้รางวัล")}</p></div>`;
+  html+=`<div class="card book-top"><div class="book-count"><b>${got}</b>/${all.length}</div>
+    <div style="flex:1"><div class="party-bar"><div class="party-fill" style="width:${Math.round(got/all.length*100)}%"></div></div>
+    <div class="book-ms">${BOOK_MILESTONES.map(m=>`<span class="${D.ms[m]?'on':''}">${m}</span>`).join('')}</div></div></div>`;
+  const countries=[...new Set(all.map(w=>countryOf(w.region)).filter(Boolean))]
+    .map(cc=>({cc, ws:all.filter(w=>countryOf(w.region)===cc)}))
+    .sort((a,b)=>b.ws.length-a.ws.length);
+  if(!UI.bookCountry) UI.bookCountry=countries[0].cc;
+  for(const c of countries){
+    const n=c.ws.filter(w=>G.book&&G.book[w.id]).length, open=UI.bookCountry===c.cc;
+    html+=`<div class="card book-country ${open?'open':''}">
+      <button class="book-c-head" data-bookc="${c.cc}">${countryFlag(c.cc,14)}<b>${COUNTRY_NAMES[c.cc]||c.cc}</b>${D.countries[c.cc]?`<i class="book-done">${T("ครบแล้ว")}</i>`:''}
+        <span class="book-c-n">${n}/${c.ws.length}</span><span class="book-c-bar"><i style="width:${Math.round(n/c.ws.length*100)}%"></i></span>${open?'▴':'▾'}</button>`;
+    if(open){
+      const regions=[...new Set(c.ws.map(w=>w.region))].sort();
+      for(const r of regions){
+        const ws=c.ws.filter(w=>w.region===r), rn=ws.filter(w=>G.book&&G.book[w.id]).length;
+        html+=`<div class="book-region"><div class="book-r-head"><b>${r}</b> <span>${rn}/${ws.length}</span>${D.regions[r]?`<i class="book-done">✓</i>`:''}</div><div class="book-chips">
+          ${ws.sort((a,b)=>b.tier-a.tier).map(w=>{ const on=G.book&&G.book[w.id];
+            return `<button class="book-chip ${on?'on':''}" data-focus="wine" data-id="${w.id}" tabindex="0" title="${w.name.replace(/"/g,'&quot;')}"><i class="dot col-${wineStyle(w)}"></i>${w.name}<em>${TIER_SHORT[w.tier]}</em></button>`; }).join('')}
+        </div></div>`;
+      }
+    }
+    html+=`</div>`;
+  }
+  document.getElementById('content').innerHTML=html;
+  document.querySelectorAll('[data-bookc]').forEach(b=>b.onclick=()=>{ UI.bookCountry = UI.bookCountry===b.dataset.bookc ? '' : b.dataset.bookc; sfx('click'); routePage(); });
+  bindFocusables();
+}
+
+/* ============================================================
+   SIDE STORIES — short three-step arcs for the supporting cast,
+   running alongside the main story (up to two at a time).
+   ============================================================ */
+const SIDE_STORIES = [
+  {key:'mia', who:'broker', bg:'market', title:T('บัญชีลับของมีอา'), minCh:4, steps:[
+    {lines:[['broker',T('ขอคุยเรื่องส่วนตัวหน่อยนะ... บริษัทโบรกเกอร์ที่ฉันทำงานอยู่ถูกสั่งปิด'),'sad'],
+            ['broker',T('ฉันมีไวน์สะสมส่วนตัวอยู่บ้าง แต่ต้องหาเงินจ่ายค่าเช่าห้องด่วน'),'sad'],
+            ['broker',T('ไม่ได้ขอให้ช่วยฟรีนะ แค่ช่วยซื้อไวน์เข้าร้านสักหน่อย ฉันจะได้ค่าคอมจากซัพพลายเออร์'),'neutral']],
+     goals:[{type:'buySince', target:8, text:T('ซื้อไวน์เข้าเซลลาร์ 8 ขวด')}],
+     reward:{cash:120000, rep:1, text:T('มีอาจ่ายค่าเช่าทันเวลา และส่งข้อความขอบคุณยาวเหยียด (+฿120k, +★1)')}},
+    {lines:[['broker',T('ฉันเจอเอกสารในออฟฟิศเก่า... หัวหน้าปล่อยขวดปลอมผ่านมือฉันโดยที่ฉันไม่รู้'),'serious'],
+            ['broker',T('ล็อตพวกนั้นอาจกระจายมาถึงร้านคุณด้วย'),'serious'],
+            ['broker',T('ช่วยเคลียร์เซลลาร์ให้สะอาด แล้วพิสูจน์ด้วยการเสิร์ฟให้ลูกค้าประทับใจ ชื่อฉันจะได้ไม่เปื้อนไปด้วย'),'neutral']],
+     goals:[{type:'noSuspect', target:1, text:T('ไม่มีขวดต้องสงสัยเหลือในเซลลาร์')},{type:'perfectSince', target:3, text:T('จับคู่สมบูรณ์แบบ 3 ครั้ง')}],
+     reward:{cash:200000, rep:3, text:T('มีอานำหลักฐานไปให้สมาคม หัวหน้าเก่าถูกแบนจากวงการ (+฿200k, +★3)')}},
+    {lines:[['broker',T('ฉันตัดสินใจแล้ว — จะเปิดโต๊ะเทรดเล็กๆ ของตัวเอง'),'happy'],
+            ['broker',T('ลูกค้ารายแรกที่ฉันอยากได้คือร้านของคุณ'),'happy'],
+            ['broker',T('แต่ฉันต้องรู้ว่าคุณเข้าใจตลาดทั่วโลก ไม่ใช่แค่ฝรั่งเศส — ลองเสิร์ฟไวน์จาก 5 ประเทศให้ลูกค้าดูสิ'),'smug']],
+     goals:[{type:'countriesSince', target:5, text:T('เสิร์ฟไวน์จาก 5 ประเทศ')}],
+     reward:{cash:350000, rep:4, text:T('มีอาเปิดโต๊ะเทรดของตัวเองสำเร็จ และสัญญาว่าจะส่งข่าววงในให้คุณก่อนใครเสมอ (+฿350k, +★4)')}},
+  ]},
+  {key:'apprentice', who:'critic', bg:'shop', title:T('ลูกศิษย์ของนักวิจารณ์'), minCh:8, steps:[
+    {lines:[['critic',T('ฉันรับลูกศิษย์คนหนึ่ง ชื่อนก อายุยี่สิบสาม ลิ้นดีมากแต่ยังดื้อ'),'neutral'],
+            ['critic',T('นกเชื่อว่าไวน์ดีต้องเป็นไวน์แดงเท่านั้น'),'smug'],
+            ['critic',T('ช่วยฉันหน่อย — ให้นกนั่งดูคุณเสิร์ฟสปาร์กลิงให้ลูกค้า แล้วเขาจะเข้าใจ'),'neutral']],
+     goals:[{type:'styleSince', style:'sparkling', target:2, text:T('เสิร์ฟสปาร์กลิงให้ลูกค้า 2 ขวด')}],
+     reward:{cash:100000, rep:2, text:T('นกจดโน้ตยาวสองหน้า "ฟองพวกนี้ไม่ใช่แค่ของประดับ" (+฿100k, +★2)')}},
+    {lines:[['critic',T('นกเริ่มเปิดใจแล้ว แต่ยังมองว่าไวน์หวานเป็นของเด็ก'),'serious'],
+            ['critic',T('ไวน์หวานชั้นดีคือสิ่งที่ยากที่สุดที่คนทำไวน์จะทำได้'),'serious'],
+            ['critic',T('เสิร์ฟไวน์หวานหรือไวน์เสริมแอลกอฮอล์ให้ลูกค้าดูสัก 2 ขวด'),'neutral']],
+     goals:[{type:'styleSince', styles:['sweet','fortified'], target:2, text:T('เสิร์ฟไวน์หวานหรือเสริมแอลกอฮอล์ 2 ขวด')}],
+     reward:{cash:150000, rep:2, text:T('นกชิมโทกาจิครั้งแรกแล้วเงียบไปนาน ก่อนจะขอชิมอีกแก้ว (+฿150k, +★2)')}},
+    {lines:[['critic',T('บททดสอบสุดท้ายของนก — ออเรนจ์ไวน์ ของที่แม้แต่ฉันยังเคยตัดสินผิด'),'serious'],
+            ['critic',T('ถ้าคุณจับคู่มันกับอาหารได้ นกจะเห็นว่ากฎทุกข้อมีข้อยกเว้น'),'neutral'],
+            ['critic',T('เสิร์ฟออเรนจ์ไวน์ให้ลูกค้า 2 ขวด'),'neutral']],
+     goals:[{type:'styleSince', style:'orange', target:2, text:T('เสิร์ฟออเรนจ์ไวน์ 2 ขวด')}],
+     reward:{cash:250000, rep:5, text:T('นกเขียนคอลัมน์แรกในชีวิต พาดหัวว่า "สิ่งที่ฉันเรียนจากร้านไวน์ข้างถนน" (+฿250k, +★5)')}},
+  ]},
+  {key:'branch', who:'rival', bg:'street', title:T('สาขาที่สองของวิกเตอร์'), minCh:16, steps:[
+    {lines:[['rival',T('สาขาที่สองเปิดมาได้เดือนหนึ่งแล้ว... ลูกค้าบางคนยังไม่ไว้ใจชื่อฉัน'),'sad'],
+            ['rival',T('ข่าวลือคราวนั้นยังตามหลอกหลอน — และมันสมควรแล้ว'),'sad'],
+            ['rival',T('ช่วยฉันหน่อย ดูแลลูกค้า VIP ให้ประทับใจสักคน ฉันจะขอเรียนวิธีของเธอ'),'neutral']],
+     goals:[{type:'vipSince', target:1, text:T('ทำคำขอ VIP สำเร็จ 1 ครั้ง')}],
+     reward:{cash:300000, rep:3, text:T('ลูกค้าคนนั้นกลับมาที่สาขาสองอีกสองครั้ง โดยไม่รู้เลยว่าเคยเป็นร้านของวิกเตอร์ (+฿300k, +★3)')}},
+    {lines:[['rival',T('ฉันอยากเรียนการประมูลแบบใหม่ — แบบที่ไม่ใช้อารมณ์'),'serious'],
+            ['rival',T('ไปงานประมูลด้วยกัน แล้วสอนฉันว่าเมื่อไหร่ควรถอย'),'neutral']],
+     goals:[{type:'auctionSince', target:1, text:T('ชนะการประมูล 1 ครั้ง')}],
+     reward:{cash:400000, rep:3, text:T('วิกเตอร์ถอนตัวจากล็อตหนึ่งทั้งที่อยากได้มาก แล้วหัวเราะ "นี่สินะที่เขาเรียกว่าโต" (+฿400k, +★3)')}},
+    {lines:[['rival',T('ฉันมีอะไรจะให้ดู — ลิสต์ไวน์ใหม่ของสาขาสอง'),'happy'],
+            ['rival',T('ขวดที่ถูกที่สุดราคาห้าร้อยบาท ฉันตั้งชื่อมันว่า "สำหรับเด็กคนนั้น"'),'happy'],
+            ['rival',T('ช่วยให้ทั้งสองร้านคึกคัก — เสิร์ฟลูกค้าให้ครบ 15 คน'),'neutral']],
+     goals:[{type:'servedSince', target:15, text:T('เสิร์ฟลูกค้า 15 คน')}],
+     reward:{cash:500000, rep:6, text:T('สาขาสองติดอันดับร้านไวน์ที่เป็นมิตรที่สุดของเมือง วิกเตอร์ยิ้มจริงๆ เป็นครั้งแรก (+฿500k, +★6)')}},
+  ]},
+  {key:'grandson', who:'regular', bg:'shop', title:T('เชฟหลานป้าโรซ่า'), minCh:17, steps:[
+    {lines:[['regular',T('หลานป้าโทรมาบ่น ร้านเขาลูกค้าเยอะแต่ไวน์ขายไม่ออกเลยจ้ะ'),'sad'],
+            ['regular',T('ลูกค้าสั่งแต่ขวดถูกที่สุดในลิสต์ เพราะไม่มีใครแนะนำ'),'neutral'],
+            ['regular',T('หนูช่วยสอนพนักงานเขาหน่อยได้ไหม — ให้เห็นสัก 4 ครั้งว่าจับคู่ดีๆ เป็นยังไง'),'happy']],
+     goals:[{type:'perfectSince', target:4, text:T('จับคู่สมบูรณ์แบบ 4 ครั้ง')}],
+     reward:{cash:200000, rep:2, text:T('พนักงานร้านเขาจดทุกคำที่หนูพูด ยอดขายไวน์ของร้านเพิ่มเป็นเท่าตัว (+฿200k, +★2)')}},
+    {lines:[['regular',T('ตอนนี้เขาอยากทำสัญญาส่งไวน์กับร้านหนูจริงจังแล้วจ้ะ'),'happy'],
+            ['regular',T('ป้าบอกเขาว่าหนูไม่เคยส่งของขาด อย่าทำให้ป้าขายหน้านะ'),'smug']],
+     goals:[{type:'contractSince', target:1, text:T('ส่งไวน์ให้ร้านอาหารครบสัญญา 1 ฉบับ')}],
+     reward:{cash:400000, rep:3, text:T('เชฟหลานป้าโรซ่าประกาศในงานว่า "ไวน์ทุกขวดในร้านเรามาจากร้านนี้" (+฿400k, +★3)')}},
+    {lines:[['regular',T('ร้านเขาได้ดาวที่สองแล้วจ้ะ!'),'happy'],
+            ['regular',T('เขาอยากจัดงานฉลองใหญ่... และอยากให้ป้าได้นั่งเก้าอี้ตัวที่สามอีกครั้ง'),'happy'],
+            ['regular',T('ช่วยเตรียมงานให้ครบ — ส่งไวน์เข้างานปาร์ตี้ให้ครบสักงานนะ'),'neutral']],
+     goals:[{type:'partySince', target:1, text:T('ส่งไวน์ครบงานปาร์ตี้ 1 งาน')}],
+     reward:{cash:600000, rep:5, text:T('คืนนั้นป้าโรซ่านั่งเก้าอี้ตัวที่สาม มองแสงห้าโมงเย็นตกลงที่เดิม (+฿600k, +★5)')}},
+  ]},
+  {key:'kid', who:'mentor', bg:'dream', title:T('เด็กหน้าร้าน'), minCh:22, steps:[
+    {lines:[['mentor',T('เด็กคนนั้นกลับมาอีกแล้ว ยืนดูป้ายไวน์หน้าร้านนานกว่าเมื่อวาน'),'neutral'],
+            ['mentor',T('เขาไม่มีเงินซื้อหรอก แต่เขาจดชื่อไวน์ลงสมุดเล่มเล็กๆ'),'happy'],
+            ['mentor',T('สอนเขาด้วยสมุดของเธอเองสิ — สะสมตราประทับไวน์ใหม่ 15 ขวด แล้วเล่าให้เขาฟังทีละขวด'),'neutral']],
+     goals:[{type:'stampSince', target:15, text:T('ได้ตราประทับไวน์ใหม่ในสมุด 15 ขวด')}],
+     reward:{cash:300000, rep:3, text:T('เด็กคนนั้นจดเรื่องราวไวน์ทั้ง 15 ขวดด้วยลายมือตัวโตๆ (+฿300k, +★3)')}},
+    {lines:[['mentor',T('เขาถามว่าทำไมไวน์จากคนละประเทศถึงรสไม่เหมือนกัน'),'happy'],
+            ['mentor',T('คำถามเดียวกับที่เธอเคยถามฉัน'),'happy'],
+            ['mentor',T('พาเขาเที่ยวรอบโลกผ่านแก้ว — เสิร์ฟไวน์จาก 8 ประเทศ'),'neutral']],
+     goals:[{type:'countriesSince', target:8, text:T('เสิร์ฟไวน์จาก 8 ประเทศ')}],
+     reward:{cash:500000, rep:4, text:T('เขาวาดแผนที่โลกติดผนังห้อง ปักหมุดทุกประเทศที่ "ชิม" ผ่านเรื่องเล่าของคุณ (+฿500k, +★4)')}},
+    {lines:[['mentor',T('เขาสอบติดโรงเรียนซอมเมอลิเยร์แล้ว'),'happy'],
+            ['mentor',T('ใบสมัครเขียนว่า "แรงบันดาลใจ: ร้านไวน์ที่ฟังเรื่องราวของทุกขวด"'),'happy'],
+            ['mentor',T('ทำให้ร้านนี้เป็นที่ที่เขาอยากกลับมาทำงาน — เพิ่มชื่อเสียงอีก ★15'),'serious']],
+     goals:[{type:'repSince', target:15, text:T('เพิ่มชื่อเสียงอีก ★15')}],
+     reward:{cash:800000, rep:5, text:T('วันที่เขาเรียนจบ เขาเดินเข้าร้านพร้อมใบสมัครงาน แล้วถามว่า "ไวน์ขวดนี้มีเรื่องราวอะไรครับ" (+฿800k, +★5)')}},
+  ]},
+];
+function sideActive(){ return Object.keys(G.side||{}).filter(k=>!G.side[k].done); }
+function sideStep(key){ const S=SIDE_STORIES.find(x=>x.key===key), st=(G.side||{})[key]; return (S&&st&&!st.done)?S.steps[st.step]:null; }
+function sideWeekTick(){
+  G.side=G.side||{};
+  checkSide();
+  const act=sideActive();
+  if(act.length>=2) return;
+  const next=SIDE_STORIES.find(S=>!G.side[S.key] && G.chapter>=S.minCh);
+  if(next && (act.length===0 || Math.random()<0.4)){
+    G.side[next.key]={step:0, base:statSnap(), seen:false};
+    G._sideScene=next.key;
+    G.news.push({mult:1, msg:`${T("📖 เนื้อเรื่องย่อยใหม่:")} ${next.title}`});
+  }
+}
+function checkSide(){
+  for(const key of sideActive()){
+    const S=SIDE_STORIES.find(x=>x.key===key), st=G.side[key], step=S&&S.steps[st.step];
+    if(!step || !st.seen) continue;   // a step only counts once its scene has been read
+    if(step.goals.every(g=>goalProgress(g, st.base)>=g.target)){
+      const r=step.reward; if(r.cash) G.cash+=r.cash; if(r.rep) G.rep+=r.rep; G.cash=Math.round(G.cash);
+      G.news.push({mult:1, msg:`📖 ${S.title}: ${r.text}`});
+      setTimeout(()=>{ sfx('fanfare'); toast(`📖 ${S.title} — ${T("สำเร็จ")} ${st.step+1}/${S.steps.length}`,'gold'); }, 600);
+      st.step++;
+      if(st.step>=S.steps.length){ st.done=true; G.stats.sideDone=(G.stats.sideDone||0)+1; }
+      else { st.base=statSnap(); st.seen=false; G._sideScene=key; }
+    }
+  }
+}
+function showSideScene(key){
+  const S=SIDE_STORIES.find(x=>x.key===key), st=(G.side||{})[key], step=sideStep(key);
+  if(!S||!step) return false;
+  st.seen=true; if(G._sideScene===key) G._sideScene=null;
+  st.base=st.base||statSnap();
+  showChapterScene({title:`${S.title} · ${st.step+1}/${S.steps.length}`, bg:S.bg, lines:step.lines, goal:{text:step.goals.map(g=>g.text).join(' + ')}});
+  return true;
+}
+function sideStoryHTML(){
+  const act=sideActive(), done=SIDE_STORIES.filter(S=>G.side&&G.side[S.key]&&G.side[S.key].done);
+  const upcoming=SIDE_STORIES.filter(S=>!(G.side&&G.side[S.key]));
+  if(!act.length && !done.length && !upcoming.some(S=>G.chapter>=S.minCh-2)) return '';
+  let html=`<h3 class="sec-h">${lineIcon('scroll',18)} ${T("เนื้อเรื่องย่อย")}</h3>`;
+  for(const key of act){
+    const S=SIDE_STORIES.find(x=>x.key===key), st=G.side[key], step=S.steps[st.step];
+    html+=`<div class="card side-card"><div class="row" style="gap:12px;align-items:flex-start">
+      <span class="mini-portrait">${miniPortrait(S.who)}</span>
+      <div style="flex:1"><div class="biz-title">${S.title} <span class="wine-sub">${st.step+1}/${S.steps.length}</span></div>
+        ${st.seen?step.goals.map(g=>{ const v=Math.max(0,goalProgress(g, st.base)), ok=v>=g.target;
+          return `<div class="goal-extra ${ok?'done':''}"><span>${ok?'✅':'⬜'} ${g.text}</span>${g.type==='noSuspect'?'':`<b>${Math.min(v,g.target)}/${g.target}</b>`}</div>`; }).join('')
+          :`<div class="wine-sub">${T("มีฉากใหม่รอให้อ่าน")}</div>`}</div>
+      <button class="btn ${st.seen?'ghost':'gold'} sm" data-focus="sideScene" data-key="${key}" tabindex="0">${st.seen?T('อ่านฉากอีกครั้ง'):T('อ่านเลย')}</button></div></div>`;
+  }
+  if(done.length) html+=`<div class="wine-sub" style="margin:4px 0 10px">${T("จบแล้ว:")} ${done.map(S=>S.title).join(' · ')}</div>`;
+  const nxt=upcoming.find(S=>G.chapter<S.minCh);
+  if(nxt) html+=`<div class="wine-sub">${T("เรื่องถัดไปเปิดเมื่อถึงบทที่")} ${nxt.minCh+1}</div>`;
   return html;
 }
 
@@ -5296,7 +5819,7 @@ function leagueTable(){
 function endSeason(){
   const L=G.league, table=leagueTable(), rank=table.findIndex(r=>r.me);
   const avg=avgWeekRevenue();
-  const prize=Math.round(avg*[6,3.5,2,1,0.5][rank]/10000)*10000, repG=[10,6,3,1,0][rank];
+  const prize=Math.round(avg*[6,3.5,2,1,0.5][rank]*DIFF().reward/10000)*10000, repG=[10,6,3,1,0][rank];
   G.cash+=prize; G.rep+=repG;
   G.stats.leagueSeasons=(G.stats.leagueSeasons||0)+1;
   if(rank===0) G.stats.leagueWins=(G.stats.leagueWins||0)+1;
@@ -5706,7 +6229,16 @@ function isStuck(){
   return !sellable;
 }
 
-function weeklyCosts(){ return weeklySalaries() + weeklyRent() + (G.cellarInsured?insuranceWeekly():0); }
+/* Difficulty. Changeable any time in Settings; harder modes pay a bigger
+   league prize and New Game+ bonus. */
+const DIFF_MODES = {
+  easy:   {t:T('ง่าย'),   budget:1.15, fussy:-0.08, cost:0.85, stock:1.20, hazard:0.7, reward:0.8},
+  normal: {t:T('ปกติ'),   budget:1.00, fussy:0,     cost:1.00, stock:1.00, hazard:1.0, reward:1.0},
+  hard:   {t:T('ยาก'),    budget:0.88, fussy:0.07,  cost:1.20, stock:0.85, hazard:1.3, reward:1.15},
+  expert: {t:T('โหด'),    budget:0.78, fussy:0.14,  cost:1.40, stock:0.70, hazard:1.6, reward:1.35},
+};
+function DIFF(){ return DIFF_MODES[G.diffMode] || DIFF_MODES.normal; }
+function weeklyCosts(){ return Math.round((weeklySalaries() + weeklyRent() + (G.cellarInsured?insuranceWeekly():0)) * DIFF().cost); }
 
 /* ---------- ACHIEVEMENTS ---------- */
 const ACHIEVEMENTS = [
@@ -6434,7 +6966,7 @@ function weatherArt(k, s=34){
 
 /* ---------- illustrated page banners ---------- */
 const PAGE_BANNER = { shop:'shop', story:'letter', market:'market', cellar:'cellarwide', portfolio:'auction', primeur:'vineyard',
-  biz:'street', staff:'shopnight', stats:'toast', guide:'door', learn:'cellar', settings:'title' };
+  biz:'street', staff:'shopnight', book:'cellar', stats:'toast', guide:'door', learn:'cellar', settings:'title' };
 function bannerArt(kind){
   const scene=['cellar','shop','market','auction','street','dream'];
   try{ return scene.includes(kind) ? sceneBG(kind) : cutsceneArt(kind); }catch(e){ return ''; }
@@ -6574,7 +7106,7 @@ const GUIDE = [
 ];
 
 /* ---------- GAME STATE ---------- */
-const VERSION = '5.6';
+const VERSION = '5.7';
 const SAVE_KEY = 'cellarAndVine_save_v3';
 const freshState = () => ({
   week:1,
@@ -6593,6 +7125,7 @@ const freshState = () => ({
   shopDone:false,
   chapter:0,
   chapterSeen:-1,
+  diffMode:'normal',
   storyLog:[],
   storyVer:2,       // 2 = the 22-chapter story (v5.3)
   // ----- NEW: economy -----
@@ -8117,7 +8650,7 @@ function rollStock(w){
   const RG=currentRegime();
   if(RG.k==='bull') n=Math.round(n*0.7);
   else if(RG.k==='bear') n=Math.round(n*1.35);
-  return Math.max(0, n);
+  return Math.max(0, Math.round(n*DIFF().stock));
 }
 /* ============================================================
    VICTOR CRUZ, THE RIVAL — once he has made his entrance in the
@@ -9335,8 +9868,8 @@ function generateShopQueue(){
     const bt=pickBudgetTier(base.trait);
     // never more than 2.5x the dearest bottle on the market today
     const ceiling=2.5*Math.max(...WINES.filter(w=>!isRareLocked(w.id)).map(w=>G.prices[w.id]||w.base));
-    const budget=Math.round(Math.min(ceiling, Math.max(everyday, tierBudget(bt)*mult)) * (G.challenge?0.85:1));
-    const rumour = ((currentChapter()&&currentChapter().key==='sabotage') ? 0.12 : 0) + (G.challenge ? 0.08 : 0);
+    const budget=Math.round(Math.min(ceiling, Math.max(everyday, tierBudget(bt)*mult)) * (G.challenge?0.85:1) * DIFF().budget);
+    const rumour = ((currentChapter()&&currentChapter().key==='sabotage') ? 0.12 : 0) + (G.challenge ? 0.08 : 0) + DIFF().fussy;
     const fussy = Math.max(0, Math.min(1, 0.3 + Math.random()*0.3 + G.rep*0.004 + TRAIT.fus + rumour));
     let opener;
     if(reg && reg.visits>=1){
@@ -9603,6 +10136,7 @@ function serveCustomer(id){
   questProgress('revenue',0);
   questProgress('regions',1,{region:w.region});
   questProgress('style',1,{style:wineStyle(w)});
+  countServe(w);
   if(atPeak && quality>0.55) questProgress('peak',1);
   // Serving removes a bottle; re-clamp so fake/suspect can never exceed what
   // is left in the lot (0 <= suspect <= fake <= qty).
@@ -9836,6 +10370,7 @@ const NAV_ITEMS=[
   {p:'primeur', ic:'sprout', t:T('พรีเมอร์')},
   {p:'biz', ic:'briefcase', t:T('ธุรกิจ'), gated:true},
   {p:'staff', ic:'people', t:T('พนักงาน')},
+  {p:'book', ic:'grape', t:T('สมุดไวน์')},
   {p:'stats', ic:'medal', t:T('สถิติ')},
   {p:'guide', ic:'compass', t:T('คู่มือ')},
   {p:'learn', ic:'book', t:T('ความรู้')},
@@ -10135,6 +10670,7 @@ function routePage(){
   else if(G.page==='story') pageStory();
   else if(G.page==='staff') pageStaff();
   else if(G.page==='stats') pageStats();
+  else if(G.page==='book') pageBook();
   else if(G.page==='guide') pageGuide();
   else if(G.page==='biz') pageBiz();
   else if(G.page==='settings') pageSettings();
@@ -10227,6 +10763,7 @@ function nextWeek(){
 
   storyWeekTick(revenueThisWeek);
   leagueWeekTick(revenueThisWeek);
+  sideWeekTick();
 
   // reset weekly accumulators
   G._weekRevenue=0; G._weekServed=0;
@@ -10276,6 +10813,9 @@ function smartAlerts(){
 // Event and auction follow-ups after the weekly report, unless a cash crisis
 // took the slot first.
 function afterReportExtras(){
+  if(G._sideScene && sideStep(G._sideScene) && !(G.side[G._sideScene]||{}).seen){
+    const k=G._sideScene; setTimeout(()=>showSideScene(k), 450); return;
+  }
   // a cellar hazard is urgent — resolve it before opportunities or auctions
   if(G._pendingHazard){
     G._pendingHazard=false;
@@ -10588,7 +11128,9 @@ function currentChapter(){ return CHAPTERS[G.chapter] || null; }
 function statSnap(){
   const st=G.stats||{};
   return {perfect:st.perfectPairs||0, served:st.served||0, auctions:st.auctionsWon||0,
-    victor:st.victorAuctionWins||0, perfectHigh:st.perfectHigh||0, parties:G.partiesDone||0, alloc:G.allocTaken||0};
+    victor:st.victorAuctionWins||0, perfectHigh:st.perfectHigh||0, parties:G.partiesDone||0, alloc:G.allocTaken||0,
+    buys:st.bottlesBought||0, vip:st.vipDone||0, stamps:Object.keys(G.book||{}).length, rep:G.rep||0,
+    contracts:G.contractsDone||0, styles:{...(st.styleServes||{})}, countries:{...(st.countryServes||{})}};
 }
 function chBase(){
   if(!G.chBase || G.chBase.ch!==G.chapter) G.chBase={ch:G.chapter, ...statSnap()};
@@ -10606,9 +11148,16 @@ function rollDuelTarget(){
   const avg=recent.length ? recent.reduce((a,b)=>a+b,0)/recent.length : 0;
   return Math.round(Math.max(150000, avg*(1.05+Math.random()*0.25))/1000)*1000;
 }
-function goalProgress(goal){
-  const b=chBase(), st=G.stats||{};
+function goalProgress(goal, base){
+  const b=base||chBase(), st=G.stats||{};
   switch(goal.type){
+    case 'buySince': return (st.bottlesBought||0)-(b.buys||0);
+    case 'vipSince': return (st.vipDone||0)-(b.vip||0);
+    case 'stampSince': return Object.keys(G.book||{}).length-(b.stamps||0);
+    case 'repSince': return (G.rep||0)-(b.rep||0);
+    case 'contractSince': return (G.contractsDone||0)-(b.contracts||0);
+    case 'styleSince': return (goal.styles||[goal.style]).reduce((a,k)=>a+((st.styleServes||{})[k]||0)-((b.styles||{})[k]||0),0);
+    case 'countriesSince': { const now=st.countryServes||{}, was=b.countries||{}; return Object.keys(now).filter(c=>now[c]>(was[c]||0)).length; }
     case 'perfectSince': return (st.perfectPairs||0)-b.perfect;
     case 'servedSince': return (st.served||0)-b.served;
     case 'auctionSince': return (st.auctionsWon||0)-b.auctions;
@@ -10642,6 +11191,7 @@ function goalSubtext(goal){
 function goalMet(goal){ return goalProgress(goal) >= goal.target; }
 
 function checkStory(){
+  try{ checkSide(); }catch(e){}
   const ch=currentChapter();
   if(!ch) return;
   if(chapterMet(ch)){
@@ -10799,6 +11349,7 @@ function pageStory(){
 
   // current quest card
   const ch=currentChapter();
+  const sideHTML=sideStoryHTML();
   if(ch){
     const prog=goalProgress(ch.goal), tgt=ch.goal.target;
     const pct=Math.min(100, prog/tgt*100);
@@ -10834,6 +11385,7 @@ function pageStory(){
     </div>`;
     html+=postStoryHTML();
   }
+  html+=sideHTML;
 
   // cast of characters
   html+=`<div class="page-head"><h2 style="font-size:20px">${T("ตัวละคร")}</h2></div><div class="grid" style="grid-template-columns:repeat(auto-fit,minmax(260px,1fr))">`;
@@ -11018,7 +11570,7 @@ function canPrestige(){ return G.chapter>=CHAPTERS.length || portfolioValue()>=3
 function prestigeGain(){
   // bonus scales with how big the empire got
   const v=portfolioValue()+G.cash;
-  return Math.max(5, Math.min(50, Math.floor(v/2000000)));
+  return Math.max(5, Math.min(60, Math.floor(v/2000000*DIFF().reward)));
 }
 function doPrestige(challenge){
   if(!canPrestige()){ toast(T('ยังไม่ถึงเงื่อนไข — เล่นจบเนื้อเรื่องหรือทำพอร์ตถึง ฿30M'),'bad'); return; }
@@ -11090,6 +11642,17 @@ function pageSettings(){
       </div>
       <button class="btn sm ${ready?'gold':'ghost'}" data-focus="prestige" tabindex="0" ${ready?'':'disabled'}>${T("เริ่ม NG+")}</button>
     </div>
+  </div>`;
+  // ---- difficulty ----
+  html+=`<div class="card" style="margin-bottom:18px">
+    <div class="row" style="gap:10px;margin-bottom:6px">${lineIcon('flame',20)}<b style="font-family:Fraunces;font-size:16px;color:var(--wine)">${T("ระดับความยาก")}</b></div>
+    <div class="row" style="gap:8px;flex-wrap:wrap">${Object.entries(DIFF_MODES).map(([k,d])=>`<button class="tb-toggle ${G.diffMode===k?'on':''}" data-focus="diffmode" data-v="${k}" tabindex="0">${d.t}</button>`).join('')}</div>
+    <div class="wine-sub" style="margin-top:8px;line-height:1.7">${{
+      easy:T('งบลูกค้า +15% · ลูกค้าใจดีขึ้น · ค่าใช้จ่าย −15% · ของในตลาดมากขึ้น · ภัยเซลลาร์น้อยลง · รางวัลลีกและ NG+ ×0.8'),
+      normal:T('สมดุลตามที่ออกแบบไว้'),
+      hard:T('งบลูกค้า −12% · ลูกค้าจับผิดขึ้น · ค่าใช้จ่าย +20% · ของในตลาดน้อยลง · ภัยเซลลาร์บ่อยขึ้น · รางวัลลีกและ NG+ ×1.15'),
+      expert:T('งบลูกค้า −22% · ลูกค้าจับผิดมาก · ค่าใช้จ่าย +40% · ของในตลาดน้อยมาก · ภัยเซลลาร์บ่อยมาก · รางวัลลีกและ NG+ ×1.35'),
+    }[G.diffMode||'normal']} · ${T("เปลี่ยนได้ตลอดเวลา")}</div>
   </div>`;
   // ---- display settings ----
   html+=`<div class="card" style="margin-bottom:18px">
@@ -11374,6 +11937,8 @@ function activate(el){
   else if(type==='load'){ if(loadGame()){ renderTop(); routePage(); toast(T('📂 โหลดเซฟแล้ว'),'good'); } }
   else if(type==='allocTake'){ acceptAlloc(+el.dataset.id); }
   else if(type==='allocPass'){ passAlloc(+el.dataset.id); }
+  else if(type==='sideScene'){ showSideScene(el.dataset.key); }
+  else if(type==='diffmode'){ G.diffMode=el.dataset.v; sfx('click'); toast(`${T("ระดับความยาก:")} ${DIFF().t}`,'gold'); saveGame(true); renderTop(); routePage(); }
   else if(type==='leagueGo'){ G.page='stats'; UI.scrollTo='leagueSec'; sfx('click'); routePage(); }
   else if(type==='postGo'){ G.page=el.dataset.page; if(el.dataset.scroll) UI.scrollTo=el.dataset.scroll; sfx('click'); routePage(); }
   else if(type==='vipSend'){ fulfilVip(+el.dataset.vip, el.dataset.id); }
