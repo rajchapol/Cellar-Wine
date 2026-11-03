@@ -758,6 +758,25 @@
   .fb-tags svg{ vertical-align:middle; margin-right:1px; }
 
 
+
+  /* quests, VIP requests, league, post-story goals */
+  .quest-chip.hard{border-color:var(--gold); background:rgba(200,151,63,.10);}
+  .qc-hard{font-style:normal; font-size:10.5px; font-weight:800; padding:1px 7px; margin-right:5px; border-radius:999px; background:var(--wine); color:#fff;}
+  .vip-card{border-color:var(--gold-soft); background:linear-gradient(160deg, rgba(200,151,63,.10), transparent 60%), var(--card, #FFFDF8);}
+  .vip-head{display:flex; align-items:center; gap:12px; margin-bottom:8px;}
+  .vip-ask{font-family:Fraunces,'Noto Serif Thai',serif; font-size:15.5px; color:var(--ink); margin:4px 0 6px; line-height:1.5;}
+  .vip-reward{font-size:12.5px; color:var(--gold-deep); font-weight:700; margin-bottom:6px;}
+  .league-banner, .league-banner .fb-go{cursor:pointer;}
+  .league-banner .fb-go{margin-left:auto; font-size:12.5px; font-weight:800; color:var(--wine); white-space:nowrap;}
+  .league-table{width:100%; border-collapse:collapse; font-size:14px;}
+  .league-table td{padding:8px 6px; border-bottom:1px dashed var(--line);}
+  .league-table td:first-child{width:28px; font-weight:800; color:var(--ink-soft);}
+  .league-table td:nth-child(3){text-align:right; font-weight:800;}
+  .league-table td.prize{width:28px; text-align:center;}
+  .league-table tr.me td{color:var(--wine); font-weight:800; background:rgba(200,151,63,.12);}
+  .post-goal{display:flex; align-items:center; gap:12px; padding:10px 0;}
+  .post-goal + .post-goal{border-top:1px dashed var(--line);}
+  .ng-challenge{margin-top:8px; padding:9px 12px; border-radius:10px; background:rgba(178,74,62,.08); border:1.5px solid rgba(178,74,62,.35); font-size:13px;}
   /* ---- Business page ---- */
   .biz-tabs{display:grid; grid-template-columns:repeat(4,1fr); gap:6px; margin:0 0 12px; padding:4px; border-radius:14px; background:var(--paper-2); border:1.5px solid var(--line);}
   .biz-tab{display:flex; flex-direction:column; align-items:center; gap:3px; padding:8px 4px; border:0; border-radius:10px; background:transparent; font:inherit; font-size:12px; font-weight:800; color:var(--ink-soft); cursor:pointer; position:relative; line-height:1.25; text-align:center;}
@@ -1456,7 +1475,7 @@ const LANG = (()=>{
 })();
 const EN = {
   "ร้านไวน์ &amp; เซลลาร์": "Wine Shop &amp; Cellar",
-  "สัปดาห์": "Week",
+  "สัปดาห์": "Week ",
   "เงินสด": "Cash",
   "฿0": "฿0",
   "มูลค่าพอร์ต": "Portfolio",
@@ -3070,7 +3089,7 @@ const EN = {
   "พอดี": " ✓",
   "ลูกค้าจ่ายได้แค่": "Customer can only pay",
   "· มี": "· own",
-  "เสิร์ฟ": "Serve",
+  "เสิร์ฟ": "Serve ",
   "️ ปรับปรุงร้าน": "️ Upgrade the Shop",
   "สูงสุด": "Max",
   "ป้องกันเซลลาร์": "Cellar Protection",
@@ -3938,6 +3957,76 @@ const EN = {
   "ยังไม่มีงานตอนนี้ — เก็บไวน์ระดับล่างไว้รองานได้เลย": "No party right now — keep some lower-tier wine ready for one",
   "งานจ่าย": "party pays",
   "ซื้อจากตลาดมาส่งได้ — กำไรต่อขวดสูงสุด 5 อันดับ": "Buy on the market to deliver — top 5 by profit per bottle",
+  "ดินเนอร์ฉลองดีลธุรกิจ": "Business-deal celebration dinner",
+  "ของขวัญครบรอบแต่งงาน": "Wedding anniversary gift",
+  "เลี้ยงรับรองแขกต่างชาติ": "Hosting foreign guests",
+  "ฉลองวันเกิดคุณพ่อ": "Dad's birthday celebration",
+  "มื้อขอแต่งงาน": "A marriage proposal dinner",
+  "ปาร์ตี้ส่วนตัวบนดาดฟ้า": "Private rooftop party",
+  "ขึ้นไป": "or higher",
+  "ขอไวน์จาก": "Wants a wine from ",
+  "ขอไวน์ที่กำลังพร้อมดื่มพอดี": "Wants a wine right at its drinking peak ",
+  "ขอไวน์คะแนน": "Wants a wine scoring",
+  "ขอไวน์": "Wants a ",
+  "ขอไวน์ที่เข้ากันเยี่ยม": "Wants a wine that's an excellent match",
+  "ขอไวน์ที่บ่มในเซลลาร์ร้านคุณมาแล้วอย่างน้อย": "Wants a wine aged in your cellar for at least",
+  "ไม่ได้ไวน์ที่ขอ จึงไปหาร้านอื่นแทน": "didn't get the wine they asked for, so went to another shop",
+  "🎩 ลูกค้า VIP": "🎩 VIP guest",
+  "ไม่พบคำขอหรือไวน์นี้": "Request or wine not found",
+  "ไวน์ล็อตนี้ต้องสงสัย ส่งให้ VIP ไม่ได้": "This lot is suspect — it can't go to a VIP",
+  "ไวน์นี้ไม่ตรงกับที่ลูกค้าขอ": "This wine doesn't match the request",
+  "ประทับใจมาก! +": "is delighted! +",
+  "คำขอพิเศษจากลูกค้า VIP": "Special requests from VIP guests",
+  "ของราคาขวด": "of the bottle's price",
+  "ยังไม่มีไวน์ในคลังที่ตรง — ต้องบ่มเองในเซลลาร์": "Nothing in your cellar matches yet — you'll have to age one yourself",
+  "ยังไม่มีไวน์ในคลังที่ตรง — ซื้อจากตลาดได้": "Nothing in your cellar matches yet — you can buy one on the market",
+  "ร้านของคุณ": "Your shop",
+  "อันดับ 1 🏆": "1st 🏆",
+  "อันดับ 2": "2nd",
+  "อันดับ 3": "3rd",
+  "อันดับ 4": "4th",
+  "อันดับ 5": "5th",
+  "รางวัล": "prize",
+  "ลีกร้านไวน์ ฤดูกาลที่": "Wine-shop league, season",
+  "อันดับ": "rank",
+  "คะแนน": "points",
+  "ผู้นำ": "leader",
+  "คุณ": "you",
+  "ดูตาราง ›": "View table ›",
+  "คะแนน: ยอดขาย ฿10k = 1 · จับคู่สมบูรณ์แบบ = 5 · คำขอ VIP = 20 · งานปาร์ตี้ครบ = 30": "Points: ฿10k in sales = 1 · perfect pairing = 5 · VIP request = 20 · completed party = 30",
+  "รางวัลจบฤดูกาล: อันดับ 1 = ยอดขาย 6 สัปดาห์ + ★10 · อันดับ 2 = 3.5 สัปดาห์ + ★6 · อันดับ 3 = 2 สัปดาห์ + ★3": "Season prizes: 1st = 6 weeks of sales + ★10 · 2nd = 3.5 weeks + ★6 · 3rd = 2 weeks + ★3",
+  "ฤดูกาลก่อน:": "Past seasons:",
+  "เสิร์ฟไวน์ที่กำลังพร้อมดื่ม": "Serve wines at their drinking peak:",
+  "เสิร์ฟไวน์จาก": "Serve wines from",
+  "เขตที่ต่างกัน": "different regions",
+  "เสิร์ฟไวน์": "Serve ",
+  "จับคู่สมบูรณ์แบบด้วยไวน์ Premier Cru ขึ้นไป": "Perfect pairings with Premier Cru wine or better:",
+  "ทำยอดขายในร้านสัปดาห์นี้ให้ถึง": "Reach shop sales this week of",
+  "ส่งไวน์เข้างานปาร์ตี้": "Deliver party bottles:",
+  "ทำคำขอพิเศษของลูกค้า VIP สำเร็จ": "Complete VIP requests:",
+  "ยาก": "Hard",
+  "เป้าหมายต่อจากนี้": "What's next",
+  "ลีกร้านไวน์": "Wine-shop league ",
+  "ฤดูกาลที่": "season",
+  "แชมป์": "Titles:",
+  "สมัย · คู่แข่งเก่งขึ้นทุกฤดูกาล": "· rivals get stronger every season",
+  "ดูตาราง": "View table",
+  "คำขอ VIP": "VIP requests",
+  "รออยู่": "waiting",
+  "สำเร็จแล้ว": "Completed",
+  "ครั้ง · หลังจบเรื่องมาบ่อยขึ้น": "times · more frequent after the story",
+  "ไปที่ร้าน": "Go to shop",
+  "ขวดปลดล็อกแล้ว": "bottles unlocked",
+  "ดูเงื่อนไข": "See conditions",
+  "เริ่มใหม่พร้อมโบนัสถาวร — เลือกโหมดท้าทายได้": "Start again with a permanent bonus — challenge mode available",
+  "ไปที่ตั้งค่า": "Go to settings",
+  "คำขอ VIP สำเร็จ": "VIP requests done",
+  "แชมป์ลีก": "League titles",
+  "🔥 โหมดท้าทาย": "🔥 Challenge mode",
+  "งบลูกค้าน้อยลง 15% และลูกค้าจับผิดมากขึ้น แต่ได้โบนัสถาวรมากขึ้น 1.5 เท่า": "Customer budgets 15% lower and guests fussier, but 1.5× the permanent bonus",
+  "เริ่มแบบท้าทาย": "Start a challenge run",
+  "🏆 จบลีกฤดูกาลที่": "🏆 League season",
+  "🏆 จบฤดูกาล —": "🏆 Season over —",
   "ร้านไวน์ & เซลลาร์": "Wine Shop & Cellar"
 };
 function T(s){ if(LANG!=='en') return s; const v=EN[s]; return v===undefined ? s : v; }
@@ -5034,6 +5123,7 @@ function fillParty(id, qty){
   G.cash+=gain; G.cash=Math.round(G.cash);
   floatMoney(gain);
   P.filled+=want;
+  questProgress('partyBottles', want);
   G.stats.bottlesSold=(G.stats.bottlesSold||0)+want;
   G._weekRevenue=(G._weekRevenue||0)+gain;
   sfx('cash');
@@ -5061,6 +5151,182 @@ function partyAvgPrice(){
   const pool=WINES.filter(partyEligible);
   if(!pool.length) return 0;
   return pool.reduce((a,w)=>a+partyUnitPrice(w),0)/pool.length;
+}
+
+/* ============================================================
+   VIP REQUESTS — a well-off guest asks for something specific
+   (a country, a bottle at its peak, a score, a style, a perfect
+   match for a dish, a bottle you have aged yourself) and pays
+   far over market for the right bottle within a deadline.
+   ============================================================ */
+const VIP_CHAPTER = 5;
+function vipUnlocked(){ return G.chapter >= VIP_CHAPTER; }
+const VIP_OCCASIONS = [T('ดินเนอร์ฉลองดีลธุรกิจ'), T('ของขวัญครบรอบแต่งงาน'), T('เลี้ยงรับรองแขกต่างชาติ'), T('ฉลองวันเกิดคุณพ่อ'), T('มื้อขอแต่งงาน'), T('ปาร์ตี้ส่วนตัวบนดาดฟ้า')];
+function vipTier(){ return G.rep<60 ? 2 : G.rep<150 ? 3 : 4; }
+function makeVipRequest(){
+  const base=CUSTOMERS.filter(c=>['collector','bigspender','rare','rep'].includes(c.trait));
+  const who=base[Math.floor(Math.random()*base.length)] || CUSTOMERS[0];
+  const tier=vipTier();
+  const occ=VIP_OCCASIONS[Math.floor(Math.random()*VIP_OCCASIONS.length)];
+  const kinds=['country','peak','score','style','food','aged'];
+  const kind=kinds[Math.floor(Math.random()*kinds.length)];
+  const v={id:(G.vipSeq=(G.vipSeq||0)+1), name:who.name, av:who.av, occ, kind, tier,
+           mult:Math.round((1.6+Math.random()*0.8)*100)/100, rep:rndI(2,5), expires:G.week+3};
+  if(kind==='country'){
+    const cs=[...new Set(WINES.filter(w=>w.tier>=tier && !isRareLocked(w.id)).map(w=>countryOf(w.region)).filter(Boolean))];
+    v.country=cs[Math.floor(Math.random()*cs.length)];
+  } else if(kind==='score'){ v.score = tier>=4 ? rndI(96,98) : tier>=3 ? rndI(93,95) : rndI(90,92); v.tier=0; }
+  else if(kind==='style'){ v.style=['sparkling','sweet','orange','rose','fortified','white'][rndI(0,5)]; v.tier=Math.min(tier,3); }
+  else if(kind==='food'){ const f=FOODS[Math.floor(Math.random()*FOODS.length)]; v.food=f.ic; v.tier=0; }
+  else if(kind==='aged'){ v.weeks=rndI(16,30); v.tier=Math.min(tier,3); }
+  return v;
+}
+function vipText(v){
+  const tn=v.tier?` ${T("ระดับ")} ${TIER_NAMES[v.tier]} ${T("ขึ้นไป")}`:'';
+  if(v.kind==='country') return `${T("ขอไวน์จาก")}${COUNTRY_NAMES[v.country]||v.country}${tn}`;
+  if(v.kind==='peak') return `${T("ขอไวน์ที่กำลังพร้อมดื่มพอดี")}${tn}`;
+  if(v.kind==='score') return `${T("ขอไวน์คะแนน")} ${v.score} ${T("ขึ้นไป")}`;
+  if(v.kind==='style') return `${T("ขอไวน์")}${STYLE_LABELS[v.style]||v.style}${tn}`;
+  if(v.kind==='food'){ const f=FOODS.find(f=>f.ic===v.food); return `${T("เสิร์ฟ")}${f?f.name:''} — ${T("ขอไวน์ที่เข้ากันเยี่ยม")}`; }
+  if(v.kind==='aged') return `${T("ขอไวน์ที่บ่มในเซลลาร์ร้านคุณมาแล้วอย่างน้อย")} ${v.weeks} ${T("สัปดาห์")}${tn}`;
+  return '';
+}
+function vipMatches(v, w, id){
+  if(!w) return false;
+  const c=id?G.cellar[id]:null;
+  if(v.tier && w.tier<v.tier) return false;
+  if(v.kind==='country') return countryOf(w.region)===v.country;
+  if(v.kind==='peak') return !!c && drinkWindow(id).state==='peak';
+  if(v.kind==='score') return w.score>=v.score;
+  if(v.kind==='style') return wineStyle(w)===v.style;
+  if(v.kind==='food'){ const f=FOODS.find(f=>f.ic===v.food); return !!f && evalPairing({food:f,fussy:0.4}, w, c)>0.78; }
+  if(v.kind==='aged') return !!c && (G.week-c.buyWeek)>=v.weeks;
+  return false;
+}
+function vipPay(v, id){ return Math.round(servePrice(id)*v.mult*prestigeMult()); }
+function tickVips(){
+  if(!vipUnlocked()) return;
+  G.vips=(G.vips||[]).filter(v=>{
+    if(v.expires>G.week) return true;
+    G.news.push({mult:1, msg:`${v.name} ${T("ไม่ได้ไวน์ที่ขอ จึงไปหาร้านอื่นแทน")}`});
+    return false;
+  });
+  const chance = G.chapter>=CHAPTERS.length ? 0.6 : 0.35;
+  if(G.vips.length<2 && Math.random()<chance){
+    const v=makeVipRequest(); G.vips.push(v);
+    G.news.push({mult:1, msg:`${T("🎩 ลูกค้า VIP")} ${v.name}: ${vipText(v)} (${v.occ})`});
+  }
+}
+function fulfilVip(vid, id){
+  const v=(G.vips||[]).find(x=>x.id===vid); const w=wineById(id); const c=G.cellar[id];
+  if(!v||!w||!c){ toast(T('ไม่พบคำขอหรือไวน์นี้'),'bad'); return; }
+  if((c.qty-(c.suspect||0))<1){ toast(T('ไวน์ล็อตนี้ต้องสงสัย ส่งให้ VIP ไม่ได้'),'bad'); return; }
+  if(!vipMatches(v,w,id)){ toast(T('ไวน์นี้ไม่ตรงกับที่ลูกค้าขอ'),'bad'); return; }
+  const pay=vipPay(v,id);
+  c.qty--; sealLot(c); if(c.qty<=0) delete G.cellar[id];
+  G.cash+=pay; G.cash=Math.round(G.cash); G.rep+=v.rep;
+  G._weekRevenue=(G._weekRevenue||0)+pay;
+  G.stats.vipDone=(G.stats.vipDone||0)+1;
+  G.vips=G.vips.filter(x=>x.id!==vid);
+  questProgress('vip',1); questProgress('revenue',0);
+  floatMoney(pay); sfx('cash'); setTimeout(()=>sfx('fanfare'),150);
+  toast(`🎩 ${v.name} ${T("ประทับใจมาก! +")}${fmtK(pay)} + ★${v.rep}`,'gold');
+  normalizeCellarLots(); checkAchievements(); renderTop(); routePage();
+}
+function vipCardsHTML(){
+  if(!vipUnlocked() || !(G.vips||[]).length) return '';
+  let html=`<div class="page-head" style="margin-top:6px"><h2 style="font-size:20px">${lineIcon('star',18)} ${T("คำขอพิเศษจากลูกค้า VIP")}</h2></div>`;
+  for(const v of G.vips){
+    const owned=Object.keys(G.cellar).filter(id=>{ const c=G.cellar[id]; return c && (c.qty-(c.suspect||0))>0 && vipMatches(v,wineById(id),id); })
+      .map(id=>({id,w:wineById(id),pay:vipPay(v,id)})).sort((a,b)=>b.pay-a.pay).slice(0,4);
+    const left=Math.max(0,v.expires-G.week);
+    html+=`<div class="card vip-card">
+      <div class="vip-head">${custAvatar(v.av,46)}<div style="flex:1"><div class="biz-title">${v.name}</div><div class="wine-sub">${v.occ}</div></div>
+        <div class="pt-deadline">${T("เหลือ")} <b>${left}</b> ${T("สัปดาห์")}</div></div>
+      <div class="vip-ask">“${vipText(v)}”</div>
+      <div class="vip-reward">${T("จ่าย")} <b>${Math.round(v.mult*100)}%</b> ${T("ของราคาขวด")} + <b>★${v.rep}</b></div>`;
+    if(owned.length){
+      html+=owned.map(x=>wineRowHTML(x.w,{right:`<button class="btn gold sm" data-focus="vipSend" data-vip="${v.id}" data-id="${x.id}" tabindex="0">${T("ส่ง")} ${fmtK(x.pay)}</button>`})).join('');
+    } else {
+      // help find one: only for requests a market bottle can meet straight away
+      const mk = ['country','score','style','food'].includes(v.kind)
+        ? WINES.filter(w=>!isRareLocked(w.id) && stockOf(w.id)>0 && vipMatches(v,w,null)).sort((a,b)=>offerPrice(a.id)-offerPrice(b.id)).slice(0,3) : [];
+      html+=`<div class="wine-sub" style="margin:6px 0">${v.kind==='peak'||v.kind==='aged'?T('ยังไม่มีไวน์ในคลังที่ตรง — ต้องบ่มเองในเซลลาร์'):T('ยังไม่มีไวน์ในคลังที่ตรง — ซื้อจากตลาดได้')}</div>`;
+      html+=mk.map(w=>wineRowHTML(w,{buy:true, extra:`${T("ราคาตลาด")} ${fmtK(offerPrice(w.id))}`})).join('');
+    }
+    html+=`</div>`;
+  }
+  return html;
+}
+
+/* ============================================================
+   WINE-SHOP LEAGUE — 13-week seasons against four rival shops.
+   Points: ฿10k of takings = 1 · perfect pairing = 5 · VIP = 20 ·
+   completed party = 30. Rivals score around your own recent pace
+   (some above, some below), so climbing the table means beating
+   the shop you were last season — and the field gets tougher.
+   ============================================================ */
+const LEAGUE_CHAPTER = 12, SEASON_WEEKS = 13;
+const LEAGUE_NAMES = ['Le Petit Cave','Bangkok Wine Society','Vino Bello','The Corkscrew','Maison Lumière','Sukhumvit Cellars','Old Town Vintners'];
+function leagueUnlocked(){ return G.chapter >= LEAGUE_CHAPTER; }
+function leagueSnap(){ const st=G.stats||{}; return {perfect:st.perfectPairs||0, vip:st.vipDone||0, party:G.partiesDone||0}; }
+function newSeason(prevPace){
+  const n=(G.league&&G.league.season||0)+1;
+  const names=[...LEAGUE_NAMES].sort(()=>Math.random()-0.5);
+  if(G.chapter < CHAPTERS.findIndex(c=>c.who==='rival' && c.goal.type==='cash')) names[0]='Cruz Cellars';
+  const lift=Math.min(0.3,(n-1)*0.04);   // each season the field is a little stronger
+  const strengths=[1.30,1.12,0.97,0.84].map(x=>x+lift);
+  G.league={season:n, start:G.week, end:G.week+SEASON_WEEKS, me:0, myWeeks:[], snap:leagueSnap(),
+    pace: prevPace || Math.max(15, Math.round(avgWeekRevenue()/10000)),
+    rivals:strengths.map((str,i)=>({name:names[i], str, score:0}))};
+}
+function leagueWeekTick(revenue){
+  if(!leagueUnlocked()) return;
+  if(!G.league) newSeason();
+  const L=G.league, now=leagueSnap();
+  const pts=Math.round(revenue/10000) + 5*(now.perfect-L.snap.perfect) + 20*(now.vip-L.snap.vip) + 30*(now.party-L.snap.party);
+  L.snap=now; L.me+=pts; L.myWeeks.push(pts);
+  for(const r of L.rivals) r.score+=Math.round(L.pace*r.str*(0.85+Math.random()*0.3));
+  if(G.week>=L.end) endSeason();
+}
+function leagueTable(){
+  const L=G.league; if(!L) return [];
+  return [{name:T('ร้านของคุณ'), score:L.me, me:true}, ...L.rivals.map(r=>({name:r.name, score:r.score}))].sort((a,b)=>b.score-a.score);
+}
+function endSeason(){
+  const L=G.league, table=leagueTable(), rank=table.findIndex(r=>r.me);
+  const avg=avgWeekRevenue();
+  const prize=Math.round(avg*[6,3.5,2,1,0.5][rank]/10000)*10000, repG=[10,6,3,1,0][rank];
+  G.cash+=prize; G.rep+=repG;
+  G.stats.leagueSeasons=(G.stats.leagueSeasons||0)+1;
+  if(rank===0) G.stats.leagueWins=(G.stats.leagueWins||0)+1;
+  G.leagueHistory=(G.leagueHistory||[]).concat([{season:L.season, rank:rank+1, score:L.me}]).slice(-12);
+  const ord=[T('อันดับ 1 🏆'),T('อันดับ 2'),T('อันดับ 3'),T('อันดับ 4'),T('อันดับ 5')][rank];
+  G.news.push({mult:1, msg:`${T("🏆 จบลีกฤดูกาลที่")} ${L.season} — ${ord} · ${T("รางวัล")} ${fmtK(prize)}${repG?` + ★${repG}`:''}`});
+  setTimeout(()=>toast(`${T("🏆 จบฤดูกาล —")} ${ord} · +${fmtK(prize)}`,'gold'),700);
+  // next season's rivals start from your pace this season
+  const myAvg=Math.round(L.me/Math.max(1,L.myWeeks.length));
+  newSeason(Math.max(L.pace, myAvg));
+}
+function leagueBannerHTML(){
+  if(!leagueUnlocked() || !G.league) return '';
+  const t=leagueTable(), rank=t.findIndex(r=>r.me)+1, left=Math.max(0,G.league.end-G.week);
+  return `<div class="fest-banner soon league-banner" data-focus="leagueGo" tabindex="0" role="button">
+    <div class="fb-icon">${lineIcon('trophy',22)}</div>
+    <div class="fb-body"><div class="fb-title">${T("ลีกร้านไวน์ ฤดูกาลที่")} ${G.league.season} · ${T("อันดับ")} ${rank}/5</div>
+      <div class="fb-note">${G.league.me} ${T("คะแนน")} · ${T("ผู้นำ")} ${t[0].me?T('คุณ'):t[0].name} ${t[0].score} · ${T("เหลือ")} ${left} ${T("สัปดาห์")}</div></div>
+    <div class="fb-go">${T("ดูตาราง ›")}</div></div>`;
+}
+function leagueSectionHTML(){
+  if(!leagueUnlocked()) return '';
+  if(!G.league) newSeason();
+  const t=leagueTable(), left=Math.max(0,G.league.end-G.week);
+  let html=`<h3 class="sec-h" id="leagueSec">${lineIcon('trophy',18)} ${T("ลีกร้านไวน์ ฤดูกาลที่")} ${G.league.season}</h3>
+    <div class="card league-card"><div class="wine-sub" style="margin-bottom:8px">${T("เหลือ")} <b>${left}</b> ${T("สัปดาห์")} · ${T("คะแนน: ยอดขาย ฿10k = 1 · จับคู่สมบูรณ์แบบ = 5 · คำขอ VIP = 20 · งานปาร์ตี้ครบ = 30")}</div>
+    <table class="league-table"><tbody>${t.map((r,i)=>`<tr class="${r.me?'me':''}"><td>${i+1}</td><td>${r.name}</td><td>${r.score}</td><td class="prize">${i===0?lineIcon('trophy',16):i<3?lineIcon('medal',16):''}</td></tr>`).join('')}</tbody></table>
+    <div class="wine-sub" style="margin-top:8px">${T("รางวัลจบฤดูกาล: อันดับ 1 = ยอดขาย 6 สัปดาห์ + ★10 · อันดับ 2 = 3.5 สัปดาห์ + ★6 · อันดับ 3 = 2 สัปดาห์ + ★3")}</div>`;
+  if((G.leagueHistory||[]).length) html+=`<div class="wine-sub" style="margin-top:6px">${T("ฤดูกาลก่อน:")} ${G.leagueHistory.slice(-6).map(h=>`S${h.season} #${h.rank}`).join(' · ')}</div>`;
+  return html+`</div>`;
 }
 
 /* ============================================================
@@ -5459,15 +5725,32 @@ const ACHIEVEMENTS = [
 ];
 
 /* ---------- WEEKLY SIDE-QUESTS ---------- */
+// Rewards grow with the shop: a ฿30k bonus means nothing once you turn
+// over millions a week, so every reward is scaled to recent weekly takings.
+function avgWeekRevenue(){
+  const r=(G.weeklyLog||[]).slice(-4).map(x=>x.revenue||0);
+  return r.length ? r.reduce((a,b)=>a+b,0)/r.length : 0;
+}
+function questScale(){ return Math.max(1, Math.min(40, avgWeekRevenue()/250000)); }
+const rndI=(a,b)=>a+Math.floor(Math.random()*(b-a+1));
 const QUEST_TEMPLATES = [
-  {id:'serve', label:t=>`${T("เสิร์ฟลูกค้า")} ${t} ${T("คนสัปดาห์นี้")}`, min:2, rng:3, reward:30000},
-  {id:'perfect', label:t=>`${T("จับคู่สมบูรณ์แบบ")} ${t} ${T("ครั้ง")}`, min:1, rng:2, reward:45000},
-  {id:'buy', label:t=>`${T("ซื้อไวน์เข้าเซลลาร์")} ${t} ${T("ขวด")}`, min:2, rng:2, reward:25000},
-  {id:'profit', label:t=>`${T("ทำกำไรจากการขายไวน์")} ${fmtK(t)}`, min:50000, rng:100000, step:25000, reward:40000},
+  {id:'serve',   base:30000, label:t=>`${T("เสิร์ฟลูกค้า")} ${t} ${T("คนสัปดาห์นี้")}`, tgt:()=>Math.max(2, seatsPerWeek()-rndI(0,1))},
+  {id:'perfect', base:45000, label:t=>`${T("จับคู่สมบูรณ์แบบ")} ${t} ${T("ครั้ง")}`, tgt:()=>rndI(1,2)},
+  {id:'buy',     base:25000, label:t=>`${T("ซื้อไวน์เข้าเซลลาร์")} ${t} ${T("ขวด")}`, tgt:()=>rndI(2,4)},
+  {id:'profit',  base:40000, label:t=>`${T("ทำกำไรจากการขายไวน์")} ${fmtK(t)}`, tgt:()=>Math.round(questScale()*rndI(2,4)*25000/25000)*25000},
+  {id:'peak',    base:40000, label:t=>`${T("เสิร์ฟไวน์ที่กำลังพร้อมดื่ม")} ${t} ${T("ขวด")}`, tgt:()=>rndI(1,2)},
+  {id:'regions', base:40000, label:t=>`${T("เสิร์ฟไวน์จาก")} ${t} ${T("เขตที่ต่างกัน")}`, tgt:()=>Math.min(seatsPerWeek(), rndI(2,3))},
+  {id:'style',   base:35000, label:(t,q)=>`${T("เสิร์ฟไวน์")}${STYLE_LABELS[q.param]||''} ${t} ${T("ขวด")}`, tgt:()=>rndI(1,2),
+     param:()=>['white','sparkling','rose','sweet','red','orange'][rndI(0,5)]},
+  {id:'perfectHigh', base:70000, hard:true, minCh:6, label:t=>`${T("จับคู่สมบูรณ์แบบด้วยไวน์ Premier Cru ขึ้นไป")} ${t} ${T("ครั้ง")}`, tgt:()=>rndI(1,2)},
+  {id:'revenue', base:60000, hard:true, label:t=>`${T("ทำยอดขายในร้านสัปดาห์นี้ให้ถึง")} ${fmtK(t)}`,
+     tgt:()=>Math.max(100000, Math.round(avgWeekRevenue()*(1.15+Math.random()*0.15)/10000)*10000)},
+  {id:'partyBottles', base:50000, need:()=>!!G.party, label:t=>`${T("ส่งไวน์เข้างานปาร์ตี้")} ${t} ${T("ขวด")}`, tgt:()=>rndI(5,10)},
+  {id:'vip',     base:80000, hard:true, need:()=>(G.vips||[]).length>0, label:t=>`${T("ทำคำขอพิเศษของลูกค้า VIP สำเร็จ")} ${t} ${T("ครั้ง")}`, tgt:()=>1},
 ];
 function questLabel(q){
   const t=QUEST_TEMPLATES.find(x=>x.id===q.type);
-  return t? t.label(q.target) : '';
+  return t? t.label(q.target, q) : '';
 }
 
 /* Classification labels shown on wine cards. A collector reads the tier at a
@@ -6291,7 +6574,7 @@ const GUIDE = [
 ];
 
 /* ---------- GAME STATE ---------- */
-const VERSION = '5.5';
+const VERSION = '5.6';
 const SAVE_KEY = 'cellarAndVine_save_v3';
 const freshState = () => ({
   week:1,
@@ -8788,6 +9071,7 @@ function pageShop(){
       </div>
     </div>`;
   }
+  html+=leagueBannerHTML();
   const dch=currentChapter();
   if(dch && dch.goal.type==='duel'){
     const d=duelState(), mine=G._weekRevenue||0, ahead=mine>d.target;
@@ -8829,13 +9113,14 @@ function pageShop(){
     html+=`<div class="quest-strip">`;
     G.quests.forEach(q=>{
       const pct=Math.min(100,q.progress/q.target*100);
-      html+=`<div class="quest-chip ${q.done?'done':''}">
-        <div class="qc-top"><span>${q.done?'✅':'🎯'} ${questLabel(q)}</span><b>+${fmtK(q.reward)}</b></div>
+      html+=`<div class="quest-chip ${q.done?'done':''} ${q.hard?'hard':''}">
+        <div class="qc-top"><span>${q.done?'✅':'🎯'} ${q.hard?`<i class="qc-hard">${T("ยาก")}</i>`:''}${questLabel(q)}</span><b>+${fmtK(q.reward)}${q.rep?` ★${q.rep}`:''}</b></div>
         <div class="qc-bar"><i style="width:${pct}%"></i></div></div>`;
     });
     html+=`</div>`;
   }
 
+  html+=vipCardsHTML();
   html+=`<div class="page-head" style="margin-top:6px"><h2 style="font-size:20px">${lineIcon('bell',18)} ${T("ลูกค้าที่รอบริการ")}</h2></div>`;
   if(G.shopDone || G.shopQueue.length===0){
     html+=`<div class="empty-note">${spotArt('doneService',230)}<div style="margin-top:10px">${T("บริการลูกค้าครบแล้วสำหรับสัปดาห์นี้")}<br><span style="font-weight:600;color:var(--ink-soft)">${T("กด \"สัปดาห์ถัดไป\" เพื่อสรุปบัญชีและดำเนินต่อ")}</span></div></div>`;
@@ -9050,8 +9335,8 @@ function generateShopQueue(){
     const bt=pickBudgetTier(base.trait);
     // never more than 2.5x the dearest bottle on the market today
     const ceiling=2.5*Math.max(...WINES.filter(w=>!isRareLocked(w.id)).map(w=>G.prices[w.id]||w.base));
-    const budget=Math.round(Math.min(ceiling, Math.max(everyday, tierBudget(bt)*mult)));
-    const rumour = (currentChapter()&&currentChapter().key==='sabotage') ? 0.12 : 0;
+    const budget=Math.round(Math.min(ceiling, Math.max(everyday, tierBudget(bt)*mult)) * (G.challenge?0.85:1));
+    const rumour = ((currentChapter()&&currentChapter().key==='sabotage') ? 0.12 : 0) + (G.challenge ? 0.08 : 0);
     const fussy = Math.max(0, Math.min(1, 0.3 + Math.random()*0.3 + G.rep*0.004 + TRAIT.fus + rumour));
     let opener;
     if(reg && reg.visits>=1){
@@ -9293,7 +9578,7 @@ function serveCustomer(id){
       reaction=`${T("✨ \"สมบูรณ์แบบ!")} ${w.cuvee} ${T("เข้ากับ")}${cust.food.name}${T("อย่างเหลือเชื่อ\" —")} ${cust.name}${T("ประทับใจสุดๆ")}`; mood='great';
       G.stats.perfectPairs++; questProgress('perfect',1);
       if(atPeak){ repGain+=1; G.stats.peakServes=(G.stats.peakServes||0)+1; reaction+=` ${T("· เปิดในจังหวะที่ดีที่สุดของขวด")}`; }
-      if(w.tier>=4) G.stats.perfectHigh=(G.stats.perfectHigh||0)+1;
+      if(w.tier>=4){ G.stats.perfectHigh=(G.stats.perfectHigh||0)+1; questProgress('perfectHigh',1); }
       if(w.tier>=4){ reaction=`${T("✨ \"ขวดระดับนี้หายากมาก!")} ${w.cuvee} ${T("กับ")}${cust.food.name} ${T("คือประสบการณ์ที่ผมจะไม่มีวันลืม\" —")} ${cust.name}${T("ตื้นตัน")}`; } }
     else if(quality>0.55){ repGain=2; tip=sellPrice*(0.06+tierPrem*0.4);
       reaction=`🙂 "${cust.name} ${T("พยักหน้าพอใจ รสชาติเข้ากันดีทีเดียว\"")}`; mood='good'; }
@@ -9315,6 +9600,10 @@ function serveCustomer(id){
   G.rep = Math.max(0, G.rep+repGain);
   G.stats.served++;
   questProgress('serve',1);
+  questProgress('revenue',0);
+  questProgress('regions',1,{region:w.region});
+  questProgress('style',1,{style:wineStyle(w)});
+  if(atPeak && quality>0.55) questProgress('peak',1);
   // Serving removes a bottle; re-clamp so fake/suspect can never exceed what
   // is left in the lot (0 <= suspect <= fake <= qty).
   c.qty--; sealLot(c); if(c.qty<=0) delete G.cellar[id];
@@ -9568,7 +9857,7 @@ function renderNav(){
 /* Nav badges count things that are waiting for you right now, so they go
    down by themselves the moment you deal with them — nothing to "mark read". */
 function navBadge(p){
-  if(p==='shop') return (!G.shopDone && G.shopQueue.length) ? {n:G.shopQueue.length} : null;
+  if(p==='shop'){ const n=(!G.shopDone?G.shopQueue.length:0)+(vipUnlocked()?(G.vips||[]).length:0); return n?{n}:null; }
   if(p==='cellar'){ const sc=suspectCount(); return sc>0 ? {n:sc, alert:true} : null; }
   if(p==='biz'){
     // a contract whose next delivery you can't cover yet is urgent
@@ -9894,6 +10183,7 @@ function nextWeek(){
   tickAllocations();
   tickContractOffers();
   tickParty();
+  tickVips();
   tickOpportunity();
   tickHazard();
 
@@ -9936,6 +10226,7 @@ function nextWeek(){
   if(revenueThisWeek>G.stats.bestWeek) G.stats.bestWeek=revenueThisWeek;
 
   storyWeekTick(revenueThisWeek);
+  leagueWeekTick(revenueThisWeek);
 
   // reset weekly accumulators
   G._weekRevenue=0; G._weekServed=0;
@@ -10253,26 +10544,36 @@ function checkAchievements(){
 }
 function generateQuests(){
   G.quests=[];
-  const pool=[...QUEST_TEMPLATES];
-  for(let i=0;i<2;i++){
-    const t=pool.splice(Math.floor(Math.random()*pool.length),1)[0];
-    let target;
-    if(t.step) target = t.min + Math.floor(Math.random()*(t.rng/t.step))*t.step;
-    else target = t.min + Math.floor(Math.random()*t.rng);
-    G.quests.push({type:t.id, target, reward:t.reward, progress:0, done:false});
-  }
+  const ok=t=>(!t.minCh || G.chapter>=t.minCh) && (!t.need || t.need());
+  const easy=QUEST_TEMPLATES.filter(t=>!t.hard && ok(t));
+  const hard=QUEST_TEMPLATES.filter(t=>t.hard && ok(t));
+  const pick=(pool)=>pool.splice(Math.floor(Math.random()*pool.length),1)[0];
+  const scale=questScale();
+  const add=(t, isHard)=>{
+    if(!t) return;
+    const q={type:t.id, target:t.tgt(), progress:0, done:false, hard:!!isHard,
+             reward:Math.round(t.base*scale*(isHard?2.5:1)/1000)*1000, rep:isHard?2:0};
+    if(t.param) q.param=t.param();
+    G.quests.push(q);
+  };
+  add(pick(easy)); add(pick(easy));
+  // the third is a stretch goal once there is something to stretch for
+  if(G.chapter>=4 && hard.length) add(pick(hard), true); else add(pick(easy));
 }
-function questProgress(type, amount){
-  G.quests.forEach(q=>{
-    if(q.done) return;
-    if(q.type===type){
-      q.progress+=amount;
-      if(q.progress>=q.target){
-        q.done=true;
-        G.cash+=q.reward;
-        sfx('quest');
-        toast(`${T("✅ เควสต์สำเร็จ +")}${fmtK(q.reward)}`,'gold');
-      }
+// ctx carries what was served, for quests about regions or styles
+function questProgress(type, amount, ctx){
+  (G.quests||[]).forEach(q=>{
+    if(q.done || q.type!==type) return;
+    if(type==='regions'){ q.seen=q.seen||[]; if(ctx && !q.seen.includes(ctx.region)) q.seen.push(ctx.region); q.progress=q.seen.length; }
+    else if(type==='style'){ if(!ctx || ctx.style!==q.param) return; q.progress+=amount; }
+    else if(type==='revenue'){ q.progress=G._weekRevenue||0; }
+    else q.progress+=amount;
+    if(q.progress>=q.target){
+      q.done=true;
+      G.cash+=q.reward;
+      if(q.rep) G.rep+=q.rep;
+      sfx('quest');
+      toast(`${T("✅ เควสต์สำเร็จ +")}${fmtK(q.reward)}${q.rep?` + ★${q.rep}`:''}`,'gold');
     }
   });
 }
@@ -10479,6 +10780,19 @@ function showChapterComplete(ch, reward, nextCh){
   modalFocusables();
 }
 
+// After the last chapter: the goals that keep going
+function postStoryHTML(){
+  const t=G.league?leagueTable():[], rank=t.findIndex(r=>r.me)+1;
+  const row=(ic,title,sub,btn,page,scroll)=>`<div class="post-goal">${lineIcon(ic,22)}<div style="flex:1"><b>${title}</b><div class="wine-sub">${sub}</div></div>
+    <button class="btn sm" data-focus="postGo" data-page="${page}" ${scroll?`data-scroll="${scroll}"`:''} tabindex="0">${btn}</button></div>`;
+  return `<h3 class="sec-h">${lineIcon('compass',18)} ${T("เป้าหมายต่อจากนี้")}</h3><div class="card">
+    ${row('trophy', `${T("ลีกร้านไวน์")}${G.league?` — ${T("ฤดูกาลที่")} ${G.league.season} · ${T("อันดับ")} ${rank}/5`:''}`, `${T("แชมป์")} ${G.stats.leagueWins||0} ${T("สมัย · คู่แข่งเก่งขึ้นทุกฤดูกาล")}`, T('ดูตาราง'), 'stats', 'leagueSec')}
+    ${row('star', `${T("คำขอ VIP")} — ${T("รออยู่")} ${(G.vips||[]).length}`, `${T("สำเร็จแล้ว")} ${G.stats.vipDone||0} ${T("ครั้ง · หลังจบเรื่องมาบ่อยขึ้น")}`, T('ไปที่ร้าน'), 'shop')}
+    ${row('unicorn', T('ไวน์หายากในตำนาน'), `${RARE_UNLOCKS.filter(u=>G.unlockedWines&&G.unlockedWines[u.id]).length}/${RARE_UNLOCKS.length} ${T("ขวดปลดล็อกแล้ว")}`, T('ดูเงื่อนไข'), 'biz')}
+    ${row('sparkle', `New Game+ ${G.prestige?`(${T("ระดับ")} ${G.prestige})`:''}`, T('เริ่มใหม่พร้อมโบนัสถาวร — เลือกโหมดท้าทายได้'), T('ไปที่ตั้งค่า'), 'settings')}
+  </div>`;
+}
+
 /* ---- PAGE: STORY ---- */
 function pageStory(){
   let html=`<div class="page-head"><h2>${T("เนื้อเรื่อง")}</h2><p>${T("ติดตามเส้นทางจากเจ้าของร้านมือใหม่สู่ตำนานวงการไวน์")}</p></div>`;
@@ -10518,6 +10832,7 @@ function pageStory(){
       <div style="font-family:Fraunces;font-weight:600;font-size:20px;color:var(--wine)">${T("จบเนื้อเรื่องหลักแล้ว!")}</div>
       <p style="font-size:13px;color:var(--ink-soft);margin-top:4px">${T("ตอนนี้คุณเล่นอิสระ สร้างอาณาจักรไวน์ในแบบของคุณได้เต็มที่")}</p>
     </div>`;
+    html+=postStoryHTML();
   }
 
   // cast of characters
@@ -10632,12 +10947,16 @@ function pageStats(){
     ['grape',T('ซื้อไวน์สะสม'), s.bottlesBought],
     ['clock',T('สัปดาห์ที่เล่น'), G.week],
     ['trophy',T('สัปดาห์ที่ดีที่สุด'), fmtK(s.bestWeek)],
+    ['star',T('คำขอ VIP สำเร็จ'), s.vipDone||0],
+    ['medal',T('แชมป์ลีก'), `${s.leagueWins||0}/${s.leagueSeasons||0}`],
   ];
   html+=`<div class="grid" style="grid-template-columns:repeat(auto-fit,minmax(150px,1fr));margin-bottom:20px">`;
   tiles.forEach(t=>{
     html+=`<div class="card" style="text-align:center;padding:14px"><div style="display:flex;justify-content:center;color:var(--gold)">${lineIcon(t[0],26)}</div><div style="font-family:Fraunces;font-weight:600;font-size:20px;color:var(--wine);margin:4px 0 2px">${t[2]}</div><div class="wine-sub">${t[1]}</div></div>`;
   });
   html+=`</div>`;
+
+  html+=leagueSectionHTML();
 
   // ---- financial history chart ----
   if(G.weeklyLog && G.weeklyLog.length>1){
@@ -10701,9 +11020,10 @@ function prestigeGain(){
   const v=portfolioValue()+G.cash;
   return Math.max(5, Math.min(50, Math.floor(v/2000000)));
 }
-function doPrestige(){
+function doPrestige(challenge){
   if(!canPrestige()){ toast(T('ยังไม่ถึงเงื่อนไข — เล่นจบเนื้อเรื่องหรือทำพอร์ตถึง ฿30M'),'bad'); return; }
-  const gain=prestigeGain();
+  // challenge run: tighter budgets and fussier guests for half as much again bonus
+  const gain=Math.round(prestigeGain()*(challenge?1.5:1));
   const newLevel=(G.prestige||0)+1;
   const newBonus=(G.prestigeBonus||0)+gain;
   const keepAch=G.ach, keepStats=G.stats;
@@ -10712,6 +11032,8 @@ function doPrestige(){
   G.prestigeBonus=newBonus;
   G.ach=keepAch;                  // achievements persist
   G.stats=keepStats;              // lifetime stats persist
+  G.challenge=!!challenge;
+  G.leagueHistory=[];
   G.cash=Math.round(1500000*(1+newBonus/100));
   G.tutDone=true;                 // skip tutorial on NG+
   G.introSeen=true;               // and the opening cinematic
@@ -11052,6 +11374,9 @@ function activate(el){
   else if(type==='load'){ if(loadGame()){ renderTop(); routePage(); toast(T('📂 โหลดเซฟแล้ว'),'good'); } }
   else if(type==='allocTake'){ acceptAlloc(+el.dataset.id); }
   else if(type==='allocPass'){ passAlloc(+el.dataset.id); }
+  else if(type==='leagueGo'){ G.page='stats'; UI.scrollTo='leagueSec'; sfx('click'); routePage(); }
+  else if(type==='postGo'){ G.page=el.dataset.page; if(el.dataset.scroll) UI.scrollTo=el.dataset.scroll; sfx('click'); routePage(); }
+  else if(type==='vipSend'){ fulfilVip(+el.dataset.vip, el.dataset.id); }
   else if(type==='partyOne'){ fillParty(el.dataset.id, 1); }
   else if(type==='partyMax'){ fillParty(el.dataset.id, 9999); }
   else if(type==='partyShop' || type==='partyGo'){
@@ -11102,13 +11427,16 @@ function confirmPrestige(){
       <p>✅ <b>${T("เก็บไว้:")}</b> ${T("ความสำเร็จทั้งหมด, สถิติตลอดชีพ, โบนัสถาวร")}</p>
       <p>❌ <b>${T("รีเซ็ต:")}</b> ${T("เงิน เซลลาร์ พนักงาน ชื่อเสียง เนื้อเรื่อง")}</p>
       <p style="color:var(--gold);font-weight:700">${T("🎁 โบนัสใหม่: +")}${prestigeGain()}${T("% รายได้ถาวร (รวมเป็น +")}${(G.prestigeBonus||0)+prestigeGain()}%)</p>
+      <div class="ng-challenge"><b>${T("🔥 โหมดท้าทาย")}</b> — ${T("งบลูกค้าน้อยลง 15% และลูกค้าจับผิดมากขึ้น แต่ได้โบนัสถาวรมากขึ้น 1.5 เท่า")} (+${Math.round(prestigeGain()*1.5)}%)</div>
     </div>
-    <div class="row" style="justify-content:center;gap:10px">
+    <div class="row" style="justify-content:center;gap:10px;flex-wrap:wrap">
       <button class="btn gold" id="pYes" data-focus="modal">${T("เริ่ม NG+")}</button>
+      <button class="btn" id="pHard" data-focus="modal" style="border-color:var(--down);color:var(--down)">${T("เริ่มแบบท้าทาย")}</button>
       <button class="btn ghost" id="pNo" data-focus="modal">${T("ยกเลิก")}</button>
     </div>`;
   document.getElementById('modalBg').classList.add('show');
-  document.getElementById('pYes').onclick=()=>{ closeModal(); doPrestige(); };
+  document.getElementById('pYes').onclick=()=>{ closeModal(); doPrestige(false); };
+  document.getElementById('pHard').onclick=()=>{ closeModal(); doPrestige(true); };
   document.getElementById('pNo').onclick=closeModal;
   modalFocusables();
 }
